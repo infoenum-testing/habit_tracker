@@ -88,11 +88,11 @@ struct ArcDetailView: View {
                 }
                 //Spacer(minLength: 0)
                 HStack {
-                    ShareProgressButton(imageName: "square.and.arrow.up", title: "Share Progress" ,buttonAction: {
+                    ShareProgressButton(height: 50 ,imageName: "square.and.arrow.up", title: "Share Progress" ,buttonAction: {
                         // handle share action
                     })
                         
-                    ShareProgressButton(imageName: "arrow.up", title: "Add Widget" ,buttonAction: {
+                    ShareProgressButton(height: 50 ,imageName: "arrow.up", title: "Add Widget" ,buttonAction: {
                         // handle share action
                     })
                 }.padding(.horizontal)
@@ -158,6 +158,7 @@ struct CircularArcProgressView: View {
 import SwiftUI
 
 struct ShareProgressButton: View {
+    var height: CGFloat = 60
     var imageName: String?
     var title: String
     var buttonAction: () -> Void
@@ -166,14 +167,14 @@ struct ShareProgressButton: View {
             // handle tap
         }) {
             ZStack {
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color(white: 0.85))
-                    .frame(height: 56)
-                    .offset(y: 4)
+                    .frame(height: height)
+                    .offset(y: 6)
 
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color.white)
-                    .frame(height: 56)
+                    .frame(height: height)
                 HStack(spacing: 8) {
                     if let imageName = imageName {
                         Image(systemName: imageName)

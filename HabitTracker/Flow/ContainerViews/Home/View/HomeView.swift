@@ -13,7 +13,7 @@ struct HomeView: View {
     @State private var showArcDetail = false
 
     var body: some View {
-        NavigationStack {
+       // NavigationStack {
             ZStack {
                 VStack(alignment: .leading, spacing: 0) {
                     HomeHeader()
@@ -70,7 +70,7 @@ struct HomeView: View {
                 }
             }
 
-        }.navigationBarHidden(true)
+       // }.navigationBarHidden(true)
     }
 }
 

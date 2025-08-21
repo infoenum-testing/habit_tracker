@@ -14,8 +14,8 @@ struct EditArcSheet: View {
 
     
     private let colors: [Color] = [
-        .green, .purple, .red, .orange, .yellow,
-        .blue, .pink, .mint, .gray
+        .appGreen, .appPurple, .appRed, .appOrange, .appYellow,
+        .appBlue, .appPink, .appCyan, .appTan, .appBrown, .appWhite, .appGray
     ]
     
     var body: some View {
@@ -101,27 +101,32 @@ struct EditArcSheet: View {
                 showConfirmation = true
             } label: {
                 HStack {
-                    Image(systemName: "slash.circle")
+                    Image("circleBan")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .padding(.leading, 15)
                     Text("End Arc")
-                        .fontWeight(.medium)
+                        .font(.sfProDisplay(.medium, size: 20))
+                        .foregroundColor(.appRed)
+                    Spacer()
                 }
                 .frame(maxWidth: .infinity)
-                .padding()
+                .frame(height: 70)
                 .background(.redDark)
-                .foregroundColor(.white)
-                .cornerRadius(14)
+                .cornerRadius(22)
+                
             }
             .padding(.horizontal)
             .padding(.bottom, 20)
         }
-        .frame(height: 420)
+        .frame(height: 500)
         .background(.sheetBackground)
         .cornerRadius(30)
         }.ignoresSafeArea()
             .sheet(isPresented: $showConfirmation) {
                 EndArcConfirmationSheet(isPresented: $showConfirmation,
                                         arcName: "Gut Health Arc")
-                    .presentationDetents([.fraction(0.60)])
+                    .presentationDetents([.height(450)])
                     .presentationCornerRadius(24)
                     .presentationBackground {
                         Color(UIColor.systemBackground)

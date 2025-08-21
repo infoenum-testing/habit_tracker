@@ -22,7 +22,7 @@ struct CustomTabBar: View {
                 .frame(width: 80, height: 60)
         }
         .padding(.horizontal, 24)
-        .frame(height: 72)
+        .frame(height: 65)
         .background(.black)
         .overlay(
             RoundedRectangle(cornerRadius: 28)

@@ -13,6 +13,7 @@ struct RootTabView: View {
     @State private var tab: Int = 0
 
     var body: some View {
+        NavigationStack {
         VStack(spacing: 0) {
             switch tab {
             case 0:
@@ -27,6 +28,7 @@ struct RootTabView: View {
             CustomTabBar(tab: $tab)
         }
         .ignoresSafeArea(.keyboard)
+    }.navigationBarHidden(true)
     }
 }
 

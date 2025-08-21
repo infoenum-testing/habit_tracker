@@ -62,18 +62,21 @@ struct EndArcConfirmationSheet: View {
                 // end arc action
             } label: {
                 HStack {
-                    Image(systemName: "slash.circle")
+                    Image("circleBan")
+                        .resizable()
+                        .frame(width: 20, height: 20)
                     Text("End Arc")
-                        .fontWeight(.medium)
+                        .font(.sfProDisplay(.semibold, size: 20))
+                        .foregroundStyle(.appRed)
+                        
                 }
                 .frame(maxWidth: .infinity)
-                .padding()
+                .frame(height: 70)
                 .background(.redDark)
-                .foregroundColor(.white)
-                .cornerRadius(14)
+                .cornerRadius(22)
             }
             .padding(.horizontal)
-            .padding(.vertical)
+            //.padding(.vertical)
             
             // Cancel Button
             ShareProgressButton(title: "Cancel",buttonAction: {
