@@ -1,0 +1,201 @@
+//
+//  ArcDetailView.swift
+//  HabitTracker
+//
+//  Created by Mayur Shrivas on 14/08/25.
+//
+
+import Foundation
+import SwiftUI
+
+struct ArcDetailView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    @EnvironmentObject var state: AppState
+    
+    @State private var showEditArc = false
+    @State private var showConfirmation = false
+    let arcID: UUID
+
+    var arc: Arc { state.arcs.first(where: { $0.id == arcID })! }
+    
+    
+    private var progress: CGFloat {
+       // guard 10 > 0 else { return 0 }
+        return CGFloat(5) / CGFloat(10)
+    }
+
+    var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                DetailHeader(title: arc.title, day: arc.dayNumber, backButtonTapped: {
+                    dismiss()
+                }, editButtonTapped: {
+                    showEditArc = true
+                })
+                ScrollView(showsIndicators: false) {
+                    
+                    ScrollView(.horizontal) {
+                        HStack {
+                            DatePill(date: Date(), isSelected: false, isPast: true)
+                            DatePill(date: Date(), isSelected: false, isPast: true)
+                            DatePill(date: Date(), isSelected: true, isPast: false)
+                            DatePill(date: Date(), isSelected: false, isPast: true)
+                            DatePill(date: Date(), isSelected: false, isPast: true)
+                        }
+                        .padding(5)
+                    }.scrollDisabled(true)
+                
+                    CircularArcProgressView(progress: progress, tint: arc.color)
+                        .padding()
+                    
+                    
+                    VStack(alignment: .center, spacing: 6) {
+                            Text(arc.title)
+                                .font(.sfProDisplay(.semibold, size: 35))
+                                .foregroundColor(.white)
+                            Text("30 Days Challenge")
+                                .font(.sfProDisplay(.medium, size: 12))
+                                .foregroundColor(.white).opacity(0.7)
+                        }
+                   
+                    
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Daily Progress")
+                        .font(.sfProDisplay(.medium, size: 16))
+                        .foregroundStyle(.white.opacity(0.8))
+                   
+                    HStack {
+                        Spacer()
+                        Text("\(arc.completedCount) of \(arc.totalCount) Habits Completed")
+                            .font(.sfProDisplay(.medium, size: 12))
+                            .foregroundStyle(.white.opacity(0.7))
+                            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: arc.completedCount)
+                            .id("completion-text-\(arc.completedCount)")
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 14)
+
+             
+                    VStack(spacing: 12) {
+                        ForEach(arc.tasksForToday) { task in
+                            ArcTaskRow(arcID: arc.id, task: task, tint: arc.color)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 16)
+                }
+                //Spacer(minLength: 0)
+                HStack {
+                    ShareProgressButton(imageName: "square.and.arrow.up", title: "Share Progress" ,buttonAction: {
+                        // handle share action
+                    })
+                        
+                    ShareProgressButton(imageName: "arrow.up", title: "Add Widget" ,buttonAction: {
+                        // handle share action
+                    })
+                }.padding(.horizontal)
+                    
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(LinearGradient(colors: [arc.color.opacity(0.55),.black, .black], startPoint: .top, endPoint: .bottom))
+        .navigationBarBackButtonHidden()
+        .toolbar(.hidden)
+        
+        .fullScreenCover(isPresented: $showEditArc) {
+               EditArcSheet(isPresented: $showEditArc)
+                .preferredColorScheme(.dark)
+           }
+//           .sheet(isPresented: $showConfirmation) {
+//               EndArcConfirmationSheet(isPresented: $showConfirmation,
+//                                       arcName: "Gut Health Arc")
+//               .preferredColorScheme(.dark)
+//           }
+    }
+}
+
+struct ArcDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockState = AppState(arcs: MockData.arcs, habits: MockData.habits)
+
+        return ArcDetailView(arcID: MockData.arcs[0].id)
+            .environmentObject(mockState)
+            .background(Color.black)
+    }
+}
+
+
+
+struct CircularArcProgressView: View {
+    var progress: Double            // 0.0 → 1.0
+    var tint: Color
+    
+    var body: some View {
+        ZStack {
+            // Base circle
+            Circle()
+                .stroke(Color(UIColor.appGray), lineWidth: 12)
+            
+            // Progress circle
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(tint, style: StrokeStyle(lineWidth: 12, lineCap: .round))
+              .rotationEffect(.degrees(-90))   // start at top
+            
+            // Center icon
+            Image("star")
+                .resizable()
+                .frame(width: 80, height: 80)
+        }
+        .frame(width: 150, height: 150)
+    }
+}
+
+
+
+import SwiftUI
+
+struct ShareProgressButton: View {
+    var imageName: String?
+    var title: String
+    var buttonAction: () -> Void
+    var body: some View {
+        Button(action: {
+            // handle tap
+        }) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 28, style: .continuous)
+                    .fill(Color(white: 0.85))
+                    .frame(height: 56)
+                    .offset(y: 4)
+
+                RoundedRectangle(cornerRadius: 28, style: .continuous)
+                    .fill(Color.white)
+                    .frame(height: 56)
+                HStack(spacing: 8) {
+                    if let imageName = imageName {
+                        Image(systemName: imageName)
+                            .font(.system(size: 18, weight: .medium))
+                    }
+                    Text(title)
+                        .font(.system(size: 17, weight: .semibold))
+                }
+                .foregroundColor(.black)
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+struct ShareProgressButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            ShareProgressButton(imageName: "square.and.arrow.up", title: "Share Progress" ,buttonAction: {
+                // handle share action
+            })
+        }
+    }
+}
