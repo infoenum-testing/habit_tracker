@@ -50,14 +50,11 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                     }
                 }
-                
             }
             .toolbar(.hidden)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
             .navigationBarHidden(true)
-            
-            
             .sheet(isPresented: $showArcDetail) {
                 if let arc = selectedArc {
                     NavigationStack {
@@ -66,11 +63,8 @@ struct HomeView: View {
                     }
                     .presentationDetents([.large])
                     .presentationCornerRadius(24)
-                    //.presentationDragIndicator(.visible)
                 }
             }
-
-       // }.navigationBarHidden(true)
     }
 }
 

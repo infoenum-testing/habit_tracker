@@ -16,16 +16,16 @@ struct HomeHeader: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20, height: 20)
-            Text("app name")
+            Text("arcetype")
                 .font(.sfProDisplay(.medium, size: 26))
                 .foregroundStyle(.white)
             Spacer()
             HStack(spacing: 10) {
                 LayoutToggle()
-                CircleButton(icon: "bell", action: {
-                    //
-                }, width: 25, height: 25)
-                    .frame(width: 50, height: 50)
+//                CircleButton(icon: "bell", action: {
+//                    //
+//                }, width: 25, height: 25)
+//                    .frame(width: 50, height: 50)
             }
         }
     }

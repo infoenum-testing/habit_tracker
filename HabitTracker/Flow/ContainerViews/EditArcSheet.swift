@@ -24,9 +24,9 @@ struct EditArcSheet: View {
         VStack(spacing: 10) {
             Rectangle()
               .foregroundColor(.clear)
-              .frame(width: 103.70827, height: 5.7)
-              .background(.white.opacity(0.3))
-              .cornerRadius(3.42)
+              .frame(width: 100, height: 5)
+              .background(.white.opacity(0.2))
+              .cornerRadius(3)
               .padding(.vertical)
             // Header
             HStack {
@@ -64,17 +64,17 @@ struct EditArcSheet: View {
                     .padding()
                 
                 // Color grid
-                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 5), spacing: 16) {
+                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 16) {
                     ForEach(colors, id: \.self) { color in
                         ZStack {
                             
                             Rectangle()
                                 .fill(color)
-                                .frame(width: 50, height: 50)
-                                .cornerRadius(10)
+                                .frame(width: 48, height: 48)
+                                .cornerRadius(19)
                                 .padding(5)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
+                                    RoundedRectangle(cornerRadius: 19)
                                         .stroke(color == selectedColor ? Color.white : Color.clear, lineWidth: 2)
                                 )
                             
@@ -119,7 +119,7 @@ struct EditArcSheet: View {
             .padding(.horizontal)
             .padding(.bottom, 20)
         }
-        .frame(height: 500)
+        .frame(height: 450)
         .background(.sheetBackground)
         .cornerRadius(30)
         }.ignoresSafeArea()

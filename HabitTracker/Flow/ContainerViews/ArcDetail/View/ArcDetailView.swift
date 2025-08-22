@@ -34,18 +34,18 @@ struct ArcDetailView: View {
                     showEditArc = true
                 })
                 ScrollView(showsIndicators: false) {
+                   
+                   
+                    
                     
                     ScrollView(.horizontal) {
                         HStack {
-                            DatePill(date: Date(), isSelected: false, isPast: true)
-                            DatePill(date: Date(), isSelected: false, isPast: true)
-                            DatePill(date: Date(), isSelected: true, isPast: false)
-                            DatePill(date: Date(), isSelected: false, isPast: true)
-                            DatePill(date: Date(), isSelected: false, isPast: true)
-                        }
-                        .padding(5)
+                            DayStripView(
+                                arc: state.arcs.first(where: { $0.id == arcID })!
+                            )
+                        }.padding(5)
                     }.scrollDisabled(true)
-                
+
                     CircularArcProgressView(progress: progress, tint: arc.color)
                         .padding()
                     
@@ -55,27 +55,9 @@ struct ArcDetailView: View {
                                 .font(.sfProDisplay(.semibold, size: 35))
                                 .foregroundColor(.white)
                             Text("30 Days Challenge")
-                                .font(.sfProDisplay(.medium, size: 12))
-                                .foregroundColor(.white).opacity(0.7)
+                                .font(.sfProDisplay(.medium, size: 16))
+                                .foregroundColor(.textGray)
                         }
-                   
-                    
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Daily Progress")
-                        .font(.sfProDisplay(.medium, size: 16))
-                        .foregroundStyle(.white.opacity(0.8))
-                   
-                    HStack {
-                        Spacer()
-                        Text("\(arc.completedCount) of \(arc.totalCount) Habits Completed")
-                            .font(.sfProDisplay(.medium, size: 12))
-                            .foregroundStyle(.white.opacity(0.7))
-                            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: arc.completedCount)
-                            .id("completion-text-\(arc.completedCount)")
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 14)
 
              
                     VStack(spacing: 12) {
@@ -88,14 +70,15 @@ struct ArcDetailView: View {
                 }
                 //Spacer(minLength: 0)
                 HStack {
-                    ShareProgressButton(height: 50 ,imageName: "square.and.arrow.up", title: "Share Progress" ,buttonAction: {
+                    ShareProgressButton(height: 50 ,imageName: "shareIcon", title: "Share Progress" ,buttonAction: {
                         // handle share action
                     })
                         
-                    ShareProgressButton(height: 50 ,imageName: "arrow.up", title: "Add Widget" ,buttonAction: {
+                    ShareProgressButton(height: 50 ,imageName: "widget", title: "Add Widget" ,buttonAction: {
                         // handle share action
                     })
                 }.padding(.horizontal)
+                   .padding(.top)
                     
             }
         }
@@ -149,7 +132,7 @@ struct CircularArcProgressView: View {
                 .resizable()
                 .frame(width: 80, height: 80)
         }
-        .frame(width: 150, height: 150)
+        .frame(width: 135, height: 135)
     }
 }
 
@@ -170,14 +153,14 @@ struct ShareProgressButton: View {
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color(white: 0.85))
                     .frame(height: height)
-                    .offset(y: 6)
+                    .offset(y: 4)
 
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color.white)
                     .frame(height: height)
-                HStack(spacing: 8) {
+                HStack(spacing: 5) {
                     if let imageName = imageName {
-                        Image(systemName: imageName)
+                        Image(imageName)
                             .font(.system(size: 18, weight: .medium))
                     }
                     Text(title)
@@ -194,9 +177,48 @@ struct ShareProgressButton_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-            ShareProgressButton(imageName: "square.and.arrow.up", title: "Share Progress" ,buttonAction: {
+            ShareProgressButton(imageName: "shareIcon", title: "Share Progress" ,buttonAction: {
                 // handle share action
             })
         }
+    }
+}
+
+
+
+struct DayStripView: View {
+    let arc: Arc   // contains totaldays and dayNumber
+    
+    private var visibleDays: [Int?] {
+        let total = arc.totaldays
+        let current = arc.dayNumber
+        
+        // Always want 5 slots around the current day
+        let start = current - 2
+        let end = current + 2
+        
+        return (start...end).map { day in
+            (day >= 1 && day <= total) ? day : nil
+        }
+    }
+    
+    var body: some View {
+        HStack {
+            ForEach(Array(visibleDays.enumerated()), id: \.offset) { _, day in
+                if let day = day {
+                    DayPill(
+                        day: day,
+                        isSelected: (day == arc.dayNumber),
+                        isPast: day < arc.dayNumber
+                    )
+                } else {
+                    // placeholder (transparent to keep spacing)
+                    Color.clear
+                        .frame(width: 70, height: 90)
+                }
+            }
+        }
+      //  .frame(maxWidth: .infinity, alignment: .center)
+        
     }
 }

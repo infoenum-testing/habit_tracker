@@ -24,8 +24,8 @@ struct MyAccountView: View {
                     .font(.sfProDisplay(.medium, size: 19))
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(
-                           rows: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2),
-                           spacing: 10
+                           rows: Array(repeating: GridItem(.flexible(), spacing: 0), count: 2),
+                           spacing: 15
                        ) {
                     ArcCardView(title: "75 Hard",  days: 75, date: "July 18, 2025", icon: "greenArc", iconColor: .red)
                     ArcCardView(title: "Gut Health",   days: 60, date: "July 18, 2025", icon: "redArc", iconColor: .green)

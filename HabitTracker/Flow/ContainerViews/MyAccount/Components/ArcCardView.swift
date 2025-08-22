@@ -30,7 +30,8 @@ struct ArcCardView: View {
                     .cornerRadius(15)
                     .padding(8)
                     .shadow(radius: 10)
-            }.frame(width: width, height: height)
+            }
+            .frame(width: width, height: height)
                 .background(.appPearlWhite)
                 .cornerRadius(25)
                 .shadow(radius: 10)
@@ -43,7 +44,7 @@ struct ArcCardView: View {
                 Text(title)
                     .font(.sfProDisplay(.semibold, size: 12))
                     .foregroundColor(.textBlack)
-                    .padding(.top, 5)
+                    .padding(.top, 12)
                 Text("\(days) Days")
                     .font(.sfProDisplay(.medium, size: 9))
                     .foregroundColor(.textGray)

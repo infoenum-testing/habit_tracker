@@ -11,6 +11,7 @@ import SwiftUI
 struct Arc: Identifiable, Hashable {
     let id: UUID
     var title: String
+    var totaldays: Int
     var dayNumber: Int
     var subTitle: String
     var color: Color
@@ -19,9 +20,10 @@ struct Arc: Identifiable, Hashable {
     var completedArc: Int
     var tasksForToday: [ArcTask]
 
-    init(id: UUID = UUID(), title: String, dayNumber: Int, subTitle: String, color: Color, icon: String, history: [Int],completedArc: Int, tasksForToday: [ArcTask]) {
+    init(id: UUID = UUID(), title: String, totaldays: Int, dayNumber: Int, subTitle: String, color: Color, icon: String, history: [Int],completedArc: Int, tasksForToday: [ArcTask]) {
         self.id = id
         self.title = title
+        self.totaldays = totaldays
         self.dayNumber = dayNumber
         self.subTitle = subTitle
         self.color = color

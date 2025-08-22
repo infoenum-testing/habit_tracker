@@ -20,10 +20,10 @@ struct DatePill: View {
         VStack(spacing: 2) {
             Text(date.dayString())
                 .font(.sfProDisplay(.bold, size: 28))
-                .foregroundColor(isPast ? .white.opacity(0.5) : .white)
+                .foregroundColor(isSelected ? .white : .appGray)
             Text(date.weekdayShort())
-                .font(.sfProDisplay(.bold, size: 12))
-                .opacity(0.5)
+                .font(.sfProDisplay(.bold, size: 14))
+                .foregroundColor(isSelected ? .white : .appGray)
             if isSelected {
                     VStack(spacing: 1) {
                         ForEach(Array(state.activeArcs.prefix(3)).indices, id: \.self) { i in
@@ -39,7 +39,7 @@ struct DatePill: View {
         .frame(width: 70, height: 90)
         .background(
             ZStack {
-                RoundedRectangle(cornerRadius: 25).stroke(isSelected ? .white : .white.opacity(0.7) , lineWidth: isSelected ? 2 : 1)
+                RoundedRectangle(cornerRadius: 25).stroke(isSelected ? .white : .appGray , lineWidth: isSelected ? 2 : 1)
             }
         )
         .onAppear {

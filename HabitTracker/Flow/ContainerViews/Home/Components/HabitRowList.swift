@@ -15,7 +15,11 @@ struct HabitRowList: View {
         VStack(spacing: 0) {
             // Header row (always visible)
             HStack(spacing: 12) {
-                IconBadge(icon: habit.icon, tint: habit.color)
+                IconBadge(icon: habit.icon, tint: habit.color.opacity(0.3))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.appGray, lineWidth: 1)
+                    )
                     .padding(.leading)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(habit.title)
@@ -46,8 +50,8 @@ struct HabitRowList: View {
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(Color(UIColor.appDarkGray).opacity(0.8))
-                .overlay(RoundedRectangle(cornerRadius: 14).stroke(.white.opacity(0.06), lineWidth: 1))
+                .fill(Color(UIColor.black).opacity(0.9))
+                .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color(UIColor.appGray), lineWidth: 1))
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)
     }
