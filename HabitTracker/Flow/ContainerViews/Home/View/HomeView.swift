@@ -41,6 +41,11 @@ struct HomeView: View {
                             // Habit Cards
                             ForEach(state.habits) { habit in
                                 HabitRowList(habit: habit)
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            swipeManager.closeAll()
+                                        }
+                                    }
                             }
                         }
                         .padding(.top, 8)

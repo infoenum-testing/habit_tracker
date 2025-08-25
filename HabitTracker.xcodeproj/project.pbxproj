@@ -54,6 +54,8 @@
 		B7A3CC322E50FDCC00674792 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE92E50FDCC00674792 /* Assets.xcassets */; };
 		EB0363732E5C4560002A1D52 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363722E5C455E002A1D52 /* Route.swift */; };
 		EB0363752E5C45B6002A1D52 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363742E5C45B3002A1D52 /* NavigationRouter.swift */; };
+		EB0363782E5C75D5002A1D52 /* SwipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363772E5C75D4002A1D52 /* SwipeManager.swift */; };
+		EB03637A2E5C75F3002A1D52 /* SwipeableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363792E5C75EE002A1D52 /* SwipeableRow.swift */; };
 		EB1958272E56033300454D34 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958262E56033100454D34 /* StatisticsView.swift */; };
 		EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958292E5603ED00454D34 /* MyAccountView.swift */; };
 		EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE4CB2E5872CE006BB759 /* DayPill.swift */; };
@@ -116,6 +118,8 @@
 		B7A3CC042E50FDCC00674792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB0363722E5C455E002A1D52 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		EB0363742E5C45B3002A1D52 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		EB0363772E5C75D4002A1D52 /* SwipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeManager.swift; sourceTree = "<group>"; };
+		EB0363792E5C75EE002A1D52 /* SwipeableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableRow.swift; sourceTree = "<group>"; };
 		EB1958262E56033100454D34 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		EB1958292E5603ED00454D34 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		EB1AE4CB2E5872CE006BB759 /* DayPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPill.swift; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 		B7A3CC032E50FDCC00674792 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EB0363762E5C75CD002A1D52 /* SwipeManager */,
 				B7A3CBF42E50FDCC00674792 /* Components */,
 				B7A3CBF82E50FDCC00674792 /* Helpers */,
 				B7A3CBFA2E50FDCC00674792 /* MockData */,
@@ -391,6 +396,15 @@
 				EB0363722E5C455E002A1D52 /* Route.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		EB0363762E5C75CD002A1D52 /* SwipeManager */ = {
+			isa = PBXGroup;
+			children = (
+				EB0363792E5C75EE002A1D52 /* SwipeableRow.swift */,
+				EB0363772E5C75D4002A1D52 /* SwipeManager.swift */,
+			);
+			path = SwipeManager;
 			sourceTree = "<group>";
 		};
 		EB1958252E56032600454D34 /* Statistics */ = {
@@ -551,10 +565,12 @@
 				B7A3CC0A2E50FDCC00674792 /* ArcDetailView.swift in Sources */,
 				EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */,
 				B7A3CC0B2E50FDCC00674792 /* ArcRowGrid.swift in Sources */,
+				EB03637A2E5C75F3002A1D52 /* SwipeableRow.swift in Sources */,
 				B7A3CC0C2E50FDCC00674792 /* ArcRowList.swift in Sources */,
 				B7A3CC0D2E50FDCC00674792 /* DateStrip.swift in Sources */,
 				B7A3CC0E2E50FDCC00674792 /* GridLayout.swift in Sources */,
 				B7A3CC0F2E50FDCC00674792 /* HabitRowGrid.swift in Sources */,
+				EB0363782E5C75D5002A1D52 /* SwipeManager.swift in Sources */,
 				B7A3CC102E50FDCC00674792 /* HabitRowList.swift in Sources */,
 				EB4CCBA22E571D4800F76945 /* PerformanceCardView.swift in Sources */,
 				B7A3CC112E50FDCC00674792 /* HomeHeader.swift in Sources */,
