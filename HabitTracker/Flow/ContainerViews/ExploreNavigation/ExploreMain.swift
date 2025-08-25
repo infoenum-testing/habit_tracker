@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
-
 struct ExploreMain: View {
+    
+    @EnvironmentObject var router: NavigationRouter
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -28,18 +29,18 @@ struct ExploreMain: View {
                         title: "Trending Arcs",
                         itemsCount: 4,
                         columns: columns, onViewAll: {
-                            
+                            router.push(to: .allArcsView)
                         }
                     )
                     ExploreSection(
                         title: "Trending Habits",
                         itemsCount: 4,
                         columns: columns, onViewAll: {
-                            
+                            router.push(to: .allHabitsView)
                         }
                     )
                 }
-                .padding(.horizontal, 28)
+                .padding(.horizontal, 20)
                 .padding(.bottom, 24)
             }
         }
@@ -55,7 +56,7 @@ private extension ExploreMain {
     var headerView: some View {
         VStack(spacing: 20) {
             Text("Explore")
-                .font(.custom("Inter", size: 22).weight(.semibold))
+                .font(Font.inter(size: 22, weight: .semibold))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .top)
@@ -113,9 +114,11 @@ struct ExploreSection: View {
             
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(0..<itemsCount, id: \.self) { _ in
-                    NavigationLink(destination: AllHabitsView()) {
+                    if title == "Trending Arcs" {
                         ArcCardCell()
                             .aspectRatio(1, contentMode: .fit)
+                    } else {
+                        TrendingCardView()
                     }
                 }
             }

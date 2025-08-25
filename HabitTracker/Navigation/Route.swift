@@ -9,6 +9,8 @@ import Foundation
 
 enum Route: Hashable {
     case arcDetail(id: UUID)
+    case allArcsView
+    case allHabitsView
 }
 
 extension Route: View {
@@ -16,6 +18,10 @@ extension Route: View {
         switch self {
         case .arcDetail(let id):
             ArcDetailView(arcID: id)
+        case .allArcsView:
+            AllArcsView()
+        case .allHabitsView:
+            AllHabitsView()
         }
     }
 }

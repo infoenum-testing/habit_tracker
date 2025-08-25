@@ -64,9 +64,6 @@ struct ArcCardCell: View {
             .frame(width: geo.size.width, height: geo.size.width)
             .cornerRadius(20)
             .clipped()
-            .onAppear{
-                print(geo.size.width)
-            }
         }
     }
 }
