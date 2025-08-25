@@ -24,19 +24,19 @@ struct CounterPill: View {
         ZStack {
             // Background ring (gray)
             Circle()
-                .stroke(Color(UIColor.appGray), lineWidth: 6)
+                .stroke(Color(UIColor.appGray), lineWidth: 5)
             
             // Progress ring
             Circle()
                 .trim(from: 0, to: progress)
-                .stroke(tint, style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                .stroke(tint, style: StrokeStyle(lineWidth: 5, lineCap: .round))
                 .rotationEffect(.degrees(-90))  // Start from top
             
             // Text in the middle
             Text(text)
-                .font(.sfProDisplay(.bold, size: 13))
+                .font(.sfProDisplay(.bold, size: 14))
                 .foregroundColor(.white)
         }
-        .frame(width: 40, height: 40)
+        .frame(width: 45, height: 45)
     }
 }

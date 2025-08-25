@@ -21,12 +21,12 @@ struct CheckChip: View {
                     .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isOn)
                 Image("check")
                     .resizable()
-                    .frame(width: 25, height: 25)
+                    .frame(width: 22, height: 22)
                     .foregroundStyle(.white)
                     .scaleEffect(isOn ? 1.1 : 1.0)
                     .animation(.spring(response: 0.2, dampingFraction: 0.6), value: isOn)
             }
-            .frame(width: 48, height: 48)
+            .frame(width: 40, height: 40)
         }
         .buttonStyle(.plain)
     }

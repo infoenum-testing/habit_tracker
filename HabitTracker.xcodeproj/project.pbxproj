@@ -65,6 +65,7 @@
 		E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EDF7B2E5C434600E42196 /* UIFont+Extension.swift */; };
 		EB1958272E56033300454D34 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958262E56033100454D34 /* StatisticsView.swift */; };
 		EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958292E5603ED00454D34 /* MyAccountView.swift */; };
+		EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE4CB2E5872CE006BB759 /* DayPill.swift */; };
 		EB4CCB982E57192300F76945 /* ArcCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB972E57192100F76945 /* ArcCardView.swift */; };
 		EB4CCB9A2E57197300F76945 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB992E57196F00F76945 /* SettingsRow.swift */; };
 		EB4CCB9E2E571C8600F76945 /* WeeklyPerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB9D2E571C8300F76945 /* WeeklyPerformanceView.swift */; };
@@ -135,6 +136,7 @@
 		E98EDF7B2E5C434600E42196 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		EB1958262E56033100454D34 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		EB1958292E5603ED00454D34 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
+		EB1AE4CB2E5872CE006BB759 /* DayPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPill.swift; sourceTree = "<group>"; };
 		EB4CCB972E57192100F76945 /* ArcCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcCardView.swift; sourceTree = "<group>"; };
 		EB4CCB992E57196F00F76945 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		EB4CCB9D2E571C8300F76945 /* WeeklyPerformanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPerformanceView.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 		B7A3CBF42E50FDCC00674792 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EB1AE4CB2E5872CE006BB759 /* DayPill.swift */,
 				B7A3CBEB2E50FDCC00674792 /* CheckChip.swift */,
 				B7A3CBEC2E50FDCC00674792 /* CircleButton.swift */,
 				B7A3CBED2E50FDCC00674792 /* CounterPill.swift */,
@@ -600,6 +603,7 @@
 				B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */,
 				B7A3CC092E50FDCC00674792 /* DetailHeader.swift in Sources */,
 				B7A3CC0A2E50FDCC00674792 /* ArcDetailView.swift in Sources */,
+				EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */,
 				B7A3CC0B2E50FDCC00674792 /* ArcRowGrid.swift in Sources */,
 				B7A3CC0C2E50FDCC00674792 /* ArcRowList.swift in Sources */,
 				B7A3CC0D2E50FDCC00674792 /* DateStrip.swift in Sources */,
@@ -624,6 +628,7 @@
 				B7A3CC192E50FDCC00674792 /* CheckChip.swift in Sources */,
 				EB1958272E56033300454D34 /* StatisticsView.swift in Sources */,
 				B7A3CC1A2E50FDCC00674792 /* CircleButton.swift in Sources */,
+				EB0363752E5C45B6002A1D52 /* NavigationRouter.swift in Sources */,
 				B7A3CC1B2E50FDCC00674792 /* CounterPill.swift in Sources */,
 				E98E37952E585533003244AA /* ExploreCardView.swift in Sources */,
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
@@ -639,6 +644,7 @@
 				E98E379F2E58A89E003244AA /* ArcCardCell.swift in Sources */,
 				B7A3CC232E50FDCC00674792 /* Date+Extensions.swift in Sources */,
 				B7A3CC242E50FDCC00674792 /* Font+Extensions.swift in Sources */,
+				EB0363732E5C4560002A1D52 /* Route.swift in Sources */,
 				EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */,
 				B7A3CC252E50FDCC00674792 /* MockData.swift in Sources */,
 				B7A3CC262E50FDCC00674792 /* Arc.swift in Sources */,
