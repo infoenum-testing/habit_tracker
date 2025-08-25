@@ -70,6 +70,7 @@
 		EB0363C82E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BC2E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift */; };
 		EB0363C92E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BD2E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift */; };
 		EB0363CA2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BE2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift */; };
+		EB0363CC2E5CA7B0002A1D52 /* initialData.json in Resources */ = {isa = PBXBuildFile; fileRef = EB0363CB2E5CA7B0002A1D52 /* initialData.json */; };
 		EB1958272E56033300454D34 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958262E56033100454D34 /* StatisticsView.swift */; };
 		EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958292E5603ED00454D34 /* MyAccountView.swift */; };
 		EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE4CB2E5872CE006BB759 /* DayPill.swift */; };
@@ -148,6 +149,7 @@
 		EB0363BC2E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedArc+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EB0363BD2E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EB0363BE2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EB0363CB2E5CA7B0002A1D52 /* initialData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initialData.json; sourceTree = "<group>"; };
 		EB1958262E56033100454D34 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		EB1958292E5603ED00454D34 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		EB1AE4CB2E5872CE006BB759 /* DayPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPill.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				B7A3CBEA2E50FDCC00674792 /* Resources */,
 				B7A3CC032E50FDCC00674792 /* Shared */,
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
+				EB0363CB2E5CA7B0002A1D52 /* initialData.json */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB0363CC2E5CA7B0002A1D52 /* initialData.json in Resources */,
 				B7A3CC2B2E50FDCC00674792 /* Preview Assets.xcassets in Resources */,
 				B7A3CC2C2E50FDCC00674792 /* SF-Pro-Display-Black.otf in Resources */,
 				B7A3CC2D2E50FDCC00674792 /* SF-Pro-Display-Bold.otf in Resources */,

@@ -58,6 +58,11 @@ struct HomeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
             .navigationBarHidden(true)
+        
+            .onAppear {
+              let a =  CoreDataManager.shared.fetchAllArcsData()
+                print("Fetched Arcs from CoreData: \(a.count)")
+            }
     }
 }
 

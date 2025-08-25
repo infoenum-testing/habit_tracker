@@ -1,0 +1,86 @@
+{
+  "habits": [
+    {
+      "id": "habit_1",
+      "title": "Morning Run",
+      "description": "Run at least 3 km every morning",
+      "category": "Fitness",
+      "colorToken": "#FF5733",
+      "icon": "run_icon",
+      "defaultGoalPerDay": 1,
+      "pointsPerDay": {
+        "easy": 5,
+        "medium": 10,
+        "hard": 15
+      },
+      "tags": [
+        "exercise",
+        "running",
+        "outdoor"
+      ],
+      "metaCreatedAt": "2025-08-20T06:30:00Z",
+      "metaUpdatedAt": "2025-08-21T08:00:00Z",
+      "metaAuthor": "system"
+    },
+    {
+      "id": "habit_2",
+      "title": "Read Book",
+      "description": "Read at least 20 pages of a book",
+      "category": "Learning",
+      "colorToken": "#3498DB",
+      "icon": "book_icon",
+      "defaultGoalPerDay": 1,
+      "pointsPerDay": {
+        "easy": 5,
+        "medium": 8,
+        "hard": 12
+      },
+      "tags": [
+        "reading",
+        "knowledge"
+      ],
+      "metaCreatedAt": "2025-08-19T09:30:00Z",
+      "metaUpdatedAt": "2025-08-21T10:00:00Z",
+      "metaAuthor": "system"
+    }
+  ],
+  "arcTemplates": [
+    {
+      "id": "arc_1",
+      "title": "30-Day Fitness Challenge",
+      "shortSubtitle": "Boost stamina with daily runs",
+      "description": "A structured plan to improve physical health through running and hydration.",
+      "durationDays": 30,
+      "category": "Fitness",
+      "colorToken": "#E74C3C",
+      "coverImage": "fitness_cover.png",
+      "benefits": [
+        "Improved stamina",
+        "Weight loss",
+        "Stronger heart"
+      ],
+      "habitRefs": [
+        {
+          "habitId": "habit_1",
+          "requiredPerDay": 1
+        }
+      ],
+      "pointsPerDay": {
+        "easy": 10,
+        "medium": 20,
+        "hard": 30
+      },
+      "icons": {
+        "primary": "run_icon"
+      },
+      "tags": [
+        "challenge",
+        "fitness",
+        "hydration"
+      ],
+      "metaCreatedAt": "2025-08-10T08:00:00Z",
+      "metaUpdatedAt": "2025-08-21T09:30:00Z",
+      "metaAuthor": "system"
+    }
+  ]
+}
