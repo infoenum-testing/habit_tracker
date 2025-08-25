@@ -11,24 +11,28 @@ import Foundation
 struct RootTabView: View {
     @EnvironmentObject var state: AppState
     @State private var tab: Int = 0
-
+    @StateObject private var router = NavigationRouter()
+    
     var body: some View {
-        NavigationStack {
-        VStack(spacing: 0) {
-            switch tab {
-            case 0:
-                HomeView()
-            case 1:
-                PlaceholderView(text: "Second")
-            case 2:
-                StatisticsView()
-            default:
-                MyAccountView()
+        NavigationStack(path: $router.routes) {
+            VStack(spacing: 0) {
+                switch tab {
+                case 0:
+                    HomeView()
+                case 1:
+                    PlaceholderView(text: "Second")
+                case 2:
+                    StatisticsView()
+                default:
+                    MyAccountView()
+                }
+                CustomTabBar(tab: $tab)
             }
-            CustomTabBar(tab: $tab)
-        }
-        .ignoresSafeArea(.keyboard)
-    }.navigationBarHidden(true)
+            .ignoresSafeArea(.keyboard)
+            .environmentObject(router)
+            .navigationDestination(for: Route.self) { $0 }
+        }.navigationBarHidden(true)
+        
     }
 }
 

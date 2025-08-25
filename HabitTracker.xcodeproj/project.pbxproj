@@ -52,6 +52,8 @@
 		B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE62E50FDCC00674792 /* SF-Pro-Display-Regular.otf */; };
 		B7A3CC312E50FDCC00674792 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE72E50FDCC00674792 /* SF-Pro-Display-Semibold.otf */; };
 		B7A3CC322E50FDCC00674792 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE92E50FDCC00674792 /* Assets.xcassets */; };
+		EB0363732E5C4560002A1D52 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363722E5C455E002A1D52 /* Route.swift */; };
+		EB0363752E5C45B6002A1D52 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363742E5C45B3002A1D52 /* NavigationRouter.swift */; };
 		EB1958272E56033300454D34 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958262E56033100454D34 /* StatisticsView.swift */; };
 		EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958292E5603ED00454D34 /* MyAccountView.swift */; };
 		EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE4CB2E5872CE006BB759 /* DayPill.swift */; };
@@ -112,6 +114,8 @@
 		B7A3CBFF2E50FDCC00674792 /* HomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayout.swift; sourceTree = "<group>"; };
 		B7A3CC002E50FDCC00674792 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		B7A3CC042E50FDCC00674792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB0363722E5C455E002A1D52 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		EB0363742E5C45B3002A1D52 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		EB1958262E56033100454D34 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		EB1958292E5603ED00454D34 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		EB1AE4CB2E5872CE006BB759 /* DayPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPill.swift; sourceTree = "<group>"; };
@@ -368,6 +372,7 @@
 		B7A3CC052E50FDCC00674792 /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
+				EB0363712E5C4550002A1D52 /* Navigation */,
 				B7A3CBC12E50FDCC00674792 /* App */,
 				B7A3CBDD2E50FDCC00674792 /* Flow */,
 				B7A3CBDF2E50FDCC00674792 /* LifeCycle */,
@@ -377,6 +382,15 @@
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
 			);
 			path = HabitTracker;
+			sourceTree = "<group>";
+		};
+		EB0363712E5C4550002A1D52 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				EB0363742E5C45B3002A1D52 /* NavigationRouter.swift */,
+				EB0363722E5C455E002A1D52 /* Route.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		EB1958252E56032600454D34 /* Statistics */ = {
@@ -556,6 +570,7 @@
 				B7A3CC192E50FDCC00674792 /* CheckChip.swift in Sources */,
 				EB1958272E56033300454D34 /* StatisticsView.swift in Sources */,
 				B7A3CC1A2E50FDCC00674792 /* CircleButton.swift in Sources */,
+				EB0363752E5C45B6002A1D52 /* NavigationRouter.swift in Sources */,
 				B7A3CC1B2E50FDCC00674792 /* CounterPill.swift in Sources */,
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
 				EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */,
@@ -568,6 +583,7 @@
 				B7A3CC222E50FDCC00674792 /* Color+Extensions.swift in Sources */,
 				B7A3CC232E50FDCC00674792 /* Date+Extensions.swift in Sources */,
 				B7A3CC242E50FDCC00674792 /* Font+Extensions.swift in Sources */,
+				EB0363732E5C4560002A1D52 /* Route.swift in Sources */,
 				EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */,
 				B7A3CC252E50FDCC00674792 /* MockData.swift in Sources */,
 				B7A3CC262E50FDCC00674792 /* Arc.swift in Sources */,

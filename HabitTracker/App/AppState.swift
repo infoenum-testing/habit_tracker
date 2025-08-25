@@ -18,6 +18,25 @@ final class AppState: ObservableObject {
         self.arcs = arcs
         self.habits = habits
     }
+    
+    enum ListItem: Identifiable {
+        case arc(Arc)
+        case habit(Habit)
+
+        var id: String {
+            switch self {
+            case .arc(let arc): return arc.id.uuidString   // ✅ convert UUID → String
+            case .habit(let habit): return habit.id.uuidString        // already String
+            }
+        }
+    }
+
+
+       var allItems: [ListItem] {
+           let arcItems = arcs.map { ListItem.arc($0) }
+           let habitItems = habits.map { ListItem.habit($0) }
+           return arcItems + habitItems
+       }
 
     func toggleHabit(_ habit: Habit) {
         let day = selectedDate.stripTime()

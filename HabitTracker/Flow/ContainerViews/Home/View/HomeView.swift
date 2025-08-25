@@ -9,11 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var state: AppState
-    @State private var selectedArc: Arc? = nil
-    @State private var showArcDetail = false
+    @EnvironmentObject var router: NavigationRouter
+    @StateObject private var swipeManager = SwipeManager()
+
 
     var body: some View {
-       // NavigationStack {
             ZStack {
                 VStack(alignment: .leading, spacing: 0) {
                     HomeHeader()
@@ -30,15 +30,13 @@ struct HomeView: View {
                         VStack(spacing: 12) {
                             // Arc Cards
                             ForEach(state.arcs) { arc in
-                                NavigationLink { ArcDetailView(arcID: arc.id) } label: {
                                     ArcRowList(arc: arc)
-//                                        .onTapGesture(perform: {
-//                                            selectedArc = arc
-//                                            showArcDetail = true
-//                                        })
-                                        .navigationBarHidden(true)
-                                }
-                                .buttonStyle(.plain)
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            swipeManager.closeAll()
+                                        }
+                                        router.push(to: Route.arcDetail(id: arc.id))
+                                    }
                             }
                             // Habit Cards
                             ForEach(state.habits) { habit in
@@ -48,23 +46,13 @@ struct HomeView: View {
                         .padding(.top, 8)
                         .padding(.bottom, 16)
                         .padding(.horizontal, 20)
-                    }
+                    }  .environmentObject(swipeManager)
                 }
             }
             .toolbar(.hidden)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
             .navigationBarHidden(true)
-            .sheet(isPresented: $showArcDetail) {
-                if let arc = selectedArc {
-                    NavigationStack {
-                        ArcDetailView(arcID: arc.id)
-                            .navigationBarHidden(true)
-                    }
-                    .presentationDetents([.large])
-                    .presentationCornerRadius(24)
-                }
-            }
     }
 }
 

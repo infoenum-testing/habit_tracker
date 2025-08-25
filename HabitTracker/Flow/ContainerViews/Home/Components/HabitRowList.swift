@@ -7,53 +7,126 @@
 
 import SwiftUI
 import Foundation
+//
+//struct HabitRowList: View {
+//    @EnvironmentObject var state: AppState
+//    let habit: Habit
+//    var body: some View {
+//        VStack(spacing: 0) {
+//            // Header row (always visible)
+//            HStack(spacing: 12) {
+//                IconBadge(icon: habit.icon, tint: habit.color.opacity(0.3))
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .stroke(.appGray, lineWidth: 1)
+//                    )
+//                    .padding(.leading)
+//                VStack(alignment: .leading, spacing: 2) {
+//                    Text(habit.title)
+//                        .font(.sfProDisplay(.semibold, size: 16))
+//                    Text(habit.subtitle)
+//                        .font(.sfProDisplay(.light, size: 14))
+//                        .opacity(0.7)
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                }.foregroundStyle(.white)
+//                   
+//                Spacer()
+//                CheckChip(isOn: state.habits.first(where: { $0.id == habit.id })?.isDone(on: state.selectedDate) ?? false, tint: habit.color) {
+//                    state.toggleHabit(habit)
+//                    state.toggleHabitAndUpdateCount(habit)
+//                }
+//                .padding(.trailing)
+//            }
+//            .frame(height: 70)
+//            
+//            // Grid view (only visible in grid layout)
+//            if state.layout == .grid {
+//                GridTileView(itemType: .habit, filledCount: habit.completedCount, selectedColor: habit.color)
+//                    .frame(height: 100)
+//                    .padding(.horizontal, 10)
+//                    .padding(.bottom, 10)
+//            }
+//        }
+//        .frame(maxWidth: .infinity)
+//        .background(
+//            RoundedRectangle(cornerRadius: 14, style: .continuous)
+//                .fill(Color(UIColor.black).opacity(0.9))
+//                .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color(UIColor.appGray), lineWidth: 1))
+//        )
+//        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)
+//    }
+//}
+
+
+
 
 struct HabitRowList: View {
     @EnvironmentObject var state: AppState
+    @EnvironmentObject var swipeManager: SwipeManager
     let habit: Habit
     var body: some View {
-        VStack(spacing: 0) {
-            // Header row (always visible)
-            HStack(spacing: 12) {
-                IconBadge(icon: habit.icon, tint: habit.color.opacity(0.3))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.appGray, lineWidth: 1)
-                    )
-                    .padding(.leading)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(habit.title)
-                        .font(.sfProDisplay(.semibold, size: 16))
-                    Text(habit.subtitle)
-                        .font(.sfProDisplay(.light, size: 14))
-                        .opacity(0.7)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }.foregroundStyle(.white)
-                   
-                Spacer()
-                CheckChip(isOn: state.habits.first(where: { $0.id == habit.id })?.isDone(on: state.selectedDate) ?? false, tint: habit.color) {
-                    state.toggleHabit(habit)
-                    state.toggleHabitAndUpdateCount(habit)
+        
+        SwipeableRow(
+            id: habit.id, actions: {
+                Button(action: {
+                    print("Edit tapped for \(habit.title)")
+                }) {
+                    Image(systemName: "pencil")
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 }
-                .padding(.trailing)
-            }
-            .frame(height: 70)
-            
-            // Grid view (only visible in grid layout)
-            if state.layout == .grid {
-                GridTileView(itemType: .habit, filledCount: habit.completedCount, selectedColor: habit.color)
-                    .frame(height: 100)
-                    .padding(.horizontal, 10)
-                    .padding(.bottom, 10)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(Color(UIColor.black).opacity(0.9))
-                .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color(UIColor.appGray), lineWidth: 1))
-        )
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)
+            },
+            content: {
+                
+                VStack(spacing: 0) {
+                    // Header row (always visible)
+                    HStack(spacing: 12) {
+                        IconBadge(icon: habit.icon, tint: habit.color.opacity(0.3))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.appGray, lineWidth: 1)
+                            )
+                            .padding(.leading)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(habit.title)
+                                .font(.sfProDisplay(.semibold, size: 16))
+                            Text(habit.subtitle)
+                                .font(.sfProDisplay(.light, size: 14))
+                                .opacity(0.7)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }.foregroundStyle(.white)
+                           
+                        Spacer()
+                        CheckChip(isOn: state.habits.first(where: { $0.id == habit.id })?.isDone(on: state.selectedDate) ?? false, tint: habit.color) {
+                            state.toggleHabit(habit)
+                            state.toggleHabitAndUpdateCount(habit)
+                        }
+                        .padding(.trailing)
+                    }
+                    .frame(height: 70)
+                    
+                    // Grid view (only visible in grid layout)
+                    if state.layout == .grid {
+                        GridTileView(itemType: .habit, filledCount: habit.completedCount, selectedColor: habit.color)
+                            .frame(height: 100)
+                            .padding(.horizontal, 10)
+                            .padding(.bottom, 10)
+                    }
+                }.cornerRadius(swipeManager.openRowID == habit.id ? 0 : 14)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: swipeManager.openRowID == habit.id ? 0 : 14, style: .continuous)
+                        .fill(Color(UIColor.black))
+                        .overlay(RoundedRectangle(cornerRadius: swipeManager.openRowID == habit.id ? 0 : 14).stroke(Color(UIColor.appGray), lineWidth: 1.5))
+                )
+                .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)
+            })
+
+        
+        
+       
     }
 }
 
