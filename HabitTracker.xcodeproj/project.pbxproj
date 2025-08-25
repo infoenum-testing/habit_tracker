@@ -52,6 +52,17 @@
 		B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE62E50FDCC00674792 /* SF-Pro-Display-Regular.otf */; };
 		B7A3CC312E50FDCC00674792 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE72E50FDCC00674792 /* SF-Pro-Display-Semibold.otf */; };
 		B7A3CC322E50FDCC00674792 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE92E50FDCC00674792 /* Assets.xcassets */; };
+		E98E378C2E584636003244AA /* ExploreMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378B2E584636003244AA /* ExploreMain.swift */; };
+		E98E37902E58515B003244AA /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378F2E58515B003244AA /* Color+extension.swift */; };
+		E98E37952E585533003244AA /* ExploreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37942E585533003244AA /* ExploreCardView.swift */; };
+		E98E37972E587076003244AA /* TrendingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37962E587076003244AA /* TrendingCardView.swift */; };
+		E98E37992E587A25003244AA /* AllHabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37982E587A25003244AA /* AllHabitsView.swift */; };
+		E98E379F2E58A89E003244AA /* ArcCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E379E2E58A89E003244AA /* ArcCardCell.swift */; };
+		E98E37A12E58AE86003244AA /* AllArcsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37A02E58AE86003244AA /* AllArcsView.swift */; };
+		E98EDF772E5C428300E42196 /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E98EDF742E5C428300E42196 /* Inter_18pt-Regular.ttf */; };
+		E98EDF782E5C428300E42196 /* Inter_18pt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E98EDF732E5C428300E42196 /* Inter_18pt-Bold.ttf */; };
+		E98EDF792E5C428300E42196 /* Inter_18pt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E98EDF752E5C428300E42196 /* Inter_18pt-SemiBold.ttf */; };
+		E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EDF7B2E5C434600E42196 /* UIFont+Extension.swift */; };
 		EB1958272E56033300454D34 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958262E56033100454D34 /* StatisticsView.swift */; };
 		EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958292E5603ED00454D34 /* MyAccountView.swift */; };
 		EB4CCB982E57192300F76945 /* ArcCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB972E57192100F76945 /* ArcCardView.swift */; };
@@ -111,6 +122,17 @@
 		B7A3CBFF2E50FDCC00674792 /* HomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayout.swift; sourceTree = "<group>"; };
 		B7A3CC002E50FDCC00674792 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		B7A3CC042E50FDCC00674792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E98E378B2E584636003244AA /* ExploreMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMain.swift; sourceTree = "<group>"; };
+		E98E378F2E58515B003244AA /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
+		E98E37942E585533003244AA /* ExploreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCardView.swift; sourceTree = "<group>"; };
+		E98E37962E587076003244AA /* TrendingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCardView.swift; sourceTree = "<group>"; };
+		E98E37982E587A25003244AA /* AllHabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHabitsView.swift; sourceTree = "<group>"; };
+		E98E379E2E58A89E003244AA /* ArcCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcCardCell.swift; sourceTree = "<group>"; };
+		E98E37A02E58AE86003244AA /* AllArcsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllArcsView.swift; sourceTree = "<group>"; };
+		E98EDF732E5C428300E42196 /* Inter_18pt-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-Bold.ttf"; sourceTree = "<group>"; };
+		E98EDF742E5C428300E42196 /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
+		E98EDF752E5C428300E42196 /* Inter_18pt-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-SemiBold.ttf"; sourceTree = "<group>"; };
+		E98EDF7B2E5C434600E42196 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		EB1958262E56033100454D34 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		EB1958292E5603ED00454D34 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		EB4CCB972E57192100F76945 /* ArcCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcCardView.swift; sourceTree = "<group>"; };
@@ -232,6 +254,7 @@
 		B7A3CBDC2E50FDCC00674792 /* ContainerViews */ = {
 			isa = PBXGroup;
 			children = (
+				E98E378A2E5845DA003244AA /* ExploreNavigation */,
 				EB1958282E5603E400454D34 /* MyAccount */,
 				EB1958252E56032600454D34 /* Statistics */,
 				EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */,
@@ -270,6 +293,7 @@
 		B7A3CBE82E50FDCC00674792 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E98EDF762E5C428300E42196 /* inter */,
 				B7A3CBE22E50FDCC00674792 /* SF-Pro-Display-Black.otf */,
 				B7A3CBE32E50FDCC00674792 /* SF-Pro-Display-Bold.otf */,
 				B7A3CBE42E50FDCC00674792 /* SF-Pro-Display-Light.otf */,
@@ -285,6 +309,7 @@
 			children = (
 				B7A3CBE82E50FDCC00674792 /* Fonts */,
 				B7A3CBE92E50FDCC00674792 /* Assets.xcassets */,
+				E98E378F2E58515B003244AA /* Color+extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -365,6 +390,7 @@
 		B7A3CC052E50FDCC00674792 /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E98EDF7A2E5C432B00E42196 /* extension */,
 				B7A3CBC12E50FDCC00674792 /* App */,
 				B7A3CBDD2E50FDCC00674792 /* Flow */,
 				B7A3CBDF2E50FDCC00674792 /* LifeCycle */,
@@ -374,6 +400,45 @@
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
 			);
 			path = HabitTracker;
+			sourceTree = "<group>";
+		};
+		E98E378A2E5845DA003244AA /* ExploreNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				E98E37912E58546A003244AA /* components */,
+				E98E378B2E584636003244AA /* ExploreMain.swift */,
+				E98E37982E587A25003244AA /* AllHabitsView.swift */,
+				E98E37A02E58AE86003244AA /* AllArcsView.swift */,
+			);
+			path = ExploreNavigation;
+			sourceTree = "<group>";
+		};
+		E98E37912E58546A003244AA /* components */ = {
+			isa = PBXGroup;
+			children = (
+				E98E37942E585533003244AA /* ExploreCardView.swift */,
+				E98E37962E587076003244AA /* TrendingCardView.swift */,
+				E98E379E2E58A89E003244AA /* ArcCardCell.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		E98EDF762E5C428300E42196 /* inter */ = {
+			isa = PBXGroup;
+			children = (
+				E98EDF732E5C428300E42196 /* Inter_18pt-Bold.ttf */,
+				E98EDF742E5C428300E42196 /* Inter_18pt-Regular.ttf */,
+				E98EDF752E5C428300E42196 /* Inter_18pt-SemiBold.ttf */,
+			);
+			path = inter;
+			sourceTree = "<group>";
+		};
+		E98EDF7A2E5C432B00E42196 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				E98EDF7B2E5C434600E42196 /* UIFont+Extension.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 		EB1958252E56032600454D34 /* Statistics */ = {
@@ -507,6 +572,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98EDF772E5C428300E42196 /* Inter_18pt-Regular.ttf in Resources */,
+				E98EDF782E5C428300E42196 /* Inter_18pt-Bold.ttf in Resources */,
+				E98EDF792E5C428300E42196 /* Inter_18pt-SemiBold.ttf in Resources */,
 				B7A3CC2B2E50FDCC00674792 /* Preview Assets.xcassets in Resources */,
 				B7A3CC2C2E50FDCC00674792 /* SF-Pro-Display-Black.otf in Resources */,
 				B7A3CC2D2E50FDCC00674792 /* SF-Pro-Display-Bold.otf in Resources */,
@@ -541,27 +609,34 @@
 				EB4CCBA22E571D4800F76945 /* PerformanceCardView.swift in Sources */,
 				B7A3CC112E50FDCC00674792 /* HomeHeader.swift in Sources */,
 				B7A3CC122E50FDCC00674792 /* ListLayout.swift in Sources */,
+				E98E378C2E584636003244AA /* ExploreMain.swift in Sources */,
 				B7A3CC132E50FDCC00674792 /* HomeView.swift in Sources */,
 				EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */,
 				B7A3CC142E50FDCC00674792 /* CustomTabBar.swift in Sources */,
+				E98E37972E587076003244AA /* TrendingCardView.swift in Sources */,
 				B7A3CC152E50FDCC00674792 /* PlaceholderView.swift in Sources */,
 				B7A3CC162E50FDCC00674792 /* TabButton.swift in Sources */,
+				E98E37A12E58AE86003244AA /* AllArcsView.swift in Sources */,
 				EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */,
+				E98E37902E58515B003244AA /* Color+extension.swift in Sources */,
 				B7A3CC172E50FDCC00674792 /* RootTabView.swift in Sources */,
 				B7A3CC182E50FDCC00674792 /* HabitTrackerApp.swift in Sources */,
 				B7A3CC192E50FDCC00674792 /* CheckChip.swift in Sources */,
 				EB1958272E56033300454D34 /* StatisticsView.swift in Sources */,
 				B7A3CC1A2E50FDCC00674792 /* CircleButton.swift in Sources */,
 				B7A3CC1B2E50FDCC00674792 /* CounterPill.swift in Sources */,
+				E98E37952E585533003244AA /* ExploreCardView.swift in Sources */,
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
 				EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */,
 				B7A3CC1D2E50FDCC00674792 /* GridTileView.swift in Sources */,
+				E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */,
 				B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */,
 				B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */,
 				EB4CCBA02E571CE700F76945 /* OverallScoreCard.swift in Sources */,
 				B7A3CC202E50FDCC00674792 /* ProgressBar.swift in Sources */,
 				B7A3CC212E50FDCC00674792 /* ToggleChip.swift in Sources */,
 				B7A3CC222E50FDCC00674792 /* Color+Extensions.swift in Sources */,
+				E98E379F2E58A89E003244AA /* ArcCardCell.swift in Sources */,
 				B7A3CC232E50FDCC00674792 /* Date+Extensions.swift in Sources */,
 				B7A3CC242E50FDCC00674792 /* Font+Extensions.swift in Sources */,
 				EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */,
@@ -570,6 +645,7 @@
 				B7A3CC272E50FDCC00674792 /* ArcTask.swift in Sources */,
 				B7A3CC282E50FDCC00674792 /* Habit.swift in Sources */,
 				B7A3CC292E50FDCC00674792 /* HomeLayout.swift in Sources */,
+				E98E37992E587A25003244AA /* AllHabitsView.swift in Sources */,
 				EB4CCB9A2E57197300F76945 /* SettingsRow.swift in Sources */,
 				B7A3CC2A2E50FDCC00674792 /* ItemType.swift in Sources */,
 			);

@@ -19,7 +19,7 @@ struct RootTabView: View {
             case 0:
                 HomeView()
             case 1:
-                PlaceholderView(text: "Second")
+                ExploreMain()
             case 2:
                 StatisticsView()
             default:
