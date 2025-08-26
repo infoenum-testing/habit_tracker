@@ -9,6 +9,8 @@ import SwiftUI
 struct ExploreMain: View {
     
     @EnvironmentObject var router: NavigationRouter
+    @EnvironmentObject var appData: AppDataStore
+
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -30,14 +32,15 @@ struct ExploreMain: View {
                         itemsCount: 4,
                         columns: columns, onViewAll: {
                             router.push(to: .allArcsView)
-                        }
+                        }, isHabitSection: false
                     )
+                    
                     ExploreSection(
                         title: "Trending Habits",
                         itemsCount: 4,
                         columns: columns, onViewAll: {
                             router.push(to: .allHabitsView)
-                        }
+                        }, isHabitSection: true
                     )
                 }
                 .padding(.horizontal, 20)
@@ -88,7 +91,8 @@ struct ExploreSection: View {
     let itemsCount: Int
     let columns: [GridItem]
     let onViewAll: () -> Void
-    
+    var isHabitSection: Bool
+    @EnvironmentObject var appData: AppDataStore
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             HStack {
@@ -113,18 +117,23 @@ struct ExploreSection: View {
             }
             
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(0..<itemsCount, id: \.self) { _ in
-                    if title == "Trending Arcs" {
-                        ArcCardCell()
-                            .aspectRatio(1, contentMode: .fit)
-                    } else {
-                        TrendingCardView()
+                
+                if isHabitSection {
+                    ForEach(appData.allHabits, id: \.id) { habit in
+                        TrendingCardView(habit: habit)
+                                .aspectRatio(1, contentMode: .fit)
+                    }
+                } else {
+                    ForEach(appData.allArcs, id: \.id) { arc in
+                            ArcCardCell(arc: arc)
+                                .aspectRatio(1, contentMode: .fit)
                     }
                 }
             }
         }
     }
 }
+
 
 #Preview {
     ExploreMain()

@@ -15,6 +15,7 @@
 import SwiftUI
 
 struct TrendingCardView: View {
+    let habit: HabitTemplate
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             // Icon Section
@@ -23,7 +24,7 @@ struct TrendingCardView: View {
                     .fill(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
                     .frame(width: 52, height: 52)
                 
-                Image("teeth")
+                Image(habit.icon ?? "tooth")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 22, height: 29)
@@ -31,11 +32,11 @@ struct TrendingCardView: View {
             
             // Text Section
             VStack(alignment: .leading, spacing: 6) {
-                Text("Brush & Floss")
+                Text(habit.title ?? "")
                     .foregroundColor(.white)
                     .font(.system(size: 14, weight: .semibold))
                 
-                Text("Brush and floss your teeth today")
+                Text(habit.details ?? "")
                     .foregroundColor(.gray)
                     .font(.system(size: 12))
                     .lineLimit(2)
@@ -53,8 +54,8 @@ struct TrendingCardView: View {
     }
 }
 
-#Preview {
-    TrendingCardView()
-        .padding()
-        .background(Color.black)
-}
+//#Preview {
+//    TrendingCardView()
+//        .padding()
+//        .background(Color.black)
+//}
