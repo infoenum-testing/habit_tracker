@@ -2,7 +2,7 @@
 //  ArcTemplate+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 25/08/25.
+//  Created by IE14 on 26/08/25.
 //
 //
 
@@ -16,24 +16,22 @@ extension ArcTemplate {
         return NSFetchRequest<ArcTemplate>(entityName: "ArcTemplate")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var title: String?
-    @NSManaged public var shortSubtitle: String?
-    @NSManaged public var deatilDescription: String?
-    @NSManaged public var durationDays: Int16
+    @NSManaged public var benefits: NSObject?
     @NSManaged public var category: String?
     @NSManaged public var colorToken: String?
     @NSManaged public var coverImage: String?
-    @NSManaged public var benefits: NSObject?
+    @NSManaged public var descriptionText: String?
+    @NSManaged public var durationDays: Int16
     @NSManaged public var habitRefs: NSObject?
-    @NSManaged public var pointsEasy: Int16
-    @NSManaged public var pointsMedium: Int16
-    @NSManaged public var pointsHard: Int16
     @NSManaged public var icons: NSObject?
-    @NSManaged public var tags: NSObject?
+    @NSManaged public var id: String?
+    @NSManaged public var metaAuthor: String?
     @NSManaged public var metaCreatedAt: Date?
     @NSManaged public var metaUpdatedAt: Date?
-    @NSManaged public var metaAuthor: String?
+    @NSManaged public var pointsPerDay: NSObject?
+    @NSManaged public var shortSubtitle: String?
+    @NSManaged public var tags: NSObject?
+    @NSManaged public var title: String?
     @NSManaged public var habits: NSSet?
     @NSManaged public var subscribedArcs: NSSet?
 

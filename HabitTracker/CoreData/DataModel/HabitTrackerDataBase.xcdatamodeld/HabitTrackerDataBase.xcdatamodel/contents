@@ -5,7 +5,7 @@
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="colorToken" optional="YES" attributeType="String"/>
         <attribute name="coverImage" optional="YES" attributeType="String"/>
-        <attribute name="deatilDescription" optional="YES" attributeType="String"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="durationDays" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="habitRefs" optional="YES" attributeType="Transformable"/>
         <attribute name="icons" optional="YES" attributeType="Transformable"/>
@@ -13,9 +13,7 @@
         <attribute name="metaAuthor" optional="YES" attributeType="String"/>
         <attribute name="metaCreatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="metaUpdatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="pointsEasy" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="pointsHard" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="pointsMedium" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pointsPerDay" optional="YES" attributeType="Transformable"/>
         <attribute name="shortSubtitle" optional="YES" attributeType="String"/>
         <attribute name="tags" optional="YES" attributeType="Transformable"/>
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -38,9 +36,7 @@
         <attribute name="metaAuthor" optional="YES" attributeType="String"/>
         <attribute name="metaCreatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="metaUpdatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="pointsEasy" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="pointsHard" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="pointsMedium" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pointsPerDay" optional="YES" attributeType="Transformable"/>
         <attribute name="tags" optional="YES" attributeType="Transformable"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="arcTemplates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArcTemplate" inverseName="habits" inverseEntity="ArcTemplate"/>
@@ -54,6 +50,20 @@
         <attribute name="status" optional="YES" attributeType="String"/>
         <relationship name="habits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscribedHabit"/>
         <relationship name="subscribedArc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubscribedArc" inverseName="history" inverseEntity="SubscribedArc"/>
+    </entity>
+    <entity name="Statistics" representedClassName="Statistics" syncable="YES">
+        <attribute name="confidenceDelta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="confidenceTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="disciplineDelta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="disciplineTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="intelligenceDelta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="intelligenceTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="overallDelta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="overallTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="strengthDelta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="strengthTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="SubscribedArc" representedClassName="SubscribedArc" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

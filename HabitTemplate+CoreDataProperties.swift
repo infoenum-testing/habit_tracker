@@ -2,7 +2,7 @@
 //  HabitTemplate+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 25/08/25.
+//  Created by IE14 on 26/08/25.
 //
 //
 
@@ -16,20 +16,18 @@ extension HabitTemplate {
         return NSFetchRequest<HabitTemplate>(entityName: "HabitTemplate")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var title: String?
-    @NSManaged public var details: String?
     @NSManaged public var category: String?
     @NSManaged public var colorToken: String?
-    @NSManaged public var icon: String?
     @NSManaged public var defaultGoalPerDay: Int16
-    @NSManaged public var pointsEasy: Int16
-    @NSManaged public var pointsMedium: Int16
-    @NSManaged public var pointsHard: Int16
-    @NSManaged public var tags: NSObject?
+    @NSManaged public var details: String?
+    @NSManaged public var icon: String?
+    @NSManaged public var id: String?
+    @NSManaged public var metaAuthor: String?
     @NSManaged public var metaCreatedAt: Date?
     @NSManaged public var metaUpdatedAt: Date?
-    @NSManaged public var metaAuthor: String?
+    @NSManaged public var pointsPerDay: NSObject?
+    @NSManaged public var tags: NSObject?
+    @NSManaged public var title: String?
     @NSManaged public var arcTemplates: NSSet?
     @NSManaged public var subscribedHabits: NSSet?
 

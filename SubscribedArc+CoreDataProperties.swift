@@ -2,7 +2,7 @@
 //  SubscribedArc+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 25/08/25.
+//  Created by IE14 on 26/08/25.
 //
 //
 
@@ -16,15 +16,15 @@ extension SubscribedArc {
         return NSFetchRequest<SubscribedArc>(entityName: "SubscribedArc")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var startDate: Date?
     @NSManaged public var endDate: Date?
-    @NSManaged public var status: String?
-    @NSManaged public var pointsEarned: Int32
     @NSManaged public var graceEndDate: Date?
+    @NSManaged public var id: String?
+    @NSManaged public var pointsEarned: Int32
+    @NSManaged public var startDate: Date?
+    @NSManaged public var status: String?
     @NSManaged public var arcTemplate: ArcTemplate?
-    @NSManaged public var subscribedHabits: NSSet?
     @NSManaged public var history: History?
+    @NSManaged public var subscribedHabits: NSSet?
 
 }
 

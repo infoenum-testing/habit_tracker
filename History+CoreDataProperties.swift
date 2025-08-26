@@ -2,7 +2,7 @@
 //  History+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 25/08/25.
+//  Created by IE14 on 26/08/25.
 //
 //
 
@@ -19,8 +19,8 @@ extension History {
     @NSManaged public var arcId: String?
     @NSManaged public var completedAt: Date?
     @NSManaged public var expiredAt: Date?
-    @NSManaged public var status: String?
     @NSManaged public var pointsEarned: String?
+    @NSManaged public var status: String?
     @NSManaged public var habits: NSSet?
     @NSManaged public var subscribedArc: SubscribedArc?
 

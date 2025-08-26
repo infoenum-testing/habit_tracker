@@ -2,7 +2,7 @@
 //  SubscribedHabit+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 25/08/25.
+//  Created by IE14 on 26/08/25.
 //
 //
 
@@ -16,12 +16,12 @@ extension SubscribedHabit {
         return NSFetchRequest<SubscribedHabit>(entityName: "SubscribedHabit")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var requiredPerDay: Int16
     @NSManaged public var completedToday: Int16
-    @NSManaged public var totalCompleted: Int16
+    @NSManaged public var id: String?
     @NSManaged public var lastUpdated: Date?
+    @NSManaged public var requiredPerDay: Int16
     @NSManaged public var status: String?
+    @NSManaged public var totalCompleted: Int16
     @NSManaged public var habit: HabitTemplate?
     @NSManaged public var subscribedArc: SubscribedArc?
 

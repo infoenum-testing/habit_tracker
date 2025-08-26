@@ -40,79 +40,6 @@ final class CoreDataManager {
         }
     }
     
-    // MARK: - Seed Initial JSON (only once)
-    func seedInitialData(habitsJSON: [[String: Any]], arcsJSON: [[String: Any]]) {
-        // Check if already seeded
-        let fetchRequest: NSFetchRequest<HabitTemplate> = HabitTemplate.fetchRequest()
-        fetchRequest.fetchLimit = 1
-        
-        if (try? context.fetch(fetchRequest))?.isEmpty == false { return }
-        
-        // Create Habits
-        for hData in habitsJSON {
-            let habit = HabitTemplate(context: context)
-            habit.id = hData["id"] as? String
-            habit.title = hData["title"] as? String
-            habit.details = hData["description"] as? String
-            habit.category = hData["category"] as? String
-            habit.colorToken = hData["colorToken"] as? String
-            habit.icon = hData["icon"] as? String
-            habit.defaultGoalPerDay = Int16(hData["defaultGoalPerDay"] as? Int ?? 1)
-            
-            if let points = hData["pointsPerDay"] as? [String: Int] {
-                habit.pointsEasy = Int16(points["easy"] ?? 0)
-                habit.pointsMedium = Int16(points["medium"] ?? 0)
-                habit.pointsHard = Int16(points["hard"] ?? 0)
-            }
-            
-            habit.tags = hData["tags"] as? NSObject
-            
-            if let createdAtStr = hData["metaCreatedAt"] as? String {
-                habit.metaCreatedAt = ISO8601DateFormatter().date(from: createdAtStr)
-            }
-            if let updatedAtStr = hData["metaUpdatedAt"] as? String {
-                habit.metaUpdatedAt = ISO8601DateFormatter().date(from: updatedAtStr)
-            }
-            habit.metaAuthor = hData["metaAuthor"] as? String
-        }
-        
-        // Create Arcs
-        for aData in arcsJSON {
-            let arc = ArcTemplate(context: context)
-            arc.id = aData["id"] as? String
-            arc.title = aData["title"] as? String
-            arc.shortSubtitle = aData["shortSubtitle"] as? String
-            arc.deatilDescription = aData["description"] as? String
-            arc.durationDays = Int16(aData["durationDays"] as? Int ?? 0)
-            arc.category = aData["category"] as? String
-            arc.colorToken = aData["colorToken"] as? String
-            arc.coverImage = aData["coverImage"] as? String
-            arc.benefits = aData["benefits"] as? NSObject
-            arc.icons = aData["icons"] as? NSObject
-            arc.tags = aData["tags"] as? NSObject
-            if let createdAtStr = aData["metaCreatedAt"] as? String {
-                arc.metaCreatedAt = ISO8601DateFormatter().date(from: createdAtStr)
-            }
-            if let updatedAtStr = aData["metaUpdatedAt"] as? String {
-                arc.metaUpdatedAt = ISO8601DateFormatter().date(from: updatedAtStr)
-            }
-            arc.metaAuthor = aData["metaAuthor"] as? String
-            
-            // Link Habits
-            if let habitRefs = aData["habitRefs"] as? [[String: Any]] {
-                for ref in habitRefs {
-                    if let habitId = ref["habitId"] as? String,
-                       let habit = fetchHabit(by: habitId) {
-                        arc.addToHabits(habit)
-                    }
-                }
-            }
-        }
-        
-        saveContext()
-        print("Initial JSON data seeded!")
-    }
-    
     // MARK: - Fetch Habits & Arcs
     func fetchAllHabits() -> [HabitTemplate] {
         let request: NSFetchRequest<HabitTemplate> = HabitTemplate.fetchRequest()
@@ -209,7 +136,7 @@ extension CoreDataManager {
     /// Save habits and arcs from JSON
     func saveDataFromJSON(_ json: [String: Any]) {
         guard let habitsArray = json["habits"] as? [[String: Any]],
-              let arcsArray = json["arcTemplates"] as? [[String: Any]] else {
+              let arcsArray = json["arcs"] as? [[String: Any]] else {
             print("Invalid JSON structure")
             return
         }
@@ -229,11 +156,8 @@ extension CoreDataManager {
             habit.colorToken = hData["colorToken"] as? String
             habit.icon = hData["icon"] as? String
             habit.defaultGoalPerDay = Int16(hData["defaultGoalPerDay"] as? Int ?? 1)
-            
-            if let points = hData["pointsPerDay"] as? [String: Int] {
-                habit.pointsEasy = Int16(points["easy"] ?? 0)
-                habit.pointsMedium = Int16(points["medium"] ?? 0)
-                habit.pointsHard = Int16(points["hard"] ?? 0)
+            if let pointsDict = hData["pointsPerDay"] as? [String: Int] {
+                habit.pointsPerDay = pointsDict as NSObject
             }
             
             habit.tags = hData["tags"] as? NSObject
@@ -257,7 +181,7 @@ extension CoreDataManager {
             arc.id = aData["id"] as? String
             arc.title = aData["title"] as? String
             arc.shortSubtitle = aData["shortSubtitle"] as? String
-            arc.deatilDescription = aData["description"] as? String
+            arc.descriptionText = aData["description"] as? String
             arc.durationDays = Int16(aData["durationDays"] as? Int ?? 0)
             arc.category = aData["category"] as? String
             arc.colorToken = aData["colorToken"] as? String

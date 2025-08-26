@@ -2,7 +2,7 @@
 //  Badge+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 25/08/25.
+//  Created by IE14 on 26/08/25.
 //
 //
 
@@ -16,10 +16,10 @@ extension Badge {
         return NSFetchRequest<Badge>(entityName: "Badge")
     }
 
-    @NSManaged public var id: UUID?
     @NSManaged public var arcType: String?
-    @NSManaged public var completionDate: Date?
     @NSManaged public var color: String?
+    @NSManaged public var completionDate: Date?
+    @NSManaged public var id: UUID?
 
 }
 

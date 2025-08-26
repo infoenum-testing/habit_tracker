@@ -58,18 +58,6 @@
 		EB03637A2E5C75F3002A1D52 /* SwipeableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363792E5C75EE002A1D52 /* SwipeableRow.swift */; };
 		EB03637D2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB03637B2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodeld */; };
 		EB0363822E5C9C63002A1D52 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363812E5C9C61002A1D52 /* CoreDataManager.swift */; };
-		EB0363BF2E5CA005002A1D52 /* ArcTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363B32E5CA005002A1D52 /* ArcTemplate+CoreDataClass.swift */; };
-		EB0363C02E5CA005002A1D52 /* ArcTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363B42E5CA005002A1D52 /* ArcTemplate+CoreDataProperties.swift */; };
-		EB0363C12E5CA005002A1D52 /* Badge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363B52E5CA005002A1D52 /* Badge+CoreDataClass.swift */; };
-		EB0363C22E5CA005002A1D52 /* Badge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363B62E5CA005002A1D52 /* Badge+CoreDataProperties.swift */; };
-		EB0363C32E5CA005002A1D52 /* HabitTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363B72E5CA005002A1D52 /* HabitTemplate+CoreDataClass.swift */; };
-		EB0363C42E5CA005002A1D52 /* HabitTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363B82E5CA005002A1D52 /* HabitTemplate+CoreDataProperties.swift */; };
-		EB0363C52E5CA005002A1D52 /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363B92E5CA005002A1D52 /* History+CoreDataClass.swift */; };
-		EB0363C62E5CA005002A1D52 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BA2E5CA005002A1D52 /* History+CoreDataProperties.swift */; };
-		EB0363C72E5CA005002A1D52 /* SubscribedArc+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BB2E5CA005002A1D52 /* SubscribedArc+CoreDataClass.swift */; };
-		EB0363C82E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BC2E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift */; };
-		EB0363C92E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BD2E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift */; };
-		EB0363CA2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0363BE2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift */; };
 		EB0363CC2E5CA7B0002A1D52 /* initialData.json in Resources */ = {isa = PBXBuildFile; fileRef = EB0363CB2E5CA7B0002A1D52 /* initialData.json */; };
 		EB1958272E56033300454D34 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958262E56033100454D34 /* StatisticsView.swift */; };
 		EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1958292E5603ED00454D34 /* MyAccountView.swift */; };
@@ -82,6 +70,20 @@
 		EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCBA32E57556200F76945 /* WeeklyBarsCard.swift */; };
 		EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */; };
 		EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */; };
+		EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */; };
+		EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */; };
+		EBB66A062E5D93EE00638C9B /* Badge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F82E5D93EE00638C9B /* Badge+CoreDataClass.swift */; };
+		EBB66A072E5D93EE00638C9B /* Badge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F92E5D93EE00638C9B /* Badge+CoreDataProperties.swift */; };
+		EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */; };
+		EBB66A092E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FB2E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift */; };
+		EBB66A0A2E5D93EE00638C9B /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FC2E5D93EE00638C9B /* History+CoreDataClass.swift */; };
+		EBB66A0B2E5D93EE00638C9B /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FD2E5D93EE00638C9B /* History+CoreDataProperties.swift */; };
+		EBB66A0C2E5D93EE00638C9B /* Statistics+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FE2E5D93EE00638C9B /* Statistics+CoreDataClass.swift */; };
+		EBB66A0D2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */; };
+		EBB66A0E2E5D93EE00638C9B /* SubscribedArc+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A002E5D93EE00638C9B /* SubscribedArc+CoreDataClass.swift */; };
+		EBB66A0F2E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A012E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift */; };
+		EBB66A102E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A022E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift */; };
+		EBB66A112E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A032E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,18 +139,6 @@
 		EB0363792E5C75EE002A1D52 /* SwipeableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableRow.swift; sourceTree = "<group>"; };
 		EB03637C2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTrackerDataBase.xcdatamodel; sourceTree = "<group>"; };
 		EB0363812E5C9C61002A1D52 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		EB0363B32E5CA005002A1D52 /* ArcTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EB0363B42E5CA005002A1D52 /* ArcTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EB0363B52E5CA005002A1D52 /* Badge+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EB0363B62E5CA005002A1D52 /* Badge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EB0363B72E5CA005002A1D52 /* HabitTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EB0363B82E5CA005002A1D52 /* HabitTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EB0363B92E5CA005002A1D52 /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EB0363BA2E5CA005002A1D52 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EB0363BB2E5CA005002A1D52 /* SubscribedArc+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedArc+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EB0363BC2E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedArc+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EB0363BD2E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EB0363BE2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EB0363CB2E5CA7B0002A1D52 /* initialData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initialData.json; sourceTree = "<group>"; };
 		EB1958262E56033100454D34 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		EB1958292E5603ED00454D34 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
@@ -162,6 +152,20 @@
 		EBAA203E2E4DBEE7001503D8 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArcSheet.swift; sourceTree = "<group>"; };
 		EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndArcConfirmationSheet.swift; sourceTree = "<group>"; };
+		EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB669F82E5D93EE00638C9B /* Badge+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB669F92E5D93EE00638C9B /* Badge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB669FB2E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB669FC2E5D93EE00638C9B /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB669FD2E5D93EE00638C9B /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB669FE2E5D93EE00638C9B /* Statistics+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB66A002E5D93EE00638C9B /* SubscribedArc+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedArc+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB66A012E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedArc+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB66A022E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB66A032E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +446,7 @@
 		EB03637E2E5C9C3A002A1D52 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				EBB669D92E5D7CED00638C9B /* CoreDataClasses */,
 				EB0363802E5C9C56002A1D52 /* Manager */,
 				EB03637F2E5C9C48002A1D52 /* DataModel */,
 			);
@@ -521,18 +526,20 @@
 		EBAA20352E4DBEE7001503D8 = {
 			isa = PBXGroup;
 			children = (
-				EB0363B32E5CA005002A1D52 /* ArcTemplate+CoreDataClass.swift */,
-				EB0363B42E5CA005002A1D52 /* ArcTemplate+CoreDataProperties.swift */,
-				EB0363B52E5CA005002A1D52 /* Badge+CoreDataClass.swift */,
-				EB0363B62E5CA005002A1D52 /* Badge+CoreDataProperties.swift */,
-				EB0363B72E5CA005002A1D52 /* HabitTemplate+CoreDataClass.swift */,
-				EB0363B82E5CA005002A1D52 /* HabitTemplate+CoreDataProperties.swift */,
-				EB0363B92E5CA005002A1D52 /* History+CoreDataClass.swift */,
-				EB0363BA2E5CA005002A1D52 /* History+CoreDataProperties.swift */,
-				EB0363BB2E5CA005002A1D52 /* SubscribedArc+CoreDataClass.swift */,
-				EB0363BC2E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift */,
-				EB0363BD2E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift */,
-				EB0363BE2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift */,
+				EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */,
+				EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */,
+				EBB669F82E5D93EE00638C9B /* Badge+CoreDataClass.swift */,
+				EBB669F92E5D93EE00638C9B /* Badge+CoreDataProperties.swift */,
+				EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */,
+				EBB669FB2E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift */,
+				EBB669FC2E5D93EE00638C9B /* History+CoreDataClass.swift */,
+				EBB669FD2E5D93EE00638C9B /* History+CoreDataProperties.swift */,
+				EBB669FE2E5D93EE00638C9B /* Statistics+CoreDataClass.swift */,
+				EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */,
+				EBB66A002E5D93EE00638C9B /* SubscribedArc+CoreDataClass.swift */,
+				EBB66A012E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift */,
+				EBB66A022E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift */,
+				EBB66A032E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift */,
 				B7A3CC052E50FDCC00674792 /* HabitTracker */,
 				EBAA203F2E4DBEE7001503D8 /* Products */,
 			);
@@ -544,6 +551,13 @@
 				EBAA203E2E4DBEE7001503D8 /* HabitTracker.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EBB669D92E5D7CED00638C9B /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreDataClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -662,6 +676,20 @@
 				B7A3CC1B2E50FDCC00674792 /* CounterPill.swift in Sources */,
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
 				EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */,
+				EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */,
+				EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */,
+				EBB66A062E5D93EE00638C9B /* Badge+CoreDataClass.swift in Sources */,
+				EBB66A072E5D93EE00638C9B /* Badge+CoreDataProperties.swift in Sources */,
+				EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */,
+				EBB66A092E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift in Sources */,
+				EBB66A0A2E5D93EE00638C9B /* History+CoreDataClass.swift in Sources */,
+				EBB66A0B2E5D93EE00638C9B /* History+CoreDataProperties.swift in Sources */,
+				EBB66A0C2E5D93EE00638C9B /* Statistics+CoreDataClass.swift in Sources */,
+				EBB66A0D2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift in Sources */,
+				EBB66A0E2E5D93EE00638C9B /* SubscribedArc+CoreDataClass.swift in Sources */,
+				EBB66A0F2E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift in Sources */,
+				EBB66A102E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift in Sources */,
+				EBB66A112E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift in Sources */,
 				B7A3CC1D2E50FDCC00674792 /* GridTileView.swift in Sources */,
 				B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */,
 				B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */,
@@ -672,18 +700,6 @@
 				B7A3CC232E50FDCC00674792 /* Date+Extensions.swift in Sources */,
 				B7A3CC242E50FDCC00674792 /* Font+Extensions.swift in Sources */,
 				EB0363732E5C4560002A1D52 /* Route.swift in Sources */,
-				EB0363BF2E5CA005002A1D52 /* ArcTemplate+CoreDataClass.swift in Sources */,
-				EB0363C02E5CA005002A1D52 /* ArcTemplate+CoreDataProperties.swift in Sources */,
-				EB0363C12E5CA005002A1D52 /* Badge+CoreDataClass.swift in Sources */,
-				EB0363C22E5CA005002A1D52 /* Badge+CoreDataProperties.swift in Sources */,
-				EB0363C32E5CA005002A1D52 /* HabitTemplate+CoreDataClass.swift in Sources */,
-				EB0363C42E5CA005002A1D52 /* HabitTemplate+CoreDataProperties.swift in Sources */,
-				EB0363C52E5CA005002A1D52 /* History+CoreDataClass.swift in Sources */,
-				EB0363C62E5CA005002A1D52 /* History+CoreDataProperties.swift in Sources */,
-				EB0363C72E5CA005002A1D52 /* SubscribedArc+CoreDataClass.swift in Sources */,
-				EB0363C82E5CA005002A1D52 /* SubscribedArc+CoreDataProperties.swift in Sources */,
-				EB0363C92E5CA005002A1D52 /* SubscribedHabit+CoreDataClass.swift in Sources */,
-				EB0363CA2E5CA005002A1D52 /* SubscribedHabit+CoreDataProperties.swift in Sources */,
 				EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */,
 				B7A3CC252E50FDCC00674792 /* MockData.swift in Sources */,
 				B7A3CC262E50FDCC00674792 /* Arc.swift in Sources */,
