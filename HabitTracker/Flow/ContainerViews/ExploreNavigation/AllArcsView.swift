@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AllArcsView: View {
+    @EnvironmentObject var router: NavigationRouter
     @Environment(\.dismiss) private var dismiss
     @State private var selectedCategory: String = "All"
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
@@ -22,18 +23,9 @@ struct AllArcsView: View {
             
             VStack(alignment: .center, spacing: 20) {
                 HStack {
-                    HStack(alignment: .center, spacing: 8) {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Image("arrow-left")
-                                .foregroundColor(.white)
-                                .font(.system(size: 18, weight: .semibold))
-                        }
+                    RoundBackButton(){
+                        dismiss()
                     }
-                    .padding(10)
-                    .background(.white.opacity(0.07))
-                    .cornerRadius(55)
                     
                     Spacer()
                     
@@ -82,6 +74,9 @@ struct AllArcsView: View {
                     ForEach(0..<10) { _ in
                         ArcCardCell()
                             .aspectRatio(1, contentMode: .fit)
+                            .onTapGesture {
+                                router.push(to: .arcDetailPreJoinView)
+                            }
                     }
                 }
                 .padding(.horizontal, 20)
@@ -90,7 +85,7 @@ struct AllArcsView: View {
         }
         
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black.ignoresSafeArea())
+        .background(Color.black)
         .navigationBarBackButtonHidden()
         
     }

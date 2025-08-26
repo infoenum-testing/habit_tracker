@@ -11,7 +11,7 @@ import Foundation
 struct RootTabView: View {
     @EnvironmentObject var state: AppState
     @State private var tab: Int = 0
-    @StateObject private var router = NavigationRouter()
+    @EnvironmentObject private var router: NavigationRouter
     
     var body: some View {
         NavigationStack(path: $router.routes) {
@@ -29,7 +29,7 @@ struct RootTabView: View {
                 CustomTabBar(tab: $tab)
             }
             .ignoresSafeArea(.keyboard)
-            .environmentObject(router)
+//            .environmentObject(router)
             .navigationDestination(for: Route.self) { $0 }
         }.navigationBarHidden(true)
         
