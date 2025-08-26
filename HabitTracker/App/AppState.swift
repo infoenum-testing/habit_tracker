@@ -75,3 +75,44 @@ final class AppState: ObservableObject {
 }
 
 
+import Foundation
+import CoreData
+
+final class AppDataStore: ObservableObject {
+    static let shared = AppDataStore()
+    
+    @Published var allHabits: [HabitTemplate] = []
+    @Published var allArcs: [ArcTemplate] = []
+    @Published var subscribedArcs: [SubscribedArc] = []
+    @Published var subscribedHabits: [SubscribedHabit] = []
+    
+    private init() {
+        refreshData()
+    }
+    
+    /// Reload everything from CoreData
+    func refreshData() {
+        let manager = CoreDataManager.shared
+        allHabits = manager.fetchAllHabits()
+        allArcs = manager.fetchAllArcs()
+        subscribedArcs = manager.fetchSubscribedArcs()
+        subscribedHabits = subscribedArcs.flatMap { ($0.subscribedHabits as? Set<SubscribedHabit>) ?? [] }
+    }
+    
+    // MARK: - Actions
+    
+    func subscribe(to arc: ArcTemplate) {
+        _ = CoreDataManager.shared.subscribeArc(arc)
+        refreshData()
+    }
+    
+    func completeArc(_ subArc: SubscribedArc) {
+        CoreDataManager.shared.completeArc(subArc)
+        refreshData()
+    }
+    
+    func deleteArc(_ subArc: SubscribedArc) {
+        CoreDataManager.shared.deleteSubscribedArc(subArc)
+        refreshData()
+    }
+}

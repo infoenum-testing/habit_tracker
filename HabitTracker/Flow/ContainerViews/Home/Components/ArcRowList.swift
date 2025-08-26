@@ -8,101 +8,6 @@
 import SwiftUI
 import Foundation
 
-
-class SwipeManager: ObservableObject {
-    @Published var openRowID: UUID? = nil
-    
-    func closeAll() {
-        openRowID = nil
-    }
-}
-
-struct SwipeableRow<Content: View, Actions: View>: View {
-    let id: UUID
-    let buttonWidth: CGFloat
-    let actions: Actions
-    let content: Content
-    
-    @EnvironmentObject var swipeManager: SwipeManager
-    
-    @State private var offset: CGFloat = 0
-    @GestureState private var dragOffset: CGFloat = 0
-    
-    init(
-        id: UUID,
-        buttonWidth: CGFloat = 80,
-        @ViewBuilder actions: () -> Actions,
-        @ViewBuilder content: () -> Content
-    ) {
-        self.id = id
-        self.buttonWidth = buttonWidth
-        self.actions = actions()
-        self.content = content()
-    }
-    
-    var body: some View {
-        ZStack(alignment: .leading) {
-            // Hidden action buttons
-            HStack(spacing: 0) {
-                actions
-                    .frame(width: buttonWidth)
-                Spacer()
-            }
-            
-            // Main content
-            content
-                .cornerRadius(offset == 0 ? 14 : 0)
-                .offset(x: currentOffset)
-                .simultaneousGesture(
-                    DragGesture()
-                        .updating($dragOffset) { value, state, _ in
-                            if abs(value.translation.width) > abs(value.translation.height),
-                               value.translation.width > 0 {
-                                state = value.translation.width
-                            }
-                        }
-                        .onEnded { value in
-                            withAnimation(.spring()) {
-                                if value.translation.width > buttonWidth / 2 {
-                                    swipeManager.openRowID = id
-                                } else {
-                                    swipeManager.closeAll()
-                                }
-                            }
-                        }
-                )
-//                .onTapGesture {
-//                    withAnimation(.spring()) {
-//                        swipeManager.closeAll()
-//                    }
-//                }
-        }
-        .onChange(of: swipeManager.openRowID) { newValue in
-            // Close this row if another row is opened
-            if newValue != id {
-                withAnimation(.spring()) {
-                    offset = 0
-                }
-            } else {
-                withAnimation(.spring()) {
-                    offset = buttonWidth - 15
-                }
-            }
-        }
-    }
-    
-    private var currentOffset: CGFloat {
-        if swipeManager.openRowID == id {
-            return min(offset + dragOffset, buttonWidth - 10)
-        } else {
-            return 0
-        }
-    }
-}
-
-
-
-
 struct ArcRowList: View {
     @EnvironmentObject var state: AppState
     @EnvironmentObject var swipeManager: SwipeManager
@@ -113,15 +18,15 @@ struct ArcRowList: View {
         SwipeableRow(
                     id: arc.id,
                     actions: {
-                        Button(action: {
-                            print("Edit tapped for \(arc.title)")
-                        }) {
-                            Image(systemName: "pencil")
+                        HStack {
+                            Image("editIcon")
                                 .foregroundColor(.black)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                        }
+                                .frame(width: 30, height: 30)
+                                .padding(.leading,20)
+                            Spacer()
+                        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     },
                     content: {
                 VStack(spacing: 0) {
@@ -172,14 +77,16 @@ struct ArcRowList: View {
                         startPoint: .bottom,
                         endPoint: .top
                     )
+                    .cornerRadius(swipeManager.openRowID == arc.id ? 0 : 14)
                 )
                 .background(.black)
-                .cornerRadius(swipeManager.openRowID == arc.id ? 0 : 14)
+               
                 .overlay(
                     RoundedRectangle(cornerRadius: swipeManager.openRowID == arc.id ? 0 : 14, style: .continuous)
                         .stroke(arc.color, lineWidth: 1)
                 )
             }
         )
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)
     }
 }

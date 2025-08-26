@@ -41,6 +41,11 @@ struct HomeView: View {
                             // Habit Cards
                             ForEach(state.habits) { habit in
                                 HabitRowList(habit: habit)
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            swipeManager.closeAll()
+                                        }
+                                    }
                             }
                         }
                         .padding(.top, 8)
@@ -53,6 +58,11 @@ struct HomeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
             .navigationBarHidden(true)
+        
+            .onAppear {
+              let a =  CoreDataManager.shared.fetchAllArcsData()
+                print("Fetched Arcs from CoreData: \(a.count)")
+            }
     }
 }
 

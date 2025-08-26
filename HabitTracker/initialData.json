@@ -1,0 +1,138 @@
+{
+  "habits": [
+    {
+      "id": "habit-brush-floss",
+      "title": "Brush & Floss",
+      "description": "Keep your teeth healthy daily.",
+      "category": "Health",
+      "colorToken": "color.blue",
+      "icon": "icon.tooth",
+      "defaultGoalPerDay": 1,
+      "pointsPerDay": { "Discipline": 1, "Strength": 0, "Confidence": 0 },
+      "tags": ["Dental", "Teeth", "Tooth"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    },
+    {
+      "id": "habit-hydration",
+      "title": "Drink Water",
+      "description": "Drink at least 2 liters of water daily.",
+      "category": "Health",
+      "colorToken": "color.cyan",
+      "icon": "icon.water",
+      "defaultGoalPerDay": 2,
+      "pointsPerDay": { "Discipline": 1, "Strength": 1, "Confidence": 0 },
+      "tags": ["Water", "Hydration", "Health"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    },
+    {
+      "id": "habit-no-sugar",
+      "title": "No Sugar",
+      "description": "Avoid added sugar for the whole day.",
+      "category": "Health",
+      "colorToken": "color.red",
+      "icon": "icon.no-sugar",
+      "defaultGoalPerDay": 1,
+      "pointsPerDay": { "Discipline": 2, "Strength": 1, "Confidence": 0 },
+      "tags": ["Diet", "Sugar", "Lifestyle"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    },
+    {
+      "id": "habit-sleep-early",
+      "title": "Sleep Early",
+      "description": "Go to bed before 11 PM.",
+      "category": "Health",
+      "colorToken": "color.purple",
+      "icon": "icon.moon",
+      "defaultGoalPerDay": 1,
+      "pointsPerDay": { "Discipline": 1, "Strength": 0, "Confidence": 1 },
+      "tags": ["Sleep", "Rest", "Night"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    },
+    {
+      "id": "habit-fiber",
+      "title": "Eat Fiber",
+      "description": "Consume fiber-rich foods daily.",
+      "category": "Health",
+      "colorToken": "color.orange",
+      "icon": "icon.fiber",
+      "defaultGoalPerDay": 1,
+      "pointsPerDay": { "Discipline": 1, "Strength": 0, "Confidence": 0 },
+      "tags": ["Diet", "Fiber", "Nutrition"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    },
+    {
+      "id": "habit-probiotics",
+      "title": "Probiotics",
+      "description": "Take daily probiotics for gut health.",
+      "category": "Health",
+      "colorToken": "color.green",
+      "icon": "icon.probiotics",
+      "defaultGoalPerDay": 1,
+      "pointsPerDay": { "Discipline": 1, "Strength": 0, "Confidence": 0 },
+      "tags": ["Gut", "Health", "Nutrition"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "arc-guthealth",
+      "title": "Gut Health Arc",
+      "shortSubtitle": "Gut Reset For Skin, Mood, Energy",
+      "description": "Your gut impacts more than digestion, it influences how you look, feel, and think every day. The Gut Health Arc guides you through simple habits that calm your system, boost energy, and bring noticeable improvements to your skin and mood.",
+      "durationDays": 60,
+      "category": "Health",
+      "colorToken": "color.green",
+      "coverImage": "cover.guthealth",
+      "benefits": ["Clear Skin", "More Energy", "Better Mood"],
+      "habitRefs": [
+        { "habitId": "habit-hydration", "requiredPerDay": 1 },
+        { "habitId": "habit-no-sugar", "requiredPerDay": 1 },
+        { "habitId": "habit-fiber", "requiredPerDay": 1 }
+      ],
+      "pointsPerDay": { "Health": 3, "Mentality": 1, "Lifestyle": 0 },
+      "icons": { "days": "icon.calendar.day", "habits": "icon.arc.logo" },
+      "tags": ["Nutrition", "Energy", "Skin", "Gut Health", "Mental Health"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    },
+    {
+      "id": "arc-dentalcare",
+      "title": "Dental Care Arc",
+      "shortSubtitle": "Smile Brighter Everyday",
+      "description": "Focus on building healthy dental habits to maintain a bright smile and strong teeth. This arc encourages brushing, flossing, and regular care routines.",
+      "durationDays": 30,
+      "category": "Health",
+      "colorToken": "color.blue",
+      "coverImage": "cover.dental",
+      "benefits": ["Healthy Teeth", "Fresh Breath", "Confident Smile"],
+      "habitRefs": [
+        { "habitId": "habit-brush-floss", "requiredPerDay": 1 },
+        { "habitId": "habit-hydration", "requiredPerDay": 1 },
+        { "habitId": "habit-sleep-early", "requiredPerDay": 1 }
+      ],
+      "pointsPerDay": { "Health": 2, "Mentality": 1, "Lifestyle": 0 },
+      "icons": { "days": "icon.calendar.day", "habits": "icon.arc.logo" },
+      "tags": ["Dental", "Hygiene", "Health", "Confidence"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    },
+    {
+      "id": "arc-wellness",
+      "title": "Wellness Arc",
+      "shortSubtitle": "Daily Habits for Overall Wellness",
+      "description": "This arc helps you maintain daily routines that improve overall wellness, energy, and mental clarity.",
+      "durationDays": 45,
+      "category": "Health",
+      "colorToken": "color.orange",
+      "coverImage": "cover.wellness",
+      "benefits": ["More Energy", "Better Mood", "Healthy Lifestyle"],
+      "habitRefs": [
+        { "habitId": "habit-hydration", "requiredPerDay": 2 },
+        { "habitId": "habit-sleep-early", "requiredPerDay": 1 },
+        { "habitId": "habit-probiotics", "requiredPerDay": 1 }
+      ],
+      "pointsPerDay": { "Health": 2, "Mentality": 2, "Lifestyle": 1 },
+      "icons": { "days": "icon.calendar.day", "habits": "icon.arc.logo" },
+      "tags": ["Wellness", "Energy", "Health", "Mental Health"],
+      "meta": { "createdAt": "2025-08-19", "updatedAt": "2025-08-19", "author": "SeedData@app" }
+    }
+  ]
+}
