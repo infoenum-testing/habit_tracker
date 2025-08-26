@@ -52,6 +52,16 @@
 		B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE62E50FDCC00674792 /* SF-Pro-Display-Regular.otf */; };
 		B7A3CC312E50FDCC00674792 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE72E50FDCC00674792 /* SF-Pro-Display-Semibold.otf */; };
 		B7A3CC322E50FDCC00674792 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A3CBE92E50FDCC00674792 /* Assets.xcassets */; };
+		E983A33F2E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E983A3392E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodeld */; };
+		E983A3402E5D9BB8001AC952 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A33B2E5D9BB8001AC952 /* CoreDataManager.swift */; };
+		E983A3442E5D9BC2001AC952 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3422E5D9BC2001AC952 /* Route.swift */; };
+		E983A3452E5D9BC2001AC952 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3412E5D9BC2001AC952 /* NavigationRouter.swift */; };
+		E983A3482E5D9BEF001AC952 /* SwipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3472E5D9BEF001AC952 /* SwipeManager.swift */; };
+		E983A3492E5D9BEF001AC952 /* SwipeableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3462E5D9BEF001AC952 /* SwipeableRow.swift */; };
+		E983A34B2E5D9C3C001AC952 /* RoundBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A34A2E5D9C3C001AC952 /* RoundBackButton.swift */; };
+		E983A34D2E5D9C55001AC952 /* ArcDetailPreJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */; };
+		E983A34F2E5D9C6B001AC952 /* DailyHabitsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A34E2E5D9C6B001AC952 /* DailyHabitsCellView.swift */; };
+		E983A3512E5D9C81001AC952 /* TextBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3502E5D9C81001AC952 /* TextBadgeView.swift */; };
 		E98E378C2E584636003244AA /* ExploreMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378B2E584636003244AA /* ExploreMain.swift */; };
 		E98E37902E58515B003244AA /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378F2E58515B003244AA /* Color+extension.swift */; };
 		E98E37952E585533003244AA /* ExploreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37942E585533003244AA /* ExploreCardView.swift */; };
@@ -137,6 +147,16 @@
 		B7A3CBFF2E50FDCC00674792 /* HomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayout.swift; sourceTree = "<group>"; };
 		B7A3CC002E50FDCC00674792 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		B7A3CC042E50FDCC00674792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E983A33B2E5D9BB8001AC952 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E983A33E2E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTrackerDataBase.xcdatamodel; sourceTree = "<group>"; };
+		E983A3412E5D9BC2001AC952 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		E983A3422E5D9BC2001AC952 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		E983A3462E5D9BEF001AC952 /* SwipeableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableRow.swift; sourceTree = "<group>"; };
+		E983A3472E5D9BEF001AC952 /* SwipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeManager.swift; sourceTree = "<group>"; };
+		E983A34A2E5D9C3C001AC952 /* RoundBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBackButton.swift; sourceTree = "<group>"; };
+		E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcDetailPreJoinView.swift; sourceTree = "<group>"; };
+		E983A34E2E5D9C6B001AC952 /* DailyHabitsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHabitsCellView.swift; sourceTree = "<group>"; };
+		E983A3502E5D9C81001AC952 /* TextBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBadgeView.swift; sourceTree = "<group>"; };
 		E98E378B2E584636003244AA /* ExploreMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMain.swift; sourceTree = "<group>"; };
 		E98E378F2E58515B003244AA /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		E98E37942E585533003244AA /* ExploreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCardView.swift; sourceTree = "<group>"; };
@@ -422,6 +442,8 @@
 		B7A3CC052E50FDCC00674792 /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E983A3432E5D9BC2001AC952 /* Navigation */,
+				E983A33D2E5D9BB8001AC952 /* CoreData */,
 				E98EDF7A2E5C432B00E42196 /* extension */,
 				B7A3CBC12E50FDCC00674792 /* App */,
 				B7A3CBDD2E50FDCC00674792 /* Flow */,
@@ -430,14 +452,56 @@
 				B7A3CBEA2E50FDCC00674792 /* Resources */,
 				B7A3CC032E50FDCC00674792 /* Shared */,
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
-				EB0363CB2E5CA7B0002A1D52 /* initialData.json */,
 			);
 			path = HabitTracker;
+			sourceTree = "<group>";
+		};
+		E983A3382E5D9BB8001AC952 /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreDataClasses;
+			sourceTree = "<group>";
+		};
+		E983A33A2E5D9BB8001AC952 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E983A3392E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		E983A33C2E5D9BB8001AC952 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E983A33B2E5D9BB8001AC952 /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		E983A33D2E5D9BB8001AC952 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E983A3382E5D9BB8001AC952 /* CoreDataClasses */,
+				E983A33A2E5D9BB8001AC952 /* DataModel */,
+				E983A33C2E5D9BB8001AC952 /* Manager */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E983A3432E5D9BC2001AC952 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E983A3412E5D9BC2001AC952 /* NavigationRouter.swift */,
+				E983A3422E5D9BC2001AC952 /* Route.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		E98E378A2E5845DA003244AA /* ExploreNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */,
 				E98E37912E58546A003244AA /* components */,
 				E98E378B2E584636003244AA /* ExploreMain.swift */,
 				E98E37982E587A25003244AA /* AllHabitsView.swift */,
@@ -449,7 +513,10 @@
 		E98E37912E58546A003244AA /* components */ = {
 			isa = PBXGroup;
 			children = (
+				E983A34A2E5D9C3C001AC952 /* RoundBackButton.swift */,
+				E983A34E2E5D9C6B001AC952 /* DailyHabitsCellView.swift */,
 				E98E37942E585533003244AA /* ExploreCardView.swift */,
+				E983A3502E5D9C81001AC952 /* TextBadgeView.swift */,
 				E98E37962E587076003244AA /* TrendingCardView.swift */,
 				E98E379E2E58A89E003244AA /* ArcCardCell.swift */,
 			);
@@ -477,36 +544,10 @@
 		EB0363762E5C75CD002A1D52 /* SwipeManager */ = {
 			isa = PBXGroup;
 			children = (
-				EB0363792E5C75EE002A1D52 /* SwipeableRow.swift */,
-				EB0363772E5C75D4002A1D52 /* SwipeManager.swift */,
+				E983A3462E5D9BEF001AC952 /* SwipeableRow.swift */,
+				E983A3472E5D9BEF001AC952 /* SwipeManager.swift */,
 			);
 			path = SwipeManager;
-			sourceTree = "<group>";
-		};
-		EB03637E2E5C9C3A002A1D52 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				EBB669D92E5D7CED00638C9B /* CoreDataClasses */,
-				EB0363802E5C9C56002A1D52 /* Manager */,
-				EB03637F2E5C9C48002A1D52 /* DataModel */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		EB03637F2E5C9C48002A1D52 /* DataModel */ = {
-			isa = PBXGroup;
-			children = (
-				EB03637B2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodeld */,
-			);
-			path = DataModel;
-			sourceTree = "<group>";
-		};
-		EB0363802E5C9C56002A1D52 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				EB0363812E5C9C61002A1D52 /* CoreDataManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		EB1958252E56032600454D34 /* Statistics */ = {
@@ -591,13 +632,6 @@
 				EBAA203E2E4DBEE7001503D8 /* HabitTracker.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EBB669D92E5D7CED00638C9B /* CoreDataClasses */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreDataClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,21 +722,18 @@
 				B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */,
 				B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */,
 				B7A3CC092E50FDCC00674792 /* DetailHeader.swift in Sources */,
-				EB0363822E5C9C63002A1D52 /* CoreDataManager.swift in Sources */,
 				B7A3CC0A2E50FDCC00674792 /* ArcDetailView.swift in Sources */,
 				EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */,
 				B7A3CC0B2E50FDCC00674792 /* ArcRowGrid.swift in Sources */,
-				EB03637A2E5C75F3002A1D52 /* SwipeableRow.swift in Sources */,
 				B7A3CC0C2E50FDCC00674792 /* ArcRowList.swift in Sources */,
 				B7A3CC0D2E50FDCC00674792 /* DateStrip.swift in Sources */,
 				B7A3CC0E2E50FDCC00674792 /* GridLayout.swift in Sources */,
-				EB03637D2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodeld in Sources */,
 				B7A3CC0F2E50FDCC00674792 /* HabitRowGrid.swift in Sources */,
-				EB0363782E5C75D5002A1D52 /* SwipeManager.swift in Sources */,
 				B7A3CC102E50FDCC00674792 /* HabitRowList.swift in Sources */,
 				EB4CCBA22E571D4800F76945 /* PerformanceCardView.swift in Sources */,
 				B7A3CC112E50FDCC00674792 /* HomeHeader.swift in Sources */,
 				B7A3CC122E50FDCC00674792 /* ListLayout.swift in Sources */,
+				E983A3512E5D9C81001AC952 /* TextBadgeView.swift in Sources */,
 				E98E378C2E584636003244AA /* ExploreMain.swift in Sources */,
 				B7A3CC132E50FDCC00674792 /* HomeView.swift in Sources */,
 				EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */,
@@ -718,7 +749,6 @@
 				B7A3CC192E50FDCC00674792 /* CheckChip.swift in Sources */,
 				EB1958272E56033300454D34 /* StatisticsView.swift in Sources */,
 				B7A3CC1A2E50FDCC00674792 /* CircleButton.swift in Sources */,
-				EB0363752E5C45B6002A1D52 /* NavigationRouter.swift in Sources */,
 				B7A3CC1B2E50FDCC00674792 /* CounterPill.swift in Sources */,
 				E98E37952E585533003244AA /* ExploreCardView.swift in Sources */,
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
@@ -729,12 +759,14 @@
 				EBB66A072E5D93EE00638C9B /* Badge+CoreDataProperties.swift in Sources */,
 				EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */,
 				EBB66A092E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift in Sources */,
+				E983A34D2E5D9C55001AC952 /* ArcDetailPreJoinView.swift in Sources */,
 				EBB66A0A2E5D93EE00638C9B /* History+CoreDataClass.swift in Sources */,
 				EBB66A0B2E5D93EE00638C9B /* History+CoreDataProperties.swift in Sources */,
 				EBB66A0C2E5D93EE00638C9B /* Statistics+CoreDataClass.swift in Sources */,
 				EBB66A0D2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift in Sources */,
 				EBB66A0E2E5D93EE00638C9B /* SubscribedArc+CoreDataClass.swift in Sources */,
 				EBB66A0F2E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift in Sources */,
+				E983A34F2E5D9C6B001AC952 /* DailyHabitsCellView.swift in Sources */,
 				EBB66A102E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift in Sources */,
 				EBB66A112E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift in Sources */,
 				B7A3CC1D2E50FDCC00674792 /* GridTileView.swift in Sources */,
@@ -747,15 +779,21 @@
 				B7A3CC222E50FDCC00674792 /* Color+Extensions.swift in Sources */,
 				E98E379F2E58A89E003244AA /* ArcCardCell.swift in Sources */,
 				B7A3CC232E50FDCC00674792 /* Date+Extensions.swift in Sources */,
+				E983A3442E5D9BC2001AC952 /* Route.swift in Sources */,
+				E983A3452E5D9BC2001AC952 /* NavigationRouter.swift in Sources */,
 				B7A3CC242E50FDCC00674792 /* Font+Extensions.swift in Sources */,
-				EB0363732E5C4560002A1D52 /* Route.swift in Sources */,
 				EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */,
 				B7A3CC252E50FDCC00674792 /* MockData.swift in Sources */,
 				B7A3CC262E50FDCC00674792 /* Arc.swift in Sources */,
+				E983A3482E5D9BEF001AC952 /* SwipeManager.swift in Sources */,
+				E983A3492E5D9BEF001AC952 /* SwipeableRow.swift in Sources */,
 				B7A3CC272E50FDCC00674792 /* ArcTask.swift in Sources */,
 				B7A3CC282E50FDCC00674792 /* Habit.swift in Sources */,
 				B7A3CC292E50FDCC00674792 /* HomeLayout.swift in Sources */,
 				E98E37992E587A25003244AA /* AllHabitsView.swift in Sources */,
+				E983A34B2E5D9C3C001AC952 /* RoundBackButton.swift in Sources */,
+				E983A33F2E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodeld in Sources */,
+				E983A3402E5D9BB8001AC952 /* CoreDataManager.swift in Sources */,
 				EB4CCB9A2E57197300F76945 /* SettingsRow.swift in Sources */,
 				B7A3CC2A2E50FDCC00674792 /* ItemType.swift in Sources */,
 			);
@@ -971,12 +1009,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EB03637B2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodeld */ = {
+		E983A3392E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EB03637C2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodel */,
+				E983A33E2E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodel */,
 			);
-			currentVersion = EB03637C2E5C8CFC002A1D52 /* HabitTrackerDataBase.xcdatamodel */;
+			currentVersion = E983A33E2E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodel */;
 			path = HabitTrackerDataBase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
