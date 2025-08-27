@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DailyHabitsCellView: View {
     var icon: String = "apple"
+    let habit: HabitTemplate
+    var color: Color
     var body: some View {
         
             HStack(alignment: .center, spacing: 10){
@@ -19,19 +21,20 @@ struct DailyHabitsCellView: View {
                       .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
                       .cornerRadius(9.2)
                     
-                    Image(icon)
+                    Image(habit.icon ?? "apple")
+                        .foregroundStyle(color)
                       .frame(width: 22.05, height: 22.05)
                 }
                 .frame(width: 51.471, height: 51.072)
                 
                 HStack(alignment: .center, spacing: 10.8732) {
                     VStack(alignment: .center, spacing: 5.29808) {
-                        Text("Task 1")
+                        Text(habit.title ?? "")
                             .font(Font.sfPro(size: 17, weight: .medium))
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         
-                        Text("Little description")
+                        Text(habit.details ?? "")
                         .font(Font.sfPro(size: 14))
                           .foregroundColor(.white.opacity(0.6))
                           .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -44,7 +47,7 @@ struct DailyHabitsCellView: View {
                 
                 ZStack {
                     Rectangle()
-                        .foregroundStyle(.appPurple)
+                        .foregroundStyle(color)
                       .frame(width: 51.471, height: 51.072)
                       .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
                       .cornerRadius(9.2)
@@ -65,6 +68,6 @@ struct DailyHabitsCellView: View {
     }
 }
 
-#Preview {
-    DailyHabitsCellView()
-}
+//#Preview {
+//    DailyHabitsCellView(color: .red)
+//}

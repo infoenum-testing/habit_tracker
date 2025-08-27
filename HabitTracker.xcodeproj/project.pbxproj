@@ -67,7 +67,7 @@
 		E98E378C2E584636003244AA /* ExploreMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378B2E584636003244AA /* ExploreMain.swift */; };
 		E98E37902E58515B003244AA /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378F2E58515B003244AA /* Color+extension.swift */; };
 		E98E37952E585533003244AA /* ExploreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37942E585533003244AA /* ExploreCardView.swift */; };
-		E98E37972E587076003244AA /* TrendingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37962E587076003244AA /* TrendingCardView.swift */; };
+		E98E37972E587076003244AA /* HabitCardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37962E587076003244AA /* HabitCardCellView.swift */; };
 		E98E37992E587A25003244AA /* AllHabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37982E587A25003244AA /* AllHabitsView.swift */; };
 		E98E379F2E58A89E003244AA /* ArcCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E379E2E58A89E003244AA /* ArcCardCell.swift */; };
 		E98E37A12E58AE86003244AA /* AllArcsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37A02E58AE86003244AA /* AllArcsView.swift */; };
@@ -166,7 +166,7 @@
 		E98E378B2E584636003244AA /* ExploreMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMain.swift; sourceTree = "<group>"; };
 		E98E378F2E58515B003244AA /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		E98E37942E585533003244AA /* ExploreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCardView.swift; sourceTree = "<group>"; };
-		E98E37962E587076003244AA /* TrendingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCardView.swift; sourceTree = "<group>"; };
+		E98E37962E587076003244AA /* HabitCardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardCellView.swift; sourceTree = "<group>"; };
 		E98E37982E587A25003244AA /* AllHabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHabitsView.swift; sourceTree = "<group>"; };
 		E98E379E2E58A89E003244AA /* ArcCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcCardCell.swift; sourceTree = "<group>"; };
 		E98E37A02E58AE86003244AA /* AllArcsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllArcsView.swift; sourceTree = "<group>"; };
@@ -528,7 +528,7 @@
 				E983A34E2E5D9C6B001AC952 /* DailyHabitsCellView.swift */,
 				E98E37942E585533003244AA /* ExploreCardView.swift */,
 				E983A3502E5D9C81001AC952 /* TextBadgeView.swift */,
-				E98E37962E587076003244AA /* TrendingCardView.swift */,
+				E98E37962E587076003244AA /* HabitCardCellView.swift */,
 				E98E379E2E58A89E003244AA /* ArcCardCell.swift */,
 				E983A3562E5DC85B001AC952 /* IconGridView.swift */,
 			);
@@ -751,7 +751,7 @@
 				B7A3CC132E50FDCC00674792 /* HomeView.swift in Sources */,
 				EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */,
 				B7A3CC142E50FDCC00674792 /* CustomTabBar.swift in Sources */,
-				E98E37972E587076003244AA /* TrendingCardView.swift in Sources */,
+				E98E37972E587076003244AA /* HabitCardCellView.swift in Sources */,
 				B7A3CC152E50FDCC00674792 /* PlaceholderView.swift in Sources */,
 				B7A3CC162E50FDCC00674792 /* TabButton.swift in Sources */,
 				E983A3572E5DC85B001AC952 /* IconGridView.swift in Sources */,

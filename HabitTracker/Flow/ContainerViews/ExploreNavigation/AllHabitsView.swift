@@ -12,7 +12,7 @@ struct AllHabitsView: View {
     @EnvironmentObject var router: NavigationRouter
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appData: AppDataStore
-
+    
     @State private var selectedCategory: String = "All"
     @State private var isSheetPresented: Bool = false
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
@@ -31,7 +31,7 @@ struct AllHabitsView: View {
             }
         }
     }
-
+    
     
     var body: some View {
         VStack(spacing: 24) {
@@ -89,20 +89,23 @@ struct AllHabitsView: View {
             }
             
             if filteredHabits.isEmpty {
-                    VStack {
-                        Spacer()
-                        Text("No habits found")
-                            .font(.system(size: 20, weight: .medium))
-                            .foregroundColor(.white.opacity(0.6))
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
+                VStack {
+                    Spacer()
+                    Text("No habits found")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundColor(.white.opacity(0.6))
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
             } else {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 24) {
                         ForEach(filteredHabits, id: \.id) { habit in
-                            TrendingCardView(habit: habit)
-                                .aspectRatio(1, contentMode: .fit)
+                            HabitCardCellView(habit: habit){
+                                isSheetPresented = true
+                            }
+                            .aspectRatio(1, contentMode: .fit)
+                            
                         }
                     }
                     .padding(.horizontal)

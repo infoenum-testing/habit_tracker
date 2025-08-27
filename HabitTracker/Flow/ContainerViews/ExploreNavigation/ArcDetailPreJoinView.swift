@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArcDetailPreJoinView: View {
     @Environment(\.dismiss) private var dismiss
+    let arc: ArcTemplate
     var body: some View {
         ZStack(alignment: .topLeading) {
             Image("arc_details")
@@ -86,12 +87,11 @@ struct ArcDetailPreJoinView: View {
                         .padding(.bottom, 0)
                         
                         VStack(alignment: .leading, spacing: 13) {
-                            DailyHabitsCellView();
-                            DailyHabitsCellView();
-                            DailyHabitsCellView();
-                            DailyHabitsCellView();
-                            DailyHabitsCellView();
-                            
+                            let habits = Array((arc.habits as? Set<HabitTemplate>) ?? [])
+
+                            ForEach(habits, id: \.id) { habit in
+                                DailyHabitsCellView( habit: habit, color: .red)
+                            }
                         }
                         .padding(0)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -103,7 +103,7 @@ struct ArcDetailPreJoinView: View {
                 .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
                 .navigationBarBackButtonHidden()
                 
-                ShareProgressButton(title: "Cancel",buttonAction: {
+                ShareProgressButton(title: "Join arc",buttonAction: {
                     // handle share action
                 })
                 .padding(.horizontal, 20)
@@ -114,9 +114,9 @@ struct ArcDetailPreJoinView: View {
     }
 }
 
-#Preview {
-    ArcDetailPreJoinView()
-}
+//#Preview {
+//    ArcDetailPreJoinView()
+//}
 
 struct DashedLine: View {
     var body: some View {

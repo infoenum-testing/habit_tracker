@@ -14,10 +14,21 @@ struct AllArcsView: View {
     @State private var selectedCategory: String = "All"
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
     
+    
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
     ]
+    
+    private var filteredArcs: [ArcTemplate] {
+        if selectedCategory == "All" {
+            return appData.allArcs
+        } else {
+            return appData.allArcs.filter { arc in
+                arc.tagsArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
+            }
+        }
+    }
     
     var body: some View {
         VStack(spacing: 24) {
@@ -70,18 +81,28 @@ struct AllArcsView: View {
             
             .frame(maxWidth: .infinity, alignment: .center)
             
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(appData.allArcs, id: \.id) { arc in
-                        ArcCardCell(arc: arc)
-                            .aspectRatio(1, contentMode: .fit)
-                            .onTapGesture {
-                                router.push(to: .arcDetailPreJoinView)
-                            }
-                    }
+            if filteredArcs.isEmpty {
+                VStack {
+                    Spacer()
+                    Text("No arcs found")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundColor(.white.opacity(0.6))
+                    Spacer()
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 16)
+                .frame(maxWidth: .infinity)
+            } else {
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(filteredArcs, id: \.id) { arc in
+                            ArcCardCell(arc: arc){
+                                router.push(to: .arcDetailPreJoinView(arcTemplate: arc))
+                            }
+                                .aspectRatio(1, contentMode: .fit)
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 16)
+                }
             }
         }
         
@@ -92,6 +113,6 @@ struct AllArcsView: View {
     }
 }
 
-#Preview {
-    AllArcsView()
-}
+//#Preview {
+//    AllArcsView()
+//}
