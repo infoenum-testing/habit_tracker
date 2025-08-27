@@ -62,6 +62,8 @@
 		E983A34D2E5D9C55001AC952 /* ArcDetailPreJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */; };
 		E983A34F2E5D9C6B001AC952 /* DailyHabitsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A34E2E5D9C6B001AC952 /* DailyHabitsCellView.swift */; };
 		E983A3512E5D9C81001AC952 /* TextBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3502E5D9C81001AC952 /* TextBadgeView.swift */; };
+		E983A3532E5DB216001AC952 /* HabitCustomizationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3522E5DB216001AC952 /* HabitCustomizationSheet.swift */; };
+		E983A3572E5DC85B001AC952 /* IconGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983A3562E5DC85B001AC952 /* IconGridView.swift */; };
 		E98E378C2E584636003244AA /* ExploreMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378B2E584636003244AA /* ExploreMain.swift */; };
 		E98E37902E58515B003244AA /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E378F2E58515B003244AA /* Color+extension.swift */; };
 		E98E37952E585533003244AA /* ExploreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E37942E585533003244AA /* ExploreCardView.swift */; };
@@ -157,6 +159,8 @@
 		E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcDetailPreJoinView.swift; sourceTree = "<group>"; };
 		E983A34E2E5D9C6B001AC952 /* DailyHabitsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHabitsCellView.swift; sourceTree = "<group>"; };
 		E983A3502E5D9C81001AC952 /* TextBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBadgeView.swift; sourceTree = "<group>"; };
+		E983A3522E5DB216001AC952 /* HabitCustomizationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCustomizationSheet.swift; sourceTree = "<group>"; };
+		E983A3562E5DC85B001AC952 /* IconGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridView.swift; sourceTree = "<group>"; };
 		E98E378B2E584636003244AA /* ExploreMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMain.swift; sourceTree = "<group>"; };
 		E98E378F2E58515B003244AA /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		E98E37942E585533003244AA /* ExploreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCardView.swift; sourceTree = "<group>"; };
@@ -501,11 +505,12 @@
 		E98E378A2E5845DA003244AA /* ExploreNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */,
 				E98E37912E58546A003244AA /* components */,
+				E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */,
 				E98E378B2E584636003244AA /* ExploreMain.swift */,
 				E98E37982E587A25003244AA /* AllHabitsView.swift */,
 				E98E37A02E58AE86003244AA /* AllArcsView.swift */,
+				E983A3522E5DB216001AC952 /* HabitCustomizationSheet.swift */,
 			);
 			path = ExploreNavigation;
 			sourceTree = "<group>";
@@ -519,6 +524,7 @@
 				E983A3502E5D9C81001AC952 /* TextBadgeView.swift */,
 				E98E37962E587076003244AA /* TrendingCardView.swift */,
 				E98E379E2E58A89E003244AA /* ArcCardCell.swift */,
+				E983A3562E5DC85B001AC952 /* IconGridView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -741,6 +747,7 @@
 				E98E37972E587076003244AA /* TrendingCardView.swift in Sources */,
 				B7A3CC152E50FDCC00674792 /* PlaceholderView.swift in Sources */,
 				B7A3CC162E50FDCC00674792 /* TabButton.swift in Sources */,
+				E983A3572E5DC85B001AC952 /* IconGridView.swift in Sources */,
 				E98E37A12E58AE86003244AA /* AllArcsView.swift in Sources */,
 				EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */,
 				E98E37902E58515B003244AA /* Color+extension.swift in Sources */,
@@ -768,6 +775,7 @@
 				EBB66A0F2E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift in Sources */,
 				E983A34F2E5D9C6B001AC952 /* DailyHabitsCellView.swift in Sources */,
 				EBB66A102E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift in Sources */,
+				E983A3532E5DB216001AC952 /* HabitCustomizationSheet.swift in Sources */,
 				EBB66A112E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift in Sources */,
 				B7A3CC1D2E50FDCC00674792 /* GridTileView.swift in Sources */,
 				E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */,

@@ -9,8 +9,10 @@ import SwiftUI
 
 struct AllHabitsView: View {
     
+    @EnvironmentObject var router: NavigationRouter
     @Environment(\.dismiss) private var dismiss
     @State private var selectedCategory: String = "All"
+    @State private var isSheetPresented: Bool = false
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
     
     private let columns = [
@@ -75,12 +77,13 @@ struct AllHabitsView: View {
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 24) {
-                    TrendingCardView()
-                    TrendingCardView()
-                    TrendingCardView()
-                    TrendingCardView()
-                    TrendingCardView()
-                    TrendingCardView()
+                    ForEach(0..<10) { _ in
+                        TrendingCardView()
+                            .onTapGesture {
+//                                router.push(to: .habitCutomizeSheetView)
+                                isSheetPresented.toggle()
+                            }
+                    }
                 }
                 .padding(.horizontal)
             }
@@ -88,6 +91,12 @@ struct AllHabitsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.black.ignoresSafeArea())
         .navigationBarBackButtonHidden()
+        .sheet(isPresented: $isSheetPresented) {
+            HabitCustomizationSheet()
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(45)
+        }
     }
 }
 

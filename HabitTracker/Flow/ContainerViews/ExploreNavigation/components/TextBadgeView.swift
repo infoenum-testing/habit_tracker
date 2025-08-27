@@ -23,8 +23,9 @@ struct TextBadgeView: View {
                 .foregroundStyle(foregroundColor)
                 .font(Font.sfPro(size: 14))
         }
-        .padding(.vertical, 10)
-        .padding(.horizontal, 20)
+        .padding(.vertical, 8)
+        .padding(.leading, 10)
+        .padding(.trailing, 12)
         
         
     }

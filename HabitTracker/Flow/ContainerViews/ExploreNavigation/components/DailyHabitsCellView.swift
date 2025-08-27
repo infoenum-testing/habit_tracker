@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DailyHabitsCellView: View {
+    var icon: String = "apple"
     var body: some View {
         
             HStack(alignment: .center, spacing: 10){
@@ -18,7 +19,7 @@ struct DailyHabitsCellView: View {
                       .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
                       .cornerRadius(9.2)
                     
-                    Image("apple")
+                    Image(icon)
                       .frame(width: 22.05, height: 22.05)
                 }
                 .frame(width: 51.471, height: 51.072)
@@ -39,14 +40,26 @@ struct DailyHabitsCellView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .padding(0)
-                .frame(width: 167.62, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(.appPurple)
+                      .frame(width: 51.471, height: 51.072)
+                      .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+                      .cornerRadius(9.2)
+                    
+                    Image("check")
+                      .frame(width: 22, height: 22)
+                      
+                }
+                .frame(width: 51.471, height: 51.072)
             }
             .padding(.leading, 11.2)
             .padding(.trailing, 19.2)
             .padding(.vertical, 19.2)
             .frame(maxWidth: .infinity, minHeight: 73, maxHeight: 73, alignment: .leading)
             .background(Color.cellBackgroundColor)
-
             .cornerRadius(10.4)
         
     }
