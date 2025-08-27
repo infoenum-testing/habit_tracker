@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArcCardCell: View {
     let arc: ArcTemplate
+    let action:() -> Void
     var body: some View {
         
         GeometryReader { geo in
@@ -73,6 +74,9 @@ struct ArcCardCell: View {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(ColorToken.from(string: arc.colorToken ?? "white") , lineWidth: 1)
                     
+            }
+            .onTapGesture {
+                action()
             }
         }
     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitCustomizationSheet: View {
     
     @Environment(\.dismiss) private var dismiss
+    @State private var selectedIcon: String = "figure.walk"
     @State private var selectedColor: Color = .appPurple
     
     private let colors: [Color] = [
@@ -18,33 +19,40 @@ struct HabitCustomizationSheet: View {
     ]
     
     var body: some View {
+        
         ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 0) {
-                
-                HeaderSection(dismiss: dismiss)
-                
-                DashedLine()
-                
-                HabitPreviewSection()
-                    .padding(.top, 24)
+                ScrollView(showsIndicators: false) {
+                    HeaderSection(dismiss: dismiss)
+                    
+                    DashedLine()
+                    
+                    HabitPreviewSection(color: selectedColor, icon: selectedIcon)
+                        .padding(.top, 24)
+                        .padding(.horizontal, 20)
+                    
+                    IconGridView(color: selectedColor, icon: $selectedIcon)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 26)
+                    
+                    ColorPickerSection(
+                        colors: colors,
+                        selectedColor: $selectedColor
+                    )
                     .padding(.horizontal, 20)
-                
-                IconGridView()
+                    ShareProgressButton(title: "Save habit") {
+                        
+                    }
+                    .padding(.top, 26)
                     .padding(.horizontal, 20)
-                    .padding(.vertical, 26)
-                
-                ColorPickerSection(
-                    colors: colors,
-                    selectedColor: $selectedColor
-                )
-                .padding(.horizontal, 20)
+                }
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
         .background(
             LinearGradient(
-                colors: [.appPurple.opacity(0.55), .black, .black],
+                colors: [selectedColor.opacity(0.55), .black, .black],
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -76,18 +84,21 @@ private struct HeaderSection: View {
             .padding(.bottom, 40)
         }
         .padding(.horizontal, 20)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
     }
 }
 
 // MARK: - Habit Preview
 private struct HabitPreviewSection: View {
+    var color: Color
+    var icon: String
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             Text("Preview Habit")
                 .font(Font.sfPro(size: 16, weight: .medium))
                 .foregroundColor(.white)
             
-            DailyHabitsCellView(icon: "teeth")
+            DailyHabitsCellView(icon: icon, habit: HabitTemplate(), color: color)
         }
     }
 }

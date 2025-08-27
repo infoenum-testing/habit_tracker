@@ -10,7 +10,8 @@ struct ExploreMain: View {
     
     @EnvironmentObject var router: NavigationRouter
     @EnvironmentObject var appData: AppDataStore
-
+    @State public var isPresentSheet: Bool = false
+    
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -29,18 +30,16 @@ struct ExploreMain: View {
                 VStack(spacing: 32) {
                     ExploreSection(
                         title: "Trending Arcs",
-                        itemsCount: 4,
                         columns: columns, onViewAll: {
                             router.push(to: .allArcsView)
-                        }, isHabitSection: false
+                        }, isHabitSection: false, isPresentSheet: $isPresentSheet
                     )
                     
                     ExploreSection(
                         title: "Trending Habits",
-                        itemsCount: 4,
                         columns: columns, onViewAll: {
                             router.push(to: .allHabitsView)
-                        }, isHabitSection: true
+                        }, isHabitSection: true, isPresentSheet: $isPresentSheet
                     )
                 }
                 .padding(.horizontal, 20)
@@ -49,8 +48,14 @@ struct ExploreMain: View {
         }
         .padding(.top, 72)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color(red: 0.1, green: 0.1, blue: 0.1))
+        .background(Color.black)
         .ignoresSafeArea()
+        .sheet(isPresented: $isPresentSheet) {
+            HabitCustomizationSheet()
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(45)
+        }
     }
 }
 
@@ -88,11 +93,13 @@ private extension ExploreMain {
 // MARK: - Section Component
 struct ExploreSection: View {
     let title: String
-    let itemsCount: Int
     let columns: [GridItem]
     let onViewAll: () -> Void
     var isHabitSection: Bool
     @EnvironmentObject var appData: AppDataStore
+    @EnvironmentObject var router: NavigationRouter
+    @Binding public var isPresentSheet: Bool
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             HStack {
@@ -120,13 +127,17 @@ struct ExploreSection: View {
                 
                 if isHabitSection {
                     ForEach(appData.allHabits, id: \.id) { habit in
-                        TrendingCardView(habit: habit)
-                                .aspectRatio(1, contentMode: .fit)
+                        HabitCardCellView(habit: habit) {
+                            isPresentSheet.toggle()
+                        }
+                        .aspectRatio(1, contentMode: .fit)
                     }
                 } else {
                     ForEach(appData.allArcs, id: \.id) { arc in
-                            ArcCardCell(arc: arc)
-                                .aspectRatio(1, contentMode: .fit)
+                        ArcCardCell(arc: arc){
+                            router.push(to: .arcDetailPreJoinView(arcTemplate: arc))
+                        }
+                        .aspectRatio(1, contentMode: .fit)
                     }
                 }
             }

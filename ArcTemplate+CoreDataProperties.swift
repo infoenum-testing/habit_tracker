@@ -74,3 +74,9 @@ extension ArcTemplate {
 extension ArcTemplate : Identifiable {
 
 }
+
+extension ArcTemplate {
+    var tagsArray: [String] {
+        tags as? [String] ?? []
+    }
+}
