@@ -12,12 +12,14 @@ struct HabitRowList: View {
     @EnvironmentObject var state: AppState
     @EnvironmentObject var swipeManager: SwipeManager
     let habit: Habit
+    let editHabitAction: () -> Void
     var body: some View {
         
         SwipeableRow(
             id: habit.id, actions: {
                 Button(action: {
                     print("Edit tapped for \(habit.title)")
+                    editHabitAction()
                 }) {
                     HStack {
                         Image("editIcon")

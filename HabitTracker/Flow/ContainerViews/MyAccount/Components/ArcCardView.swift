@@ -38,6 +38,7 @@ struct ArcCardView: View {
             VStack(spacing: 0) {
                 Image(icon)
                     .resizable()
+                    .foregroundStyle(iconColor)
                     .frame(width: 60, height: 60)
                     .shadow(radius: 5)
                     .padding(.top, 10)

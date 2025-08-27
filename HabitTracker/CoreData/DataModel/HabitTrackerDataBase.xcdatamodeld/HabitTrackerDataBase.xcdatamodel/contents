@@ -21,6 +21,9 @@
         <relationship name="subscribedArcs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscribedArc" inverseName="arcTemplate" inverseEntity="SubscribedArc"/>
     </entity>
     <entity name="Badge" representedClassName="Badge" syncable="YES">
+        <attribute name="arcDays" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="arcId" optional="YES" attributeType="String"/>
+        <attribute name="arcTitle" optional="YES" attributeType="String"/>
         <attribute name="arcType" optional="YES" attributeType="String"/>
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="completionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

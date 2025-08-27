@@ -16,14 +16,18 @@ struct ListLayout: View {
             // Arc Cards
             ForEach(state.arcs) { arc in
                 NavigationLink { ArcDetailView(arcID: arc.id) } label: {
-                    ArcRowList(arc: arc)
-                        .navigationBarHidden(true)
+                    ArcRowList(arc: arc, editArcAction: {
+                        
+                    })
+                    .navigationBarHidden(true)
                 }
                 .buttonStyle(.plain)
             }
             // Habit Cards
             ForEach(state.habits) { habit in
-                HabitRowList(habit: habit)
+                HabitRowList(habit: habit, editHabitAction: {
+                    
+                })
             }
         }
         .padding(.top, 8)

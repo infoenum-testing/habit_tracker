@@ -11,22 +11,27 @@ import Foundation
 struct ArcRowList: View {
     @EnvironmentObject var state: AppState
     @EnvironmentObject var swipeManager: SwipeManager
-
     let arc: Arc
+    let editArcAction: () -> Void
     
     var body: some View {
         SwipeableRow(
                     id: arc.id,
                     actions: {
-                        HStack {
-                            Image("editIcon")
-                                .foregroundColor(.black)
-                                .frame(width: 30, height: 30)
-                                .padding(.leading,20)
-                            Spacer()
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        Button(action: {
+                            print("Edit tapped for \(arc.title)")
+                            editArcAction()
+                        }) {
+                            HStack {
+                                Image("editIcon")
+                                    .foregroundColor(.black)
+                                    .frame(width: 30, height: 30)
+                                    .padding(.leading,20)
+                                Spacer()
+                            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        }
                     },
                     content: {
                 VStack(spacing: 0) {

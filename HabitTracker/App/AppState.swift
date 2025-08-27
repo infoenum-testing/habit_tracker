@@ -85,8 +85,11 @@ final class AppDataStore: ObservableObject {
     @Published var allArcs: [ArcTemplate] = []
     @Published var subscribedArcs: [SubscribedArc] = []
     @Published var subscribedHabits: [SubscribedHabit] = []
+    @Published var allBadges: [Badge] = []
+
     
      init() {
+        
         refreshData()
     }
     
@@ -97,6 +100,7 @@ final class AppDataStore: ObservableObject {
         allArcs = manager.fetchAllArcs()
         subscribedArcs = manager.fetchSubscribedArcs()
         subscribedHabits = subscribedArcs.flatMap { ($0.subscribedHabits as? Set<SubscribedHabit>) ?? [] }
+        allBadges = manager.fetchAllBadges()
     }
     
     // MARK: - Actions
@@ -115,4 +119,5 @@ final class AppDataStore: ObservableObject {
         CoreDataManager.shared.deleteSubscribedArc(subArc)
         refreshData()
     }
+    
 }

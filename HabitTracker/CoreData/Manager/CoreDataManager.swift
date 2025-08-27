@@ -94,6 +94,13 @@ final class CoreDataManager {
         return subArc
     }
     
+    // MARK: - Fetch Badges
+    func fetchAllBadges() -> [Badge] {
+        let request: NSFetchRequest<Badge> = Badge.fetchRequest()
+        return (try? context.fetch(request)) ?? []
+    }
+
+    
     // MARK: - Complete Arc
     func completeArc(_ subArc: SubscribedArc) {
         subArc.status = "completed"
@@ -107,15 +114,22 @@ final class CoreDataManager {
         subArc.history = history
         
         // Create Badge
-        let badge = Badge(context: context)
-        badge.arcType = subArc.arcTemplate?.title
-        badge.completionDate = Date()
-        badge.color = subArc.arcTemplate?.colorToken
+        if let arc = subArc.arcTemplate {
+            let badge = Badge(context: context)
+            badge.id = UUID()
+            badge.arcId = arc.id
+            badge.arcTitle = arc.title
+            badge.arcType = arc.category
+            badge.arcDays = Int32(arc.durationDays)
+            badge.color = arc.colorToken
+            badge.completionDate = Date()
+        }
         
-        // Delete subscription
+        // Delete subscription after completion
         context.delete(subArc)
         saveContext()
     }
+
     
     // MARK: - Delete Subscription
     func deleteSubscribedArc(_ subArc: SubscribedArc) {
@@ -285,5 +299,50 @@ extension CoreDataManager {
         print("Habits in this arc: \(subscribedArc.subscribedHabits?.count ?? 0)")
         
         return subscribedArc
+    }
+}
+
+
+extension CoreDataManager {
+    
+    // Dummy badge seeding
+    func seedDummyBadges() {
+        // Example arc JSON data (hardcoded for now)
+        let arcs: [[String: Any]] = [
+            [
+                "id": "arc-guthealth",
+                "title": "Gut Health Arc",
+                "durationDays": 60,
+                "category": "Health",
+                "colorToken": "green"
+            ],
+            [
+                "id": "arc-dentalcare",
+                "title": "Dental Care Arc",
+                "durationDays": 30,
+                "category": "Health",
+                "colorToken": "blue"
+            ],
+            [
+                "id": "arc-wellness",
+                "title": "Wellness Arc",
+                "durationDays": 45,
+                "category": "Health",
+                "colorToken": "orange"
+            ]
+        ]
+        
+        for arc in arcs {
+            let badge = Badge(context: context)
+            badge.id = UUID()
+            badge.arcId = arc["id"] as? String
+            badge.arcTitle = arc["title"] as? String
+            badge.arcType = arc["category"] as? String
+            badge.arcDays = Int32(arc["durationDays"] as? Int ?? 0)
+            badge.color = arc["colorToken"] as? String
+            badge.completionDate = Date()
+        }
+        
+        saveContext()
     }
 }

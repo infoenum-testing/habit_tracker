@@ -29,3 +29,11 @@ extension Date {
             .map { $0.stripTime() }
     }
 }
+
+extension Date {
+    func toReadableString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d, yyyy"
+        return formatter.string(from: self)
+    }
+}

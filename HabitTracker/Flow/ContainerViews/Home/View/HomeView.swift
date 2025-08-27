@@ -11,6 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var state: AppState
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var swipeManager = SwipeManager()
+    @State private var showEditArc = false
 
 
     var body: some View {
@@ -30,7 +31,13 @@ struct HomeView: View {
                         VStack(spacing: 12) {
                             // Arc Cards
                             ForEach(state.arcs) { arc in
-                                    ArcRowList(arc: arc)
+                                ArcRowList(arc: arc, editArcAction: {
+                                   
+                                    withAnimation(.spring()) {
+                                        showEditArc = true
+                                        swipeManager.closeAll()
+                                    }
+                                })
                                     .onTapGesture {
                                         withAnimation(.spring()) {
                                             swipeManager.closeAll()
@@ -40,7 +47,11 @@ struct HomeView: View {
                             }
                             // Habit Cards
                             ForEach(state.habits) { habit in
-                                HabitRowList(habit: habit)
+                                HabitRowList(habit: habit, editHabitAction: {
+                                    withAnimation(.spring()) {
+                                        swipeManager.closeAll()
+                                    }
+                                })
                                     .onTapGesture {
                                         withAnimation(.spring()) {
                                             swipeManager.closeAll()
@@ -59,6 +70,10 @@ struct HomeView: View {
             .background(.black)
             .navigationBarHidden(true)
         
+            .fullScreenCover(isPresented: $showEditArc) {
+                   EditArcSheet(isPresented: $showEditArc)
+                    .preferredColorScheme(.dark)
+               }
             .onAppear {
               let a =  CoreDataManager.shared.fetchAllArcsData()
                 print("Fetched Arcs from CoreData: \(a.count)")

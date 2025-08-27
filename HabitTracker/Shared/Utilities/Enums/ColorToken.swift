@@ -25,11 +25,31 @@ enum ColorToken: String, CaseIterable {
         }
     }
     
+    
+    var imageName: String {
+            switch self {
+            case .blue: return "arcBlue"
+            case .cyan: return "arcCyan"
+            case .red: return "arcRed"
+            case .purple: return "arcPurple"
+            case .orange: return "arcOrange"
+            case .green: return "arcGreen"
+            }
+        }
+    
     static func from(string: String) -> Color {
         let cleaned = string
             .lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
-        return ColorToken(rawValue: cleaned)?.color ?? .white // default if not found
+        return ColorToken(rawValue: cleaned)?.color ?? .white
     }
+    
+    static func imageName(from string: String?) -> String {
+           guard let string = string else { return "arcGreen" }
+           let cleaned = string
+               .lowercased()
+               .trimmingCharacters(in: .whitespacesAndNewlines)
+           return ColorToken(rawValue: cleaned)?.imageName ?? "arcGreen"
+       }
 }
