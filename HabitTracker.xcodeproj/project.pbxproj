@@ -100,6 +100,8 @@
 		EBB66A0F2E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A012E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift */; };
 		EBB66A102E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A022E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift */; };
 		EBB66A112E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A032E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift */; };
+		EBB66A132E5DC11C00638C9B /* ColorToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A122E5DC11200638C9B /* ColorToken.swift */; };
+		EBB66A152E5DC41500638C9B /* initialData.json in Resources */ = {isa = PBXBuildFile; fileRef = EBB66A142E5DC41500638C9B /* initialData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +200,8 @@
 		EBB66A012E5D93EE00638C9B /* SubscribedArc+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedArc+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EBB66A022E5D93EE00638C9B /* SubscribedHabit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EBB66A032E5D93EE00638C9B /* SubscribedHabit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB66A122E5DC11200638C9B /* ColorToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToken.swift; sourceTree = "<group>"; };
+		EBB66A142E5DC41500638C9B /* initialData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initialData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,6 +420,7 @@
 		B7A3CC012E50FDCC00674792 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				EBB66A122E5DC11200638C9B /* ColorToken.swift */,
 				B7A3CBFF2E50FDCC00674792 /* HomeLayout.swift */,
 				B7A3CC002E50FDCC00674792 /* ItemType.swift */,
 			);
@@ -456,6 +461,7 @@
 				B7A3CBEA2E50FDCC00674792 /* Resources */,
 				B7A3CC032E50FDCC00674792 /* Shared */,
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
+				EBB66A142E5DC41500638C9B /* initialData.json */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -701,6 +707,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB66A152E5DC41500638C9B /* initialData.json in Resources */,
 				E98EDF772E5C428300E42196 /* Inter_18pt-Regular.ttf in Resources */,
 				E98EDF782E5C428300E42196 /* Inter_18pt-Bold.ttf in Resources */,
 				E98EDF792E5C428300E42196 /* Inter_18pt-SemiBold.ttf in Resources */,
@@ -761,6 +768,7 @@
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
 				EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */,
 				EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */,
+				EBB66A132E5DC11C00638C9B /* ColorToken.swift in Sources */,
 				EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */,
 				EBB66A062E5D93EE00638C9B /* Badge+CoreDataClass.swift in Sources */,
 				EBB66A072E5D93EE00638C9B /* Badge+CoreDataProperties.swift in Sources */,

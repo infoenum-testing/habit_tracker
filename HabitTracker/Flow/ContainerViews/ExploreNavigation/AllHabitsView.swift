@@ -11,6 +11,8 @@ struct AllHabitsView: View {
     
     @EnvironmentObject var router: NavigationRouter
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var appData: AppDataStore
+
     @State private var selectedCategory: String = "All"
     @State private var isSheetPresented: Bool = false
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
@@ -19,6 +21,17 @@ struct AllHabitsView: View {
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
     ]
+    
+    private var filteredHabits: [HabitTemplate] {
+        if selectedCategory == "All" {
+            return appData.allHabits
+        } else {
+            return appData.allHabits.filter { habit in
+                habit.tagsArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
+            }
+        }
+    }
+
     
     var body: some View {
         VStack(spacing: 24) {
@@ -75,17 +88,25 @@ struct AllHabitsView: View {
                 }
             }
             
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 24) {
-                    ForEach(0..<10) { _ in
-                        TrendingCardView()
-                            .onTapGesture {
-//                                router.push(to: .habitCutomizeSheetView)
-                                isSheetPresented.toggle()
-                            }
+            if filteredHabits.isEmpty {
+                    VStack {
+                        Spacer()
+                        Text("No habits found")
+                            .font(.system(size: 20, weight: .medium))
+                            .foregroundColor(.white.opacity(0.6))
+                        Spacer()
                     }
+                    .frame(maxWidth: .infinity)
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 24) {
+                        ForEach(filteredHabits, id: \.id) { habit in
+                            TrendingCardView(habit: habit)
+                                .aspectRatio(1, contentMode: .fit)
+                        }
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)

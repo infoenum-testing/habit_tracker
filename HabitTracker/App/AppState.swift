@@ -79,14 +79,14 @@ import Foundation
 import CoreData
 
 final class AppDataStore: ObservableObject {
-    static let shared = AppDataStore()
+    //static let shared = AppDataStore()
     
     @Published var allHabits: [HabitTemplate] = []
     @Published var allArcs: [ArcTemplate] = []
     @Published var subscribedArcs: [SubscribedArc] = []
     @Published var subscribedHabits: [SubscribedHabit] = []
     
-    private init() {
+     init() {
         refreshData()
     }
     

@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ArcCardCell: View {
+    let arc: ArcTemplate
     var body: some View {
+        
         GeometryReader { geo in
             ZStack {
                 // Background image
-                Image("card")
+                Image(arc.coverImage ?? "")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.size.width, height: geo.size.width)
@@ -23,7 +25,7 @@ struct ArcCardCell: View {
                 VStack(alignment: .leading) {
                     // Top badges
                     HStack(spacing: 8) {
-                        Text("45 Days")
+                        Text("\(arc.durationDays) Days")
                             
                             .foregroundColor(.white)
                             .font(Font.inter(size: 10))
@@ -32,14 +34,16 @@ struct ArcCardCell: View {
                             .background(Color.black.opacity(0.75))
                             .cornerRadius(20)
                             
+                        if let count = arc.habits?.count {
+                            Text("\(count) Habits")
+                                .foregroundColor(.white)
+                                .font(Font.inter(size: 10))
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
+                                .background(Color.black.opacity(0.75))
+                                .cornerRadius(20)
+                        }
                         
-                        Text("5 Habits")
-                            .foregroundColor(.white)
-                            .font(Font.inter(size: 10))
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background(Color.black.opacity(0.75))
-                            .cornerRadius(20)
                         
                        
                     }
@@ -47,13 +51,14 @@ struct ArcCardCell: View {
                     
                     // Bottom text
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("White Smile Arc")
+                        Text(arc.title ?? "")
                             .multilineTextAlignment(.leading)
                             .font(Font.inter(size: 18, weight: .semibold))
                             .foregroundColor(.white.opacity(0.75))
                         
-                        Text("Make a Strong First Impression")
+                        Text(arc.descriptionText ?? "")
                             .multilineTextAlignment(.leading)
+                            .lineLimit(2)
                             .font(Font.inter(size: 13))
                             .foregroundColor(.white.opacity(0.75))
                     }
@@ -64,11 +69,16 @@ struct ArcCardCell: View {
             .frame(width: geo.size.width, height: geo.size.width)
             .cornerRadius(20)
             .clipped()
+            .overlay {
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(ColorToken.from(string: arc.colorToken ?? "white") , lineWidth: 1)
+                    
+            }
         }
     }
 }
 
-#Preview {
-    ArcCardCell()
-        .frame(width: 197)
-}
+//#Preview {
+//    ArcCardCell(arc: arc)
+//        .frame(width: 197)
+//}

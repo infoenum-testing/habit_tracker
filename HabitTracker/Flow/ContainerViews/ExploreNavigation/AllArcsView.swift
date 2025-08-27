@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AllArcsView: View {
     @EnvironmentObject var router: NavigationRouter
+    @EnvironmentObject var appData: AppDataStore
     @Environment(\.dismiss) private var dismiss
     @State private var selectedCategory: String = "All"
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
@@ -71,8 +72,8 @@ struct AllArcsView: View {
             
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(0..<10) { _ in
-                        ArcCardCell()
+                    ForEach(appData.allArcs, id: \.id) { arc in
+                        ArcCardCell(arc: arc)
                             .aspectRatio(1, contentMode: .fit)
                             .onTapGesture {
                                 router.push(to: .arcDetailPreJoinView)

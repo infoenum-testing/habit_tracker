@@ -70,3 +70,10 @@ extension HabitTemplate {
 extension HabitTemplate : Identifiable {
 
 }
+
+
+extension HabitTemplate {
+    var tagsArray: [String] {
+        tags as? [String] ?? []
+    }
+}
