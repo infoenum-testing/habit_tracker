@@ -8,7 +8,7 @@ import SwiftUI
 import Foundation
 
 enum Route: Hashable {
-    case arcDetail(id: UUID)
+    case arcDetail(id: String)
     case allArcsView
     case allHabitsView
     case arcDetailPreJoinView(arcTemplate: ArcTemplate)

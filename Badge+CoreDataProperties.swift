@@ -16,6 +16,10 @@ extension Badge {
         return NSFetchRequest<Badge>(entityName: "Badge")
     }
 
+   
+    @NSManaged public var arcDays: Int32
+    @NSManaged public var arcId: String?
+    @NSManaged public var arcTitle: String?
     @NSManaged public var arcType: String?
     @NSManaged public var color: String?
     @NSManaged public var completionDate: Date?

@@ -2,7 +2,7 @@
 //  SubscribedArc+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 26/08/25.
+//  Created by IE14 on 28/08/25.
 //
 //
 
@@ -19,12 +19,12 @@ extension SubscribedArc {
     @NSManaged public var endDate: Date?
     @NSManaged public var graceEndDate: Date?
     @NSManaged public var id: String?
-    @NSManaged public var pointsEarned: Int32
     @NSManaged public var startDate: Date?
-    @NSManaged public var status: String?
+    @NSManaged public var themeColor: String?
+    @NSManaged public var icon: String?
     @NSManaged public var arcTemplate: ArcTemplate?
-    @NSManaged public var history: History?
     @NSManaged public var subscribedHabits: NSSet?
+    @NSManaged public var progressHistory: NSSet?
 
 }
 
@@ -45,7 +45,150 @@ extension SubscribedArc {
 
 }
 
+// MARK: Generated accessors for progressHistory
+extension SubscribedArc {
+
+    @objc(addProgressHistoryObject:)
+    @NSManaged public func addToProgressHistory(_ value: ArcProgress)
+
+    @objc(removeProgressHistoryObject:)
+    @NSManaged public func removeFromProgressHistory(_ value: ArcProgress)
+
+    @objc(addProgressHistory:)
+    @NSManaged public func addToProgressHistory(_ values: NSSet)
+
+    @objc(removeProgressHistory:)
+    @NSManaged public func removeFromProgressHistory(_ values: NSSet)
+
+}
+
 extension SubscribedArc : Identifiable {
 
 }
 
+
+
+extension SubscribedArc {
+    
+    // MARK: - Wrapped Values
+    
+    var wrappedId: String {
+        id ?? UUID().uuidString
+    }
+    
+    var wrappedThemeColor: String {
+        themeColor ?? "blue"
+    }
+    
+    var wrappedIcon: String {
+        icon ?? ""
+    }
+    
+    var wrappedStartDate: Date {
+        startDate ?? Date()
+    }
+    
+    var wrappedEndDate: Date {
+        endDate ?? Date()
+    }
+    
+    var wrappedGraceEndDate: Date {
+        graceEndDate ?? Date()
+    }
+    
+    // MARK: - ArcTemplate convenience
+    
+    var wrappedTitle: String {
+        arcTemplate?.title ?? "Arc Title"
+    }
+    
+    var wrappedDurationDays: Int {
+        Int(arcTemplate?.durationDays ?? 0)
+    }
+    
+    var wrappedHabitsCount: Int {
+        (arcTemplate?.habits as? Set<HabitTemplate>)?.count ?? 0
+    }
+    
+    var wrappedHabits: [HabitTemplate] {
+        Array(arcTemplate?.habits as? Set<HabitTemplate> ?? [])
+    }
+    
+    // MARK: - Subscribed Habits
+    
+    var habitsArray: [SubscribedHabit] {
+        let set = subscribedHabits as? Set<SubscribedHabit> ?? []
+        return set.sorted { ($0.habit?.title ?? "") < ($1.habit?.title ?? "") }
+    }
+    
+    // MARK: - Progress History
+    
+    var progressArray: [ArcProgress] {
+        let set = progressHistory as? Set<ArcProgress> ?? []
+        return set.sorted { ($0.date ?? Date.distantPast) < ($1.date ?? Date.distantPast) }
+    }
+}
+
+extension SubscribedArc {
+    
+    /// Day number since start (startDate = Day 1, capped at wrappedDurationDays)
+    var currentDayIndex: Int {
+        let calendar = Calendar.current
+        let start = calendar.startOfDay(for: wrappedStartDate)
+        let today = calendar.startOfDay(for: Date())
+        
+        guard let days = calendar.dateComponents([.day], from: start, to: today).day else {
+            return 1
+        }
+        
+        let dayIndex = days + 1 // +1 because same day should be Day 1
+        return min(max(1, dayIndex), wrappedDurationDays)
+    }
+    
+    /// Days remaining until arc ends (never negative)
+    var daysRemaining: Int {
+        max(0, wrappedDurationDays - currentDayIndex)
+    }
+}
+
+
+// MARK: - Progress Arc Computed Properties
+extension SubscribedArc {
+    
+    func isHabitCompleted(_ habitId: String) -> Bool {
+           todayProgress?.completedHabitIds?.contains(habitId) ?? false
+       }
+    
+    /// All progress entries sorted by date
+    var allProgress: [ArcProgress] {
+        guard let progressSet = progressHistory as? Set<ArcProgress> else { return [] }
+        return progressSet.sorted { ($0.date ?? Date.distantPast) < ($1.date ?? Date.distantPast) }
+    }
+    
+    /// Progress object for **today**
+    var todayProgress: ArcProgress? {
+        let today = Calendar.current.startOfDay(for: Date())
+        return allProgress.first { progress in
+            if let date = progress.date {
+                return Calendar.current.isDate(date, inSameDayAs: today)
+            }
+            return false
+        }
+    }
+    
+    /// Total tasks for today
+    var totalTasksToday: Int {
+        return Int(todayProgress?.totalHabits ?? 0)
+    }
+    
+    /// Completed tasks for today
+    var completedTasksToday: Int {
+        return Int(todayProgress?.completedHabitIds?.count ?? 0)
+    }
+    
+    /// Progress ratio (0–1) for today
+    var todayCompletionRatio: Double {
+        guard totalTasksToday > 0 else { return 0 }
+        return Double(completedTasksToday) / Double(totalTasksToday)
+    }
+}

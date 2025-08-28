@@ -22,15 +22,16 @@ extension ArcTemplate {
     @NSManaged public var coverImage: String?
     @NSManaged public var descriptionText: String?
     @NSManaged public var durationDays: Int16
-    @NSManaged public var habitRefs: NSObject?
-    @NSManaged public var icons: NSObject?
+    @NSManaged public var habitRefs: [[String: Any]]?
+
+    @NSManaged public var icons: [String: String]?
     @NSManaged public var id: String?
     @NSManaged public var metaAuthor: String?
     @NSManaged public var metaCreatedAt: Date?
     @NSManaged public var metaUpdatedAt: Date?
-    @NSManaged public var pointsPerDay: NSObject?
+    @NSManaged public var pointsPerDay: [String: Any]?
     @NSManaged public var shortSubtitle: String?
-    @NSManaged public var tags: NSObject?
+    @NSManaged public var tags: [String]?
     @NSManaged public var title: String?
     @NSManaged public var habits: NSSet?
     @NSManaged public var subscribedArcs: NSSet?
@@ -77,10 +78,17 @@ extension ArcTemplate : Identifiable {
 
 extension ArcTemplate {
     var tagsArray: [String] {
-        tags as? [String] ?? []
+        tags ?? []
     }
     
     var habitsArray: [HabitTemplate] {
         Array(habits as? Set<HabitTemplate> ?? [])
     }
+}
+
+
+
+struct ArcIcons: Codable {
+    var days: String
+    var habits: String
 }

@@ -30,11 +30,6 @@ struct EditArcSheet: View {
               .padding(.vertical)
             // Header
             HStack {
-                
-//                CircleButton(icon: "back") {
-//                    isPresented = false
-//                }
-                
                 Button(action: {
                     isPresented = false
                 }) {
@@ -64,7 +59,7 @@ struct EditArcSheet: View {
                     .padding()
                 
                 // Color grid
-                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 16) {
+                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 10) {
                     ForEach(colors, id: \.self) { color in
                         ZStack {
                             

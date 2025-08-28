@@ -10,7 +10,7 @@ import Foundation
 
 
 class SwipeManager: ObservableObject {
-    @Published var openRowID: UUID? = nil
+    @Published var openRowID: String? = nil
     
     func closeAll() {
         openRowID = nil

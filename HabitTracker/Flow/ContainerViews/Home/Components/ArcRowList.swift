@@ -11,33 +11,40 @@ import Foundation
 struct ArcRowList: View {
     @EnvironmentObject var state: AppState
     @EnvironmentObject var swipeManager: SwipeManager
-
-    let arc: Arc
+    let arc: SubscribedArc
+    let editArcAction: () -> Void
     
     var body: some View {
+        let color = ColorToken.from(string: arc.wrappedThemeColor)
+        let icon = ColorToken.imageName(from: arc.wrappedThemeColor)
         SwipeableRow(
-                    id: arc.id,
+            id: arc.id ?? "",
                     actions: {
-                        HStack {
-                            Image("editIcon")
-                                .foregroundColor(.black)
-                                .frame(width: 30, height: 30)
-                                .padding(.leading,20)
-                            Spacer()
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        Button(action: {
+                            print("Edit tapped for \(arc.wrappedTitle)")
+                            editArcAction()
+                        }) {
+                            HStack {
+                                Image("editIcon")
+                                    .foregroundColor(.black)
+                                    .frame(width: 30, height: 30)
+                                    .padding(.leading,20)
+                                Spacer()
+                            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        }
                     },
                     content: {
                 VStack(spacing: 0) {
                     HStack(spacing: 12) {
-                        IconBadge(icon: arc.icon, tint: arc.color)
+                        IconBadge(icon: icon, tint: color)
                             .padding(.leading)
                         
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(arc.title)
+                            Text(arc.arcTemplate?.title ?? "Arc Title")
                                 .font(.sfProDisplay(.semibold, size: 19))
-                            Text("Day \(arc.dayNumber)")
+                            Text("Day \(arc.wrappedDurationDays)")
                                 .font(.sfProDisplay(.light, size: 14))
                                 .opacity(0.7)
                         }
@@ -46,10 +53,10 @@ struct ArcRowList: View {
                         Spacer()
                         
                         CounterPill(
-                            text: "\(arc.completedCount)/\(arc.totalCount)",
-                            tint: arc.color,
-                            completed: arc.completedCount,
-                            total: arc.totalCount
+                            text: "\(arc.completedTasksToday)/\(arc.wrappedHabitsCount)",
+                            tint: color,
+                            completed: arc.completedTasksToday,
+                            total: arc.wrappedHabitsCount
                         )
                         .padding(.trailing)
                     }
@@ -58,9 +65,9 @@ struct ArcRowList: View {
                     
                     if state.layout == .grid {
                         GridTileView(itemType: .arc,
-                                     values: arc.history,
-                                     filledCount: arc.completedArc,
-                                     selectedColor: arc.color)
+                                     values: [1,2,3,4,5,6,7,8,9],
+                                     filledCount: 0,
+                                     selectedColor: color)
                         .frame(height: 100)
                         .padding(.horizontal, 10)
                         .padding(.bottom, 10)
@@ -69,10 +76,10 @@ struct ArcRowList: View {
                 .background(
                     LinearGradient(
                         gradient: Gradient(colors: [
-                            arc.color.opacity(0.18),
-                            arc.color.opacity(0.28),
-                            arc.color.opacity(0.38),
-                            arc.color.opacity(0.48)
+                            color.opacity(0.18),
+                            color.opacity(0.28),
+                            color.opacity(0.38),
+                            color.opacity(0.48)
                         ]),
                         startPoint: .bottom,
                         endPoint: .top
@@ -83,7 +90,7 @@ struct ArcRowList: View {
                
                 .overlay(
                     RoundedRectangle(cornerRadius: swipeManager.openRowID == arc.id ? 0 : 14, style: .continuous)
-                        .stroke(arc.color, lineWidth: 1)
+                        .stroke(color, lineWidth: 1)
                 )
             }
         )

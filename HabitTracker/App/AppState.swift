@@ -85,8 +85,12 @@ final class AppDataStore: ObservableObject {
     @Published var allArcs: [ArcTemplate] = []
     @Published var subscribedArcs: [SubscribedArc] = []
     @Published var subscribedHabits: [SubscribedHabit] = []
+    @Published var allBadges: [Badge] = []
+    @Published var allSubscribedArcs: [SubscribedArc] = []
+
     
      init() {
+        
         refreshData()
     }
     
@@ -97,6 +101,8 @@ final class AppDataStore: ObservableObject {
         allArcs = manager.fetchAllArcs()
         subscribedArcs = manager.fetchSubscribedArcs()
         subscribedHabits = subscribedArcs.flatMap { ($0.subscribedHabits as? Set<SubscribedHabit>) ?? [] }
+        allBadges = manager.fetchAllBadges()
+        allSubscribedArcs = manager.fetchSubscribedArcs()
     }
     
     // MARK: - Actions
@@ -114,5 +120,23 @@ final class AppDataStore: ObservableObject {
     func deleteArc(_ subArc: SubscribedArc) {
         CoreDataManager.shared.deleteSubscribedArc(subArc)
         refreshData()
+    }
+    
+    func fetchSubscribedArcs() -> [SubscribedArc] {
+        return CoreDataManager.shared.fetchSubscribedArcs()
+    }
+    
+    func subscribeToFirstArc() {
+        let manager = CoreDataManager.shared
+        let subsArcs = manager.subscribeToFirstArc()
+        refreshData()
+    }
+}
+
+
+extension AppDataStore {
+    func toggleHabit(_ habitId: String, in arc: SubscribedArc) {
+        CoreDataManager.shared.toggleHabit(habitId, in: arc)
+        refreshData() // reload UI
     }
 }
