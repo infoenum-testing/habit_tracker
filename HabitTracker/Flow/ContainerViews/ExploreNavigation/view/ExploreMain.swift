@@ -10,8 +10,7 @@ struct ExploreMain: View {
     
     @EnvironmentObject var router: NavigationRouter
     @EnvironmentObject var appData: AppDataStore
-    @State public var isPresentSheet: Bool = false
-    
+    @State private var selectedHabit: HabitTemplate?
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -30,16 +29,19 @@ struct ExploreMain: View {
                 VStack(spacing: 32) {
                     ExploreSection(
                         title: "Trending Arcs",
-                        columns: columns, onViewAll: {
-                            router.push(to: .allArcsView)
-                        }, isHabitSection: false, isPresentSheet: $isPresentSheet
+                        columns: columns,
+                        onViewAll: { router.push(to: .allArcsView) },
+                        isHabitSection: false,
+                        selectedHabit: $selectedHabit
                     )
                     
                     ExploreSection(
                         title: "Trending Habits",
-                        columns: columns, onViewAll: {
-                            router.push(to: .allHabitsView)
-                        }, isHabitSection: true, isPresentSheet: $isPresentSheet
+                        columns: columns,
+                        onViewAll: { router.push(to: .allHabitsView) },
+                        isHabitSection: true,
+                        
+                        selectedHabit: $selectedHabit
                     )
                 }
                 .padding(.horizontal, 20)
@@ -50,11 +52,13 @@ struct ExploreMain: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color.black)
         .ignoresSafeArea()
-        .sheet(isPresented: $isPresentSheet) {
-            HabitCustomizationSheet()
+        .sheet(item: $selectedHabit) { habit in
+            
+            HabitCustomizationSheet(habit: habit)
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(45)
+            
         }
     }
 }
@@ -98,7 +102,7 @@ struct ExploreSection: View {
     var isHabitSection: Bool
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var router: NavigationRouter
-    @Binding public var isPresentSheet: Bool
+    @Binding var selectedHabit: HabitTemplate?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -128,7 +132,7 @@ struct ExploreSection: View {
                 if isHabitSection {
                     ForEach(appData.allHabits, id: \.id) { habit in
                         HabitCardCellView(habit: habit) {
-                            isPresentSheet.toggle()
+                            selectedHabit = habit
                         }
                         .aspectRatio(1, contentMode: .fit)
                     }

@@ -186,7 +186,7 @@ extension CoreDataManager {
             arc.category = aData["category"] as? String
             arc.colorToken = aData["colorToken"] as? String
             arc.coverImage = aData["coverImage"] as? String
-            arc.benefits = aData["benefits"] as? NSObject
+            arc.benefits = aData["benefits"] as? [String]
             arc.icons = aData["icons"] as? NSObject
             arc.tags = aData["tags"] as? NSObject
             

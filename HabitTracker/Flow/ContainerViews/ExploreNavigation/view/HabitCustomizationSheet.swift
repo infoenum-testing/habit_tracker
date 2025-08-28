@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HabitCustomizationSheet: View {
-    
+    let habit: HabitTemplate
     @Environment(\.dismiss) private var dismiss
     @State private var selectedIcon: String = "figure.walk"
     @State private var selectedColor: Color = .appPurple
@@ -23,13 +23,14 @@ struct HabitCustomizationSheet: View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 0) {
                 ScrollView(showsIndicators: false) {
-                    HeaderSection(dismiss: dismiss)
+                    HeaderSection(dismiss: dismiss, habit: habit)
                     
                     DashedLine()
                     
-                    HabitPreviewSection(color: selectedColor, icon: selectedIcon)
+                    HabitPreviewSection(color: selectedColor, icon: selectedIcon, habit: habit)
                         .padding(.top, 24)
                         .padding(.horizontal, 20)
+                    
                     
                     IconGridView(color: selectedColor, icon: $selectedIcon)
                         .padding(.horizontal, 20)
@@ -63,7 +64,7 @@ struct HabitCustomizationSheet: View {
 // MARK: - Header Section
 private struct HeaderSection: View {
     let dismiss: DismissAction
-    
+    var habit: HabitTemplate
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             RoundBackButton(backgroundColor: .black.opacity(0.65)) {
@@ -72,11 +73,11 @@ private struct HeaderSection: View {
             .padding(.top, 20)
             
             VStack(alignment: .leading, spacing: 6) {
-                Text("Brush & Floss")
+                Text(habit.title ?? "")
                     .font(Font.sfPro(size: 38, weight: .semibold))
                     .foregroundStyle(.white)
                 
-                Text("Brush and floss your teeth today")
+                Text(habit.details ?? "")
                     .font(Font.sfPro(size: 16, weight: .medium))
                     .foregroundStyle(.white.opacity(0.5))
             }
@@ -92,19 +93,20 @@ private struct HeaderSection: View {
 private struct HabitPreviewSection: View {
     var color: Color
     var icon: String
+    var habit: HabitTemplate
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             Text("Preview Habit")
                 .font(Font.sfPro(size: 16, weight: .medium))
                 .foregroundColor(.white)
             
-            DailyHabitsCellView(icon: icon, habit: HabitTemplate(), color: color)
+                        DailyHabitsCellView(habit: habit, color: color)
         }
     }
 }
 
 // MARK: - Color Picker
-private struct ColorPickerSection: View {
+ struct ColorPickerSection: View {
     let colors: [Color]
     @Binding var selectedColor: Color
     
@@ -157,6 +159,6 @@ private struct ColorSelectionButton: View {
     }
 }
 
-#Preview {
-    HabitCustomizationSheet()
-}
+//#Preview {
+//    HabitCustomizationSheet()
+//}

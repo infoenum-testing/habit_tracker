@@ -12,4 +12,5 @@ extension Color {
     static let backgroundColor  = Color("131313")
     static let cellBackgroundColor  = Color("262626")
     static let navBackground  = Color("1A1A1A")
+    static let sheetBackgroundColor  = Color("141414")
 }

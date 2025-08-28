@@ -12,7 +12,6 @@ enum Route: Hashable {
     case allArcsView
     case allHabitsView
     case arcDetailPreJoinView(arcTemplate: ArcTemplate)
-    case habitCutomizeSheetView
 }
 
 extension Route: View {
@@ -26,8 +25,6 @@ extension Route: View {
             AllHabitsView()
         case .arcDetailPreJoinView(let arcTemplate):
             ArcDetailPreJoinView(arc: arcTemplate)
-        case .habitCutomizeSheetView:
-            HabitCustomizationSheet()
         }
     }
 }

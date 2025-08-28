@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ArcCardCell: View {
+    
     let arc: ArcTemplate
     let action:() -> Void
+    
     var body: some View {
         
         GeometryReader { geo in
@@ -64,6 +66,7 @@ struct ArcCardCell: View {
                             .foregroundColor(.white.opacity(0.75))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    
                 }
                 .padding()
             }

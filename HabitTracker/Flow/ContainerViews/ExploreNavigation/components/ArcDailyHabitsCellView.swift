@@ -2,12 +2,12 @@
 //  DailyHabitsCellView.swift
 //  HabitTracker
 //
-//  Created by ie15 on 28/08/25.
+//  Created by ie15 on 26/08/25.
 //
 
 import SwiftUI
 
-struct DailyHabitsCellView: View {
+struct ArcDailyHabitsCellView: View {
     var icon: String = "apple"
     let habit: HabitTemplate
     var color: Color
@@ -21,7 +21,7 @@ struct DailyHabitsCellView: View {
                       .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
                       .cornerRadius(9.2)
                     
-                    Image(habit.icon ?? "apple")
+                    Image("apple")
                         .foregroundStyle(color)
                       .frame(width: 22.05, height: 22.05)
                 }
@@ -45,18 +45,18 @@ struct DailyHabitsCellView: View {
                 .padding(0)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                ZStack {
-                    Rectangle()
-                        .foregroundStyle(color)
-                      .frame(width: 51.471, height: 51.072)
-                      .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
-                      .cornerRadius(9.2)
-
-                    Image("check")
-                      .frame(width: 22, height: 22)
-
-                }
-                .frame(width: 51.471, height: 51.072)
+//                ZStack {
+//                    Rectangle()
+//                        .foregroundStyle(color)
+//                      .frame(width: 51.471, height: 51.072)
+//                      .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+//                      .cornerRadius(9.2)
+//                    
+//                    Image("check")
+//                      .frame(width: 22, height: 22)
+//                      
+//                }
+//                .frame(width: 51.471, height: 51.072)
             }
             .padding(.leading, 11.2)
             .padding(.trailing, 19.2)
@@ -67,3 +67,7 @@ struct DailyHabitsCellView: View {
         
     }
 }
+
+//#Preview {
+//    DailyHabitsCellView(color: .red)
+//}

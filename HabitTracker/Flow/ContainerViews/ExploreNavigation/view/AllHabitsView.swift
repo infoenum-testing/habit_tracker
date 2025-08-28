@@ -14,7 +14,7 @@ struct AllHabitsView: View {
     @EnvironmentObject var appData: AppDataStore
     
     @State private var selectedCategory: String = "All"
-    @State private var isSheetPresented: Bool = false
+    @State private var selectedHabit: HabitTemplate? = nil
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
     
     private let columns = [
@@ -102,7 +102,7 @@ struct AllHabitsView: View {
                     LazyVGrid(columns: columns, spacing: 24) {
                         ForEach(filteredHabits, id: \.id) { habit in
                             HabitCardCellView(habit: habit){
-                                isSheetPresented = true
+                                selectedHabit = habit
                             }
                             .aspectRatio(1, contentMode: .fit)
                             
@@ -115,8 +115,8 @@ struct AllHabitsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.black.ignoresSafeArea())
         .navigationBarBackButtonHidden()
-        .sheet(isPresented: $isSheetPresented) {
-            HabitCustomizationSheet()
+        .sheet(item: $selectedHabit) { habit in
+            HabitCustomizationSheet(habit: habit)
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(45)
