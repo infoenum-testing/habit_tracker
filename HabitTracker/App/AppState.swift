@@ -87,6 +87,7 @@ final class AppDataStore: ObservableObject {
     @Published var subscribedHabits: [SubscribedHabit] = []
     @Published var allBadges: [Badge] = []
     @Published var allSubscribedArcs: [SubscribedArc] = []
+    @Published var selectedArctoDelete: SubscribedArc?
 
     
      init() {
@@ -107,10 +108,34 @@ final class AppDataStore: ObservableObject {
     
     // MARK: - Actions
     
-    func subscribe(to arc: ArcTemplate) {
-        _ = CoreDataManager.shared.subscribeArc(arc)
-        refreshData()
+    func subscribe(to arc: ArcTemplate, completion: ((Result<SubscribedArc, Error>) -> Void)? = nil) {
+        let result = CoreDataManager.shared.subscribeArc(to: arc)
+        
+        switch result {
+        case .success(let subscribedArc):
+            print("✅ Successfully subscribed to arc: \(subscribedArc.wrappedTitle)")
+            refreshData()
+            completion?(.success(subscribedArc))
+            
+        case .failure(let error):
+            print("❌ Failed to subscribe: \(error.localizedDescription)")
+            completion?(.failure(error))
+        }
     }
+    
+    func unsubscribe(arcId: String, completion: @escaping (Bool) -> Void) {
+        switch CoreDataManager.shared.unsubscribeArc(withId: arcId) {
+        case .success:
+            print("✅ Successfully unsubscribed from arc with id: \(arcId)")
+            refreshData()
+            completion(true)
+        case .failure(let error):
+            print("❌ Failed to unsubscribe: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+
+
     
     func completeArc(_ subArc: SubscribedArc) {
         CoreDataManager.shared.completeArc(subArc)
@@ -128,7 +153,7 @@ final class AppDataStore: ObservableObject {
     
     func subscribeToFirstArc() {
         let manager = CoreDataManager.shared
-        let subsArcs = manager.subscribeToFirstArc()
+        _ = manager.subscribeToFirstArc()
         refreshData()
     }
 }
@@ -137,6 +162,6 @@ final class AppDataStore: ObservableObject {
 extension AppDataStore {
     func toggleHabit(_ habitId: String, in arc: SubscribedArc) {
         CoreDataManager.shared.toggleHabit(habitId, in: arc)
-        refreshData() // reload UI
+        refreshData()
     }
 }

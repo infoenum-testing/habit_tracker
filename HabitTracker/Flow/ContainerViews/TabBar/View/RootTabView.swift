@@ -31,10 +31,6 @@ struct RootTabView: View {
             .ignoresSafeArea(.keyboard)
             .navigationDestination(for: Route.self) { $0 }
         }.navigationBarHidden(true)
-            .onAppear {
-               // state.subscribeToFirstArc()
-            }
-        
     }
 }
 

@@ -36,6 +36,7 @@ struct HomeView: View {
                             ForEach(appData.allSubscribedArcs) { arc in
                                 ArcRowList(arc: arc) {
                                     withAnimation(.spring()) {
+                                        appData.selectedArctoDelete = arc
                                         showEditArc = true
                                         swipeManager.closeAll()
                                     }

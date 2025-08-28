@@ -148,7 +148,7 @@ struct ShareProgressButton: View {
     var buttonAction: () -> Void
     var body: some View {
         Button(action: {
-            // handle tap
+            buttonAction()
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 22, style: .continuous)

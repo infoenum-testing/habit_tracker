@@ -66,29 +66,78 @@ final class CoreDataManager {
     }
     
     // MARK: - Subscribe to Arc
-    func subscribeArc(_ arc: ArcTemplate) -> SubscribedArc {
-        let subArc = SubscribedArc(context: context)
-        subArc.id = arc.id
-        subArc.arcTemplate = arc
-        subArc.startDate = Date()
-        subArc.endDate = Calendar.current.date(byAdding: .day, value: Int(arc.durationDays), to: Date())
-        subArc.graceEndDate = Calendar.current.date(byAdding: .hour, value: Int(arc.durationDays) + 1, to: Date())
+    func subscribeArc(to arcTemplate: ArcTemplate) -> Result<SubscribedArc, Error> {
+        let subscribedArc = SubscribedArc(context: context)
+        subscribedArc.id = arcTemplate.id
+        subscribedArc.arcTemplate = arcTemplate
+        subscribedArc.startDate = Date()
+        subscribedArc.endDate = Calendar.current.date(
+            byAdding: .day,
+            value: Int(arcTemplate.durationDays),
+            to: Date()
+        )
+        subscribedArc.graceEndDate = Calendar.current.date(
+            byAdding: .hour,
+            value: 24,
+            to: subscribedArc.endDate ?? Date()
+        )
+        subscribedArc.themeColor = arcTemplate.colorToken
+        subscribedArc.icon = arcTemplate.icons?["days"] ?? ""
         
-        // Create SubscribedHabits
-        if let habitsSet = arc.habits as? Set<HabitTemplate> {
-            for habit in habitsSet {
+        // Link habits from ArcTemplate to SubscribedHabit
+        if let habits = arcTemplate.habits as? Set<HabitTemplate> {
+            for habit in habits {
                 let subHabit = SubscribedHabit(context: context)
                 subHabit.id = habit.id
                 subHabit.habit = habit
+                subHabit.subscribedArc = subscribedArc
                 subHabit.requiredPerDay = habit.defaultGoalPerDay
-                subHabit.subscribedArc = subArc
-                subArc.addToSubscribedHabits(subHabit)
+                subscribedArc.addToSubscribedHabits(subHabit)
             }
         }
         
-        saveContext()
-        return subArc
+        // Create ArcProgress only for today
+        let totalHabits = arcTemplate.habits?.count ?? 0
+        let calendar = Calendar.current
+        let progress = ArcProgress(context: context)
+        progress.id = UUID().uuidString
+        progress.subscribedArc = subscribedArc
+        progress.date = calendar.startOfDay(for: Date())
+        progress.totalHabits = Int16(totalHabits)
+        progress.completedHabits = 0
+        subscribedArc.addToProgressHistory(progress)
+        
+        // Save safely
+        do {
+            try context.save()
+            return .success(subscribedArc)
+        } catch {
+            context.rollback() // revert any partial inserts
+            return .failure(error)
+        }
     }
+
+    // MARK: - Unsubscribe to Arc
+
+    func unsubscribeArc(withId id: String) -> Result<Void, Error> {
+            let context = persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+
+            do {
+                if let arc = try context.fetch(fetchRequest).first {
+                    context.delete(arc)
+                    try context.save()
+                    return .success(())
+                } else {
+                    return .failure(NSError(domain: "CoreDataManager",
+                                            code: 404,
+                                            userInfo: [NSLocalizedDescriptionKey: "Arc not found"]))
+                }
+            } catch {
+                return .failure(error)
+            }
+        }
     
     // MARK: - Fetch Badges
     func fetchAllBadges() -> [Badge] {
@@ -317,6 +366,9 @@ extension CoreDataManager {
         saveContext()
         return subscribedArc
     }
+    
+    
+    
     
     
 

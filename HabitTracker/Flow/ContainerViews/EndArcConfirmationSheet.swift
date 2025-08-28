@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EndArcConfirmationSheet: View {
+    @EnvironmentObject var appData: AppDataStore
+
     @Binding var isPresented: Bool
     var arcName: String
     
@@ -24,7 +26,10 @@ struct EndArcConfirmationSheet: View {
             ZStack(alignment: .top) {
                 HStack {
                     Spacer()
-                    Button(action: { isPresented = false }) {
+                    Button(action: {
+                        isPresented = false
+                       
+                    }) {
                         HStack {
                             Image(systemName: "xmark")
                                 .font(.title3)
@@ -59,7 +64,10 @@ struct EndArcConfirmationSheet: View {
             
             // End Arc Button
             Button {
-                // end arc action
+                if let arcToDelete = appData.selectedArctoDelete {
+                    appData.deleteArc(arcToDelete)
+                    isPresented = false
+                }
             } label: {
                 HStack {
                     Image("circleBan")
@@ -90,11 +98,11 @@ struct EndArcConfirmationSheet: View {
     }
 }
 
-
-struct EndArcConfirmationSheet_Previews: PreviewProvider {
-    static var previews: some View {
-        EndArcConfirmationSheet(isPresented: .constant(true),
-                                arcName: "Gut Health Arc")
-            .preferredColorScheme(.dark)
-    }
-}
+//
+//struct EndArcConfirmationSheet_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EndArcConfirmationSheet(isPresented: .constant(true),
+//                                arcName: "Gut Health Arc")
+//            .preferredColorScheme(.dark)
+//    }
+//}

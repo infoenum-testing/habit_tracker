@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArcDetailPreJoinView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var appdata: AppDataStore
     let arc: ArcTemplate
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -82,7 +83,7 @@ struct ArcDetailPreJoinView: View {
                         .padding(.bottom, 0)
                         
                         VStack(alignment: .leading, spacing: 13) {
-                            ForEach(arc.habitsArray, id: \.id) { habit in
+                            ForEach(arc.habitsArray) { habit in
                                 ArcDailyHabitsCellView( habit: habit, color: .red)
                             }
                         }
@@ -97,7 +98,15 @@ struct ArcDetailPreJoinView: View {
                 .navigationBarBackButtonHidden()
                 
                 ShareProgressButton(title: "Join arc",buttonAction: {
-                    // handle share action
+                    appdata.subscribe(to: arc) { result in
+                        switch result {
+                        case .success(let subscribedArc):
+                            print("🎉 Subscribed and got arc: \(subscribedArc)")
+                           dismiss()
+                        case .failure(let error):
+                            print("⚠️ Subscription failed: \(error)")
+                        }
+                    }
                 })
                 .padding(.horizontal, 20)
             }
