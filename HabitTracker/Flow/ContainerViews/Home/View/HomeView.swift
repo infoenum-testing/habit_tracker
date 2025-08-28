@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var state: AppState
+    @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var swipeManager = SwipeManager()
     @State private var showEditArc = false
@@ -30,34 +31,51 @@ struct HomeView: View {
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 12) {
                             // Arc Cards
-                            ForEach(state.arcs) { arc in
-                                ArcRowList(arc: arc, editArcAction: {
-                                   
+                            
+                            
+                            ForEach(appData.allSubscribedArcs) { arc in
+                                ArcRowList(arc: arc) {
                                     withAnimation(.spring()) {
                                         showEditArc = true
                                         swipeManager.closeAll()
                                     }
-                                })
-                                    .onTapGesture {
-                                        withAnimation(.spring()) {
-                                            swipeManager.closeAll()
-                                        }
-                                        router.push(to: Route.arcDetail(id: arc.id))
-                                    }
-                            }
-                            // Habit Cards
-                            ForEach(state.habits) { habit in
-                                HabitRowList(habit: habit, editHabitAction: {
+                                }
+                                .onTapGesture {
                                     withAnimation(.spring()) {
                                         swipeManager.closeAll()
                                     }
-                                })
-                                    .onTapGesture {
-                                        withAnimation(.spring()) {
-                                            swipeManager.closeAll()
-                                        }
-                                    }
+                                    router.push(to: Route.arcDetail(id: arc.wrappedId))
+                                }
                             }
+                            
+//                            ForEach(state.arcs) { arc in
+//                                ArcRowList(arc: arc, editArcAction: {
+//                                   
+//                                    withAnimation(.spring()) {
+//                                        showEditArc = true
+//                                        swipeManager.closeAll()
+//                                    }
+//                                })
+//                                    .onTapGesture {
+//                                        withAnimation(.spring()) {
+//                                            swipeManager.closeAll()
+//                                        }
+//                                        router.push(to: Route.arcDetail(id: arc.id))
+//                                    }
+//                            }
+                            // Habit Cards
+//                            ForEach(state.habits) { habit in
+//                                HabitRowList(habit: habit, editHabitAction: {
+//                                    withAnimation(.spring()) {
+//                                        swipeManager.closeAll()
+//                                    }
+//                                })
+//                                    .onTapGesture {
+//                                        withAnimation(.spring()) {
+//                                            swipeManager.closeAll()
+//                                        }
+//                                    }
+//                            }
                         }
                         .padding(.top, 8)
                         .padding(.bottom, 16)

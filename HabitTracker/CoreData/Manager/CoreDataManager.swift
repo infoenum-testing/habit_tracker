@@ -22,7 +22,7 @@ final class CoreDataManager {
     var context: NSManagedObjectContext { persistentContainer.viewContext }
     
     private init() {
-        persistentContainer = NSPersistentContainer(name: "HabitTrackerDataBase") // your .xcdatamodeld name
+        persistentContainer = NSPersistentContainer(name: "HabitTrackerDataBase")
         persistentContainer.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Core Data store failed: \(error.localizedDescription)")
@@ -72,7 +72,7 @@ final class CoreDataManager {
         subArc.arcTemplate = arc
         subArc.startDate = Date()
         subArc.endDate = Calendar.current.date(byAdding: .day, value: Int(arc.durationDays), to: Date())
-        subArc.status = "active"
+        subArc.graceEndDate = Calendar.current.date(byAdding: .hour, value: Int(arc.durationDays) + 1, to: Date())
         
         // Create SubscribedHabits
         if let habitsSet = arc.habits as? Set<HabitTemplate> {
@@ -81,10 +81,6 @@ final class CoreDataManager {
                 subHabit.id = habit.id
                 subHabit.habit = habit
                 subHabit.requiredPerDay = habit.defaultGoalPerDay
-                subHabit.completedToday = 0
-                subHabit.totalCompleted = 0
-                subHabit.status = "active"
-                subHabit.lastUpdated = Date()
                 subHabit.subscribedArc = subArc
                 subArc.addToSubscribedHabits(subHabit)
             }
@@ -103,7 +99,6 @@ final class CoreDataManager {
     
     // MARK: - Complete Arc
     func completeArc(_ subArc: SubscribedArc) {
-        subArc.status = "completed"
         
         let history = History(context: context)
         history.arcId = subArc.id
@@ -111,7 +106,6 @@ final class CoreDataManager {
         history.status = "completed"
         history.pointsEarned = "2"
         history.subscribedArc = subArc
-        subArc.history = history
         
         // Create Badge
         if let arc = subArc.arcTemplate {
@@ -143,6 +137,8 @@ final class CoreDataManager {
         return (try? context.fetch(request)) ?? []
     }
 }
+
+
 
 
 extension CoreDataManager {
@@ -200,9 +196,20 @@ extension CoreDataManager {
             arc.category = aData["category"] as? String
             arc.colorToken = aData["colorToken"] as? String
             arc.coverImage = aData["coverImage"] as? String
-            arc.benefits = aData["benefits"] as? NSObject
-            arc.icons = aData["icons"] as? NSObject
-            arc.tags = aData["tags"] as? NSObject
+            
+            arc.benefits = aData["benefits"] as? [String]
+            if let iconsDict = aData["icons"] as? [String: String] {
+                arc.icons = iconsDict
+            }
+            
+            if let pointsDict = aData["pointsPerDay"] as? [String: Any] {
+                arc.pointsPerDay = pointsDict
+            }
+
+            // tags
+            if let tagsArray = aData["tags"] as? [String] {
+                arc.tags = tagsArray
+            }
             
             if let createdAtStr = aData["metaCreatedAt"] as? String {
                 arc.metaCreatedAt = ISO8601DateFormatter().date(from: createdAtStr)
@@ -258,7 +265,7 @@ extension CoreDataManager {
         }
     }
     
-    /// Subscribe to the first ArcTemplate (create SubscribedArc)
+    
     func subscribeToFirstArc() -> SubscribedArc? {
         let arcs = fetchAllArcs()
         guard let firstArc = arcs.first else {
@@ -271,9 +278,9 @@ extension CoreDataManager {
         subscribedArc.arcTemplate = firstArc
         subscribedArc.startDate = Date()
         subscribedArc.endDate = Calendar.current.date(byAdding: .day, value: Int(firstArc.durationDays), to: Date())
-        subscribedArc.status = "active"
-        subscribedArc.pointsEarned = 0
         subscribedArc.graceEndDate = Calendar.current.date(byAdding: .hour, value: 24, to: subscribedArc.endDate ?? Date())
+        subscribedArc.themeColor = firstArc.colorToken
+        subscribedArc.icon = firstArc.icons?["days"] ?? ""
         
         // Link habits from ArcTemplate to SubscribedHabit
         if let habits = firstArc.habits as? Set<HabitTemplate> {
@@ -283,22 +290,68 @@ extension CoreDataManager {
                 subHabit.habit = habit
                 subHabit.subscribedArc = subscribedArc
                 subHabit.requiredPerDay = habit.defaultGoalPerDay
-                subHabit.completedToday = 0
-                subHabit.totalCompleted = 0
-                subHabit.status = "active"
-                subHabit.lastUpdated = Date()
                 subscribedArc.addToSubscribedHabits(subHabit)
             }
         }
         
+        // ✅ Seed dummy progress history for last 2 days + today
+        let totalHabits = firstArc.habits?.count ?? 0
+        let calendar = Calendar.current
+        
+        for i in (-2...0) { // -2, -1, 0 → 2 days ago, yesterday, today
+            let progress = ArcProgress(context: context)
+            progress.id = UUID().uuidString
+            progress.subscribedArc = subscribedArc
+            progress.date = calendar.date(byAdding: .day, value: i, to: Date())
+            progress.totalHabits = Int16(totalHabits)
+            
+            // Dummy completed habits (random example, can be customized)
+            if totalHabits > 0 {
+                progress.completedHabits = Int16(Int.random(in: 0...totalHabits))
+            } else {
+                progress.completedHabits = 0
+            }
+            
+            subscribedArc.addToProgressHistory(progress)
+        }
         saveContext()
-        
-        print("Subscribed to Arc: \(firstArc.title ?? "")")
-        print("Start Date: \(subscribedArc.startDate ?? Date())")
-        print("End Date: \(subscribedArc.endDate ?? Date())")
-        print("Habits in this arc: \(subscribedArc.subscribedHabits?.count ?? 0)")
-        
         return subscribedArc
+    }
+    
+    
+
+}
+
+extension CoreDataManager {
+    func toggleHabit(_ habitId: String, in arc: SubscribedArc) {
+        let today = Calendar.current.startOfDay(for: Date())
+
+        // Fetch or create today's progress
+        let progress = arc.todayProgress ?? {
+            let newProgress = ArcProgress(context: context)
+            newProgress.id = UUID().uuidString
+            newProgress.date = today
+            newProgress.subscribedArc = arc
+            newProgress.totalHabits = Int16(arc.wrappedHabitsCount)
+            newProgress.completedHabitIds = []
+            arc.addToProgressHistory(newProgress)
+            return newProgress
+        }()
+
+        var completed = progress.completedHabitIds ?? []
+
+        if completed.contains(habitId) {
+            // Uncheck
+            completed.removeAll { $0 == habitId }
+        } else {
+            // Check
+            completed.append(habitId)
+        }
+
+        progress.completedHabitIds = completed
+        progress.completedHabits = Int16(completed.count)
+
+        saveContext()
     }
 }
 

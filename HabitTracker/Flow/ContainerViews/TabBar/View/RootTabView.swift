@@ -9,7 +9,7 @@ import Foundation
 
 
 struct RootTabView: View {
-    @EnvironmentObject var state: AppState
+    @EnvironmentObject var state: AppDataStore
     @State private var tab: Int = 0
     @EnvironmentObject private var router: NavigationRouter
     
@@ -29,9 +29,11 @@ struct RootTabView: View {
                 CustomTabBar(tab: $tab)
             }
             .ignoresSafeArea(.keyboard)
-//            .environmentObject(router)
             .navigationDestination(for: Route.self) { $0 }
         }.navigationBarHidden(true)
+            .onAppear {
+               // state.subscribeToFirstArc()
+            }
         
     }
 }

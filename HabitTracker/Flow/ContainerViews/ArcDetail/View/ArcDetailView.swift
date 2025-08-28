@@ -12,57 +12,58 @@ struct ArcDetailView: View {
     @Environment(\.dismiss) private var dismiss
 
     @EnvironmentObject var state: AppState
+    @EnvironmentObject var appData: AppDataStore
     
     @State private var showEditArc = false
     @State private var showConfirmation = false
-    let arcID: UUID
-
-    var arc: Arc { state.arcs.first(where: { $0.id == arcID })! }
-    
+    let arcID: String
+   
+    var arc: SubscribedArc {
+        appData.subscribedArcs.first(where: { $0.wrappedId == arcID })!
+    }
     
     private var progress: CGFloat {
-       // guard 10 > 0 else { return 0 }
-        return CGFloat(5) / CGFloat(10)
+        return CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
     }
 
     var body: some View {
+        let color = ColorToken.from(string: arc.wrappedThemeColor)
         ZStack {
             VStack(spacing: 0) {
-                DetailHeader(title: arc.title, day: arc.dayNumber, backButtonTapped: {
+                DetailHeader(title: arc.wrappedTitle, day: arc.wrappedDurationDays, backButtonTapped: {
                     dismiss()
                 }, editButtonTapped: {
                     showEditArc = true
                 })
                 ScrollView(showsIndicators: false) {
-                   
-                   
-                    
                     
                     ScrollView(.horizontal) {
                         HStack {
                             DayStripView(
-                                arc: state.arcs.first(where: { $0.id == arcID })!
+                                arc: appData.subscribedArcs.first(where: { $0.wrappedId == arcID })!
                             )
                         }.padding(5)
                     }.scrollDisabled(true)
 
-                    CircularArcProgressView(progress: progress, tint: arc.color)
+                    CircularArcProgressView(progress: progress, tint: color)
                         .padding()
                     
                     
                     VStack(alignment: .center, spacing: 6) {
-                            Text(arc.title)
+                        Text(arc.wrappedTitle)
                                 .font(.sfProDisplay(.semibold, size: 35))
                                 .foregroundColor(.white)
-                            Text("30 Days Challenge")
+                        Text("\(arc.wrappedDurationDays) Days Challenge")
                                 .font(.sfProDisplay(.medium, size: 16))
                                 .foregroundColor(.textGray)
                         }
 
              
                     VStack(spacing: 12) {
-                        ForEach(arc.tasksForToday) { task in
-                            ArcTaskRow(arcID: arc.id, task: task, tint: arc.color)
+                        ForEach(arc.wrappedHabits) { task in
+                            if let id = task.id {
+                                ArcTaskRow(arcID: arc.wrappedId, task: task, isCompleted: arc.isHabitCompleted(id), tint: color)
+                            }
                         }
                     }
                     .padding(.horizontal, 16)
@@ -83,7 +84,7 @@ struct ArcDetailView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(LinearGradient(colors: [arc.color.opacity(0.55),.black, .black], startPoint: .top, endPoint: .bottom))
+        .background(LinearGradient(colors: [color.opacity(0.55),.black, .black], startPoint: .top, endPoint: .bottom))
         .navigationBarBackButtonHidden()
         .toolbar(.hidden)
         
@@ -99,20 +100,20 @@ struct ArcDetailView: View {
     }
 }
 
-struct ArcDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let mockState = AppState(arcs: MockData.arcs, habits: MockData.habits)
-
-        return ArcDetailView(arcID: MockData.arcs[0].id)
-            .environmentObject(mockState)
-            .background(Color.black)
-    }
-}
+//struct ArcDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let mockState = AppState(arcs: MockData.arcs, habits: MockData.habits)
+//
+//        return ArcDetailView(arcID: MockData.arcs[0].id)
+//            .environmentObject(mockState)
+//            .background(Color.black)
+//    }
+//}
 
 
 
 struct CircularArcProgressView: View {
-    var progress: Double            // 0.0 → 1.0
+    var progress: Double
     var tint: Color
     
     var body: some View {
@@ -187,11 +188,11 @@ struct ShareProgressButton_Previews: PreviewProvider {
 
 
 struct DayStripView: View {
-    let arc: Arc   // contains totaldays and dayNumber
+    let arc: SubscribedArc   // contains totaldays and dayNumber
     
     private var visibleDays: [Int?] {
-        let total = arc.totaldays
-        let current = arc.dayNumber
+        let total = arc.wrappedDurationDays
+        let current = 1
         
         // Always want 5 slots around the current day
         let start = current - 2
@@ -208,8 +209,8 @@ struct DayStripView: View {
                 if let day = day {
                     DayPill(
                         day: day,
-                        isSelected: (day == arc.dayNumber),
-                        isPast: day < arc.dayNumber
+                        isSelected: (day == arc.currentDayIndex),
+                        isPast: day < arc.currentDayIndex
                     )
                 } else {
                     // placeholder (transparent to keep spacing)

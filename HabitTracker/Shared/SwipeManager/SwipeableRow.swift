@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct SwipeableRow<Content: View, Actions: View>: View {
-    let id: UUID
+    let id: String
     let buttonWidth: CGFloat
     let actions: Actions
     let content: Content
@@ -20,7 +20,7 @@ struct SwipeableRow<Content: View, Actions: View>: View {
     @GestureState private var dragOffset: CGFloat = 0
     
     init(
-        id: UUID,
+        id: String,
         buttonWidth: CGFloat = 80,
         @ViewBuilder actions: () -> Actions,
         @ViewBuilder content: () -> Content
