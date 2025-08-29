@@ -2,7 +2,7 @@
 //  HabitProgress+CoreDataProperties.swift
 //  HabitTracker
 //
-//  Created by IE14 on 28/08/25.
+//  Created by IE14 on 29/08/25.
 //
 //
 
@@ -16,9 +16,11 @@ extension HabitProgress {
         return NSFetchRequest<HabitProgress>(entityName: "HabitProgress")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var date: Date?
     @NSManaged public var completedCount: Int16
+    @NSManaged public var date: Date?
+    @NSManaged public var id: String?
+    @NSManaged public var totalHabits: Int16
+    @NSManaged public var completedHabitIds: [String]?
     @NSManaged public var subscribedHabit: SubscribedHabit?
 
 }

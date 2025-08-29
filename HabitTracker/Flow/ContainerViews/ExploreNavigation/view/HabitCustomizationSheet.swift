@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitCustomizationSheet: View {
     let habit: HabitTemplate
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var appData: AppDataStore
     @State private var selectedIcon: String = "figure.walk"
     @State private var selectedColor: Color = .appPurple
     
@@ -42,7 +43,7 @@ struct HabitCustomizationSheet: View {
                     )
                     .padding(.horizontal, 20)
                     ShareProgressButton(title: "Save habit") {
-                        
+                        appData.subscribeToHabit(to: habit)
                     }
                     .padding(.top, 26)
                     .padding(.horizontal, 20)

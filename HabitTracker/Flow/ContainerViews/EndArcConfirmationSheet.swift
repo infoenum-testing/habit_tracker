@@ -18,17 +18,17 @@ struct EndArcConfirmationSheet: View {
             // header (x button)
             
             Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 100, height: 5)
-              .background(.white.opacity(0.2))
-              .cornerRadius(3)
+                .foregroundColor(.clear)
+                .frame(width: 100, height: 5)
+                .background(.white.opacity(0.2))
+                .cornerRadius(3)
             
             ZStack(alignment: .top) {
                 HStack {
                     Spacer()
                     Button(action: {
                         isPresented = false
-                       
+                        
                     }) {
                         HStack {
                             Image(systemName: "xmark")
@@ -40,7 +40,7 @@ struct EndArcConfirmationSheet: View {
                             .cornerRadius(20)
                     }
                 }
-               // .background(.red)
+                // .background(.red)
                 
                 Text("Are you sure you want\n to end this Arc!")
                     .font(.sfProDisplay(.semibold, size: 24))
@@ -49,18 +49,19 @@ struct EndArcConfirmationSheet: View {
             }.padding(.horizontal)
             
             
-           
+            VStack{
             
             Image("trash")
                 .resizable()
                 .resizable()
                 .frame(width: 100, height: 100)
-                .padding(.vertical)
             
             Text("You will lose all your progress on\n\(arcName)")
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
+                .padding(.top,20)
+            }.padding(.vertical,20)
             
             // End Arc Button
             Button {
@@ -91,6 +92,7 @@ struct EndArcConfirmationSheet: View {
                 // handle share action
             })
             .padding(.horizontal)
+            .padding(.top, 10)
         }
        // .background(.sheetBackground)
         .ignoresSafeArea()

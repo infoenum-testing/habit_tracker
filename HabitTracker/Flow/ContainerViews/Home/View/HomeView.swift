@@ -13,6 +13,7 @@ struct HomeView: View {
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var swipeManager = SwipeManager()
     @State private var showEditArc = false
+    @State private var showHabitEditSheet = false
 
 
     var body: some View {
@@ -49,39 +50,26 @@ struct HomeView: View {
                                 }
                             }
                             
-//                            ForEach(state.arcs) { arc in
-//                                ArcRowList(arc: arc, editArcAction: {
-//                                   
-//                                    withAnimation(.spring()) {
-//                                        showEditArc = true
-//                                        swipeManager.closeAll()
-//                                    }
-//                                })
-//                                    .onTapGesture {
-//                                        withAnimation(.spring()) {
-//                                            swipeManager.closeAll()
-//                                        }
-//                                        router.push(to: Route.arcDetail(id: arc.id))
-//                                    }
-//                            }
-                            // Habit Cards
-//                            ForEach(state.habits) { habit in
-//                                HabitRowList(habit: habit, editHabitAction: {
-//                                    withAnimation(.spring()) {
-//                                        swipeManager.closeAll()
-//                                    }
-//                                })
-//                                    .onTapGesture {
-//                                        withAnimation(.spring()) {
-//                                            swipeManager.closeAll()
-//                                        }
-//                                    }
-//                            }
+                            ForEach(appData.allSubscribedHabits) { habit in
+                                HabitRowList(habit: habit, editHabitAction: {
+                                    withAnimation(.spring()) {
+                                        appData.selectedHabitToDelete = habit
+                                        showHabitEditSheet = true
+                                        swipeManager.closeAll()
+                                    }
+                                })
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            swipeManager.closeAll()
+                                        }
+                                    }
+                            }
                         }
                         .padding(.top, 8)
                         .padding(.bottom, 16)
                         .padding(.horizontal, 20)
-                    }  .environmentObject(swipeManager)
+                    }
+                    .environmentObject(swipeManager)
                 }
             }
             .toolbar(.hidden)
@@ -89,14 +77,31 @@ struct HomeView: View {
             .background(.black)
             .navigationBarHidden(true)
         
-            .fullScreenCover(isPresented: $showEditArc) {
-                   EditArcSheet(isPresented: $showEditArc)
+//            .fullScreenCover(isPresented: $showEditArc) {
+//                   EditArcSheet(isPresented: $showEditArc)
+//                    .preferredColorScheme(.dark)
+//               }
+        
+            .fullScreenCover(isPresented: $showHabitEditSheet) {
+                HabitEditSheet()
                     .preferredColorScheme(.dark)
                }
+        
+            .sheet(isPresented: $showEditArc) {
+                EditArcSheet(isPresented: $showEditArc)
+                    .presentationDetents([.height(400)])
+                    .presentationCornerRadius(24)
+                    .presentationBackground {
+                        Color(UIColor.systemBackground)
+                    }
+                    .preferredColorScheme(.dark)
+                    
+            }
             .onAppear {
               let a =  CoreDataManager.shared.fetchAllArcsData()
                 print("Fetched Arcs from CoreData: \(a.count)")
             }
+           
     }
 }
 

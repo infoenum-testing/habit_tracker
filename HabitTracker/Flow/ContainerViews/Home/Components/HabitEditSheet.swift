@@ -11,6 +11,8 @@ struct HabitEditSheet: View {
     
     @State private var selectedIcon: String = "figure.walk"
     @State private var selectedColor: Color = .appPurple
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var appData: AppDataStore
     
     private let colors: [Color] = [
         .appGreen, .appPurple, .appRed, .appOrange, .appYellow,
@@ -21,7 +23,7 @@ struct HabitEditSheet: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 RoundBackButton(backgroundColor: .black.opacity(0.65)) {
-                    
+                    dismiss()
                 }
                 Spacer()
                 Text("Edit Habit")
@@ -49,7 +51,10 @@ struct HabitEditSheet: View {
             
             Button {
                 // action
-                
+                if let habit = appData.selectedHabitToDelete {
+                    appData.deleteHabit(habit)
+                    dismiss()
+                }
             } label: {
                 HStack {
                     Image("circleBan")
@@ -65,10 +70,8 @@ struct HabitEditSheet: View {
                 .frame(height: 70)
                 .background(.redDark)
                 .cornerRadius(22)
-                
             }
             .padding(.bottom, 26)
-            
         }
         .padding(.horizontal, 20)
         .padding(.top, 20)

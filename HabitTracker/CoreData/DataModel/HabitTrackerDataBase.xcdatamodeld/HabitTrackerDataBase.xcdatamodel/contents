@@ -39,8 +39,10 @@
     </entity>
     <entity name="HabitProgress" representedClassName="HabitProgress" syncable="YES">
         <attribute name="completedCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="completedHabitIds" optional="YES" attributeType="Transformable"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="totalHabits" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="subscribedHabit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubscribedHabit" inverseName="progressHistory" inverseEntity="SubscribedHabit"/>
     </entity>
     <entity name="HabitTemplate" representedClassName="HabitTemplate" syncable="YES">

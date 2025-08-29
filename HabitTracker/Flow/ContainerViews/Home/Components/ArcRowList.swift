@@ -18,7 +18,7 @@ struct ArcRowList: View {
         let color = ColorToken.from(string: arc.wrappedThemeColor)
         let icon = ColorToken.imageName(from: arc.wrappedThemeColor)
         SwipeableRow(
-            id: arc.id ?? "",
+            id: arc.wrappedId,
                     actions: {
                         Button(action: {
                             print("Edit tapped for \(arc.wrappedTitle)")

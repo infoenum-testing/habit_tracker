@@ -47,3 +47,100 @@ extension SubscribedHabit {
 extension SubscribedHabit : Identifiable {
 
 }
+
+
+extension SubscribedHabit {
+    
+    // MARK: - Basic properties
+    var wrappedId: String {
+        id ?? ""
+    }
+    
+    var wrappedRequiredPerDay: Int {
+        Int(requiredPerDay)
+    }
+    
+    var wrappedIcon: String {
+        icon ?? habit?.icon ?? "star"
+    }
+    
+    var wrappedThemeColor: String {
+        themeColor ?? "blue"
+    }
+    
+    var wrappedStartDate: Date {
+        startDate ?? Date()
+    }
+    
+    // MARK: - HabitTemplate properties (fallback)
+    var wrappedTitle: String {
+        habit?.title ?? "Untitled Habit"
+    }
+    
+    var wrappedCategory: String {
+        habit?.category ?? "General"
+    }
+    
+    var wrappedDetails: String {
+        habit?.details ?? "No details available"
+    }
+    
+    var wrappedTags: [String] {
+        habit?.tagsArray ?? []
+    }
+    
+    var wrappedPointsPerDay: [String: Any] {
+        habit?.pointsPerDay as! [String : Any]
+    }
+    
+    // MARK: - Relationships
+    var wrappedSubscribedArc: SubscribedArc? {
+        subscribedArc
+    }
+    
+    var wrappedProgressHistory: [HabitProgress] {
+        let set = progressHistory as? Set<HabitProgress> ?? []
+        return set.sorted { $0.date ?? Date() < $1.date ?? Date() }
+    }
+}
+
+
+extension SubscribedHabit {
+    
+    func isHabitCompleted(_ habitId: String) -> Bool {
+           todayProgress?.completedHabitIds?.contains(habitId) ?? false
+       }
+    
+    /// All progress entries sorted by date
+    var allProgress: [HabitProgress] {
+        guard let progressSet = progressHistory as? Set<HabitProgress> else { return [] }
+        return progressSet.sorted { ($0.date ?? Date.distantPast) < ($1.date ?? Date.distantPast) }
+    }
+    
+    /// Progress object for **today**
+    var todayProgress: HabitProgress? {
+        let today = Calendar.current.startOfDay(for: Date())
+        return allProgress.first { progress in
+            if let date = progress.date {
+                return Calendar.current.isDate(date, inSameDayAs: today)
+            }
+            return false
+        }
+    }
+    
+    /// Total tasks for today
+    var totalTasksToday: Int {
+        return Int(todayProgress?.totalHabits ?? 0)
+    }
+    
+    /// Completed tasks for today
+    var completedTasksToday: Int {
+        return Int(todayProgress?.completedHabitIds?.count ?? 0)
+    }
+    
+    /// Progress ratio (0–1) for today
+    var todayCompletionRatio: Double {
+        guard totalTasksToday > 0 else { return 0 }
+        return Double(completedTasksToday) / Double(totalTasksToday)
+    }
+}
