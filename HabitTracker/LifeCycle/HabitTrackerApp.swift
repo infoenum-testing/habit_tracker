@@ -16,6 +16,7 @@ struct HabitTrackerApp: App {
     init() {
             loadInitialData()
        // CoreDataManager.shared.seedDummyBadges()
+        CoreDataManager.shared.checkAndCompleteExpiredArcs()
         }
     var body: some Scene {
         WindowGroup {

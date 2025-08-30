@@ -11,7 +11,7 @@ import Foundation
 
 struct MyAccountView: View {
     @EnvironmentObject private var appState: AppDataStore
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
@@ -26,38 +26,32 @@ struct MyAccountView: View {
                     .font(.sfProDisplay(.medium, size: 19))
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(
-                           rows: Array(repeating: GridItem(.flexible(), spacing: 0), count: 2),
-                           spacing: 15
-                       ) {
-                           
-                           ForEach(appState.allBadges, id: \.id) { badge in
-                               let color = ColorToken.from(string: badge.color ?? "white")
-                               let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
-
-
-                               ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completionDate?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
-                           }
-//                    ArcCardView(title: "75 Hard",  days: 75, date: "July 18, 2025", icon: "greenArc", iconColor: .red)
-//                    ArcCardView(title: "Gut Health",   days: 60, date: "July 18, 2025", icon: "redArc", iconColor: .green)
-//                    ArcCardView(title: "White Smile",  days: 30, date: "July 18, 2025", icon: "purpleArc", iconColor: .purple)
-//                    ArcCardView(title: "Project 50",   days: 50, date: "July 18, 2025", icon: "orangeArc", iconColor: .orange)
+                        rows: Array(repeating: GridItem(.flexible(), spacing: 0), count: 2),
+                        spacing: 15
+                    ) {
+                        
+                        ForEach(appState.allHistories, id: \.id) { badge in
+                            let color = ColorToken.from(string: badge.color ?? "white")
+                            let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
+                            ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completedAt?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
+                        }
+                    }
+                    .frame(height: 384)
                 }
-                .frame(height: 384)
-            }
-
+                
                 VStack(spacing: 14) {
                     SettingsRow(imageName: "notification",
                                 title: "Notifications",
                                 background: .appDarkGray) {
                         print("Notifications tapped")
                     }
-
+                    
                     SettingsRow(imageName: "profile",
                                 title: "Account Settings",
                                 background: .appDarkGray) {
                         print("Account Settings tapped")
                     }
-
+                    
                     SettingsRow(imageName: "share",
                                 title: "Terms of Service",
                                 background: .clear) {

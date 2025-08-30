@@ -16,7 +16,7 @@ import CoreData
 // MARK: - Arcs
 
 final class CoreDataManager {
-
+    
     static let shared = CoreDataManager()
     
     let persistentContainer: NSPersistentContainer
@@ -95,35 +95,30 @@ final class CoreDataManager {
             return .failure(error)
         }
     }
-
-    // MARK: - Unsubscribe to Arc
-
-    func unsubscribeArc(withId id: String) -> Result<Void, Error> {
-            let context = persistentContainer.viewContext
-            let fetchRequest: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-
-            do {
-                if let arc = try context.fetch(fetchRequest).first {
-                    context.delete(arc)
-                    try context.save()
-                    return .success(())
-                } else {
-                    return .failure(NSError(domain: "CoreDataManager",
-                                            code: 404,
-                                            userInfo: [NSLocalizedDescriptionKey: "Arc not found"]))
-                }
-            } catch {
-                return .failure(error)
-            }
-        }
     
-    // MARK: - Fetch Badges
-    func fetchAllBadges() -> [Badge] {
-        let request: NSFetchRequest<Badge> = Badge.fetchRequest()
-        return (try? context.fetch(request)) ?? []
+    // MARK: - Unsubscribe to Arc
+    
+    func unsubscribeArc(withId id: String) -> Result<Void, Error> {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        
+        do {
+            if let arc = try context.fetch(fetchRequest).first {
+                context.delete(arc)
+                try context.save()
+                return .success(())
+            } else {
+                return .failure(NSError(domain: "CoreDataManager",
+                                        code: 404,
+                                        userInfo: [NSLocalizedDescriptionKey: "Arc not found"]))
+            }
+        } catch {
+            return .failure(error)
+        }
     }
-
+    
+    
     
     // MARK: - Complete Arc
     func completeArc(_ subArc: SubscribedArc) {
@@ -135,23 +130,11 @@ final class CoreDataManager {
         history.pointsEarned = "2"
         history.subscribedArc = subArc
         
-        // Create Badge
-        if let arc = subArc.arcTemplate {
-            let badge = Badge(context: context)
-            badge.id = UUID()
-            badge.arcId = arc.id
-            badge.arcTitle = arc.title
-            badge.arcType = arc.category
-            badge.arcDays = Int32(arc.durationDays)
-            badge.color = arc.colorToken
-            badge.completionDate = Date()
-        }
-        
         // Delete subscription after completion
         context.delete(subArc)
         saveContext()
     }
-
+    
     
     // MARK: - Delete Subscribed Arc
     func deleteSubscribedArc(_ subArc: SubscribedArc) {
@@ -162,6 +145,12 @@ final class CoreDataManager {
     // MARK: - Fetch Subscribed Arcs
     func fetchSubscribedArcs() -> [SubscribedArc] {
         let request: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
+        return (try? context.fetch(request)) ?? []
+    }
+    
+    // MARK: - Fetch Completed Arcs (History)
+    func fetchAllHistories() -> [History] {
+        let request: NSFetchRequest<History> = History.fetchRequest()
         return (try? context.fetch(request)) ?? []
     }
 }
@@ -253,7 +242,7 @@ extension CoreDataManager {
 
 
 extension CoreDataManager {
-
+    
     /// Save habits and arcs from JSON
     func saveDataFromJSON(_ json: [String: Any]) {
         guard let habitsArray = json["habits"] as? [[String: Any]],
@@ -316,7 +305,7 @@ extension CoreDataManager {
             if let pointsDict = aData["pointsPerDay"] as? [String: Any] {
                 arc.pointsPerDay = pointsDict
             }
-
+            
             // tags
             if let tagsArray = aData["tags"] as? [String] {
                 arc.tags = tagsArray
@@ -375,12 +364,65 @@ extension CoreDataManager {
             return []
         }
     }
+    
+    
+    func subscribeToFirstArc() -> SubscribedArc? {
+        let arcs = fetchAllArcs()
+        guard let firstArc = arcs.first else {
+            print("No arcs available to subscribe")
+            return nil
+        }
+        
+        let subscribedArc = SubscribedArc(context: context)
+        subscribedArc.id = firstArc.id
+        subscribedArc.arcTemplate = firstArc
+        subscribedArc.startDate = Date()
+        subscribedArc.endDate = Calendar.current.date(byAdding: .day, value: Int(firstArc.durationDays), to: Date())
+        subscribedArc.graceEndDate = Calendar.current.date(byAdding: .hour, value: 24, to: subscribedArc.endDate ?? Date())
+        subscribedArc.themeColor = firstArc.colorToken
+        subscribedArc.icon = firstArc.icons?["days"] ?? ""
+        
+        // Link habits from ArcTemplate to SubscribedHabit
+        if let habits = firstArc.habits as? Set<HabitTemplate> {
+            for habit in habits {
+                let subHabit = SubscribedHabit(context: context)
+                subHabit.id = habit.id
+                subHabit.habit = habit
+                subHabit.subscribedArc = subscribedArc
+                subHabit.requiredPerDay = habit.defaultGoalPerDay
+                subscribedArc.addToSubscribedHabits(subHabit)
+            }
+        }
+        
+        // ✅ Seed dummy progress history for last 2 days + today
+        let totalHabits = firstArc.habits?.count ?? 0
+        let calendar = Calendar.current
+        
+        for i in (-2...0) { // -2, -1, 0 → 2 days ago, yesterday, today
+            let progress = ArcProgress(context: context)
+            progress.id = UUID().uuidString
+            progress.subscribedArc = subscribedArc
+            progress.date = calendar.date(byAdding: .day, value: i, to: Date())
+            progress.totalHabits = Int16(totalHabits)
+            
+            // Dummy completed habits (random example, can be customized)
+            if totalHabits > 0 {
+                progress.completedHabits = Int16(Int.random(in: 0...totalHabits))
+            } else {
+                progress.completedHabits = 0
+            }
+            
+            subscribedArc.addToProgressHistory(progress)
+        }
+        saveContext()
+        return subscribedArc
+    }
 }
 
 extension CoreDataManager {
     func toggleHabit(_ habitId: String, in arc: SubscribedArc) {
         let today = Calendar.current.startOfDay(for: Date())
-
+        
         // Fetch or create today's progress
         let progress = arc.todayProgress ?? {
             let newProgress = ArcProgress(context: context)
@@ -392,9 +434,9 @@ extension CoreDataManager {
             arc.addToProgressHistory(newProgress)
             return newProgress
         }()
-
+        
         var completed = progress.completedHabitIds ?? []
-
+        
         if completed.contains(habitId) {
             // Uncheck
             completed.removeAll { $0 == habitId }
@@ -402,10 +444,10 @@ extension CoreDataManager {
             // Check
             completed.append(habitId)
         }
-
+        
         progress.completedHabitIds = completed
         progress.completedHabits = Int16(completed.count)
-
+        
         saveContext()
     }
     
@@ -442,47 +484,23 @@ extension CoreDataManager {
     }
 }
 
-
 extension CoreDataManager {
-    
-    // Dummy badge seeding
-    func seedDummyBadges() {
-        // Example arc JSON data (hardcoded for now)
-        let arcs: [[String: Any]] = [
-            [
-                "id": "arc-guthealth",
-                "title": "Gut Health Arc",
-                "durationDays": 60,
-                "category": "Health",
-                "colorToken": "green"
-            ],
-            [
-                "id": "arc-dentalcare",
-                "title": "Dental Care Arc",
-                "durationDays": 30,
-                "category": "Health",
-                "colorToken": "blue"
-            ],
-            [
-                "id": "arc-wellness",
-                "title": "Wellness Arc",
-                "durationDays": 45,
-                "category": "Health",
-                "colorToken": "orange"
-            ]
-        ]
+    // MARK: - Expire Arcs
+    func checkAndCompleteExpiredArcs() {
+        let now = Date()
+        let request: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
         
-        for arc in arcs {
-            let badge = Badge(context: context)
-            badge.id = UUID()
-            badge.arcId = arc["id"] as? String
-            badge.arcTitle = arc["title"] as? String
-            badge.arcType = arc["category"] as? String
-            badge.arcDays = Int32(arc["durationDays"] as? Int ?? 0)
-            badge.color = arc["colorToken"] as? String
-            badge.completionDate = Date()
+        do {
+            let subscribedArcs = try context.fetch(request)
+            for subArc in subscribedArcs {
+                if let endDate = subArc.endDate, now > endDate {
+                    completeArc(subArc)
+                }
+            }
+            saveContext()
+        } catch {
+            print("Failed to fetch subscribed arcs: \(error)")
         }
-        
-        saveContext()
     }
+    
 }
