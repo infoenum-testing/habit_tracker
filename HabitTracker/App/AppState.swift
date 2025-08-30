@@ -84,11 +84,10 @@ final class AppDataStore: ObservableObject {
     @Published var allHabits: [HabitTemplate] = []
     @Published var allArcs: [ArcTemplate] = []
     @Published var subscribedArcs: [SubscribedArc] = []
-    @Published var subscribedHabits: [SubscribedHabit] = []
+    @Published var allSubscribedHabits: [SubscribedHabit] = []
     @Published var allSubscribedArcs: [SubscribedArc] = []
     @Published var selectedArctoDelete: SubscribedArc?
     @Published var allHistories: [History] = []
-
     @Published var selectedHabitToDelete: SubscribedHabit?
     @Published var isShowingDeleteArcConfirmation: Bool = false
     @Published var isShowingDeleteHabitConfirmation: Bool = false
@@ -107,7 +106,6 @@ final class AppDataStore: ObservableObject {
         allArcs = manager.fetchAllArcs()
         subscribedArcs = manager.fetchSubscribedArcs()
         allSubscribedHabits = manager.fetchSubscribedHabits()
-        allBadges = manager.fetchAllBadges()
         allSubscribedArcs = manager.fetchSubscribedArcs()
         allHistories = manager.fetchAllHistories()
     }
