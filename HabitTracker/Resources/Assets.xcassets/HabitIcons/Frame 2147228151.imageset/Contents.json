@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Button (1).pdf",
+      "filename" : "Frame 2147228151.pdf",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

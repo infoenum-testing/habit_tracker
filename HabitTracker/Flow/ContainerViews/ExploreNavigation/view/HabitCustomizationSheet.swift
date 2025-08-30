@@ -12,11 +12,16 @@ struct HabitCustomizationSheet: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appData: AppDataStore
     @State private var selectedIcon: String = "figure.walk"
-    @State private var selectedColor: Color = .appPurple
+    @State private var selectedColor: String = "color.purple"
     
     private let colors: [Color] = [
         .appGreen, .appPurple, .appRed, .appOrange, .appYellow,
         .appBlue, .appPink, .appCyan, .appTan, .appBrown, .appWhite, .appGray
+    ]
+    
+    private let colorsArray: [String] = [
+        "color.green", "color.purple", "color.red", "color.orange", "color.yellow",
+        "color.blue", "color.pink", "color.cyan", "color.tan", "color.brown", "color.white", "color.gray"
     ]
     
     var body: some View {
@@ -28,22 +33,27 @@ struct HabitCustomizationSheet: View {
                     
                     DashedLine()
                     
-                    HabitPreviewSection(color: selectedColor, icon: selectedIcon, habit: habit)
+                    HabitPreviewSection(color: ColorToken.from(string: selectedColor), icon: selectedIcon, habit: habit)
                         .padding(.top, 24)
                         .padding(.horizontal, 20)
                     
                     
-                    IconGridView(color: selectedColor, icon: $selectedIcon)
+                    IconGridView(color: ColorToken.from(string: selectedColor), icon: $selectedIcon)
                         .padding(.horizontal, 20)
                         .padding(.vertical, 26)
                     
                     ColorPickerSection(
-                        colors: colors,
-                        selectedColor: $selectedColor
+                        colors: colorsArray,
+                        selectedColor: $selectedColor, action: {
+                            // Handle color selection if needed
+                        }
                     )
                     .padding(.horizontal, 20)
                     ShareProgressButton(title: "Save habit") {
                         appData.subscribeToHabit(to: habit)
+                        appData.updateSubscribedHabit(habitID: habit.wrappedId, icon: nil, newThemeColor: selectedColor) { _ in
+                            dismiss()
+                        }
                     }
                     .padding(.top, 26)
                     .padding(.horizontal, 20)
@@ -54,7 +64,7 @@ struct HabitCustomizationSheet: View {
         }
         .background(
             LinearGradient(
-                colors: [selectedColor.opacity(0.55), .black, .black],
+                colors: [ColorToken.from(string: selectedColor).opacity(0.55), .black, .black],
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -108,8 +118,9 @@ private struct HabitPreviewSection: View {
 
 // MARK: - Color Picker
  struct ColorPickerSection: View {
-    let colors: [Color]
-    @Binding var selectedColor: Color
+    let colors: [String]
+    @Binding var selectedColor: String
+    let action: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 26) {
@@ -124,6 +135,7 @@ private struct HabitPreviewSection: View {
                         isSelected: color == selectedColor
                     ) {
                         selectedColor = color
+                        action()
                     }
                 }
             }
@@ -133,14 +145,14 @@ private struct HabitPreviewSection: View {
 
 // MARK: - Color Selection Button
 private struct ColorSelectionButton: View {
-    let color: Color
+    let color: String
     let isSelected: Bool
     let onTap: () -> Void
     
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(color)
+                .fill(ColorToken.from(string: color))
                 .frame(width: 48, height: 48)
                 .cornerRadius(19)
                 .padding(5)

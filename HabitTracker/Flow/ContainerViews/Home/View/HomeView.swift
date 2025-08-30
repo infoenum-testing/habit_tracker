@@ -77,11 +77,6 @@ struct HomeView: View {
             .background(.black)
             .navigationBarHidden(true)
         
-//            .fullScreenCover(isPresented: $showEditArc) {
-//                   EditArcSheet(isPresented: $showEditArc)
-//                    .preferredColorScheme(.dark)
-//               }
-        
             .fullScreenCover(isPresented: $showHabitEditSheet) {
                 HabitEditSheet()
                     .preferredColorScheme(.dark)

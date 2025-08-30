@@ -53,20 +53,12 @@ struct HabitRowList: View {
                         }.foregroundStyle(.white)
                         
                         Spacer()
-//                        CheckChip(isOn: state.habits.first(where: { $0.id == habit.id })?.isDone(on: state.selectedDate) ?? false, tint: color) {
-//                            state.toggleHabit(habit)
-//                            state.toggleHabitAndUpdateCount(habit)
-//                        }
-                       // .padding(.trailing)
-                        
                         
                         CheckChip(isOn: habit.isHabitCompleted(habit.wrappedId), tint: color) {
                             
                             guard let subArc = appData.allSubscribedHabits.first(where: { $0.id == habit.wrappedId }) else { return }
 
-                            //withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                             appData.toggleHabit(habit.wrappedId, in: subArc)
-                          //  }
                         }
                         .padding(.trailing)
                         

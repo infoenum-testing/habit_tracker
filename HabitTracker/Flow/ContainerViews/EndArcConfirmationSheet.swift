@@ -9,14 +9,13 @@ import SwiftUI
 
 struct EndArcConfirmationSheet: View {
     @EnvironmentObject var appData: AppDataStore
-
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var navigation: NavigationRouter
     @Binding var isPresented: Bool
     var arcName: String
     
     var body: some View {
         VStack() {
-            // header (x button)
-            
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(width: 100, height: 5)
@@ -40,7 +39,6 @@ struct EndArcConfirmationSheet: View {
                             .cornerRadius(20)
                     }
                 }
-                // .background(.red)
                 
                 Text("Are you sure you want\n to end this Arc!")
                     .font(.sfProDisplay(.semibold, size: 24))
@@ -67,7 +65,9 @@ struct EndArcConfirmationSheet: View {
             Button {
                 if let arcToDelete = appData.selectedArctoDelete {
                     appData.deleteArc(arcToDelete)
-                    isPresented = false
+                    dismiss()
+                    navigation.pop()
+                    navigation.dismissAll()
                 }
             } label: {
                 HStack {
@@ -77,7 +77,6 @@ struct EndArcConfirmationSheet: View {
                     Text("End Arc")
                         .font(.sfProDisplay(.semibold, size: 20))
                         .foregroundStyle(.appRed)
-                        
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 70)
@@ -85,26 +84,17 @@ struct EndArcConfirmationSheet: View {
                 .cornerRadius(22)
             }
             .padding(.horizontal)
-            //.padding(.vertical)
             
-            // Cancel Button
             ShareProgressButton(title: "Cancel",buttonAction: {
-                // handle share action
+                dismiss()
             })
             .padding(.horizontal)
             .padding(.top, 10)
         }
-       // .background(.sheetBackground)
         .ignoresSafeArea()
-        //.padding(.bottom, 20)
+//        .onChange(of: navigation.dismissAllSheets, perform: { newValue in
+//            navigation.pop()
+//            dismiss()
+//        })
     }
 }
-
-//
-//struct EndArcConfirmationSheet_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EndArcConfirmationSheet(isPresented: .constant(true),
-//                                arcName: "Gut Health Arc")
-//            .preferredColorScheme(.dark)
-//    }
-//}

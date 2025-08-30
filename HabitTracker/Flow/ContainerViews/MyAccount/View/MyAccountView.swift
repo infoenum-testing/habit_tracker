@@ -30,11 +30,46 @@ struct MyAccountView: View {
                         spacing: 15
                     ) {
                         
-                        ForEach(appState.allHistories, id: \.id) { badge in
-                            let color = ColorToken.from(string: badge.color ?? "white")
-                            let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
-                            ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completedAt?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
-                        }
+//                        ForEach(appState.allHistories, id: \.id) { badge in
+//                            let color = ColorToken.from(string: badge.color ?? "white")
+//                            let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
+//                            ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completedAt?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
+//                        }
+                        
+                        
+                            ArcCardView(
+                                title: "Arc of Discipline",
+                                days: 60,
+                                date: "18 July 2025",
+                                icon: "arcRed",
+                                iconColor: .appRed
+                            )
+                        
+                            ArcCardView(
+                                title: "Gut Health",
+                                days: 60,
+                                date: "17 July 2025",
+                                icon: "arcGreen",
+                                iconColor: .appGreen
+                            )
+                        
+                            ArcCardView(
+                                title: "Project 50",
+                                days: 60,
+                                date: "12 July 2025",
+                                icon: "arcPurple",
+                                iconColor: .appPurple
+                            )
+                        
+                            ArcCardView(
+                                title: "75 Hard",
+                                days: 60,
+                                date: "12 July 2025",
+                                icon: "arcYellow",
+                                iconColor: .appYellow
+                            )
+                      
+
                     }
                     .frame(height: 384)
                 }
