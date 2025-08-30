@@ -85,9 +85,9 @@ final class AppDataStore: ObservableObject {
     @Published var allArcs: [ArcTemplate] = []
     @Published var subscribedArcs: [SubscribedArc] = []
     @Published var subscribedHabits: [SubscribedHabit] = []
-    @Published var allBadges: [Badge] = []
     @Published var allSubscribedArcs: [SubscribedArc] = []
     @Published var selectedArctoDelete: SubscribedArc?
+    @Published var allHistories: [History] = []
 
     
      init() {
@@ -102,8 +102,8 @@ final class AppDataStore: ObservableObject {
         allArcs = manager.fetchAllArcs()
         subscribedArcs = manager.fetchSubscribedArcs()
         subscribedHabits = subscribedArcs.flatMap { ($0.subscribedHabits as? Set<SubscribedHabit>) ?? [] }
-        allBadges = manager.fetchAllBadges()
         allSubscribedArcs = manager.fetchSubscribedArcs()
+        allHistories = manager.fetchAllHistories()
     }
     
     // MARK: - Actions
