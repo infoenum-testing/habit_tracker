@@ -13,6 +13,7 @@ import UIKit
 
 import Foundation
 import CoreData
+// MARK: - Arcs
 
 final class CoreDataManager {
     
@@ -40,23 +41,13 @@ final class CoreDataManager {
         }
     }
     
-    // MARK: - Fetch Habits & Arcs
-    func fetchAllHabits() -> [HabitTemplate] {
-        let request: NSFetchRequest<HabitTemplate> = HabitTemplate.fetchRequest()
-        return (try? context.fetch(request)) ?? []
-    }
-    
+    // MARK: - Fetch Arcs
+   
     func fetchAllArcs() -> [ArcTemplate] {
         let request: NSFetchRequest<ArcTemplate> = ArcTemplate.fetchRequest()
         return (try? context.fetch(request)) ?? []
     }
     
-    func fetchHabit(by id: String) -> HabitTemplate? {
-        let request: NSFetchRequest<HabitTemplate> = HabitTemplate.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id)
-        request.fetchLimit = 1
-        return (try? context.fetch(request))?.first
-    }
     
     func fetchArc(by id: String) -> ArcTemplate? {
         let request: NSFetchRequest<ArcTemplate> = ArcTemplate.fetchRequest()
@@ -83,18 +74,6 @@ final class CoreDataManager {
         )
         subscribedArc.themeColor = arcTemplate.colorToken
         subscribedArc.icon = arcTemplate.icons?["days"] ?? ""
-        
-        // Link habits from ArcTemplate to SubscribedHabit
-        if let habits = arcTemplate.habits as? Set<HabitTemplate> {
-            for habit in habits {
-                let subHabit = SubscribedHabit(context: context)
-                subHabit.id = habit.id
-                subHabit.habit = habit
-                subHabit.subscribedArc = subscribedArc
-                subHabit.requiredPerDay = habit.defaultGoalPerDay
-                subscribedArc.addToSubscribedHabits(subHabit)
-            }
-        }
         
         // Create ArcProgress only for today
         let totalHabits = arcTemplate.habits?.count ?? 0
@@ -157,7 +136,7 @@ final class CoreDataManager {
     }
     
     
-    // MARK: - Delete Subscription
+    // MARK: - Delete Subscribed Arc
     func deleteSubscribedArc(_ subArc: SubscribedArc) {
         context.delete(subArc)
         saveContext()
@@ -175,6 +154,89 @@ final class CoreDataManager {
         return (try? context.fetch(request)) ?? []
     }
 }
+
+// MARK: - Habits
+extension CoreDataManager {
+    
+    func fetchAllHabits() -> [HabitTemplate] {
+        let request: NSFetchRequest<HabitTemplate> = HabitTemplate.fetchRequest()
+        return (try? context.fetch(request)) ?? []
+    }
+    
+    func fetchHabit(by id: String) -> HabitTemplate? {
+        let request: NSFetchRequest<HabitTemplate> = HabitTemplate.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id)
+        request.fetchLimit = 1
+        return (try? context.fetch(request))?.first
+    }
+    
+    // MARK: - Delete Subscribed Arc
+    func deleteSubscribedHabit(_ subArc: SubscribedHabit) {
+        context.delete(subArc)
+        saveContext()
+    }
+    
+    /// Subscribe to a habit directly (without Arc)
+     func subscribeHabit(
+        from habitTemplate: HabitTemplate,
+        requiredPerDay: Int16 = 1,
+        completion: @escaping (Result<SubscribedHabit, Error>) -> Void
+    ) {
+       // let context = persistentContainer.viewContext
+        let subscribedHabit = SubscribedHabit(context: context)
+        subscribedHabit.id = habitTemplate.id ?? UUID().uuidString
+        subscribedHabit.habit = habitTemplate
+        subscribedHabit.requiredPerDay = requiredPerDay
+        subscribedHabit.icon = habitTemplate.icon ?? "default_icon"
+        subscribedHabit.themeColor = habitTemplate.colorToken ?? "blue"
+        subscribedHabit.startDate = Date()
+        
+        do {
+            try context.save()
+            print("✅ Subscribed to habit: \(habitTemplate.title ?? "Unknown")")
+            completion(.success(subscribedHabit))
+        } catch {
+            context.rollback()
+            print("❌ Failed to subscribe to habit: \(error.localizedDescription)")
+            completion(.failure(error))
+        }
+    }
+    
+    /// Unsubscribe a habit (delete from Core Data)
+     func unsubscribeHabit(
+        habitID: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        let request: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", habitID)
+        
+        do {
+            if let habitToDelete = try context.fetch(request).first {
+                context.delete(habitToDelete)
+                try context.save()
+                print("🗑️ Unsubscribed habit with id: \(habitID)")
+                completion(.success(()))
+            } else {
+                let notFoundError = NSError(
+                    domain: "SubscribedHabit",
+                    code: 404,
+                    userInfo: [NSLocalizedDescriptionKey: "Habit not found for id: \(habitID)"]
+                )
+                completion(.failure(notFoundError))
+            }
+        } catch {
+            context.rollback()
+            print("❌ Failed to unsubscribe habit: \(error.localizedDescription)")
+            completion(.failure(error))
+        }
+    }
+    
+    func fetchSubscribedHabits() -> [SubscribedHabit] {
+        let request: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
+        return (try? context.fetch(request)) ?? []
+    }
+}
+
 
 
 
@@ -386,6 +448,38 @@ extension CoreDataManager {
         progress.completedHabitIds = completed
         progress.completedHabits = Int16(completed.count)
         
+        saveContext()
+    }
+    
+    
+    func toggleHabit(_ habitId: String, in habit: SubscribedHabit) {
+        let today = Calendar.current.startOfDay(for: Date())
+
+        // Fetch or create today's progress
+        let progress = habit.todayProgress ?? {
+            let newProgress = HabitProgress(context: context)
+            newProgress.id = UUID().uuidString
+            newProgress.date = today
+            newProgress.subscribedHabit = habit
+           // newProgress.totalHabits = Int16(habit.wrappedHabitsCount)
+            newProgress.completedHabitIds = []
+            habit.addToProgressHistory(newProgress)
+            return newProgress
+        }()
+
+        var completed = progress.completedHabitIds ?? []
+
+        if completed.contains(habitId) {
+            // Uncheck
+            completed.removeAll { $0 == habitId }
+        } else {
+            // Check
+            completed.append(habitId)
+        }
+
+        progress.completedHabitIds = completed
+        //progress.completedHabits = Int16(completed.count)
+
         saveContext()
     }
 }

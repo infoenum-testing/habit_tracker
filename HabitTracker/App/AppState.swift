@@ -13,7 +13,7 @@ final class AppState: ObservableObject {
     @Published var layout: HomeLayout = .list
     @Published var arcs: [Arc]
     @Published var habits: [Habit]
-
+    
     init(arcs: [Arc], habits: [Habit]) {
         self.arcs = arcs
         self.habits = habits
@@ -22,7 +22,7 @@ final class AppState: ObservableObject {
     enum ListItem: Identifiable {
         case arc(Arc)
         case habit(Habit)
-
+        
         var id: String {
             switch self {
             case .arc(let arc): return arc.id.uuidString   // ✅ convert UUID → String
@@ -30,14 +30,14 @@ final class AppState: ObservableObject {
             }
         }
     }
-
-
-       var allItems: [ListItem] {
-           let arcItems = arcs.map { ListItem.arc($0) }
-           let habitItems = habits.map { ListItem.habit($0) }
-           return arcItems + habitItems
-       }
-
+    
+    
+    var allItems: [ListItem] {
+        let arcItems = arcs.map { ListItem.arc($0) }
+        let habitItems = habits.map { ListItem.habit($0) }
+        return arcItems + habitItems
+    }
+    
     func toggleHabit(_ habit: Habit) {
         let day = selectedDate.stripTime()
         guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
@@ -59,8 +59,8 @@ final class AppState: ObservableObject {
             habits[idx].completedCount -= 1
         }
     }
-
-
+    
+    
     func toggleArcTask(_ taskID: UUID, in arcID: UUID) {
         guard let arcIndex = arcs.firstIndex(where: { $0.id == arcID }) else { return }
         if let tIndex = arcs[arcIndex].tasksForToday.firstIndex(where: { $0.id == taskID }) {
@@ -70,7 +70,7 @@ final class AppState: ObservableObject {
             arcs[arcIndex] = arc
         }
     }
-
+    
     var activeArcs: [Arc] { arcs.filter { _ in true } }
 }
 
@@ -89,8 +89,13 @@ final class AppDataStore: ObservableObject {
     @Published var selectedArctoDelete: SubscribedArc?
     @Published var allHistories: [History] = []
 
+    @Published var selectedHabitToDelete: SubscribedHabit?
+    @Published var isShowingDeleteArcConfirmation: Bool = false
+    @Published var isShowingDeleteHabitConfirmation: Bool = false
     
-     init() {
+    
+    
+    init() {
         
         refreshData()
     }
@@ -101,7 +106,8 @@ final class AppDataStore: ObservableObject {
         allHabits = manager.fetchAllHabits()
         allArcs = manager.fetchAllArcs()
         subscribedArcs = manager.fetchSubscribedArcs()
-        subscribedHabits = subscribedArcs.flatMap { ($0.subscribedHabits as? Set<SubscribedHabit>) ?? [] }
+        allSubscribedHabits = manager.fetchSubscribedHabits()
+        allBadges = manager.fetchAllBadges()
         allSubscribedArcs = manager.fetchSubscribedArcs()
         allHistories = manager.fetchAllHistories()
     }
@@ -134,8 +140,8 @@ final class AppDataStore: ObservableObject {
             completion(false)
         }
     }
-
-
+    
+    
     
     func completeArc(_ subArc: SubscribedArc) {
         CoreDataManager.shared.completeArc(subArc)
@@ -150,18 +156,59 @@ final class AppDataStore: ObservableObject {
     func fetchSubscribedArcs() -> [SubscribedArc] {
         return CoreDataManager.shared.fetchSubscribedArcs()
     }
-    
-    func subscribeToFirstArc() {
-        let manager = CoreDataManager.shared
-        _ = manager.subscribeToFirstArc()
-        refreshData()
-    }
 }
 
 
 extension AppDataStore {
     func toggleHabit(_ habitId: String, in arc: SubscribedArc) {
         CoreDataManager.shared.toggleHabit(habitId, in: arc)
+        refreshData()
+    }
+    func toggleHabit(_ habitId: String, in arc: SubscribedHabit) {
+        CoreDataManager.shared.toggleHabit(habitId, in: arc)
+        refreshData()
+    }
+}
+
+
+extension AppDataStore {
+    
+    func subscribeToHabit(to habit: HabitTemplate, completion: ((Result<SubscribedHabit, Error>) -> Void)? = nil) {
+        CoreDataManager.shared.subscribeHabit(
+            from: habit
+        ) { result in
+            switch result {
+            case .success(let subscribedHabit):
+                print("🎉 Subscribed: \(subscribedHabit.wrappedTitle)")
+                self.refreshData()
+                completion?(.success(subscribedHabit))
+                
+            case .failure(let error):
+                print("⚠️ Error subscribing: \(error.localizedDescription)")
+                completion?(.failure(error))
+                
+            }
+        }
+    }
+    
+    func unsubscribeHabit(habitID: String, completion: @escaping (Bool) -> Void) {
+        CoreDataManager.shared.unsubscribeHabit(
+            habitID: habitID
+        ) { result in
+            switch result {
+            case .success:
+                print("✅ Successfully unsubscribed")
+                self.refreshData()
+                completion(true)
+            case .failure(let error):
+                print("⚠️ Error unsubscribing: \(error.localizedDescription)")
+                completion(false)
+            }
+        }
+    }
+    
+    func deleteHabit(_ subHabit: SubscribedHabit) {
+        CoreDataManager.shared.deleteSubscribedHabit(subHabit)
         refreshData()
     }
 }

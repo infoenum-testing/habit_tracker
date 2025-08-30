@@ -19,8 +19,8 @@ struct EditArcSheet: View {
     ]
     
     var body: some View {
-        VStack {
-            Spacer()
+//        VStack {
+//            Spacer()
         VStack(spacing: 10) {
             Rectangle()
               .foregroundColor(.clear)
@@ -113,15 +113,15 @@ struct EditArcSheet: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 20)
-        }
-        .frame(height: 450)
-        .background(.sheetBackground)
-        .cornerRadius(30)
+//        }
+//        .frame(height: 450)
+//        .background(.sheetBackground)
+//        .cornerRadius(30)
         }.ignoresSafeArea()
             .sheet(isPresented: $showConfirmation) {
                 EndArcConfirmationSheet(isPresented: $showConfirmation,
                                         arcName: "Gut Health Arc")
-                    .presentationDetents([.height(450)])
+                    .presentationDetents([.height(500)])
                     .presentationCornerRadius(24)
                     .presentationBackground {
                         Color(UIColor.systemBackground)
