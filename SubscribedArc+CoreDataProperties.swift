@@ -193,3 +193,37 @@ extension SubscribedArc {
         return Double(completedTasksToday) / Double(totalTasksToday)
     }
 }
+
+
+extension SubscribedArc {
+    /// Returns 40 opacity values (latest 40 days).
+    var last100DayOpacities: [Double] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        
+        // Build last 40 dates (most recent first, then reversed to oldest → newest)
+        let last100Dates = (0..<100).compactMap {
+            calendar.date(byAdding: .day, value: -$0, to: today)
+        }.reversed()
+        
+        return last100Dates.map { date in
+            // Find ArcProgress entry for that date
+            if let progress = progressArray.first(where: {
+                if let pDate = $0.date {
+                    return calendar.isDate(pDate, inSameDayAs: date)
+                }
+                return false
+            }) {
+                let total = Double(progress.totalHabits)
+                let completed = Double(progress.completedHabits)
+                guard total > 0 else { return 0.3 }
+                
+                let ratio = completed / total
+                return ratio == 0 ? 0.3 : 0.3 + (ratio * 0.7)
+            } else {
+                // No entry for this date → baseline opacity
+                return 0.3
+            }
+        }
+    }
+}

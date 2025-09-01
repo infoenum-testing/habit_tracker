@@ -144,3 +144,87 @@ extension SubscribedHabit {
         return Double(completedTasksToday) / Double(totalTasksToday)
     }
 }
+
+
+extension SubscribedHabit {
+    
+    /// Returns 100 days of completion flags (oldest → newest).
+    var last100DayCompletion: [Bool] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        
+        // Build last 100 dates (oldest → newest)
+        let last100Dates = (0..<100).compactMap {
+            calendar.date(byAdding: .day, value: -$0, to: today)
+        }.reversed()
+        
+        return last100Dates.map { date in
+            // Find HabitProgress entry for this date
+            if let progress = wrappedProgressHistory.first(where: {
+                if let pDate = $0.date {
+                    return calendar.isDate(pDate, inSameDayAs: date)
+                }
+                return false
+            }) {
+                // Mark as completed if requiredPerDay is satisfied
+                return progress.completedCount >= requiredPerDay
+            } else {
+                // No entry → not completed
+                return false
+            }
+        }
+    }
+    
+    /// Returns 100 days of completion ratios (0–1, useful for charts).
+    var last100DayRatios: [Double] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        
+        let last100Dates = (0..<100).compactMap {
+            calendar.date(byAdding: .day, value: -$0, to: today)
+        }.reversed()
+        
+        return last100Dates.map { date in
+            if let progress = wrappedProgressHistory.first(where: {
+                if let pDate = $0.date {
+                    return calendar.isDate(pDate, inSameDayAs: date)
+                }
+                return false
+            }) {
+                let total = Double(requiredPerDay)
+                let completed = Double(progress.completedCount)
+                guard total > 0 else { return 0 }
+                return min(1.0, completed / total)
+            } else {
+                return 0
+            }
+        }
+    }
+}
+
+extension SubscribedHabit {
+    
+    /// Returns 100 days of opacities (0.3 for incomplete, 1.0 for completed)
+    var last100DayOpacities: [Double] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        
+        let last100Dates = (0..<100).compactMap {
+            calendar.date(byAdding: .day, value: -$0, to: today)
+        }.reversed()
+        
+        return last100Dates.map { date in
+            if let progress = wrappedProgressHistory.first(where: {
+                if let pDate = $0.date {
+                    return calendar.isDate(pDate, inSameDayAs: date)
+                }
+                return false
+            }) {
+                // ✅ completed if progress meets or exceeds requiredPerDay
+                return progress.completedCount >= requiredPerDay ? 1.0 : 0.3
+            } else {
+                return 0.3
+            }
+        }
+    }
+}

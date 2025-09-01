@@ -92,9 +92,5 @@ struct EndArcConfirmationSheet: View {
             .padding(.top, 10)
         }
         .ignoresSafeArea()
-//        .onChange(of: navigation.dismissAllSheets, perform: { newValue in
-//            navigation.pop()
-//            dismiss()
-//        })
     }
 }
