@@ -8,7 +8,6 @@ import SwiftUI
 
 enum ColorToken: String, CaseIterable {
     case blue
-    case cyan
     case red
     case purple
     case orange
@@ -17,18 +16,15 @@ enum ColorToken: String, CaseIterable {
     case black
     case white
     case gray
-    
-    case maroon
-    case navy
-    case ice
-    case gold
-    case indigo
-    case teal
+    case pink
+    case beige
+    case darkblue
+    case yellow
+
     
     var color: Color {
         switch self {
         case .blue: return .appBlue
-        case .cyan: return .appCyan
         case .red: return .appRed
         case .purple: return .appPurple
         case .orange: return .appOrange
@@ -37,15 +33,10 @@ enum ColorToken: String, CaseIterable {
         case .black: return .appDarkGray
         case .white: return .appWhite
         case .gray: return .appGray
-            
-        case .maroon: return .appMaroon
-        case .navy: return .appNavy
-        case .ice: return .appIce
-        case .gold: return .appGold
-        case .indigo: return .appIndigo
-        case .teal: return .appTeal
-            
-            
+        case .pink: return .appPink
+        case .beige: return .appBeige
+        case .darkblue: return .appDarkBlue
+        case .yellow: return .appYellow
         }
     }
     
@@ -53,7 +44,6 @@ enum ColorToken: String, CaseIterable {
     var imageName: String {
         switch self {
         case .blue: return "arcBlue"
-        case .cyan: return "arcCyan"
         case .red: return "arcRed"
         case .purple: return "arcPurple"
         case .orange: return "arcOrange"
@@ -62,12 +52,10 @@ enum ColorToken: String, CaseIterable {
         case .black: return "arcBlack"
         case .white: return "arcWhite"
         case .gray: return "arcGray"
-        case .maroon:return "arcBeige"
-        case .navy:return "arcDarkBlue"
-        case .ice:return "arcGray"
-        case .gold:return "arcGray"
-        case .indigo:return "arcGray"
-        case .teal:return "arcGray"
+        case .pink: return "arcPink"
+        case .beige: return "arcBeige"
+        case .darkblue: return "arcDarkBlue"
+        case .yellow: return "arcYellow"
         }
     }
     

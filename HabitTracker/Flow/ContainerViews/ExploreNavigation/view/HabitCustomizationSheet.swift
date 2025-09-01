@@ -11,18 +11,11 @@ struct HabitCustomizationSheet: View {
     let habit: HabitTemplate
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appData: AppDataStore
-    @State private var selectedIcon: String = "figure.walk"
+    @State private var selectedIcon: String = "icon.clock"
     @State private var selectedColor: String = "color.purple"
     
-    private let colors: [Color] = [
-        .appGreen, .appPurple, .appRed, .appOrange, .appYellow,
-        .appBlue, .appPink, .appCyan, .appTan, .appBrown, .appWhite, .appGray
-    ]
-    
-    private let colorsArray: [String] = [
-        "color.green", "color.purple", "color.red", "color.orange", "color.yellow",
-        "color.blue", "color.pink", "color.cyan", "color.tan", "color.brown", "color.white", "color.gray"
-    ]
+   
+    private let colorsArray: [String] = AppColors.all
     
     var body: some View {
         
@@ -51,7 +44,7 @@ struct HabitCustomizationSheet: View {
                     .padding(.horizontal, 20)
                     ShareProgressButton(title: "Save habit") {
                         appData.subscribeToHabit(to: habit)
-                        appData.updateSubscribedHabit(habitID: habit.wrappedId, icon: nil, newThemeColor: selectedColor) { _ in
+                        appData.updateSubscribedHabit(habitID: habit.wrappedId, icon: selectedIcon, newThemeColor: selectedColor) { _ in
                             dismiss()
                         }
                     }

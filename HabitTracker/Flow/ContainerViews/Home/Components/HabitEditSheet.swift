@@ -14,10 +14,7 @@ struct HabitEditSheet: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var appData: AppDataStore
     
-    private let colorsArray: [String] = [
-        "color.green", "color.purple", "color.red", "color.orange", "color.yellow",
-        "color.blue", "color.pink", "color.cyan", "color.tan", "color.brown", "color.white", "color.gray"
-    ]
+    private let colorsArray: [String] = AppColors.all
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -50,7 +47,7 @@ struct HabitEditSheet: View {
                 if let habitId = appData.selectedHabitToDelete?.wrappedId {
                     appData.updateSubscribedHabit(
                         habitID: habitId,
-                        icon: nil,
+                        icon: selectedIcon,
                         newThemeColor: selectedColor
                     ) { _ in
                         // completion
