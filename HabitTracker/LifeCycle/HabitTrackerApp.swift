@@ -15,6 +15,7 @@ struct HabitTrackerApp: App {
     
     init() {
             loadInitialData()
+        //loadSubscribedArcHistoryData()
        // CoreDataManager.shared.seedDummyBadges()
         CoreDataManager.shared.checkAndCompleteExpiredArcs()
         }
@@ -47,6 +48,22 @@ struct HabitTrackerApp: App {
             
         } catch {
             print("Failed to load or parse initialData.json: \(error)")
+        }
+    }
+    
+    func loadSubscribedArcHistoryData() {
+        guard let url = Bundle.main.url(forResource: "subscribed_arc_history", withExtension: "json") else {
+            print("subscribed_arc_history.json not found")
+            return
+        }
+        do {
+            let data = try Data(contentsOf: url)
+            
+            if let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                CoreDataManager.shared.saveSubscribedArcHistoryFromJSON(jsonDict)
+            }
+        } catch {
+            print("Failed to load or parse subscribed_arc_history.json: \(error)")
         }
     }
 }

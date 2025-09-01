@@ -108,6 +108,7 @@ final class AppDataStore: ObservableObject {
         allSubscribedHabits = manager.fetchSubscribedHabits()
         allSubscribedArcs = manager.fetchSubscribedArcs()
         allHistories = manager.fetchAllHistories()
+        print("\(allHistories.count)")
     }
     
     // MARK: - Actions

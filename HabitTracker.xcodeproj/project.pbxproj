@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18C8719A2E62F775006FEEB1 /* subscribed_arc_history.json in Resources */ = {isa = PBXBuildFile; fileRef = 18C871992E62F775006FEEB1 /* subscribed_arc_history.json */; };
 		18FA5D232E6055E60069590C /* HabitEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA5D222E6055E60069590C /* HabitEditSheet.swift */; };
 		B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC02E50FDCC00674792 /* AppState.swift */; };
 		B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */; };
@@ -109,6 +110,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18C871992E62F775006FEEB1 /* subscribed_arc_history.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = subscribed_arc_history.json; sourceTree = "<group>"; };
 		18FA5D222E6055E60069590C /* HabitEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditSheet.swift; sourceTree = "<group>"; };
 		B7A3CBC02E50FDCC00674792 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTaskRow.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				B7A3CC032E50FDCC00674792 /* Shared */,
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
 				EBB66A142E5DC41500638C9B /* initialData.json */,
+				18C871992E62F775006FEEB1 /* subscribed_arc_history.json */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				B7A3CC2D2E50FDCC00674792 /* SF-Pro-Display-Bold.otf in Resources */,
 				B7A3CC2E2E50FDCC00674792 /* SF-Pro-Display-Light.otf in Resources */,
 				B7A3CC2F2E50FDCC00674792 /* SF-Pro-Display-Medium.otf in Resources */,
+				18C8719A2E62F775006FEEB1 /* subscribed_arc_history.json in Resources */,
 				B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */,
 				B7A3CC312E50FDCC00674792 /* SF-Pro-Display-Semibold.otf in Resources */,
 				B7A3CC322E50FDCC00674792 /* Assets.xcassets in Resources */,

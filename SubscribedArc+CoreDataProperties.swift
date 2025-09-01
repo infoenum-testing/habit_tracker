@@ -157,6 +157,7 @@ extension SubscribedArc {
     
     func isHabitCompleted(_ habitId: String) -> Bool {
            todayProgress?.completedHabitIds?.contains(habitId) ?? false
+        
        }
     
     /// All progress entries sorted by date

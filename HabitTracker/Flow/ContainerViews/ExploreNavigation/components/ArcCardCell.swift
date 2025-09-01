@@ -17,7 +17,8 @@ struct ArcCardCell: View {
         GeometryReader { geo in
             ZStack {
                 // Background image
-                Image(arc.coverImage ?? "")
+//                /*Image(arc.coverImage ?? "card"*/)
+                Image("card")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.size.width, height: geo.size.width)
