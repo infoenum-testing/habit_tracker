@@ -140,6 +140,23 @@ final class AppDataStore: ObservableObject {
         }
     }
     
+    func updateSubscribedArc(arcId: String, icon: String? ,newThemeColor: String?,  completion: @escaping (Bool) -> Void) {
+        let result = CoreDataManager.shared.updateSubscribedArc(
+            withId: arcId,
+            newIcon: icon,
+            newThemeColor: newThemeColor
+        )
+        switch result {
+        case .success(let updatedArc):
+            print("Updated Arc → \(updatedArc.wrappedIcon), \(updatedArc.wrappedThemeColor)")
+            refreshData()
+            completion(true)
+        case .failure(let error):
+            print("Failed to update arc: \(error)")
+            completion(false)
+        }
+    }
+    
     
     
     func completeArc(_ subArc: SubscribedArc) {
@@ -159,8 +176,8 @@ final class AppDataStore: ObservableObject {
 
 
 extension AppDataStore {
-    func toggleHabit(_ habitId: String, in arc: SubscribedArc) {
-        CoreDataManager.shared.toggleHabit(habitId, in: arc)
+    func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
+        CoreDataManager.shared.toggleArcHabit(habitId, in: arc)
         refreshData()
     }
     func toggleHabit(_ habitId: String, in arc: SubscribedHabit) {
@@ -204,6 +221,25 @@ extension AppDataStore {
                 completion(false)
             }
         }
+    }
+    
+    func updateSubscribedHabit(habitID: String, icon: String? ,newThemeColor: String?,  completion: @escaping (Bool) -> Void) {
+        let result = CoreDataManager.shared.updateSubscribedHabit(
+            withId: habitID,
+            newIcon: icon,
+            newThemeColor: newThemeColor
+        )
+
+        switch result {
+        case .success(let updatedHabit):
+            self.refreshData()
+            print("Updated Habit → \(updatedHabit.wrappedIcon), \(updatedHabit.wrappedThemeColor)")
+            completion(true)
+        case .failure(let error):
+            print("Failed to update habit: \(error)")
+            completion(false)
+        }
+
     }
     
     func deleteHabit(_ subHabit: SubscribedHabit) {

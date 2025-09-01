@@ -10,14 +10,14 @@ import SwiftUI
 
 struct ArcTaskRow: View {
     @EnvironmentObject var appData: AppDataStore
-    let arcID: String
-    var task: HabitTemplate
-    var isCompleted: Bool
+    let arc: SubscribedArc
+    let task: HabitTemplate
     var tint: Color
 
     var body: some View {
         HStack(spacing: 12) {
-            IconBadge(icon: task.icon ?? "", tint: true ? tint : .appGray)
+            let isCompleted = arc.isHabitCompleted(task.wrappedId)
+            IconBadge(icon: task.wrappedIcon, tint: arc.isHabitCompleted(task.wrappedId) ? tint : .appGray)
             VStack(alignment: .leading, spacing: 2) {
                 Text(task.title ?? "")
                     .font(.sfProDisplay(.semibold, size: 16))
@@ -26,20 +26,15 @@ struct ArcTaskRow: View {
                     .opacity(0.7)
             }.foregroundStyle(.white)
             Spacer()
-            CheckChip(isOn: isCompleted, tint: tint) {
-                let habitId = task.id ?? ""
-                guard let subArc = appData.allSubscribedArcs.first(where: { $0.id == arcID }) else { return }
-
-                //withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                    appData.toggleHabit(habitId, in: subArc)
-              //  }
+            CheckChip(isOn: arc.isHabitCompleted(task.wrappedId), tint: tint) {
+                guard let subArc = appData.allSubscribedArcs.first(where: { $0.id == arc.wrappedId }) else { return }
+                appData.toggleArcHabit(task.wrappedId, in: subArc)
             }
-
         }
         .padding(12)
         .background(RoundedRectangle(cornerRadius: 14).fill(Color(UIColor.appDarkGray)))
         .overlay(RoundedRectangle(cornerRadius: 14).stroke(.white.opacity(0.06), lineWidth: 1))
-        .scaleEffect(isCompleted ? 1.02 : 1.0)
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isCompleted)
+        .scaleEffect(arc.isHabitCompleted(task.wrappedId) ? 1.02 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: arc.isHabitCompleted(task.wrappedId))
     }
 }

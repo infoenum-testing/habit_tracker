@@ -9,18 +9,18 @@ import SwiftUI
 
 struct EditArcSheet: View {
     @Binding var isPresented: Bool
-    @State private var selectedColor: Color = .purple
+    @State private var selectedColor: String = ""
     @State private var showConfirmation = false
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var navigation: NavigationRouter
+    @EnvironmentObject var appData: AppDataStore
+    let arcId: String = ""
+    let habitId: String = ""
 
     
-    private let colors: [Color] = [
-        .appGreen, .appPurple, .appRed, .appOrange, .appYellow,
-        .appBlue, .appPink, .appCyan, .appTan, .appBrown, .appWhite, .appGray
-    ]
+    private let colorsArray: [String] = AppColors.all
     
     var body: some View {
-//        VStack {
-//            Spacer()
         VStack(spacing: 10) {
             Rectangle()
               .foregroundColor(.clear)
@@ -28,7 +28,6 @@ struct EditArcSheet: View {
               .background(.white.opacity(0.2))
               .cornerRadius(3)
               .padding(.vertical)
-            // Header
             HStack {
                 Button(action: {
                     isPresented = false
@@ -60,11 +59,11 @@ struct EditArcSheet: View {
                 
                 // Color grid
                 LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 10) {
-                    ForEach(colors, id: \.self) { color in
+                    ForEach(colorsArray, id: \.self) { color in
                         ZStack {
                             
                             Rectangle()
-                                .fill(color)
+                                .fill(ColorToken.from(string: color))
                                 .frame(width: 48, height: 48)
                                 .cornerRadius(19)
                                 .padding(5)
@@ -82,6 +81,12 @@ struct EditArcSheet: View {
                         }
                         .onTapGesture {
                             selectedColor = color
+                            print("Selected color: \(color)")
+                             
+                            appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: color) { _ in
+                                print("Arc color updated successfully")
+                                dismiss()
+                            }
                         }
                     }
                 }
@@ -113,10 +118,6 @@ struct EditArcSheet: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 20)
-//        }
-//        .frame(height: 450)
-//        .background(.sheetBackground)
-//        .cornerRadius(30)
         }.ignoresSafeArea()
             .sheet(isPresented: $showConfirmation) {
                 EndArcConfirmationSheet(isPresented: $showConfirmation,
@@ -129,6 +130,10 @@ struct EditArcSheet: View {
                    
                     
             }
+            .onChange(of: navigation.dismissAllSheets, perform: { newValue in
+                dismiss()
+            })
+            
 
     }
 }

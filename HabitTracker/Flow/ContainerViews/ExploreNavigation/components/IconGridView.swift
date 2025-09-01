@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IconGridView: View {
    
-     let icons: [String] = ["figure.walk", "fork.knife", "bed.double.fill", "book.fill", "sun.max.fill", "dumbbell", "music.note", "paintbrush.fill", "bolt.fill", "heart.fill", "leaf.fill", "flame.fill", "hare.fill", "timer", "cup.and.saucer.fill", "brain.head.profile", "waveform.path.ecg", "bubble.left.fill", "trash.fill", "sparkles", "house.fill", "laptopcomputer", "scissors", "gamecontroller.fill", "airplane", "sailboat.fill", "bicycle", "figure.mind.and.body", "party.popper.fill", "snowflake", "fish.fill", "camera.macro"]
+    let icons: [String] = AppIcons.all
     var color: Color
     @Binding var icon: String
     
@@ -27,8 +27,9 @@ struct IconGridView: View {
                         RoundedRectangle(cornerRadius: 9)
                             .stroke(Color.white, lineWidth: 2)
                             .opacity(iconName == icon ? 1 : 0)
-                        Image(systemName: iconName)
+                        Image(iconName)
                             .foregroundColor(iconName == icon ? .white : color)
+                            .frame(width: 32, height: 32)
                     }
                     .foregroundStyle(color)
                     .onTapGesture {
@@ -42,5 +43,5 @@ struct IconGridView: View {
 }
 
 #Preview {
-    IconGridView(color: .appCyan, icon: .constant("figure.walk"))
+    IconGridView(color: .appRed, icon: .constant("figure.walk"))
 }

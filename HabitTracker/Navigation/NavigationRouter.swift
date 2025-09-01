@@ -9,6 +9,8 @@ import Foundation
 
 final class NavigationRouter: ObservableObject {
     @Published var routes = [Route]()
+    @Published var dismissAllSheets = false
+
 
     func push(to screen: Route) {
         routes.append(screen)
@@ -21,4 +23,11 @@ final class NavigationRouter: ObservableObject {
     func pop() {
         _ = routes.popLast()
     }
+    
+    func dismissAll() {
+            dismissAllSheets = true
+            DispatchQueue.main.async {
+                self.dismissAllSheets = false
+            }
+        }
 }

@@ -135,6 +135,42 @@ final class CoreDataManager {
         saveContext()
     }
     
+    func updateSubscribedArc(
+           withId id: String,
+           newIcon: String? = nil,
+           newThemeColor: String? = nil
+       ) -> Result<SubscribedArc, Error> {
+           
+           let request: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
+           request.predicate = NSPredicate(format: "id == %@", id)
+           request.fetchLimit = 1
+           
+           do {
+               if let subArc = try context.fetch(request).first {
+                   
+                   if let icon = newIcon {
+                       subArc.icon = icon
+                   }
+                   
+                   if let color = newThemeColor {
+                       subArc.themeColor = color
+                   }
+                   
+                   try context.save()
+                   return .success(subArc)
+               } else {
+                   return .failure(NSError(
+                       domain: "CoreDataManager",
+                       code: 404,
+                       userInfo: [NSLocalizedDescriptionKey: "SubscribedArc not found"]
+                   ))
+               }
+           } catch {
+               context.rollback()
+               return .failure(error)
+           }
+       }
+    
     
     // MARK: - Delete Subscribed Arc
     func deleteSubscribedArc(_ subArc: SubscribedArc) {
@@ -231,6 +267,45 @@ extension CoreDataManager {
         }
     }
     
+    
+    // MARK: - Update Subscribed Habit
+        
+        func updateSubscribedHabit(
+            withId id: String,
+            newIcon: String? = nil,
+            newThemeColor: String? = nil
+        ) -> Result<SubscribedHabit, Error> {
+            
+            let request: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
+            request.predicate = NSPredicate(format: "id == %@", id)
+            request.fetchLimit = 1
+            
+            do {
+                if let subHabit = try context.fetch(request).first {
+                    
+                    if let icon = newIcon {
+                        subHabit.icon = icon
+                    }
+                    
+                    if let color = newThemeColor {
+                        subHabit.themeColor = color
+                    }
+                    
+                    try context.save()
+                    return .success(subHabit)
+                } else {
+                    return .failure(NSError(
+                        domain: "CoreDataManager",
+                        code: 404,
+                        userInfo: [NSLocalizedDescriptionKey: "SubscribedHabit not found"]
+                    ))
+                }
+            } catch {
+                context.rollback()
+                return .failure(error)
+            }
+        }
+    
     func fetchSubscribedHabits() -> [SubscribedHabit] {
         let request: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
         return (try? context.fetch(request)) ?? []
@@ -322,12 +397,17 @@ extension CoreDataManager {
             // Link habits to Arc
             if let habitRefs = aData["habitRefs"] as? [[String: Any]] {
                 for ref in habitRefs {
-                    if let habitId = ref["habitId"] as? String,
-                       let habit = fetchHabit(by: habitId) {
-                        arc.addToHabits(habit)
+                    if let habitId = ref["habitId"] as? String {
+                        if let habit = fetchHabit(by: habitId) {
+                            arc.addToHabits(habit)
+                        } else {
+                            print("⚠️ Could not find habit with id \(habitId)")
+                        }
                     }
                 }
             }
+            
+            
         }
         
         saveContext()
@@ -423,7 +503,7 @@ extension CoreDataManager {
 }
 
 extension CoreDataManager {
-    func toggleHabit(_ habitId: String, in arc: SubscribedArc) {
+    func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
         let today = Calendar.current.startOfDay(for: Date())
         
         // Fetch or create today's progress

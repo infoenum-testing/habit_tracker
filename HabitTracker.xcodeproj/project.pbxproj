@@ -95,6 +95,8 @@
 		EB4CCBA02E571CE700F76945 /* OverallScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB9F2E571CE400F76945 /* OverallScoreCard.swift */; };
 		EB4CCBA22E571D4800F76945 /* PerformanceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCBA12E571D4600F76945 /* PerformanceCardView.swift */; };
 		EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCBA32E57556200F76945 /* WeeklyBarsCard.swift */; };
+		EB96E8702E657F55005399A8 /* AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96E86F2E657F4E005399A8 /* AppIcons.swift */; };
+		EB96E8722E658720005399A8 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96E8712E658715005399A8 /* AppColors.swift */; };
 		EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */; };
 		EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */; };
 		EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */; };
@@ -199,6 +201,8 @@
 		EB4CCB9F2E571CE400F76945 /* OverallScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallScoreCard.swift; sourceTree = "<group>"; };
 		EB4CCBA12E571D4600F76945 /* PerformanceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCardView.swift; sourceTree = "<group>"; };
 		EB4CCBA32E57556200F76945 /* WeeklyBarsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBarsCard.swift; sourceTree = "<group>"; };
+		EB96E86F2E657F4E005399A8 /* AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcons.swift; sourceTree = "<group>"; };
+		EB96E8712E658715005399A8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		EBAA203E2E4DBEE7001503D8 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArcSheet.swift; sourceTree = "<group>"; };
 		EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndArcConfirmationSheet.swift; sourceTree = "<group>"; };
@@ -443,6 +447,8 @@
 		B7A3CC012E50FDCC00674792 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				EB96E8712E658715005399A8 /* AppColors.swift */,
+				EB96E86F2E657F4E005399A8 /* AppIcons.swift */,
 				EBB66A122E5DC11200638C9B /* ColorToken.swift */,
 				B7A3CBFF2E50FDCC00674792 /* HomeLayout.swift */,
 				B7A3CC002E50FDCC00674792 /* ItemType.swift */,
@@ -798,6 +804,7 @@
 				EB1958272E56033300454D34 /* StatisticsView.swift in Sources */,
 				B7A3CC1A2E50FDCC00674792 /* CircleButton.swift in Sources */,
 				B7A3CC1B2E50FDCC00674792 /* CounterPill.swift in Sources */,
+				EB96E8722E658720005399A8 /* AppColors.swift in Sources */,
 				E98E37952E585533003244AA /* ExploreCardView.swift in Sources */,
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
 				EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */,
@@ -815,6 +822,7 @@
 				E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */,
 				E982055A2E61C164002F6490 /* History+CoreDataClass.swift in Sources */,
 				E982055B2E61C164002F6490 /* History+CoreDataProperties.swift in Sources */,
+				EB96E8702E657F55005399A8 /* AppIcons.swift in Sources */,
 				B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */,
 				B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */,
 				EB4CCBA02E571CE700F76945 /* OverallScoreCard.swift in Sources */,

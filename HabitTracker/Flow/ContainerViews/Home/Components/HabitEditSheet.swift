@@ -10,14 +10,11 @@ import SwiftUI
 struct HabitEditSheet: View {
     
     @State private var selectedIcon: String = "figure.walk"
-    @State private var selectedColor: Color = .appPurple
+    @State private var selectedColor: String = "color.purple"
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var appData: AppDataStore
     
-    private let colors: [Color] = [
-        .appGreen, .appPurple, .appRed, .appOrange, .appYellow,
-        .appBlue, .appPink, .appCyan, .appTan, .appBrown, .appWhite, .appGray
-    ]
+    private let colorsArray: [String] = AppColors.all
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -36,17 +33,29 @@ struct HabitEditSheet: View {
                     .frame(width: 40, height: 40)
             }
             
-            IconGridView(color: selectedColor, icon: $selectedIcon)
+            IconGridView(color: ColorToken.from(string: selectedColor), icon: $selectedIcon)
                 .padding(.vertical, 26)
             
             ColorPickerSection(
-                colors: colors,
-                selectedColor: $selectedColor
+                colors: colorsArray,
+                selectedColor: $selectedColor, action: {
+                    
+                }
             )
             
             ShareProgressButton(title: "Save habit") {
-                
+                if let habitId = appData.selectedHabitToDelete?.wrappedId {
+                    appData.updateSubscribedHabit(
+                        habitID: habitId,
+                        icon: selectedIcon,
+                        newThemeColor: selectedColor
+                    ) { _ in
+                        // completion
+                        dismiss()
+                    }
+                }
             }
+
             .padding(.vertical, 26)
             
             Button {

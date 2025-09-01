@@ -77,3 +77,56 @@ extension HabitTemplate {
         tags as? [String] ?? []
     }
 }
+
+extension HabitTemplate {
+    
+    // MARK: - Wrapped properties
+    
+    var wrappedId: String {
+        id ?? UUID().uuidString
+    }
+    
+    var wrappedTitle: String {
+        title ?? "Untitled"
+    }
+    
+    var wrappedCategory: String {
+        category ?? "General"
+    }
+    
+    var wrappedColorToken: String {
+        colorToken ?? "white"
+    }
+    
+    var wrappedDetails: String {
+        details ?? ""
+    }
+    
+    var wrappedIcon: String {
+        icon ?? "icon.default"
+    }
+    
+    var wrappedMetaAuthor: String {
+        metaAuthor ?? "Unknown"
+    }
+    
+    var wrappedMetaCreatedAt: Date {
+        metaCreatedAt ?? Date()
+    }
+    
+    var wrappedMetaUpdatedAt: Date {
+        metaUpdatedAt ?? Date()
+    }
+    
+    var wrappedPointsPerDay: [String: Int] {
+        pointsPerDay as? [String: Int] ?? [:]
+    }
+    
+    var wrappedTags: [String] {
+        tags as? [String] ?? []
+    }
+    
+    var subscribedHabitsArray: [SubscribedHabit] {
+        (subscribedHabits as? Set<SubscribedHabit>)?.sorted { $0.wrappedId < $1.wrappedId } ?? []
+    }
+}

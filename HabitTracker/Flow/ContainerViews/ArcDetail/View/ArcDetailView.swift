@@ -10,105 +10,137 @@ import SwiftUI
 
 struct ArcDetailView: View {
     @Environment(\.dismiss) private var dismiss
-
     @EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
-    
+    @EnvironmentObject var navigation: NavigationRouter
+
     @State private var showEditArc = false
     @State private var showConfirmation = false
     let arcID: String
    
-    var arc: SubscribedArc {
-        appData.subscribedArcs.first(where: { $0.wrappedId == arcID })!
+    private var arc: SubscribedArc? {
+        appData.subscribedArcs.first(where: { $0.wrappedId == arcID })
     }
     
     private var progress: CGFloat {
-        return CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
+        guard let arc else { return 0 }
+        return arc.wrappedHabitsCount > 0
+            ? CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
+            : 0
     }
 
     var body: some View {
-        let color = ColorToken.from(string: arc.wrappedThemeColor)
-        ZStack {
-            VStack(spacing: 0) {
-                DetailHeader(title: arc.wrappedTitle, day: arc.wrappedDurationDays, backButtonTapped: {
-                    dismiss()
-                }, editButtonTapped: {
-                    showEditArc = true
-                })
-                ScrollView(showsIndicators: false) {
-                    
-                    ScrollView(.horizontal) {
-                        HStack {
-                            DayStripView(
-                                arc: appData.subscribedArcs.first(where: { $0.wrappedId == arcID })!
-                            )
-                        }.padding(5)
-                    }.scrollDisabled(true)
+        Group {
+            if let arc = arc {
+                let color = ColorToken.from(string: arc.wrappedThemeColor)
+                
+                ZStack {
+                    VStack(spacing: 0) {
+                        DetailHeader(
+                            title: arc.wrappedTitle,
+                            day: arc.wrappedDurationDays,
+                            backButtonTapped: { dismiss() },
+                            editButtonTapped: {
+                                showEditArc = true
+                                appData.selectedArctoDelete = arc
+                            }
+                        )
+                        
+                        ScrollView(showsIndicators: false) {
+                            
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    DayStripView(arc: arc)
+                                }
+                                .padding(5)
+                            }
+                            .scrollDisabled(true)
 
-                    CircularArcProgressView(progress: progress, tint: color)
-                        .padding()
-                    
-                    
-                    VStack(alignment: .center, spacing: 6) {
-                        Text(arc.wrappedTitle)
-                                .font(.sfProDisplay(.semibold, size: 35))
-                                .foregroundColor(.white)
-                        Text("\(arc.wrappedDurationDays) Days Challenge")
-                                .font(.sfProDisplay(.medium, size: 16))
-                                .foregroundColor(.textGray)
+                            CircularArcProgressView(progress: progress, tint: color)
+                                .padding()
+                            
+                            VStack(alignment: .center, spacing: 6) {
+                                Text(arc.wrappedTitle)
+                                    .font(.sfProDisplay(.semibold, size: 35))
+                                    .foregroundColor(.white)
+                                Text("\(arc.wrappedDurationDays) Days Challenge")
+                                    .font(.sfProDisplay(.medium, size: 16))
+                                    .foregroundColor(.textGray)
+                            }
+
+                            VStack(spacing: 12) {
+                                ForEach(arc.wrappedHabits) { task in
+                                    if let id = task.id {
+                                        ArcTaskRow(
+                                            arc: arc,
+                                            task: task,
+                                            tint: color
+                                        )
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 16)
                         }
-
-             
-                    VStack(spacing: 12) {
-                        ForEach(arc.wrappedHabits) { task in
-                            if let id = task.id {
-                                ArcTaskRow(arcID: arc.wrappedId, task: task, isCompleted: arc.isHabitCompleted(id), tint: color)
+                        
+                        HStack {
+                            ShareProgressButton(height: 50 ,imageName: "shareIcon", title: "Share Progress") {
+                                // handle share action
+                            }
+                            
+                            ShareProgressButton(height: 50 ,imageName: "widget", title: "Add Widget") {
+                                // handle share action
                             }
                         }
+                        .padding(.horizontal)
+                        .padding(.top)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 16)
                 }
-                //Spacer(minLength: 0)
-                HStack {
-                    ShareProgressButton(height: 50 ,imageName: "shareIcon", title: "Share Progress" ,buttonAction: {
-                        // handle share action
-                    })
-                        
-                    ShareProgressButton(height: 50 ,imageName: "widget", title: "Add Widget" ,buttonAction: {
-                        // handle share action
-                    })
-                }.padding(.horizontal)
-                   .padding(.top)
-                    
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(
+                    LinearGradient(
+                        colors: [color.opacity(0.55), .black, .black],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .navigationBarBackButtonHidden()
+                .toolbar(.hidden)
+                .sheet(isPresented: $showEditArc) {
+                    EditArcSheet(isPresented: $showEditArc)
+                        .presentationDetents([.height(400)])
+                        .presentationCornerRadius(24)
+                        .presentationBackground {
+                            Color(UIColor.systemBackground)
+                        }
+                        .preferredColorScheme(.dark)
+                }
+                
+            } else {
+                // Fallback when arc no longer exists
+                VStack {
+                    Text("This arc has been deleted.")
+                        .foregroundColor(.red)
+                        .padding()
+                    Button("Close") { dismiss() }
+                        .padding()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.black)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(LinearGradient(colors: [color.opacity(0.55),.black, .black], startPoint: .top, endPoint: .bottom))
-        .navigationBarBackButtonHidden()
-        .toolbar(.hidden)
-        
-        .fullScreenCover(isPresented: $showEditArc) {
-               EditArcSheet(isPresented: $showEditArc)
-                .preferredColorScheme(.dark)
-           }
-//           .sheet(isPresented: $showConfirmation) {
-//               EndArcConfirmationSheet(isPresented: $showConfirmation,
-//                                       arcName: "Gut Health Arc")
-//               .preferredColorScheme(.dark)
-//           }
+        .onChange(of: appData.subscribedArcs) { _ in
+            // auto-dismiss if arc no longer exists
+            if appData.subscribedArcs.first(where: { $0.wrappedId == arcID }) == nil {
+                dismiss()
+            }
+        }
+        .onChange(of: navigation.dismissAllSheets) { _ in
+            dismiss()
+        }
     }
 }
 
-//struct ArcDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let mockState = AppState(arcs: MockData.arcs, habits: MockData.habits)
-//
-//        return ArcDetailView(arcID: MockData.arcs[0].id)
-//            .environmentObject(mockState)
-//            .background(Color.black)
-//    }
-//}
 
 
 
