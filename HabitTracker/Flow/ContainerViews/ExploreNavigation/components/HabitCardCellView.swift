@@ -5,18 +5,13 @@
 //  Created by ie15 on 22/08/25.
 //
 
-//
-//  TrendingCardView.swift
-//  HabitTracker
-//
-//  Created by ie15 on 22/08/25.
-//
-
 import SwiftUI
 
 struct HabitCardCellView: View {
+    
     let habit: HabitTemplate
     let action: () -> Void
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 14) {
@@ -29,6 +24,7 @@ struct HabitCardCellView: View {
                     Image(habit.icon ?? "tooth")
                         .resizable()
                         .frame(width: 32, height: 32)
+                        .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
                 }
                 
                 // Text Section

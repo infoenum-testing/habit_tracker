@@ -16,8 +16,7 @@ struct ArcCardCell: View {
         
         GeometryReader { geo in
             ZStack {
-                // Background image
-//                /*Image(arc.coverImage ?? "card"*/)
+
                 Image("card")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -27,52 +26,52 @@ struct ArcCardCell: View {
                 
                 // Content overlay
                 VStack(alignment: .leading) {
-                    // Top badges
-                    HStack(spacing: 8) {
-                        Text("\(arc.durationDays) Days")
+                    VStack(alignment: .leading) {
+                        // Top badges
+                        HStack(spacing: 8) {
+                            Text("\(arc.durationDays) Days")
                             
-                            .foregroundColor(.white)
-                            .font(Font.inter(size: 10))
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background(Color.black.opacity(0.75))
-                            .cornerRadius(20)
-                            
-                        if let count = arc.habits?.count {
-                            Text("\(count) Habits")
                                 .foregroundColor(.white)
                                 .font(Font.inter(size: 10))
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 4)
                                 .background(Color.black.opacity(0.75))
                                 .cornerRadius(20)
+                            
+                            if let count = arc.habits?.count {
+                                Text("\(count) Habits")
+                                    .foregroundColor(.white)
+                                    .font(Font.inter(size: 10))
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 4)
+                                    .background(Color.black.opacity(0.75))
+                                    .cornerRadius(20)
+                            }
                         }
-                        
-                        
-                       
                     }
-                    Spacer()
+                    .padding()
                     
-                    // Bottom text
+                    Spacer()
                     VStack(alignment: .leading, spacing: 4) {
                         Text(arc.title ?? "")
                             .multilineTextAlignment(.leading)
                             .font(Font.inter(size: 18, weight: .semibold))
                             .foregroundColor(.white.opacity(0.75))
-                            .background(.black.opacity(0.25))
                         
                         Text(arc.shortSubtitle ?? "")
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
                             .font(Font.inter(size: 13))
                             .foregroundColor(.white.opacity(0.75))
-                            .background(.black.opacity(0.25))
                     }
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.ultraThinMaterial.opacity(0.5))
                     
                     
                 }
-                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(width: geo.size.width, height: geo.size.width)
             .cornerRadius(20)

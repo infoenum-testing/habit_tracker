@@ -147,7 +147,7 @@ struct DashedLine: View {
                 Color.clear
                     .overlay(
                         Rectangle()
-                            .stroke(Color(red: 0.99, green: 0.99, blue: 0.99).opacity(0.16), style: StrokeStyle(lineWidth: 1.14, dash: [5]))
+                            .stroke(Color.white.opacity(0.09), style: StrokeStyle(lineWidth: 1.14, dash: [5]))
                     )
             )
     }

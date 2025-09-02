@@ -38,7 +38,7 @@ struct HabitCustomizationSheet: View {
                     ColorPickerSection(
                         colors: colorsArray,
                         selectedColor: $selectedColor, action: {
-                            // Handle color selection if needed
+                            
                         }
                     )
                     .padding(.horizontal, 20)

@@ -228,22 +228,18 @@ struct ArcsView: View {
                 subtitle: arc.descriptionText ?? "",
                 days: "\(arc.durationDays)",
                 habits: "\(arc.habits?.count ?? 0)",
-                imageName: "card"
+                imageName: "card",
+                color: arc.colorToken ?? ""
             )
             .rotationEffect(.degrees(index == 0 ? -8 : 12))
             .offset(x: index == 0 ? -25 : 35, y: index == 0 ? 5 : -2)
         }
         
         private func habitCardView(habit: HabitTemplate, index: Int) -> some View {
-            TopArcCardView(
-                title: habit.title ?? "",
-                subtitle: habit.details ?? "",
-                days: "",
-                habits: "",
-                imageName: habit.icon ?? ""
-            )
-            .rotationEffect(.degrees(index == 0 ? -8 : 12))
-            .offset(x: index == 0 ? -25 : 35, y: index == 0 ? 5 : -2)
+            TopHabitCardView(habit: habit)
+            .rotationEffect(.degrees(index == 0 ? -8 : 14))
+            .offset(x: index == 0 ? -25 : 37, y: index == 0 ? 4 : 6)
+            
         }
 }
 
@@ -253,39 +249,43 @@ struct TopArcCardView: View {
     var days: String
     var habits: String
     var imageName: String
+    var color: String
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            // Background image
+            
+           
             Image(imageName)
                 .resizable()
                 .scaledToFill()
                 .frame(maxWidth: .infinity)
                 .frame(height: 85)
                 .clipped()
-               // .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            // .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             
             // Overlay content
             VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text("\(days) Days")
-                        .foregroundColor(.white)
-                        .font(Font.inter(size: 3))
-                        .padding(.horizontal, 3)
-                        .padding(.vertical, 2)
-                        .background(Color.black.opacity(0.75))
-                        .cornerRadius(5)
-                        .fixedSize(horizontal: true, vertical: false)
-                    Text("\(habits) Habits")
-                        .foregroundColor(.white)
-                        .font(Font.inter(size: 3))
-                        .padding(.horizontal, 3)
-                        .padding(.vertical, 2)
-                        .background(Color.black.opacity(0.75))
-                        .cornerRadius(5)
-                        .fixedSize(horizontal: true, vertical: false)
-                }.padding(.bottom)
-                
+                if days != "" {
+                    HStack {
+                        Text("\(days) Days")
+                            .foregroundColor(.white)
+                            .font(Font.inter(size: 3))
+                            .padding(.horizontal, 3)
+                            .padding(.vertical, 2)
+                            .background(Color.black.opacity(0.75))
+                            .cornerRadius(5)
+                            .fixedSize(horizontal: true, vertical: false)
+                        Text("\(habits) Habits")
+                            .foregroundColor(.white)
+                            .font(Font.inter(size: 3))
+                            .padding(.horizontal, 3)
+                            .padding(.vertical, 2)
+                            .background(Color.black.opacity(0.75))
+                            .cornerRadius(5)
+                            .fixedSize(horizontal: true, vertical: false)
+                    }
+                    .padding(.bottom)
+                }
                 Text(title)
                     .foregroundColor(.white)
                     .font(Font.sfPro(size: 7, weight: .semibold))
@@ -297,12 +297,68 @@ struct TopArcCardView: View {
             }
             .padding()
         }
-        .frame(width: 80, height: 85)
+        .frame(width: 80, height: 80)
+        .background(Color.cellBackgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-      //  .clipped()
+        .shadow(color: .black.opacity(0.6), radius: 3.6, x: -7.2, y: 9.6)
+        .overlay(
+        RoundedRectangle(cornerRadius: 10)
+        .inset(by: 0.16)
+        .stroke(ColorToken.from(string: color), lineWidth: 1)
+
+        )
     }
 }
 
+
+
+struct TopHabitCardView: View {
+    var habit: HabitTemplate
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10){
+            
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 20.64, height: 20.48)
+                        .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+                        .cornerRadius(4)
+                    if let image = habit.icon {
+                        Image(image)
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                            .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
+                    }
+                }
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    if let title = habit.title {
+                        Text(title)
+                            .foregroundColor(.white)
+                            .font(Font.sfPro(size: 7, weight: .semibold))
+                    }
+                    
+                    if let details = habit.details {
+                        Text(details)
+                            .foregroundColor(.gray)
+                            .font(Font.sfPro(size: 5, weight: .regular))
+                            .lineLimit(2)
+                    }
+                }
+        }
+        .frame(width: 75, height: 75)
+        .background(Color.cellBackgroundColor)
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .shadow(color: .black.opacity(0.6), radius: 3.6, x: -7.2, y: 9.6)
+        .overlay(
+        RoundedRectangle(cornerRadius: 7.36)
+        .inset(by: 0.16)
+        .stroke(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2), lineWidth: 0.32)
+
+        )
+    }
+}
 
 #Preview {
     ExploreMain()
