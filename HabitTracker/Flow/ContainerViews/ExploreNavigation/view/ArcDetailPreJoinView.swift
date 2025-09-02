@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ArcDetailPreJoinView: View {
+    
+    
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appdata: AppDataStore
+    @State private var isExpanded: Bool = false
+    @State private var truncated: Bool = false
+    @State private var expanded: Bool = false
     let arc: ArcTemplate
+    private var moreLessText: String {
+        if !truncated {
+            return ""
+        } else {
+            return self.expanded ? "less" : "more"
+        }
+    }
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             Image("arc_details")
@@ -31,71 +44,75 @@ struct ArcDetailPreJoinView: View {
                             })
                             
                         }
+                        .padding(.horizontal, 20)
                         
-                        
-                        VStack(alignment: .leading, spacing: 8){
-                            HStack(alignment: .center) {
-                                TextBadgeView(title: "\(arc.durationDays) Days" , icon: "timeCircle")
-                                    .background(Color.white)
-                                    .cornerRadius(20)
-                                TextBadgeView(title: "\(arc.habits?.count ?? 0) Habits" ,icon: "arc")
-                                    .background(Color.white)
-                                    .cornerRadius(20)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Text(arc.title ?? "")
-                                .font(Font.sfPro(size: 38, weight: .semibold))
-                                .foregroundStyle(Color.white)
-                            
-                            Text(arc.descriptionText ?? "")
-                                .font(Font.sfPro(size: 14))
-                                .foregroundStyle(Color.white.opacity(0.5))
-                            
-                            HStack(alignment: .center) {
-                                if let benefits = arc.benefits {
-                                    ForEach(benefits, id: \.self) { benefit in
-                                        TextBadgeViewForGutHealth(title: benefit, foregroundColor: .white, icon: "check")
-                                            .background(Color.white.opacity(0.14))
-                                            .cornerRadius(20)
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 8){
+                                HStack(alignment: .center) {
+                                    TextBadgeView(title: "\(arc.durationDays) Days" , icon: "timeCircle")
+                                        .background(Color.white)
+                                        .cornerRadius(20)
+                                    TextBadgeView(title: "\(arc.habits?.count ?? 0) Habits" ,icon: "arc")
+                                        .background(Color.white)
+                                        .cornerRadius(20)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                Text(arc.title ?? "")
+                                    .font(Font.sfPro(size: 38, weight: .semibold))
+                                    .foregroundStyle(Color.white)
+                                
+                                
+                                VStack(alignment: .leading) {
+                                    if let descriptionText = arc.descriptionText {
+                                        ExpandableText(descriptionText, lineLimit: 2)
+                                       
                                     }
                                 }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                HStack(alignment: .center) {
+                                    if let benefits = arc.benefits {
+                                        FlowLayout(tags: benefits)
+                                    }
+                                }
+                                
                             }
-                        }
-                        .padding(.top)
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    //            }
-                    
-                    DashedLine()
-                        .padding(.top, 20)
-                    
-                    VStack(alignment: .leading) {
-                        VStack(alignment: .leading, spacing: 18) {
-                            Text("Daily Habits")
-                                .font(Font.sfPro(size: 17, weight: .medium))
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.white)
-                        }
-                        .padding(.horizontal, 0)
-                        .padding(.top, 12)
-                        .padding(.bottom, 0)
+                            .padding(.top)
                         
-                        VStack(alignment: .leading, spacing: 13) {
-                            ForEach(arc.habitsArray) { habit in
-                                ArcDailyHabitsCellView( habit: habit, color: .red)
+                        .padding(.horizontal, 20)
+                        
+                        DashedLine()
+                            .padding(.top, 20)
+                        
+                            VStack(alignment: .leading) {
+                                
+                                VStack(alignment: .leading, spacing: 18) {
+                                    Text("Daily Habits")
+                                        .font(Font.sfPro(size: 17, weight: .medium))
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(.white)
+                                }
+                                .padding(.horizontal, 0)
+                                .padding(.top, 12)
+                                .padding(.bottom, 0)
+                                
+                                VStack(alignment: .leading, spacing: 13) {
+                                    ForEach(arc.habitsArray) { habit in
+                                        ArcDailyHabitsCellView( habit: habit, color: .red)
+                                        
+                                    }
+                                    
+                                }
+                                
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
+                            .padding(.horizontal, 20)
                         }
-                        .padding(0)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.top)
+                    .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
+                    .navigationBarBackButtonHidden()
                 }
-                .padding(.top)
-                
-                .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
-                .navigationBarBackButtonHidden()
                 
                 ShareProgressButton(title: "Join arc",buttonAction: {
                     appdata.subscribe(to: arc) { result in
@@ -135,3 +152,6 @@ struct DashedLine: View {
             )
     }
 }
+
+
+

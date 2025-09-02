@@ -20,20 +20,30 @@ struct ExploreMain: View {
         VStack(spacing: 0) {
             
             // MARK: - Header
-            headerView
-                .padding(.horizontal, 28)
-                .padding(.bottom, 24)
+            VStack(alignment: .leading){
+                headerView
+            }
+            .padding(.horizontal, 28)
+            .padding(.top, 72)
+            .padding(.bottom, 24)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .background(Color.navBackground)
+            DashedLine()
+            
+            
+            
+            
             
             // MARK: - Scroll Content
             ScrollView {
-                VStack(spacing: 32) {
+                VStack(spacing: 27) {
                     
                     HStack(spacing: 10) {
                         ArcsView(isArc: true)
                         ArcsView(isArc: false)
                     }.frame(maxWidth: .infinity)
                     
-                    
+                    DashedLine()
                     ExploreSection(
                         title: "Trending Arcs",
                         columns: columns,
@@ -52,12 +62,11 @@ struct ExploreMain: View {
                     )
                 }
                 .padding(.horizontal, 20)
-                .padding(.bottom, 24)
+                .padding(.vertical, 24)
             }
         }
-        .padding(.top, 72)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color.black)
+        .background(Color.sheetBackgroundColor)
         .ignoresSafeArea()
         .sheet(item: $selectedHabit) { habit in
             
@@ -95,7 +104,7 @@ private extension ExploreMain {
             }
             .padding(16)
             .frame(maxWidth: .infinity)
-            .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.1))
+            .background(Color.searchBarColur)
             .cornerRadius(17)
         }
     }
@@ -184,6 +193,12 @@ struct ArcsView: View {
                         .foregroundColor(.white)
                         .font(Font.sfPro(size: 23, weight: .medium))
                         .padding(.leading)
+                    
+                    if isArc {
+                        Image("arc")
+                            .resizable()
+                            .frame(width: 16,height: 16)
+                    }
                     
                     Spacer()
                 }
