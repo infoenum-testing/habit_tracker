@@ -59,14 +59,17 @@ struct ArcCardCell: View {
                             .multilineTextAlignment(.leading)
                             .font(Font.inter(size: 18, weight: .semibold))
                             .foregroundColor(.white.opacity(0.75))
+                            .background(.black.opacity(0.25))
                         
                         Text(arc.shortSubtitle ?? "")
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
                             .font(Font.inter(size: 13))
                             .foregroundColor(.white.opacity(0.75))
+                            .background(.black.opacity(0.25))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    
                     
                 }
                 .padding()
@@ -86,7 +89,3 @@ struct ArcCardCell: View {
     }
 }
 
-//#Preview {
-//    ArcCardCell(arc: arc)
-//        .frame(width: 197)
-//}

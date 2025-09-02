@@ -58,6 +58,27 @@ final class CoreDataManager {
     
     // MARK: - Subscribe to Arc
     func subscribeArc(to arcTemplate: ArcTemplate) -> Result<SubscribedArc, Error> {
+        // Check if arc already exists
+        let fetchRequest: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", arcTemplate.id ?? "")
+        
+        do {
+            let existing = try context.fetch(fetchRequest)
+            if let alreadySubscribed = existing.first {
+                print("⚠️ Arc already subscribed: \(alreadySubscribed.arcTemplate?.title ?? "Unknown Arc")")
+                let error = NSError(
+                    domain: "CoreDataManager",
+                    code: 409, // conflict
+                    userInfo: [NSLocalizedDescriptionKey: "Arc already subscribed."]
+                )
+                return .failure(error)
+            }
+        } catch {
+            print("❌ Failed to check duplicate arcs: \(error.localizedDescription)")
+            return .failure(error)
+        }
+        
+        // Create new subscription
         let subscribedArc = SubscribedArc(context: context)
         subscribedArc.id = arcTemplate.id
         subscribedArc.arcTemplate = arcTemplate
@@ -77,11 +98,10 @@ final class CoreDataManager {
         
         // Create ArcProgress only for today
         let totalHabits = arcTemplate.habits?.count ?? 0
-        let calendar = Calendar.current
         let progress = ArcProgress(context: context)
         progress.id = UUID().uuidString
         progress.subscribedArc = subscribedArc
-        progress.date = calendar.startOfDay(for: Date())
+        progress.date = Calendar.current.startOfDay(for: Date())
         progress.totalHabits = Int16(totalHabits)
         progress.completedHabits = 0
         subscribedArc.addToProgressHistory(progress)
@@ -89,12 +109,15 @@ final class CoreDataManager {
         // Save safely
         do {
             try context.save()
+            print("✅ Subscribed to arc: \(arcTemplate.title ?? "Unknown")")
             return .success(subscribedArc)
         } catch {
-            context.rollback() // revert any partial inserts
+            context.rollback()
+            print("❌ Failed to subscribe to arc: \(error.localizedDescription)")
             return .failure(error)
         }
     }
+
     
     // MARK: - Unsubscribe to Arc
     
@@ -213,12 +236,34 @@ extension CoreDataManager {
     }
     
     /// Subscribe to a habit directly (without Arc)
-     func subscribeHabit(
+    func subscribeHabit(
         from habitTemplate: HabitTemplate,
         requiredPerDay: Int16 = 1,
         completion: @escaping (Result<SubscribedHabit, Error>) -> Void
     ) {
-       // let context = persistentContainer.viewContext
+        // Check if already exists
+        let fetchRequest: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", habitTemplate.id ?? "")
+        
+        do {
+            let existing = try context.fetch(fetchRequest)
+            if let alreadySubscribed = existing.first {
+                print("⚠️ Habit already subscribed: \(alreadySubscribed.wrappedTitle)")
+                let error = NSError(
+                    domain: "CoreDataManager",
+                    code: 409, // conflict
+                    userInfo: [NSLocalizedDescriptionKey: "Habit already subscribed."]
+                )
+                completion(.failure(error))
+                return
+            }
+        } catch {
+            print("❌ Failed to check duplicates: \(error.localizedDescription)")
+            completion(.failure(error))
+            return
+        }
+        
+        // Create new subscription
         let subscribedHabit = SubscribedHabit(context: context)
         subscribedHabit.id = habitTemplate.id ?? UUID().uuidString
         subscribedHabit.habit = habitTemplate
@@ -237,6 +282,7 @@ extension CoreDataManager {
             completion(.failure(error))
         }
     }
+
     
     /// Unsubscribe a habit (delete from Core Data)
      func unsubscribeHabit(
@@ -534,7 +580,6 @@ extension CoreDataManager {
         saveContext()
     }
     
-    
     func toggleHabit(_ habitId: String, in habit: SubscribedHabit) {
         let today = Calendar.current.startOfDay(for: Date())
 
@@ -544,8 +589,9 @@ extension CoreDataManager {
             newProgress.id = UUID().uuidString
             newProgress.date = today
             newProgress.subscribedHabit = habit
-           // newProgress.totalHabits = Int16(habit.wrappedHabitsCount)
+            newProgress.totalHabits = Int16(habit.wrappedRequiredPerDay) // expected per day
             newProgress.completedHabitIds = []
+            newProgress.completedCount = 0
             habit.addToProgressHistory(newProgress)
             return newProgress
         }()
@@ -561,10 +607,11 @@ extension CoreDataManager {
         }
 
         progress.completedHabitIds = completed
-        //progress.completedHabits = Int16(completed.count)
+        progress.completedCount = Int16(completed.count)
 
         saveContext()
     }
+
 }
 
 extension CoreDataManager {

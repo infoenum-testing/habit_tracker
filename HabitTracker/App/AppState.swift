@@ -79,11 +79,9 @@ import Foundation
 import CoreData
 
 final class AppDataStore: ObservableObject {
-    //static let shared = AppDataStore()
     
     @Published var allHabits: [HabitTemplate] = []
     @Published var allArcs: [ArcTemplate] = []
-    @Published var subscribedArcs: [SubscribedArc] = []
     @Published var allSubscribedHabits: [SubscribedHabit] = []
     @Published var allSubscribedArcs: [SubscribedArc] = []
     @Published var selectedArctoDelete: SubscribedArc?
@@ -92,10 +90,11 @@ final class AppDataStore: ObservableObject {
     @Published var isShowingDeleteArcConfirmation: Bool = false
     @Published var isShowingDeleteHabitConfirmation: Bool = false
     
-    
-    
+    @Published  var showToast = false
+    @Published  var toastMessage: String = ""
+    @Published  var toastType: ToastType = .success
+
     init() {
-        
         refreshData()
     }
     
@@ -104,7 +103,6 @@ final class AppDataStore: ObservableObject {
         let manager = CoreDataManager.shared
         allHabits = manager.fetchAllHabits()
         allArcs = manager.fetchAllArcs()
-        subscribedArcs = manager.fetchSubscribedArcs()
         allSubscribedHabits = manager.fetchSubscribedHabits()
         allSubscribedArcs = manager.fetchSubscribedArcs()
         allHistories = manager.fetchAllHistories()
@@ -125,6 +123,9 @@ final class AppDataStore: ObservableObject {
         case .failure(let error):
             print("❌ Failed to subscribe: \(error.localizedDescription)")
             completion?(.failure(error))
+            showToast = true
+            toastMessage = "\(error.localizedDescription)"
+            toastType = .alert
         }
     }
     
@@ -202,6 +203,9 @@ extension AppDataStore {
             case .failure(let error):
                 print("⚠️ Error subscribing: \(error.localizedDescription)")
                 completion?(.failure(error))
+                self.showToast = true
+                self.toastMessage = "\(error.localizedDescription)"
+                self.toastType = .alert
                 
             }
         }

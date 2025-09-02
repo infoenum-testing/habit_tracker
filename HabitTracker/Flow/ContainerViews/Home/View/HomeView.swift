@@ -14,7 +14,7 @@ struct HomeView: View {
     @StateObject private var swipeManager = SwipeManager()
     @State private var showEditArc = false
     @State private var showHabitEditSheet = false
-
+    @State private var showToast: Bool = false
 
     var body: some View {
             ZStack {
@@ -77,10 +77,15 @@ struct HomeView: View {
             .background(.black)
             .navigationBarHidden(true)
         
-            .fullScreenCover(isPresented: $showHabitEditSheet) {
+            .sheet(isPresented: $showHabitEditSheet) {
                 HabitEditSheet()
                     .preferredColorScheme(.dark)
-               }
+                    .presentationDetents([.fraction(0.95)])
+                    .presentationCornerRadius(24)
+                    .presentationDragIndicator(.hidden)
+            }
+
+
         
             .sheet(isPresented: $showEditArc) {
                 EditArcSheet(isPresented: $showEditArc)

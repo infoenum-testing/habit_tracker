@@ -43,15 +43,24 @@ struct HabitCustomizationSheet: View {
                     )
                     .padding(.horizontal, 20)
                     ShareProgressButton(title: "Save habit") {
-                        appData.subscribeToHabit(to: habit)
-                        appData.updateSubscribedHabit(habitID: habit.wrappedId, icon: selectedIcon, newThemeColor: selectedColor) { _ in
-                            dismiss()
+                        appData.subscribeToHabit(to: habit) { result in
+                            switch result {
+                            case .success(let message):
+                                appData.updateSubscribedHabit(habitID: habit.wrappedId, icon: selectedIcon, newThemeColor: selectedColor) { success in
+                                    dismiss()
+                                }
+                            case .failure(let error):
+                                appData.toastMessage = error.localizedDescription
+                                appData.showToast = true
+                                appData.toastType = .alert
+                            }
                         }
+                        
                     }
                     .padding(.top, 26)
                     .padding(.horizontal, 20)
                 }
-                
+                .toast(isShown: $appData.showToast, title: "", message: appData.toastMessage, type: appData.toastType, alignment: .bottom)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }

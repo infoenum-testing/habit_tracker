@@ -64,14 +64,16 @@ struct ArcRowList: View {
                     
                     
                     if state.layout == .grid {
-                        GridTileView(itemType: .arc,
-                                     values: [1,2,3,4,5,6,7,8,9],
-                                     filledCount: 0,
-                                     selectedColor: color)
+                        GridTileView(
+                            itemType: .arc,
+                            values: arc.last100DayOpacities,
+                            selectedColor: color
+                        )
                         .frame(height: 100)
                         .padding(.horizontal, 10)
                         .padding(.bottom, 10)
                     }
+
                 }
                 .background(
                     LinearGradient(

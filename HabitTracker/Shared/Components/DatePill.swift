@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DatePill: View {
     @EnvironmentObject var state: AppState
+    @EnvironmentObject var appData : AppDataStore
    
    @State var days : [Date] = []
     let date: Date
@@ -26,9 +27,9 @@ struct DatePill: View {
                 .foregroundColor(isSelected ? .white : .appGray)
             if isSelected {
                     VStack(spacing: 1) {
-                        ForEach(Array(state.activeArcs.prefix(3)).indices, id: \.self) { i in
+                        ForEach(appData.allSubscribedArcs.prefix(3)) { arc in
                             RoundedRectangle(cornerRadius: 2)
-                                .fill(state.activeArcs[i].color)
+                                .fill(ColorToken.from(string: arc.wrappedThemeColor))
                                 .frame(width: 18, height: 4)
                         }
                     }

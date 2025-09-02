@@ -65,9 +65,9 @@ struct HabitRowList: View {
                     }
                     .frame(height: 70)
                     
-                    // Grid view (only visible in grid layout)
+                   //  Grid view (only visible in grid layout)
                     if state.layout == .grid {
-                        GridTileView(itemType: .habit, filledCount: 5, selectedColor: color)
+                        GridTileView(itemType: .habit, values: habit.last100DayOpacities, selectedColor: color)
                             .frame(height: 100)
                             .padding(.horizontal, 10)
                             .padding(.bottom, 10)

@@ -130,6 +130,7 @@ struct ArcDetailPreJoinView: View {
             
         }
         .background(Color.backgroundColor)
+        .toast(isShown: $appdata.showToast, title: "", message: appdata.toastMessage, type: appdata.toastType, alignment: .bottom)
     }
 }
 

@@ -8,16 +8,49 @@
 import SwiftUI
 
 struct HabitEditSheet: View {
-    
-    @State private var selectedIcon: String = "figure.walk"
+    @State private var selectedIcon: String = "icon.star"
     @State private var selectedColor: String = "color.purple"
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var appData: AppDataStore
     
     private let colorsArray: [String] = AppColors.all
     
+    // set your preferred content height
+    private let preferredHeight: CGFloat = 800
+    let deviceHeight = UIScreen.main.bounds.height
+    
     var body: some View {
+        GeometryReader { geo in
+            //let deviceHeight = geo.size.height
+            let shouldScroll = deviceHeight < preferredHeight
+            
+            Group {
+                if shouldScroll {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        content
+                    }
+                } else {
+                    content
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .background(Color.sheetBackgroundColor)
+        }
+    }
+    
+    private var content: some View {
         VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Spacer()
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 100, height: 5)
+                    .background(.white.opacity(0.2))
+                    .cornerRadius(3)
+                    .padding(.vertical)
+                Spacer()
+            }
+            
             HStack {
                 RoundBackButton(backgroundColor: .black.opacity(0.65)) {
                     dismiss()
@@ -38,9 +71,8 @@ struct HabitEditSheet: View {
             
             ColorPickerSection(
                 colors: colorsArray,
-                selectedColor: $selectedColor, action: {
-                    
-                }
+                selectedColor: $selectedColor,
+                action: { }
             )
             
             ShareProgressButton(title: "Save habit") {
@@ -50,16 +82,13 @@ struct HabitEditSheet: View {
                         icon: selectedIcon,
                         newThemeColor: selectedColor
                     ) { _ in
-                        // completion
                         dismiss()
                     }
                 }
             }
-
             .padding(.vertical, 26)
             
             Button {
-                // action
                 if let habit = appData.selectedHabitToDelete {
                     appData.deleteHabit(habit)
                     dismiss()
@@ -83,10 +112,12 @@ struct HabitEditSheet: View {
             .padding(.bottom, 26)
         }
         .padding(.horizontal, 20)
-        .padding(.top, 20)
-        .background(Color.sheetBackgroundColor)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        
+        .onAppear {
+            if let habit = appData.selectedHabitToDelete {
+                selectedIcon = habit.wrappedIcon
+                selectedColor = habit.wrappedThemeColor
+            }
+        }
     }
 }
 

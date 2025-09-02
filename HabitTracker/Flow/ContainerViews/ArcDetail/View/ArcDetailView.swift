@@ -19,7 +19,7 @@ struct ArcDetailView: View {
     let arcID: String
    
     private var arc: SubscribedArc? {
-        appData.subscribedArcs.first(where: { $0.wrappedId == arcID })
+        appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID })
     }
     
     private var progress: CGFloat {
@@ -70,7 +70,7 @@ struct ArcDetailView: View {
 
                             VStack(spacing: 12) {
                                 ForEach(arc.wrappedHabits) { task in
-                                    if let id = task.id {
+                                    if task.id != nil {
                                         ArcTaskRow(
                                             arc: arc,
                                             task: task,
@@ -129,9 +129,9 @@ struct ArcDetailView: View {
                 .background(.black)
             }
         }
-        .onChange(of: appData.subscribedArcs) { _ in
+        .onChange(of: appData.allSubscribedArcs) { _ in
             // auto-dismiss if arc no longer exists
-            if appData.subscribedArcs.first(where: { $0.wrappedId == arcID }) == nil {
+            if appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID }) == nil {
                 dismiss()
             }
         }
@@ -220,11 +220,11 @@ struct ShareProgressButton_Previews: PreviewProvider {
 
 
 struct DayStripView: View {
-    let arc: SubscribedArc   // contains totaldays and dayNumber
+    let arc: SubscribedArc
     
     private var visibleDays: [Int?] {
         let total = arc.wrappedDurationDays
-        let current = 1
+        let current = arc.currentDayIndex
         
         // Always want 5 slots around the current day
         let start = current - 2
@@ -245,13 +245,10 @@ struct DayStripView: View {
                         isPast: day < arc.currentDayIndex
                     )
                 } else {
-                    // placeholder (transparent to keep spacing)
                     Color.clear
                         .frame(width: 70, height: 90)
                 }
             }
         }
-      //  .frame(maxWidth: .infinity, alignment: .center)
-        
     }
 }
