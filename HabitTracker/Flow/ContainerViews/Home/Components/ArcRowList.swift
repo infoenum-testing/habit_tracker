@@ -66,7 +66,7 @@ struct ArcRowList: View {
                     if state.layout == .grid {
                         GridTileView(
                             itemType: .arc,
-                            values: arc.last100DayOpacities,
+                            values: arc.dailyProgressOpacities,
                             selectedColor: color
                         )
                         .frame(height: 100)

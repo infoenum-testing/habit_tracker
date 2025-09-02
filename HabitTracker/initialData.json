@@ -55,7 +55,7 @@
         "title": "Drink 2L Water",
         "description": "Stay hydrated & energized.",
         "category": "Body",
-        "colorToken": "color.cyan",
+        "colorToken": "color.green",
         "icon": "icon.cup",
         "defaultGoalPerDay": 1,
         "pointsPerDay": {
@@ -130,7 +130,7 @@
         "title": "Cold Shower",
         "description": "Take a cold shower today.",
         "category": "Body",
-        "colorToken": "color.ice",
+        "colorToken": "color.purple",
         "icon": "icon.droplet",
         "defaultGoalPerDay": 1,
         "pointsPerDay": {
@@ -204,7 +204,7 @@
         "title": "Breath Work",
         "description": "Do one breathing exercise today.",
         "category": "Body",
-        "colorToken": "color.teal",
+        "colorToken": "color.darkblue",
         "icon": "icon.breath",
         "defaultGoalPerDay": 1,
         "pointsPerDay": {
@@ -422,7 +422,7 @@
         "title": "Learn Something New",
         "description": "Watch or read one new concept today.",
         "category": "Mind",
-        "colorToken": "color.teal",
+        "colorToken": "color.red",
         "icon": "icon.lightbulb",
         "defaultGoalPerDay": 1,
         "pointsPerDay": {
@@ -471,7 +471,7 @@
         "title": "Deep Focus",
         "description": "Spend 30 minutes fully focused, no distractions.",
         "category": "Mind",
-        "colorToken": "color.indigo",
+        "colorToken": "color.blue",
         "icon": "icon.focus",
         "defaultGoalPerDay": 1,
         "pointsPerDay": {
@@ -595,7 +595,7 @@
         "title": "Save Money",
         "description": "Save at least ten dollars today.",
         "category": "Life",
-        "colorToken": "color.teal",
+        "colorToken": "color.brown",
         "icon": "icon.wallet",
         "defaultGoalPerDay": 1,
         "pointsPerDay": {
@@ -783,8 +783,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.tooth"
+          "days": "icon.calendar",
+          "habits": "icon.tooth"
         },
         "tags": [
           "Appearance",
@@ -1029,8 +1029,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.shoe"
+          "days": "icon.calendar",
+          "habits": "icon.shoe"
         },
         "tags": [
           "Fitness",
@@ -1092,8 +1092,8 @@
           "Intelligence": 2
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.moon"
+          "days": "icon.calendar",
+          "habits": "icon.moon"
         },
         "tags": [
           "Sleep",
@@ -1115,7 +1115,7 @@
         "description": "Water is the foundation of health. The Hydration Arc builds consistency in drinking more water daily, helping your body function at its best while keeping skin and energy levels fresh.",
         "durationDays": 21,
         "category": "Body",
-        "colorToken": "color.cyan",
+        "colorToken": "color.beige",
         "coverImage": "cover.hydration",
         "benefits": [
           "Clearer Skin",
@@ -1143,8 +1143,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.droplet"
+          "days": "icon.calendar",
+          "habits": "icon.droplet"
         },
         "tags": [
           "Hydration",
@@ -1212,8 +1212,8 @@
           "Intelligence": 1
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.infinity"
+          "days": "icon.calendar",
+          "habits": "icon.infinity"
         },
         "tags": [
           "Longevity",
@@ -1276,7 +1276,7 @@
         },
         "icons": {
           "days": "icon.calendar.day",
-          "habits": "icon.arc.prayer"
+          "habits": "icon.hand"
         },
         "tags": [
           "Faith",
@@ -1298,7 +1298,7 @@
         "description": "Reduce stress and sharpen attention with short, consistent practices. The Calm Mind Arc blends breathwork, meditation, and mindful pauses to steady your nervous system and clear your mind.",
         "durationDays": 30,
         "category": "Mind",
-        "colorToken": "color.teal",
+        "colorToken": "color.gray",
         "coverImage": "cover.calmmind",
         "benefits": [
           "Lower Stress",
@@ -1338,8 +1338,8 @@
           "Intelligence": 1
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.lotus"
+          "days": "icon.calendar",
+          "habits": "icon.lotus"
         },
         "tags": [
           "Calm",
@@ -1401,8 +1401,8 @@
           "Intelligence": 1
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.eye"
+          "days": "icon.calendar",
+          "habits": "icon.eye"
         },
         "tags": [
           "Mindfulness",
@@ -1676,7 +1676,7 @@
         "description": "Read with intention and retention. The Book Club Arc blends daily pages with annotation and bite-size summaries so ideas stick and viewpoints grow.",
         "durationDays": 30,
         "category": "Mind",
-        "colorToken": "color.maroon",
+        "colorToken": "color.red",
         "coverImage": "cover.bookclub",
         "benefits": [
           "Deeper Knowledge",
@@ -1733,7 +1733,7 @@
         "description": "75 days, no excuses. The 75 Hard Arc challenges you to double down on daily habits that demand physical, mental, and emotional discipline. This is more than fitness\u2014it\u2019s a test of character.",
         "durationDays": 75,
         "category": "Life",
-        "colorToken": "color.black",
+        "colorToken": "color.red",
         "coverImage": "cover.75hard",
         "benefits": [
           "Unshakable Discipline",
@@ -1785,8 +1785,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.shield"
+          "days": "icon.calendar",
+          "habits": "icon.shield"
         },
         "tags": [
           "Discipline",
@@ -1808,7 +1808,7 @@
         "description": "Winter tempts us into hibernation. The Winter Arc keeps your momentum alive with habits that preserve sharpness, energy, and growth\u2014even when the days are short and cold.",
         "durationDays": 90,
         "category": "Life",
-        "colorToken": "color.navy",
+        "colorToken": "color.darkblue",
         "coverImage": "cover.winter",
         "benefits": [
           "Consistency",
@@ -1848,8 +1848,8 @@
           "Intelligence": 1
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.snowflake"
+          "days": "icon.calendar",
+          "habits": "icon.diamond"
         },
         "tags": [
           "Winter",
@@ -1980,8 +1980,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.logo"
+          "days": "icon.calendar",
+          "habits": "icon.coin"
         },
         "tags": [
           "Nutrition",
@@ -2004,7 +2004,7 @@
         "description": "Cold showers shock the system and sharpen the mind. The Cold Shower Arc builds mental toughness, improves circulation, and teaches you to lean into discomfort daily.",
         "durationDays": 21,
         "category": "Life",
-        "colorToken": "color.ice",
+        "colorToken": "color.blue",
         "coverImage": "cover.coldshower",
         "benefits": [
           "Resilience",
@@ -2026,8 +2026,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.droplet"
+          "days": "icon.calendar",
+          "habits": "icon.droplet"
         },
         "tags": [
           "Discomfort",
@@ -2153,7 +2153,7 @@
         },
         "icons": {
           "days": "icon.calendar.day",
-          "habits": "icon.arc.phoneoff"
+          "habits": "icon.phone"
         },
         "tags": [
           "Digital Detox",
@@ -2541,7 +2541,7 @@
         "description": "Stop people-pleasing. The Villain Era Arc isn\u2019t about being cruel\u2014it\u2019s about boundaries, self-respect, and bold choices that put you in control of your time and energy.",
         "durationDays": 30,
         "category": "Other",
-        "colorToken": "color.black",
+        "colorToken": "color.purple",
         "coverImage": "cover.villainera",
         "benefits": [
           "Stronger Boundaries",
@@ -2581,8 +2581,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.mask"
+          "days": "icon.calendar",
+          "habits": "icon.dumbell"
         },
         "tags": [
           "Confidence",
@@ -2644,8 +2644,8 @@
           "Intelligence": 0
         },
         "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.snowflake"
+          "days": "icon.calendar",
+          "habits": "icon.cup"
         },
         "tags": [
           "Confidence",

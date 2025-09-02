@@ -227,3 +227,86 @@ extension SubscribedArc {
         }
     }
 }
+
+
+//extension SubscribedArc {
+//    
+//    /// Daily progress from arc start → today
+//    var dailyProgressOpacities: [Double] {
+//        let calendar = Calendar.current
+//        let start = calendar.startOfDay(for: wrappedStartDate)
+//        let end = calendar.startOfDay(for: Date())
+//        
+//        // Generate all dates from start → today
+//        guard let days = calendar.dateComponents([.day], from: start, to: end).day else {
+//            return []
+//        }
+//        
+//        let allDates = (0...days).compactMap {
+//            calendar.date(byAdding: .day, value: $0, to: start)
+//        }
+//        
+//        return allDates.map { date in
+//            // Find progress for this date
+//            if let progress = progressArray.first(where: {
+//                if let pDate = $0.date {
+//                    return calendar.isDate(pDate, inSameDayAs: date)
+//                }
+//                return false
+//            }) {
+//                let total = Double(progress.totalHabits)
+//                let completed = Double(progress.completedHabits)
+//                guard total > 0 else { return (0.0) }
+//                
+//                let ratio = completed / total
+//                return (ratio == 0 ? 0.0 : 0.3 + (ratio * 0.7))
+//            } else {
+//                // No data for this date → 0.0
+//                return (0.0)
+//            }
+//        }
+//    }
+//}
+
+
+extension SubscribedArc {
+    
+    /// Daily progress from arc start → today (max 100 days)
+    var dailyProgressOpacities: [Double] {
+        let calendar = Calendar.current
+        let start = calendar.startOfDay(for: wrappedStartDate)
+        let end = calendar.startOfDay(for: Date())
+        
+        // Total days passed since start
+        guard let daysPassed = calendar.dateComponents([.day], from: start, to: end).day else {
+            return []
+        }
+        
+        // Cap to 100 days
+        let cappedDays = min(daysPassed, 99) // 0...99 → 100 entries max
+        
+        let allDates = (0...cappedDays).compactMap {
+            calendar.date(byAdding: .day, value: $0, to: start)
+        }
+        
+        return allDates.map { date in
+            // Find progress for this date
+            if let progress = progressArray.first(where: {
+                if let pDate = $0.date {
+                    return calendar.isDate(pDate, inSameDayAs: date)
+                }
+                return false
+            }) {
+                let total = Double(progress.totalHabits)
+                let completed = Double(progress.completedHabits)
+                guard total > 0 else { return (0.3) }
+                
+                let ratio = completed / total
+                return (ratio == 0 ? 0.3 : 0.3 + (ratio * 0.7))
+            } else {
+                // No data for this date → 0.0
+                return (0.3)
+            }
+        }
+    }
+}

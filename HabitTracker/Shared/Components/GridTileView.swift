@@ -116,7 +116,6 @@ import Foundation
 //}
 
 
-
 import SwiftUI
 
 struct GridTileView: View {
@@ -131,7 +130,7 @@ struct GridTileView: View {
     
     var body: some View {
         GeometryReader { geo in
-            let totalWidth = geo.size.width// padding from sides
+            let totalWidth = geo.size.width
             let squareSize = (totalWidth - (CGFloat(columnsCount - 1) * spacing)) / CGFloat(columnsCount)
             
             LazyVGrid(
@@ -139,9 +138,13 @@ struct GridTileView: View {
                 spacing: spacing
             ) {
                 ForEach(0..<(columnsCount * rowsCount), id: \.self) { index in
-                    let flippedIndex = index % 20 + (4 - index / 20) * 20
+                    let row = index / columnsCount
+                    let col = index % columnsCount
+                    // ✅ Mirror horizontally → starts top-right
+                    let mirroredIndex = row * columnsCount + (columnsCount - 1 - col)
                     
-                    let opacity = flippedIndex < values.count ? values[flippedIndex] : 0.0
+                    let opacity = mirroredIndex < values.count ? values[mirroredIndex] : 0.3
+                    
                     RoundedRectangle(cornerRadius: 3)
                         .fill(selectedColor.opacity(opacity))
                         .frame(width: squareSize, height: squareSize)
