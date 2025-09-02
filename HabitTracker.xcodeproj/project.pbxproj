@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18C8719A2E62F775006FEEB1 /* subscribed_arc_history.json in Resources */ = {isa = PBXBuildFile; fileRef = 18C871992E62F775006FEEB1 /* subscribed_arc_history.json */; };
 		18FA5D232E6055E60069590C /* HabitEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA5D222E6055E60069590C /* HabitEditSheet.swift */; };
+		18FAA6CA2E66BCDD003907AA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6C92E66BCDD003907AA /* FlowLayout.swift */; };
+		18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CB2E66D392003907AA /* ExpandableText.swift */; };
 		B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC02E50FDCC00674792 /* AppState.swift */; };
 		B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */; };
 		B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC32E50FDCC00674792 /* DayBadge.swift */; };
@@ -114,6 +116,8 @@
 /* Begin PBXFileReference section */
 		18C871992E62F775006FEEB1 /* subscribed_arc_history.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = subscribed_arc_history.json; sourceTree = "<group>"; };
 		18FA5D222E6055E60069590C /* HabitEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditSheet.swift; sourceTree = "<group>"; };
+		18FAA6C92E66BCDD003907AA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		18FAA6CB2E66D392003907AA /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		B7A3CBC02E50FDCC00674792 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTaskRow.swift; sourceTree = "<group>"; };
 		B7A3CBC32E50FDCC00674792 /* DayBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBadge.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				E983A34C2E5D9C55001AC952 /* ArcDetailPreJoinView.swift */,
 				E98E378B2E584636003244AA /* ExploreMain.swift */,
 				E983A3522E5DB216001AC952 /* HabitCustomizationSheet.swift */,
+				18FAA6C92E66BCDD003907AA /* FlowLayout.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				E98E379E2E58A89E003244AA /* ArcCardCell.swift */,
 				E983A3562E5DC85B001AC952 /* IconGridView.swift */,
 				E98D71D02E6040820090AB40 /* DailyHabitsCellView.swift */,
+				18FAA6CB2E66D392003907AA /* ExpandableText.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -761,6 +767,7 @@
 			files = (
 				18FA5D232E6055E60069590C /* HabitEditSheet.swift in Sources */,
 				EB4CCB9E2E571C8600F76945 /* WeeklyPerformanceView.swift in Sources */,
+				18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */,
 				B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */,
 				EB4CCB982E57192300F76945 /* ArcCardView.swift in Sources */,
 				B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */,
@@ -826,6 +833,7 @@
 				B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */,
 				B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */,
 				EB4CCBA02E571CE700F76945 /* OverallScoreCard.swift in Sources */,
+				18FAA6CA2E66BCDD003907AA /* FlowLayout.swift in Sources */,
 				B7A3CC202E50FDCC00674792 /* ProgressBar.swift in Sources */,
 				B7A3CC212E50FDCC00674792 /* ToggleChip.swift in Sources */,
 				B7A3CC222E50FDCC00674792 /* Color+Extensions.swift in Sources */,

@@ -28,8 +28,7 @@ struct HabitCardCellView: View {
                     
                     Image(habit.icon ?? "tooth")
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 22, height: 29)
+                        .frame(width: 32, height: 32)
                 }
                 
                 // Text Section
@@ -43,6 +42,7 @@ struct HabitCardCellView: View {
                         .font(.system(size: 12))
                         .lineLimit(2)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.horizontal, 26)
             .padding(.vertical, 15)

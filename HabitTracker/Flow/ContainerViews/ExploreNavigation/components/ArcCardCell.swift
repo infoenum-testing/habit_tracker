@@ -60,7 +60,7 @@ struct ArcCardCell: View {
                             .font(Font.inter(size: 18, weight: .semibold))
                             .foregroundColor(.white.opacity(0.75))
                         
-                        Text(arc.descriptionText ?? "")
+                        Text(arc.shortSubtitle ?? "")
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
                             .font(Font.inter(size: 13))
