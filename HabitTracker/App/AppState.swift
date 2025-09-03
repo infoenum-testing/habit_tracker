@@ -8,70 +8,79 @@
 import Foundation
 import SwiftUI
 
-final class AppState: ObservableObject {
-    @Published var selectedDate: Date = Date().stripTime()
-    @Published var layout: HomeLayout = .list
-    @Published var arcs: [Arc]
-    @Published var habits: [Habit]
-    
-    init(arcs: [Arc], habits: [Habit]) {
-        self.arcs = arcs
-        self.habits = habits
-    }
-    
-    enum ListItem: Identifiable {
-        case arc(Arc)
-        case habit(Habit)
-        
-        var id: String {
-            switch self {
-            case .arc(let arc): return arc.id.uuidString   // ✅ convert UUID → String
-            case .habit(let habit): return habit.id.uuidString        // already String
-            }
-        }
-    }
-    
-    
-    var allItems: [ListItem] {
-        let arcItems = arcs.map { ListItem.arc($0) }
-        let habitItems = habits.map { ListItem.habit($0) }
-        return arcItems + habitItems
-    }
-    
-    func toggleHabit(_ habit: Habit) {
-//        let day = selectedDate.stripTime()
-//        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
-//        if habits[idx].completions.contains(day) {
-//            habits[idx].completions.remove(day)
-//        } else {
-//            habits[idx].completions.insert(day)
+//final class AppState: ObservableObject {
+//    @Published var selectedDate: Date = Date().stripTime()
+//    @Published var layout: HomeLayout = .list
+//    @Published var arcs: [Arc]
+//    @Published var habits: [Habit]
+//    
+//    init(arcs: [Arc], habits: [Habit]) {
+//        self.arcs = arcs
+//        self.habits = habits
+//    }
+//    
+//    enum ListItem: Identifiable {
+//        case arc(Arc)
+//        case habit(Habit)
+//        
+//        var id: String {
+//            switch self {
+//            case .arc(let arc): return arc.id.uuidString   // ✅ convert UUID → String
+//            case .habit(let habit): return habit.id.uuidString        // already String
+//            }
 //        }
-    }
-    
-    func toggleHabitAndUpdateCount(_ habit: Habit) {
-//        let day = selectedDate.stripTime()
-//        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
-//        if habits[idx].completions.contains(day) {
-//            // was done → now unchecked
-//            habits[idx].completedCount += 1
-//        } else {
-//            // was not done → now checked
-//            habits[idx].completedCount -= 1
+//    }
+//    
+//    
+//    var allItems: [ListItem] {
+//        let arcItems = arcs.map { ListItem.arc($0) }
+//        let habitItems = habits.map { ListItem.habit($0) }
+//        return arcItems + habitItems
+//    }
+//    
+//    func toggleHabit(_ habit: Habit) {
+////        let day = selectedDate.stripTime()
+////        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
+////        if habits[idx].completions.contains(day) {
+////            habits[idx].completions.remove(day)
+////        } else {
+////            habits[idx].completions.insert(day)
+////        }
+//    }
+//    
+//    func toggleHabitAndUpdateCount(_ habit: Habit) {
+////        let day = selectedDate.stripTime()
+////        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
+////        if habits[idx].completions.contains(day) {
+////            // was done → now unchecked
+////            habits[idx].completedCount += 1
+////        } else {
+////            // was not done → now checked
+////            habits[idx].completedCount -= 1
+////        }
+//    }
+//    
+//    
+//    func toggleArcTask(_ taskID: UUID, in arcID: UUID) {
+//        guard let arcIndex = arcs.firstIndex(where: { $0.id == arcID }) else { return }
+//        if let tIndex = arcs[arcIndex].tasksForToday.firstIndex(where: { $0.id == taskID }) {
+//            var arc = arcs[arcIndex]
+//            arc.tasksForToday[tIndex].isCompleted.toggle()
+//            arc.history[arc.dayNumber-1] = Int(arc.progress * 100)
+//            arcs[arcIndex] = arc
 //        }
-    }
-    
-    
-    func toggleArcTask(_ taskID: UUID, in arcID: UUID) {
-        guard let arcIndex = arcs.firstIndex(where: { $0.id == arcID }) else { return }
-        if let tIndex = arcs[arcIndex].tasksForToday.firstIndex(where: { $0.id == taskID }) {
-            var arc = arcs[arcIndex]
-            arc.tasksForToday[tIndex].isCompleted.toggle()
-            arc.history[arc.dayNumber-1] = Int(arc.progress * 100)
-            arcs[arcIndex] = arc
-        }
-    }
-    
-    var activeArcs: [Arc] { arcs.filter { _ in true } }
+//    }
+//    
+//    var activeArcs: [Arc] { arcs.filter { _ in true } }
+//}
+
+
+struct GrandTotals {
+    var discipline: Int32
+    var strength: Int32
+    var confidence: Int32
+    var intelligence: Int32
+    var overall: Int32
 }
 
 
@@ -79,7 +88,8 @@ import Foundation
 import CoreData
 
 final class AppDataStore: ObservableObject {
-    
+    @Published var layout: HomeLayout = .list
+    @Published var selectedDate: Date = Date().stripTime()
     @Published var allHabits: [HabitTemplate] = []
     @Published var allArcs: [ArcTemplate] = []
     @Published var allSubscribedHabits: [SubscribedHabit] = []
@@ -87,6 +97,17 @@ final class AppDataStore: ObservableObject {
     @Published var selectedArctoDelete: SubscribedArc?
     @Published var allHistories: [History] = []
     @Published var selectedHabitToDelete: SubscribedHabit?
+    
+    @Published var allStatistics: [Statistics] = []
+    @Published var todayStatistics: Statistics?
+    @Published var grandTotals: GrandTotals = GrandTotals(
+            discipline: 0,
+            strength: 0,
+            confidence: 0,
+            intelligence: 0,
+            overall: 0
+        )
+    
     @Published var isShowingDeleteArcConfirmation: Bool = false
     @Published var isShowingDeleteHabitConfirmation: Bool = false
     
@@ -106,8 +127,22 @@ final class AppDataStore: ObservableObject {
         allSubscribedHabits = manager.fetchSubscribedHabits()
         allSubscribedArcs = manager.fetchSubscribedArcs()
         allHistories = manager.fetchAllHistories()
+        todayStatistics = manager.fetchOrCreateTodayStatistics()
+        allStatistics = manager.fetchAllStatistics()
+        updateGrandTotals()
         print("\(allHistories.count)")
     }
+    
+    func updateGrandTotals() {
+            let totals = fetchGrandTotals()
+            self.grandTotals = GrandTotals(
+                discipline: totals.discipline,
+                strength: totals.strength,
+                confidence: totals.confidence,
+                intelligence: totals.intelligence,
+                overall: totals.overall
+            )
+        }
     
     // MARK: - Actions
     
@@ -202,12 +237,29 @@ final class AppDataStore: ObservableObject {
 
 extension AppDataStore {
     func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
-        CoreDataManager.shared.toggleArcHabit(habitId, in: arc)
-        refreshData()
+        CoreDataManager.shared.toggleArcHabit(habitId, in: arc){ isChecked in
+            if isChecked {
+                print("✅ Habit checked")
+                addPoints()
+            } else {
+                print("❌ Habit unchecked")
+                removePoints()
+            }
+            refreshData()
+        }
+        
     }
     func toggleHabit(_ habitId: String, in arc: SubscribedHabit) {
-        CoreDataManager.shared.toggleHabit(habitId, in: arc)
-        refreshData()
+        CoreDataManager.shared.toggleHabit(habitId, in: arc){ isChecked in
+            if isChecked {
+                print("✅ Habit checked")
+                addPoints()
+            } else {
+                print("❌ Habit unchecked")
+                removePoints()
+            }
+            refreshData()
+        }
     }
 }
 
@@ -273,5 +325,62 @@ extension AppDataStore {
     func deleteHabit(_ subHabit: SubscribedHabit) {
         CoreDataManager.shared.deleteSubscribedHabit(subHabit)
         refreshData()
+    }
+}
+
+
+extension AppDataStore {
+    
+    func addPoints(category: Statistics.Category = Statistics.Category.random(), points: Int32 = 1) {
+        CoreDataManager.shared.addPoints(to: category, points: points)
+        refreshData()
+    }
+    
+    func removePoints(category: Statistics.Category = Statistics.Category.random(), points: Int32 = 1) {
+        CoreDataManager.shared.removePoints(from: category, points: points)
+        refreshData()
+    }
+    
+    func deleteStatistics(_ stats: Statistics) {
+        CoreDataManager.shared.deleteStatistics(stats)
+        refreshData()
+    }
+    
+    func fetchTotals(for stats: Statistics) -> (discipline: Int32, strength: Int32, confidence: Int32, intelligence: Int32, overall: Int32) {
+        return CoreDataManager.shared.totals(for: stats)
+    }
+    
+    func fetchGrandTotals() -> (discipline: Int32, strength: Int32, confidence: Int32, intelligence: Int32, overall: Int32) {
+        return CoreDataManager.shared.grandTotals()
+    }
+}
+
+extension AppDataStore {
+    var weeklyDayValues: [DayValue] {
+        let stats = CoreDataManager.shared.fetchWeeklyStatistics()
+        let calendar = Calendar.current
+        let weekStart = Date().startOfWeek
+        let today = Date().stripTime()
+
+        return (0..<7).map { offset in
+            let date = calendar.date(byAdding: .day, value: offset, to: weekStart)!
+            let dayLabel = date.shortWeekday  // ✅ dynamic Mon, Tue, ...
+            
+            var total: Double = 0
+            if date <= today { // ✅ don’t allow future dates
+                let dayStat = stats.first { calendar.isDate($0.date ?? Date(), inSameDayAs: date) }
+                total = Double(dayStat?.overallTotal ?? 0)
+            }
+
+            return DayValue(day: dayLabel, value: total)
+        }
+    }
+
+    var currentWeekDayLabels: [String] {
+        let calendar = Calendar.current
+        let weekStart = Date().startOfWeek
+        return (0..<7).compactMap {
+            calendar.date(byAdding: .day, value: $0, to: weekStart)?.shortWeekday
+        }
     }
 }

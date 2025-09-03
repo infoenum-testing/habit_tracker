@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HomeHeader: View {
-    @EnvironmentObject var state: AppState
+   // @EnvironmentObject var state: AppState
     var body: some View {
         HStack(alignment:.center) {
             Image("star")
@@ -32,13 +32,13 @@ struct HomeHeader: View {
 }
 
 // MARK: - Preview
-#Preview {
-    HomeHeader()
-        .padding()
-        .background(Color.black) // so white text is visible
-        .environmentObject(
-            AppState(arcs: MockData.arcs, habits: MockData.habits)
-        )
-        .preferredColorScheme(.dark)
-}
+//#Preview {
+//    HomeHeader()
+//        .padding()
+//        .background(Color.black) // so white text is visible
+//        .environmentObject(
+//            AppState(arcs: MockData.arcs, habits: MockData.habits)
+//        )
+//        .preferredColorScheme(.dark)
+//}
 

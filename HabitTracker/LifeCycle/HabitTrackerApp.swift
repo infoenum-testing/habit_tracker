@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct HabitTrackerApp: App {
-    @StateObject private var state = AppState(arcs: MockData.arcs, habits: MockData.habits)
+    //@StateObject private var state = AppState(arcs: MockData.arcs, habits: MockData.habits)
     @StateObject private var appState = AppDataStore()
     @StateObject private var router = NavigationRouter()
     
@@ -20,7 +20,7 @@ struct HabitTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             RootTabView()
-                .environmentObject(state)
+                //.environmentObject(state)
                 .environmentObject(router)
                 .environmentObject(appState)
                 .preferredColorScheme(.dark)

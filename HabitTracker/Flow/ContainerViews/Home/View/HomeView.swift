@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var state: AppState
+   // @EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var swipeManager = SwipeManager()
@@ -105,10 +105,10 @@ struct HomeView: View {
 }
 
 // MARK: - Preview
-#Preview {
-    HomeView()
-        .environmentObject(
-            AppState(arcs: MockData.arcs, habits: MockData.habits)
-        )
-        .preferredColorScheme(.dark)
-}
+//#Preview {
+//    HomeView()
+//        .environmentObject(
+//            AppState(arcs: MockData.arcs, habits: MockData.habits)
+//        )
+//        .preferredColorScheme(.dark)
+//}

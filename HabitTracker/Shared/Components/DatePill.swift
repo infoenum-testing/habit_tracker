@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct DatePill: View {
-    @EnvironmentObject var state: AppState
     @EnvironmentObject var appData : AppDataStore
    
    @State var days : [Date] = []
@@ -44,7 +43,7 @@ struct DatePill: View {
             }
         )
         .onAppear {
-             days = state.selectedDate.fiveDayWindow()
+             days = appData.selectedDate.fiveDayWindow()
         }
     }
 }

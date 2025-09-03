@@ -531,7 +531,11 @@ extension CoreDataManager {
 }
 
 extension CoreDataManager {
-    func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
+    func toggleArcHabit(
+        _ habitId: String,
+        in arc: SubscribedArc,
+        completion: (Bool) -> Void
+    ) {
         let today = Calendar.current.startOfDay(for: Date())
         
         // Fetch or create today's progress
@@ -547,22 +551,32 @@ extension CoreDataManager {
         }()
         
         var completed = progress.completedHabitIds ?? []
+        let isNowChecked: Bool
         
         if completed.contains(habitId) {
             // Uncheck
             completed.removeAll { $0 == habitId }
+            isNowChecked = false
         } else {
             // Check
             completed.append(habitId)
+            isNowChecked = true
         }
         
         progress.completedHabitIds = completed
         progress.completedHabits = Int16(completed.count)
         
         saveContext()
+        
+        // Call completion with final state
+        completion(isNowChecked)
     }
-    
-    func toggleHabit(_ habitId: String, in habit: SubscribedHabit) {
+
+    func toggleHabit(
+        _ habitId: String,
+        in habit: SubscribedHabit,
+        completion: (Bool) -> Void
+    ) {
         let today = Calendar.current.startOfDay(for: Date())
 
         // Fetch or create today's progress
@@ -579,20 +593,27 @@ extension CoreDataManager {
         }()
 
         var completed = progress.completedHabitIds ?? []
+        let isNowChecked: Bool
 
         if completed.contains(habitId) {
             // Uncheck
             completed.removeAll { $0 == habitId }
+            isNowChecked = false
         } else {
             // Check
             completed.append(habitId)
+            isNowChecked = true
         }
 
         progress.completedHabitIds = completed
         progress.completedCount = Int16(completed.count)
 
         saveContext()
+
+        // Call closure with updated state
+        completion(isNowChecked)
     }
+
 
 }
 
@@ -616,6 +637,107 @@ extension CoreDataManager {
     }
     
 }
+
+
+// MARK: - Statistics
+
+extension CoreDataManager {
+    
+    /// Fetch today's statistics (or create if missing)
+    func fetchOrCreateTodayStatistics() -> Statistics {
+        let today = Calendar.current.startOfDay(for: Date())
+        let request: NSFetchRequest<Statistics> = Statistics.fetchRequest()
+        request.predicate = NSPredicate(format: "date == %@", today as NSDate)
+        
+        if let existing = try? context.fetch(request).first {
+            return existing
+        }
+        
+        let stats = Statistics(context: context)
+        stats.id = UUID()
+        stats.date = today
+        saveContext()
+        return stats
+    }
+    
+    /// Add points to category
+    func addPoints(to category: Statistics.Category, points: Int32 = 1) {
+        let stats = fetchOrCreateTodayStatistics()
+        stats.addPoints(to: category, points: points)
+        saveContext()
+    }
+    
+    /// Remove points
+    func removePoints(from category: Statistics.Category, points: Int32 = 1) {
+        let stats = fetchOrCreateTodayStatistics()
+        stats.removePoints(from: category, points: points)
+        saveContext()
+    }
+    
+    /// Fetch all statistics records
+    func fetchAllStatistics() -> [Statistics] {
+        let request: NSFetchRequest<Statistics> = Statistics.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Statistics.date, ascending: true)]
+        return (try? context.fetch(request)) ?? []
+    }
+    
+    /// Delete a specific statistics record
+    func deleteStatistics(_ stats: Statistics) {
+        context.delete(stats)
+        saveContext()
+    }
+    
+    /// Daily totals for one stats object
+    func totals(for stats: Statistics) -> (discipline: Int32, strength: Int32, confidence: Int32, intelligence: Int32, overall: Int32) {
+        return (
+            stats.disciplineTotal,
+            stats.strengthTotal,
+            stats.confidenceTotal,
+            stats.intelligenceTotal,
+            stats.overallTotal
+        )
+    }
+    
+    /// Grand totals across all records
+    func grandTotals() -> (discipline: Int32, strength: Int32, confidence: Int32, intelligence: Int32, overall: Int32) {
+        let all = fetchAllStatistics()
+        let discipline = all.reduce(0) { $0 + $1.disciplineTotal }
+        let strength = all.reduce(0) { $0 + $1.strengthTotal }
+        let confidence = all.reduce(0) { $0 + $1.confidenceTotal }
+        let intelligence = all.reduce(0) { $0 + $1.intelligenceTotal }
+        let overall = all.reduce(0) { $0 + $1.overallTotal }
+        
+        return (discipline, strength, confidence, intelligence, overall)
+    }
+    
+}
+
+extension CoreDataManager {
+    func fetchWeeklyStatistics() -> [Statistics] {
+        let context = self.context
+        let request: NSFetchRequest<Statistics> = Statistics.fetchRequest()
+        
+        let calendar = Calendar.current
+        let today = Date()
+        
+        // Find Monday of current week
+        let weekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+        let weekEnd = calendar.date(byAdding: .day, value: 7, to: weekStart)!
+        
+        request.predicate = NSPredicate(format: "date >= %@ AND date < %@", weekStart as NSDate, weekEnd as NSDate)
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        
+        do {
+            return try context.fetch(request)
+        } catch {
+            print("❌ Failed to fetch weekly statistics: \(error)")
+            return []
+        }
+    }
+}
+
+
+
 
 
 //For the dummy data use only

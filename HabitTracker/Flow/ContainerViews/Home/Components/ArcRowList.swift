@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct ArcRowList: View {
-    @EnvironmentObject var state: AppState
+    @EnvironmentObject var state: AppDataStore
     @EnvironmentObject var swipeManager: SwipeManager
     let arc: SubscribedArc
     let editArcAction: () -> Void

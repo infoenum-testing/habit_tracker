@@ -37,3 +37,17 @@ extension Date {
         return formatter.string(from: self)
     }
 }
+
+extension Date {
+    var startOfWeek: Date {
+        Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+    }
+}
+
+extension Date {
+    var shortWeekday: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE" // Mon, Tue, Wed, ...
+        return formatter.string(from: self)
+    }
+}

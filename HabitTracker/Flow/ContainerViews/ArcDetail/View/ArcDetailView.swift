@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ArcDetailView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var state: AppState
+   // @EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var navigation: NavigationRouter
 

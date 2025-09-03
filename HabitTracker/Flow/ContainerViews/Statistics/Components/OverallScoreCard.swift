@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct OverallScoreCard: View {
+    @EnvironmentObject var appData: AppDataStore
     var body: some View {
         ZStack(alignment: .topTrailing) {
             HStack(alignment: .top) {
@@ -38,7 +39,7 @@ struct OverallScoreCard: View {
 
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
                         VStack(alignment: .leading) {
-                            Text("287")
+                            Text("\(appData.grandTotals.overall)")
                                 .font(.sfProDisplay(.bold, size: 48))
                                 .minimumScaleFactor(0.5)
                                 .foregroundStyle(.white)
@@ -48,7 +49,7 @@ struct OverallScoreCard: View {
                         }
 
                         HStack(spacing: 4) {
-                            Text("+8")
+                            Text("+\(appData.grandTotals.overall)")
                                 .font(.sfProDisplay(.medium, size: 14))
                                 .foregroundStyle(.brightGreen)
                             Image("arrowUpCircle")

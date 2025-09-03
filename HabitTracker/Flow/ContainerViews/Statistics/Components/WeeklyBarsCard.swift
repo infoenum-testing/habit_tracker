@@ -19,24 +19,16 @@ struct DayValue: Identifiable {
 // MARK: - View
 
 struct WeeklyBarsCard: View {
-    // Dummy data Mon → Sun (adjusted to roughly match the screenshot’s pattern)
-    private let data: [DayValue] = [
-        .init(day: "Mon", value: 100),
-        .init(day: "Tue", value: 50),
-        .init(day: "Wed", value: 10),
-        .init(day: "Thu", value: 25),
-        .init(day: "Fri", value: 100),
-        .init(day: "Sat", value: 65),
-        .init(day: "Sun", value: 15)
-    ]
     
-    private let dayOrder = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
-    
+    @EnvironmentObject var appData: AppDataStore
+
     private let cardBG = Color(.graphBackground)
     private let gridLine = Color.white
     private let yLabel  = Color.white.opacity(0.70)
     private let barFill = Color.white
     var body: some View {
+        let dayOrder = appData.currentWeekDayLabels
+        let data = appData.weeklyDayValues
         ZStack {
             RoundedRectangle(cornerRadius: 0, style: .continuous)
                 .fill(cardBG)

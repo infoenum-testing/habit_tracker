@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct DayPill: View {
-    @EnvironmentObject var state: AppState
+    //@EnvironmentObject var state: AppState
    
    //@State var days : [Date] = []
     var day: Int = 1
