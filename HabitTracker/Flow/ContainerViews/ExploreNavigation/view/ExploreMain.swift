@@ -244,20 +244,20 @@ struct ArcsView: View {
     }
     
     private func arcCardView(arc: ArcTemplate, index: Int) -> some View {
-        TopArcCardView(
-            title: arc.title ?? "",
-            subtitle: arc.descriptionText ?? "",
-            days: "\(arc.durationDays)",
-            habits: "\(arc.habits?.count ?? 0)",
-            imageName: "card",
-            color: arc.colorToken ?? ""
-        )
-        .rotationEffect(.degrees(index == 0 ? -8 : 12))
-        .offset(x: index == 0 ? -25 : 35, y: index == 0 ? 5 : -2)
-    }
-    
-    private func habitCardView(habit: HabitTemplate, index: Int) -> some View {
-        TopHabitCardView(habit: habit)
+            TopArcCardView(
+                title: arc.title ?? "",
+                subtitle: arc.descriptionText ?? "",
+                days: "\(arc.durationDays)",
+                habits: "\(arc.habitList.count)",
+                imageName: "card",
+                color: arc.colorToken ?? ""
+            )
+            .rotationEffect(.degrees(index == 0 ? -8 : 12))
+            .offset(x: index == 0 ? -25 : 35, y: index == 0 ? 5 : -2)
+        }
+        
+        private func habitCardView(habit: HabitTemplate, index: Int) -> some View {
+            TopHabitCardView(habit: habit)
             .rotationEffect(.degrees(index == 0 ? -8 : 14))
             .offset(x: index == 0 ? -25 : 37, y: index == 0 ? 4 : 6)
         

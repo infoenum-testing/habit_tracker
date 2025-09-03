@@ -22,9 +22,6 @@ extension HabitTemplate {
     @NSManaged public var details: String?
     @NSManaged public var icon: String?
     @NSManaged public var id: String?
-    @NSManaged public var metaAuthor: String?
-    @NSManaged public var metaCreatedAt: Date?
-    @NSManaged public var metaUpdatedAt: Date?
     @NSManaged public var pointsPerDay: NSObject?
     @NSManaged public var tags: NSObject?
     @NSManaged public var title: String?
@@ -104,18 +101,6 @@ extension HabitTemplate {
     
     var wrappedIcon: String {
         icon ?? "icon.default"
-    }
-    
-    var wrappedMetaAuthor: String {
-        metaAuthor ?? "Unknown"
-    }
-    
-    var wrappedMetaCreatedAt: Date {
-        metaCreatedAt ?? Date()
-    }
-    
-    var wrappedMetaUpdatedAt: Date {
-        metaUpdatedAt ?? Date()
     }
     
     var wrappedPointsPerDay: [String: Int] {

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ArcDailyHabitsCellView: View {
-    var icon: String = "apple"
-    let habit: HabitTemplate
+    let habit: HabitData
     var color: Color
     var body: some View {
         
@@ -21,7 +20,7 @@ struct ArcDailyHabitsCellView: View {
                       .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
                       .cornerRadius(9.2)
                     
-                    Image("apple")
+                    Image(habit.icon)
                         .foregroundStyle(color)
                       .frame(width: 22.05, height: 22.05)
                 }
@@ -29,12 +28,12 @@ struct ArcDailyHabitsCellView: View {
                 
                 HStack(alignment: .center, spacing: 10.8732) {
                     VStack(alignment: .center, spacing: 5.29808) {
-                        Text(habit.title ?? "")
+                        Text(habit.title)
                             .font(Font.sfPro(size: 17, weight: .medium))
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         
-                        Text(habit.details ?? "")
+                        Text(habit.description)
                         .font(Font.sfPro(size: 14))
                           .foregroundColor(.white.opacity(0.6))
                           .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -44,19 +43,6 @@ struct ArcDailyHabitsCellView: View {
                 }
                 .padding(0)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
-//                ZStack {
-//                    Rectangle()
-//                        .foregroundStyle(color)
-//                      .frame(width: 51.471, height: 51.072)
-//                      .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
-//                      .cornerRadius(9.2)
-//                    
-//                    Image("check")
-//                      .frame(width: 22, height: 22)
-//                      
-//                }
-//                .frame(width: 51.471, height: 51.072)
             }
             .padding(.leading, 11.2)
             .padding(.trailing, 19.2)
@@ -67,7 +53,3 @@ struct ArcDailyHabitsCellView: View {
         
     }
 }
-
-//#Preview {
-//    DailyHabitsCellView(color: .red)
-//}

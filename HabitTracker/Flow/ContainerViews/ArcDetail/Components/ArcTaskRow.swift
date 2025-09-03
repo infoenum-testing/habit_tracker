@@ -11,30 +11,49 @@ import SwiftUI
 struct ArcTaskRow: View {
     @EnvironmentObject var appData: AppDataStore
     let arc: SubscribedArc
-    let task: HabitTemplate
+    let task: HabitData
     var tint: Color
 
     var body: some View {
-        HStack(spacing: 12) {
-            let isCompleted = arc.isHabitCompleted(task.wrappedId)
-            IconBadge(icon: task.wrappedIcon, tint: arc.isHabitCompleted(task.wrappedId) ? tint : .appGray)
+        // Precompute expensive values
+        let isCompleted = arc.isHabitCompleted(task.id)
+        let taskId = task.id
+
+        return HStack(spacing: 12) {
+            IconBadge(
+                icon: arc.wrappedIcon,
+                tint: isCompleted ? tint : .appGray
+            )
+
             VStack(alignment: .leading, spacing: 2) {
-                Text(task.title ?? "")
+                Text(task.title)
                     .font(.sfProDisplay(.semibold, size: 16))
-                Text(task.details ?? "")
+                Text(task.description)
                     .font(.sfProDisplay(.light, size: 14))
                     .opacity(0.7)
-            }.foregroundStyle(.white)
+            }
+            .foregroundStyle(.white)
+
             Spacer()
-            CheckChip(isOn: arc.isHabitCompleted(task.wrappedId), tint: tint) {
+
+            CheckChip(isOn: isCompleted, tint: tint) {
                 guard let subArc = appData.allSubscribedArcs.first(where: { $0.id == arc.wrappedId }) else { return }
-                appData.toggleArcHabit(task.wrappedId, in: subArc)
+                appData.toggleArcHabit(taskId, in: subArc)
             }
         }
         .padding(12)
-        .background(RoundedRectangle(cornerRadius: 14).fill(Color(UIColor.appDarkGray)))
-        .overlay(RoundedRectangle(cornerRadius: 14).stroke(.white.opacity(0.06), lineWidth: 1))
-        .scaleEffect(arc.isHabitCompleted(task.wrappedId) ? 1.02 : 1.0)
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: arc.isHabitCompleted(task.wrappedId))
+        .background(
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color(UIColor.appDarkGray))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(.white.opacity(0.06), lineWidth: 1)
+        )
+        .scaleEffect(isCompleted ? 1.02 : 1.0)
+        .animation(
+            .spring(response: 0.3, dampingFraction: 0.7),
+            value: isCompleted
+        )
     }
 }

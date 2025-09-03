@@ -1,2664 +1,1087 @@
 {
-  "habits": [
-      {
-        "id": "habit-brush-floss",
-        "title": "Brush & Floss",
-        "description": "Keep your teeth healthy daily.",
-        "category": "Body",
-        "colorToken": "color.blue",
-        "icon": "icon.tooth",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
-        },
-        "tags": [
-          "Dental",
-          "Hygiene",
-          "Teeth"
+    "version": "1.0.0",
+    "tokens": {
+        "colors": [
+            "color.green",
+            "color.red",
+            "color.purple",
+            "color.orange",
+            "color.beige",
+            "color.darkblue",
+            "color.blue",
+            "color.yellow",
+            "color.pink",
+            "color.cyan",
+            "color.gold",
+            "color.grey"
         ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-10k-steps",
-        "title": "10K Steps",
-        "description": "Move more, feel better.",
-        "category": "Body",
-        "colorToken": "color.green",
-        "icon": "icon.shoe",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
-        },
-        "tags": [
-          "Walking",
-          "Movement",
-          "Cardio"
+        "icons": [
+            "icon.tooth",
+            "icon.water",
+            "icon.food",
+            "icon.gym",
+            "icon.shoe",
+            "icon.peace",
+            "icon.moon",
+            "icon.leaf",
+            "icon.pill",
+            "icon.business",
+            "icon.paint",
+            "icon.light",
+            "icon.fire",
+            "icon.scholar",
+            "icon.mic",
+            "icon.date",
+            "icon.phone",
+            "icon.money",
+            "icon.camera",
+            "icon.music",
+            "icon.smile",
+            "icon.shield",
+            "icon.write",
+            "icon.sun",
+            "icon.verified",
+            "icon.book",
+            "icon.rocket",
+            "icon.star",
+            "icon.clock",
+            "icon.diamond",
+            "icon.stop",
+            "icon.handshake"
         ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-drink-2l-water",
-        "title": "Drink 2L Water",
-        "description": "Stay hydrated & energized.",
-        "category": "Body",
-        "colorToken": "color.green",
-        "icon": "icon.cup",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        "categories": [
+            "Health",
+            "Mentality",
+            "Lifestyle"
+        ]
+    },
+    "arcs": [
+        {
+            "arcId": "arc-whitesmile",
+            "title": "White Smile Arc",
+            "shortSubtitle": "A Brighter Smile Builds Instant Confidence",
+            "description": "A radiant smile transforms first impressions. The White Smile Arc builds daily habits that naturally whiten teeth, protect enamel, and enhance your overall confidence.",
+            "durationDays": 30,
+            "themeColor": "color.purple",
+            "coverImage": "cover.whitesmile",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Whiter Smile", "Healthier Gums", "Boosted Confidence"],
+            "habits": [
+                { "id": "h01", "title": "Morning Brush", "description": "Brush for 2 minutes in the morning", "icon": "icon.sun" },
+                { "id": "h02", "title": "Limit Stain Foods", "description": "Skip or rinse after stain foods", "icon": "icon.stop" },
+                { "id": "h03", "title": "Daily Hydration", "description": "Drink at least 2 liters today", "icon": "icon.water" },
+                { "id": "h04", "title": "Daily Floss", "description": "Floss between all teeth nightly", "icon": "icon.tooth" },
+                { "id": "h05", "title": "Night Brush", "description": "Brush for 2 minutes before bed", "icon": "icon.moon" }
+            ],
+            "tags": ["teeth", "smile", "white", "appearance", "confidence"]
         },
-        "tags": [
-          "Hydration",
-          "Energy",
-          "Skin"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-pushups",
-        "title": "Pushups",
-        "description": "Do more than 30 pushups today.",
-        "category": "Body",
-        "colorToken": "color.red",
-        "icon": "icon.pushup",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-hairgrowth",
+            "title": "Hair Growth Arc",
+            "shortSubtitle": "Strengthen & Nourish for Visible Growth",
+            "description": "Healthy hair begins at the root. The Hair Growth Arc helps you develop simple daily rituals that nourish your scalp, support stronger follicles, and promote visible thickness and growth.",
+            "durationDays": 90,
+            "themeColor": "color.orange",
+            "coverImage": "cover.hairgrowth",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Stronger Hair", "Less Breakage", "Visible Growth"],
+            "habits": [
+                { "id": "h01", "title": "Scalp Massage", "description": "Massage scalp with fingers or oil", "icon": "icon.handshake" },
+                { "id": "h02", "title": "Protein Boost", "description": "Add eggs, fish, beans, or lean meat", "icon": "icon.food" },
+                { "id": "h03", "title": "Stay Hydrated", "description": "Drink at least 2 liters each day", "icon": "icon.water" },
+                { "id": "h04", "title": "Protect Strands", "description": "Skip straighteners, curlers, hot dryers", "icon": "icon.fire" },
+                { "id": "h05", "title": "Rest + Growth", "description": "Keep consistent, quality sleep", "icon": "icon.moon" },
+                { "id": "h06", "title": "Stress Control", "description": "Meditate, breathe, or journal daily", "icon": "icon.peace" }
+            ],
+            "tags": ["hair", "appearance", "confidence", "growth"]
         },
-        "tags": [
-          "Strength",
-          "Bodyweight",
-          "Fitness"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-bed-early",
-        "title": "Go to Bed Early",
-        "description": "Go to bed before 11PM tonight.",
-        "category": "Body",
-        "colorToken": "color.purple",
-        "icon": "icon.moon",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-skinglow",
+            "title": "Skin Glow Arc",
+            "shortSubtitle": "Glow Naturally, Every Single Day",
+            "description": "Radiant skin is built through consistent daily care. The Skin Glow Arc combines simple habits like nourishing foods, hydration, sleep, and natural sunlight to keep your skin clear, elastic, and glowing from within.",
+            "durationDays": 45,
+            "themeColor": "color.beige",
+            "coverImage": "cover.skinglow",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Natural Glow", "Firm Skin", "Deep Hydration"],
+            "habits": [
+                { "id": "h01", "title": "Skin Routine", "description": "Wash + moisturize twice daily", "icon": "icon.peace" },
+                { "id": "h02", "title": "Glow Foods", "description": "Add fruits, veggies, healthy fats", "icon": "icon.food" },
+                { "id": "h03", "title": "Daily Movement", "description": "Walk, stretch, or light workout daily", "icon": "icon.shoe" },
+                { "id": "h04", "title": "Stay Hydrated", "description": "Drink at least 2 liters today", "icon": "icon.water" },
+                { "id": "h05", "title": "Cut Sugar", "description": "Avoid sodas, candy, refined snacks", "icon": "icon.shield" },
+                { "id": "h06", "title": "Beauty Sleep", "description": "Get 7–8 hrs of quality sleep", "icon": "icon.moon" }
+            ],
+            "tags": ["skin", "glow", "hydration", "sunlight", "sleep"]
         },
-        "tags": [
-          "Sleep",
-          "Routine",
-          "Recovery"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-cold-shower",
-        "title": "Cold Shower",
-        "description": "Take a cold shower today.",
-        "category": "Body",
-        "colorToken": "color.purple",
-        "icon": "icon.droplet",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-sculpt",
+            "title": "Sculpt Arc",
+            "shortSubtitle": "Sculpt, Tone, and Build Confidence",
+            "description": "Sculpting your body isn’t about size, it’s about definition and confidence. The Sculpt Arc brings together training, nutrition, and recovery habits to carve a body you’re proud of.",
+            "durationDays": 45,
+            "themeColor": "color.grey",
+            "coverImage": "cover.sculpt",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Defined Physique", "More Strength", "Confidence Boost"],
+            "habits": [
+                { "id": "h01", "title": "Daily Workout", "description": "Lift weights or bodyweight daily", "icon": "icon.gym" },
+                { "id": "h02", "title": "Protein Power", "description": "Add chicken, eggs, fish, or beans", "icon": "icon.food" },
+                { "id": "h03", "title": "Daily Walk Target", "description": "Hit 10,000 steps each day", "icon": "icon.shoe" },
+                { "id": "h04", "title": "Stay Hydrated", "description": "Drink at least 2 liters today", "icon": "icon.water" },
+                { "id": "h05", "title": "Cut Carbs", "description": "Avoid sugar + refined starches", "icon": "icon.shield" },
+                { "id": "h06", "title": "Recovery Sleep", "description": "Get 7–8 hrs of quality sleep", "icon": "icon.moon" }
+            ],
+            "tags": ["fitness", "strength", "definition", "sleep"]
         },
-        "tags": [
-          "Discomfort",
-          "Resilience",
-          "Energy"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-avoid-sugar",
-        "title": "Avoid Sugar",
-        "description": "Eat no sugary foods or drinks today.",
-        "category": "Body",
-        "colorToken": "color.orange",
-        "icon": "icon.nosugar",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-beachbody",
+            "title": "Beach Body Arc",
+            "shortSubtitle": "Lean, Strong, and Summer Ready",
+            "description": "This Arc focuses on trimming fat, building tone, and boosting confidence so you feel incredible when the shirt comes off. The Beach Body Arc is your formula for lean definition and summer energy.",
+            "durationDays": 45,
+            "themeColor": "color.yellow",
+            "coverImage": "cover.beachbody",
+            "category": ["Lifestyle"],
+            "benefits": ["Leaner Physique", "Higher Energy", "Confidence Boost"],
+            "habits": [
+                { "id": "h01", "title": "Core Workout", "description": "Train abs for 15–20 minutes", "icon": "icon.gym" },
+                { "id": "h02", "title": "10K Steps", "description": "Aim for 10,000 steps daily", "icon": "icon.shoe" },
+                { "id": "h03", "title": "Protein Boost", "description": "Add eggs, fish, chicken, or beans", "icon": "icon.food" },
+                { "id": "h04", "title": "Stay Hydrated", "description": "Drink at least 2 liters of water", "icon": "icon.water" },
+                { "id": "h05", "title": "Cut Carbs", "description": "Avoid sugar + refined starches", "icon": "icon.shield" },
+                { "id": "h06", "title": "Recovery Sleep", "description": "Get 7–8 hrs of quality sleep", "icon": "icon.moon" }
+            ],
+            "tags": ["fitness", "abs", "summer", "energy"]
         },
-        "tags": [
-          "Nutrition",
-          "Diet"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-eat-healthy",
-        "title": "Eat Healthy",
-        "description": "Have one healthy meal today.",
-        "category": "Body",
-        "colorToken": "color.green",
-        "icon": "icon.salad",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-endurance",
+            "title": "Endurance Arc",
+            "shortSubtitle": "Stronger Heart, Endless Endurance",
+            "description": "The Endurance Arc pushes your limits gradually, training your heart, lungs, and muscles to sustain more. Build lasting stamina and resilience with habits that make you unstoppable.",
+            "durationDays": 30,
+            "themeColor": "color.blue",
+            "coverImage": "cover.endurance",
+            "category": ["Health", "Mentality"],
+            "benefits": ["Stronger Heart", "Greater Stamina", "Improved Resilience"],
+            "habits": [
+                { "id": "h01", "title": "Cardio Training", "description": "Run, cycle, row, or swim daily", "icon": "icon.shoe" },
+                { "id": "h02", "title": "Fuel Smart", "description": "Add oats, rice, sweet potato, etc", "icon": "icon.rocket" },
+                { "id": "h03", "title": "Stay Hydrated", "description": "Drink at least 3 liters daily", "icon": "icon.water" },
+                { "id": "h04", "title": "Track Progress", "description": "Record miles, steps, or minutes", "icon": "icon.write" },
+                { "id": "h05", "title": "Recovery Sleep", "description": "Get 7–8 hrs of quality sleep", "icon": "icon.moon" }
+            ],
+            "tags": ["cardio", "stamina", "resilience", "sleep"]
         },
-        "tags": [
-          "Nutrition",
-          "Diet",
-          "Wellness"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-breath-work",
-        "title": "Breath Work",
-        "description": "Do one breathing exercise today.",
-        "category": "Body",
-        "colorToken": "color.darkblue",
-        "icon": "icon.breath",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-sleepreset",
+            "title": "Sleep Reset Arc",
+            "shortSubtitle": "Restore Energy Through Better Sleep",
+            "description": "Better days start with better nights. The Sleep Reset Arc builds simple routines that improve sleep quality, boost energy, and elevate mood.",
+            "durationDays": 30,
+            "themeColor": "color.purple",
+            "coverImage": "cover.sleepreset",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Deeper Sleep", "More Energy", "Improved Mood"],
+            "habits": [
+                { "id": "h01", "title": "Morning Sunlight", "description": "Step outside within 1 hr of waking", "icon": "icon.sun" },
+                { "id": "h02", "title": "Daily Movement", "description": "Walk, stretch, or light workout daily", "icon": "icon.shoe" },
+                { "id": "h03", "title": "Meditation Practice", "description": "Try breathwork or guided meditation", "icon": "icon.peace" },
+                { "id": "h04", "title": "Limit Caffeine", "description": "No coffee, tea, or energy drinks after 2 PM", "icon": "icon.stop" },
+                { "id": "h05", "title": "Screen-Free Evenings", "description": "Shut off phone, TV, and laptop early", "icon": "icon.moon" }
+            ],
+            "tags": ["sleep", "recovery", "energy", "mood"]
         },
-        "tags": [
-          "Breathing",
-          "Calm",
-          "Health"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-eat-protein",
-        "title": "Eat Protein",
-        "description": "Eat one high-protein meal today.",
-        "category": "Body",
-        "colorToken": "color.yellow",
-        "icon": "icon.protein",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-faith",
+            "title": "Faith Arc",
+            "shortSubtitle": "Grow Closer Through Scripture & Prayer",
+            "description": "Build a daily rhythm that strengthens faith and steadies the heart. The Faith Arc anchors your day in scripture, prayer, and gratitude, cultivating peace, clarity, and purpose.",
+            "durationDays": 30,
+            "themeColor": "color.darkblue",
+            "coverImage": "cover.faith",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Deeper Faith", "Greater Peace", "Stronger Purpose"],
+            "habits": [
+                { "id": "h01", "title": "Morning Reflection", "description": "Take 5–10 min for prayer or journaling", "icon": "icon.sun" },
+                { "id": "h02", "title": "Gratitude Practice", "description": "List 3 things you’re grateful for each night", "icon": "icon.handshake" },
+                { "id": "h03", "title": "Daily Verse or Teaching", "description": "Read a selection or listen to one passage", "icon": "icon.book" }
+            ],
+            "tags": ["faith", "prayer", "scripture", "gratitude", "peace"]
         },
-        "tags": [
-          "Nutrition",
-          "Protein",
-          "Diet"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-read",
-        "title": "Read",
-        "description": "Read ten pages of a book today.",
-        "category": "Mind",
-        "colorToken": "color.blue",
-        "icon": "icon.book",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-calmmind",
+            "title": "Calm Mind Arc",
+            "shortSubtitle": "Train Calm, Focus & Presence",
+            "description": "Reduce stress and sharpen attention with short, consistent practices. The Calm Mind Arc blends breathwork, meditation, and mindful pauses to steady your nervous system and clear your mind.",
+            "durationDays": 60,
+            "themeColor": "color.beige",
+            "coverImage": "cover.calmmind",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Lower Stress", "Better Focus", "Emotional Balance"],
+            "habits": [
+                { "id": "h01", "title": "Breathing Reset", "description": "Practice 5 min of deep breathing daily", "icon": "icon.peace" },
+                { "id": "h02", "title": "Protein + Fiber", "description": "Anchor a meal with protein and veggies", "icon": "icon.food" },
+                { "id": "h03", "title": "Stress Control", "description": "Meditate, breathe, or journal daily", "icon": "icon.smile" },
+                { "id": "h04", "title": "Perception Switch", "description": "List 3 things you’re grateful for each night", "icon": "icon.sun" },
+                { "id": "h05", "title": "Cut Processed Foods", "description": "Reduce sugar and refined snacks", "icon": "icon.stop" },
+                { "id": "h06", "title": "Sleep Routine", "description": "Aim for 7–8 hrs of quality sleep", "icon": "icon.moon" }
+            ],
+            "tags": ["calm", "focus", "breathwork", "sleep", "nutrition"]
         },
-        "tags": [
-          "Reading",
-          "Knowledge"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-journal",
-        "title": "Journal",
-        "description": "Write one page in your journal today.",
-        "category": "Mind",
-        "colorToken": "color.brown",
-        "icon": "icon.journal",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-bepresent",
+            "title": "Be Present Arc",
+            "shortSubtitle": "Daily Practice for Mindful Living",
+            "description": "Trade autopilot for awareness. The Be Present Arc adds simple cues, single-tasking, phone-free moments, and mindful walks that reconnect you to the people and moments that matter.",
+            "durationDays": 30,
+            "themeColor": "color.yellow",
+            "coverImage": "cover.bepresent",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["More Presence", "Less Anxiety", "Deeper Connections"],
+            "habits": [
+                { "id": "h01", "title": "Listening Practice", "description": "Have 1 conversation where you only listen", "icon": "icon.smile" },
+                { "id": "h02", "title": "Mindful Meal", "description": "Eat one meal without screens", "icon": "icon.food" },
+                { "id": "h03", "title": "Gratitude Notes", "description": "Write 3 things you appreciate today", "icon": "icon.write" },
+                { "id": "h04", "title": "Digital-Free Break", "description": "Take one 30 min block fully offline", "icon": "icon.phone" }
+            ],
+            "tags": ["mindfulness", "presence", "gratitude", "digital detox"]
         },
-        "tags": [
-          "Writing",
-          "Clarity"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-meditate",
-        "title": "Meditate",
-        "description": "Meditate for five minutes today.",
-        "category": "Mind",
-        "colorToken": "color.purple",
-        "icon": "icon.lotus",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-project60",
+            "title": "Project 60 Arc",
+            "shortSubtitle": "Reset Discipline With Daily Habits",
+            "description": "A 60-day reset to rebuild structure and momentum. The Project 60 Arc strengthens routine through simple, consistent actions that compound into lasting change.",
+            "durationDays": 60,
+            "themeColor": "color.orange",
+            "coverImage": "cover.project60",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Stronger Discipline", "Better Routine", "Consistent Progress"],
+            "habits": [
+                { "id": "h01", "title": "Early Wake Up", "description": "Wake up at your set early time daily", "icon": "icon.clock" },
+                { "id": "h02", "title": "Deep Work", "description": "Do 60–120 min of focused, distraction-free work", "icon": "icon.light" },
+                { "id": "h03", "title": "Daily Exercise", "description": "Move your body for 30–60 min", "icon": "icon.gym" },
+                { "id": "h04", "title": "Daily Reading", "description": "Read 10 pages of any book", "icon": "icon.book" },
+                { "id": "h05", "title": "Learn New Skill", "description": "Practice a skill for 20+ min", "icon": "icon.rocket" },
+                { "id": "h06", "title": "Silence Practice", "description": "Sit quietly for 5+ minutes, no devices", "icon": "icon.peace" }
+            ],
+            "tags": ["discipline", "routine", "consistency", "focus"]
         },
-        "tags": [
-          "Meditation",
-          "Calm"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-new-language",
-        "title": "New Language",
-        "description": "Learn a new language.",
-        "category": "Mind",
-        "colorToken": "color.yellow",
-        "icon": "icon.globe",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-bookclub",
+            "title": "Book Club Arc",
+            "shortSubtitle": "Expand Your Mind One Page at a Time",
+            "description": "Transform reading into lasting growth. The Book Club Arc encourages daily reading with notes and reflections, helping you retain ideas, sharpen focus, and broaden your perspective.",
+            "durationDays": 30,
+            "themeColor": "color.gold",
+            "coverImage": "cover.bookclub",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Deeper Knowledge", "Better Focus", "Stronger Habits"],
+            "habits": [
+                { "id": "h01", "title": "Morning Read", "description": "Read 10 pages in the morning", "icon": "icon.sun" },
+                { "id": "h02", "title": "Daily Reflection", "description": "Write key ideas or quotes", "icon": "icon.write" },
+                { "id": "h03", "title": "Evening Read", "description": "Read 10 pages before bed", "icon": "icon.moon" }
+            ],
+            "tags": ["reading", "learning", "focus", "habits"]
         },
-        "tags": [
-          "Language",
-          "Learning"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-be-creative",
-        "title": "Be Creative",
-        "description": "Express yourself: writing, art, music, etc.",
-        "category": "Mind",
-        "colorToken": "color.pink",
-        "icon": "icon.palette",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-creative",
+            "title": "Creative Arc",
+            "shortSubtitle": "Unlock Flow and Fresh Ideas",
+            "description": "Creativity thrives on daily practice and inspiration. The Creative Arc blends consistent creation, mindful reflection, and exposure to new ideas to spark originality, sharpen focus, and unlock flow.",
+            "durationDays": 30,
+            "themeColor": "color.cyan",
+            "coverImage": "cover.creative",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Fresh Ideas", "Sharper Focus", "Creative Flow"],
+            "habits": [
+                { "id": "h01", "title": "Daily Creation", "description": "Draw, write, design, or build for 10 mins", "icon": "icon.paint" },
+                { "id": "h02", "title": "Consume Inspiring Content", "description": "Read, watch, or listen to creative work", "icon": "icon.light" },
+                { "id": "h03", "title": "Mindful Walking", "description": "Walk with no phone or music for 10 mins", "icon": "icon.shoe" }
+            ],
+            "tags": ["creativity", "ideas", "flow", "practice"]
         },
-        "tags": [
-          "Creativity",
-          "Expression"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-daily-reflection",
-        "title": "Daily Reflection",
-        "description": "Write down one insight from today.",
-        "category": "Mind",
-        "colorToken": "color.gray",
-        "icon": "icon.pen",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-language",
+            "title": "Learn Language Arc",
+            "shortSubtitle": "Build Fluency One Day at a Time",
+            "description": "Mastery starts with small, consistent steps. The Language Arc guides you through daily practice, vocabulary growth, and active recall so you can speak with confidence and understand with clarity.",
+            "durationDays": 30,
+            "themeColor": "color.darkblue",
+            "coverImage": "cover.language",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Expand Vocabulary", "Stronger Memory", "Speak Confidently"],
+            "habits": [
+                { "id": "h01", "title": "Daily Vocabulary", "description": "Pick 5 new words each day", "icon": "icon.rocket" },
+                { "id": "h02", "title": "Listening Practice", "description": "Video, podcast or song for 15 mins", "icon": "icon.music" },
+                { "id": "h03", "title": "Writing Practice", "description": "Write 5 sentences in your target language", "icon": "icon.write" },
+                { "id": "h04", "title": "Translation Exercise", "description": "Translate a text, sign or short post", "icon": "icon.scholar" }
+            ],
+            "tags": ["language", "vocabulary", "speaking", "memory"]
         },
-        "tags": [
-          "Reflection",
-          "Clarity"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-gratitude",
-        "title": "Gratitude",
-        "description": "List three things you\u2019re grateful for.",
-        "category": "Mind",
-        "colorToken": "color.green",
-        "icon": "icon.heart",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-75hard",
+            "title": "75 Hard Arc",
+            "shortSubtitle": "75 Days. Zero Excuses.",
+            "description": "The 75 Hard Arc is more than a fitness challenge. It’s a test of discipline, resilience, and mental toughness. For 75 days straight, you’ll commit to habits that strengthen your body, sharpen your mind, and prove your willpower is unbreakable.",
+            "durationDays": 75,
+            "themeColor": "color.red",
+            "coverImage": "cover.75hard",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Unbreakable Discipline", "Stronger Body", "Sharper Mind"],
+            "habits": [
+                { "id": "h01", "title": "Indoor Workout", "description": "Complete one indoor training session", "icon": "icon.gym" },
+                { "id": "h02", "title": "Outdoor Workout", "description": "Complete one workout outdoors", "icon": "icon.shoe" },
+                { "id": "h03", "title": "Hydration", "description": "Drink 1 gallon of water today", "icon": "icon.water" },
+                { "id": "h04", "title": "Daily Reading", "description": "Read 10+ pages of a non-fiction book", "icon": "icon.book" },
+                { "id": "h05", "title": "Nutritional Discipline", "description": "Follow your diet; no cheat meals", "icon": "icon.food" },
+                { "id": "h06", "title": "No Alcohol", "description": "Skip all alcohol, no exceptions", "icon": "icon.stop" }
+            ],
+            "tags": ["discipline", "fitness", "reading", "hydration", "no alcohol"]
         },
-        "tags": [
-          "Gratitude",
-          "Mindset"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-learn-something-new",
-        "title": "Learn Something New",
-        "description": "Watch or read one new concept today.",
-        "category": "Mind",
-        "colorToken": "color.red",
-        "icon": "icon.lightbulb",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-winter",
+            "title": "Winter Arc",
+            "shortSubtitle": "Stay Sharp When the World Slows Down",
+            "description": "Winter doesn’t have to mean slowing down. The Winter Arc equips you with energizing daily habits that fight stagnation, boost vitality, and keep your mind and body sharp until spring returns.",
+            "durationDays": 90,
+            "themeColor": "color.darkblue",
+            "coverImage": "cover.winter",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Steady Energy", "Sharper Mind", "Lasting Momentum"],
+            "habits": [
+                { "id": "h01", "title": "Future Focus", "description": "Do 1 task toward your goal today", "icon": "icon.light" },
+                { "id": "h02", "title": "Move Your Body", "description": "Walk, stretch, or train for 20 minutes", "icon": "icon.shoe" },
+                { "id": "h03", "title": "Hydration", "description": "Drink at least 2 liters of water", "icon": "icon.water" },
+                { "id": "h04", "title": "Learn or Read", "description": "Study or read for 20+ minutes", "icon": "icon.book" },
+                { "id": "h05", "title": "Fresh Air Reset", "description": "Step outside for 10 minutes", "icon": "icon.sun" },
+                { "id": "h06", "title": "Plan Tomorrow", "description": "Write top 3 tasks for tomorrow", "icon": "icon.date" }
+            ],
+            "tags": ["winter", "energy", "routine", "reading", "planning"]
         },
-        "tags": [
-          "Learning",
-          "Growth"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-affirmations",
-        "title": "Affirmations",
-        "description": "Speak or write three affirmations today.",
-        "category": "Mind",
-        "colorToken": "color.orange",
-        "icon": "icon.chat",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-discomfort",
+            "title": "Discomfort Arc",
+            "shortSubtitle": "Growth Lives Beyond Comfort",
+            "description": "True growth happens outside your comfort zone. The Discomfort Arc guides you through small, daily challenges that build resilience, strengthen discipline, and expand what you believe is possible.",
+            "durationDays": 45,
+            "themeColor": "color.orange",
+            "coverImage": "cover.discomfort",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Greater Resilience", "Stronger Discipline", "Lasting Growth"],
+            "habits": [
+                { "id": "h01", "title": "Daily Workout", "description": "Train or move for at least 30 minutes", "icon": "icon.gym" },
+                { "id": "h02", "title": "Cold Shower", "description": "Finish with a 30–60 sec cold rinse", "icon": "icon.fire" },
+                { "id": "h03", "title": "Compliment Someone", "description": "Say something uplifting to another person", "icon": "icon.smile" },
+                { "id": "h04", "title": "Face a Challenge", "description": "Write or act on one small fear", "icon": "icon.rocket" },
+                { "id": "h05", "title": "Practice Silence", "description": "Sit quietly 5–10 minutes without devices", "icon": "icon.peace" }
+            ],
+            "tags": ["growth", "discipline", "cold", "silence", "challenge"]
         },
-        "tags": [
-          "Affirmations",
-          "Confidence",
-          "Positivity"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-deep-focus",
-        "title": "Deep Focus",
-        "description": "Spend 30 minutes fully focused, no distractions.",
-        "category": "Mind",
-        "colorToken": "color.blue",
-        "icon": "icon.focus",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-vice",
+            "title": "Vice Arc",
+            "shortSubtitle": "Break Free and Build Control",
+            "description": "Every streak starts with one clean day. The Vice Arc helps you reject harmful habits, replace them with positive actions, and track your wins—building strength, clarity, and long-term control.",
+            "durationDays": 30,
+            "themeColor": "color.blue",
+            "coverImage": "cover.vice",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["More Control", "Healthier Habits", "Lasting Freedom"],
+            "habits": [
+                { "id": "h01", "title": "Reject the Vice", "description": "Count zero occurrences of the vice", "icon": "icon.stop" },
+                { "id": "h02", "title": "Replace the Vice", "description": "Swap the urge with a healthy action", "icon": "icon.leaf" },
+                { "id": "h03", "title": "Record the Win", "description": "Note your streak at day’s end", "icon": "icon.write" }
+            ],
+            "tags": ["addiction", "self control", "streaks", "habits"]
         },
-        "tags": [
-          "Focus",
-          "Concentration",
-          "Work"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-compliment-someone",
-        "title": "Compliment Someone",
-        "description": "Positively impact someone\u2019s day.",
-        "category": "Life",
-        "colorToken": "color.yellow",
-        "icon": "icon.smile",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-guthealth",
+            "title": "Gut Health Arc",
+            "shortSubtitle": "Gut Reset For Skin, Mood, Energy",
+            "description": "Your gut impacts more than digestion, it influences how you look, feel, and think every day. The Gut Health Arc guides you through simple habits that calm your system, boost energy, and bring noticeable improvements to your skin and mood.",
+            "durationDays": 60,
+            "themeColor": "color.green",
+            "coverImage": "cover.guthealth",
+            "category": ["Health", "Mentality"],
+            "benefits": ["Clear Skin", "More Energy", "Better Mood"],
+            "habits": [
+                { "id": "h01", "title": "Limit Processed Foods", "description": "Choose whole, natural foods", "icon": "icon.stop" },
+                { "id": "h02", "title": "Stay Hydrated", "description": "Drink at least 2 liters daily", "icon": "icon.water" },
+                { "id": "h03", "title": "Avoid Late Eating", "description": "Stop meals 3 hours before sleep", "icon": "icon.moon" },
+                { "id": "h04", "title": "Move Daily", "description": "Move 20–30 min (walk or light exercise)", "icon": "icon.shoe" },
+                { "id": "h05", "title": "Eat More Fiber", "description": "Add one gut-friendly food today", "icon": "icon.food" }
+            ],
+            "tags": ["gut", "skin", "energy", "mood", "hydration"]
         },
-        "tags": [
-          "Kindness",
-          "Confidence",
-          "Social"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-call-family",
-        "title": "Call Family",
-        "description": "Call or text one family member today.",
-        "category": "Life",
-        "colorToken": "color.green",
-        "icon": "icon.phone",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-5amclub",
+            "title": "5AM Club Arc",
+            "shortSubtitle": "Join the Elite Who Rise Before Dawn",
+            "description": "The 5AM Club Arc rewires your mornings to win the day before it begins. By waking up early, moving, reflecting, and planning, you create space for growth and success.",
+            "durationDays": 30,
+            "themeColor": "color.beige",
+            "coverImage": "cover.5amclub",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Stronger Routine", "More Productivity", "Greater Energy"],
+            "habits": [
+                { "id": "h01", "title": "Early Rise", "description": "Wake up at 5AM", "icon": "icon.clock" },
+                { "id": "h02", "title": "No Snooze Rule", "description": "Get moving — no snoozes", "icon": "icon.stop" },
+                { "id": "h03", "title": "Morning Movement", "description": "Stretch, walk, or light workout", "icon": "icon.gym" },
+                { "id": "h04", "title": "Mindful Start", "description": "Read, journal, or meditate daily", "icon": "icon.peace" },
+                { "id": "h05", "title": "Plan Your Day", "description": "Write 3 top tasks before work", "icon": "icon.write" }
+            ],
+            "tags": ["morning", "routine", "productivity", "focus", "discipline"]
         },
-        "tags": [
-          "Family",
-          "Relationships",
-          "Connection"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-1hr-off-social",
-        "title": "1 Hour Off Social",
-        "description": "Spend one hour off social media today.",
-        "category": "Life",
-        "colorToken": "color.gray",
-        "icon": "icon.phoneoff",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-digitaldetox",
+            "title": "Digital Detox Arc",
+            "shortSubtitle": "Break Free From Endless Dopamine Loops",
+            "description": "Screens steal focus. The Digital Detox Arc helps you reclaim presence and peace by cutting unnecessary screen time, limiting social media, and replacing distraction with clarity.",
+            "durationDays": 30,
+            "themeColor": "color.purple",
+            "coverImage": "cover.digitaldetox",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Better Focus", "More Presence", "Improved Sleep"],
+            "habits": [
+                { "id": "h01", "title": "Start Day Screen Free", "description": "Begin your morning without screens", "icon": "icon.sun" },
+                { "id": "h02", "title": "Social Media Limit", "description": "Set a daily social media cap", "icon": "icon.date" },
+                { "id": "h03", "title": "Screen Free Breaks", "description": "Take two unplugged blocks today", "icon": "icon.phone" },
+                { "id": "h04", "title": "Night Disconnect", "description": "Turn off screens 1 hour before bed", "icon": "icon.moon" }
+            ],
+            "tags": ["dopamine", "focus", "presence", "sleep", "phone"]
         },
-        "tags": [
-          "Digital Detox",
-          "Focus"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-plan-tomorrow",
-        "title": "Plan Tomorrow",
-        "description": "Write down tomorrow\u2019s plan today.",
-        "category": "Life",
-        "colorToken": "color.blue",
-        "icon": "icon.calendar",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-maincharacter",
+            "title": "Main Character Arc",
+            "shortSubtitle": "Step Into the Spotlight of Your Own Story",
+            "description": "Life feels different when you live it like the main character. The Main Character Arc helps you show up with intention, embrace bold actions, and create moments worth remembering, transforming ordinary days into extraordinary chapters.",
+            "durationDays": 30,
+            "themeColor": "color.red",
+            "coverImage": "cover.maincharacter",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["More Confidence", "Bolder Choices", "Memorable Moments"],
+            "habits": [
+                { "id": "h01", "title": "Dress the Part", "description": "Show up each day with intention", "icon": "icon.fire" },
+                { "id": "h02", "title": "Daily Spotlight", "description": "Do one thing that excites you daily", "icon": "icon.light" },
+                { "id": "h03", "title": "Rewrite the Script", "description": "Break one autopilot routine today", "icon": "icon.write" },
+                { "id": "h04", "title": "Capture the Scene", "description": "Take a photo or journal a moment", "icon": "icon.camera" },
+                { "id": "h05", "title": "Act With Courage", "description": "Do one thing you’d normally avoid", "icon": "icon.rocket" }
+            ],
+            "tags": ["confidence", "presence", "story", "bold", "habits"]
         },
-        "tags": [
-          "Planning",
-          "Routine",
-          "Productivity"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-save-money",
-        "title": "Save Money",
-        "description": "Save at least ten dollars today.",
-        "category": "Life",
-        "colorToken": "color.brown",
-        "icon": "icon.wallet",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-girlboss",
+            "title": "Girl Boss Arc",
+            "shortSubtitle": "Discipline, Focus, and Leadership Energy",
+            "description": "Stepping into your power takes more than ambition, it takes daily structure. The Girl Boss Arc builds routines that strengthen your body, sharpen your focus, grow your knowledge, and give you financial and mental control to lead with confidence.",
+            "durationDays": 45,
+            "themeColor": "color.pink",
+            "coverImage": "cover.girlboss",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Sharper Focus", "Stronger Leadership", "Financial Control"],
+            "habits": [
+                { "id": "h01", "title": "Daily Movement", "description": "Walk, stretch, or train for 30 minutes", "icon": "icon.gym" },
+                { "id": "h02", "title": "Digital Boundaries", "description": "Set cut-off, avoid evening scrolls", "icon": "icon.phone" },
+                { "id": "h03", "title": "Growth Reading", "description": "Read 10 pages of a growth book", "icon": "icon.book" },
+                { "id": "h04", "title": "Financial Power", "description": "Review money plan or finances", "icon": "icon.money" },
+                { "id": "h05", "title": "Nightly Planning Session", "description": "Set up tomorrow before bed", "icon": "icon.date" }
+            ],
+            "tags": ["leadership", "discipline", "reading", "finance", "planning"]
         },
-        "tags": [
-          "Finance",
-          "Savings",
-          "Money"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-declutter-item",
-        "title": "Declutter Item",
-        "description": "Remove one item from your space today.",
-        "category": "Life",
-        "colorToken": "color.orange",
-        "icon": "icon.trash",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-itgirl",
+            "title": "It Girl Arc",
+            "shortSubtitle": "Glow Up Your Body, Mind, and Style",
+            "description": "Becoming the 'It Girl' is about more than looks, it's about daily habits that radiate confidence, wellness, and self-expression. The It Girl Arc helps you fuel your body, refine your style, and elevate your mindset to embody your best self.",
+            "durationDays": 45,
+            "themeColor": "color.red",
+            "coverImage": "cover.itgirl",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Radiant Confidence", "Elevated Style", "Balanced Energy"],
+            "habits": [
+                { "id": "h01", "title": "Visualization Practice", "description": "Visualize or mood board your dream life", "icon": "icon.rocket" },
+                { "id": "h02", "title": "Skincare Ritual", "description": "Create a morning and evening routine", "icon": "icon.smile" },
+                { "id": "h03", "title": "Daily Movement", "description": "Yoga, pilates, walk, or gym session", "icon": "icon.gym" },
+                { "id": "h04", "title": "Dress with Intention", "description": "Put effort into your look daily", "icon": "icon.star" },
+                { "id": "h05", "title": "Balanced Eating", "description": "Build a protein + veggie meal", "icon": "icon.food" },
+                { "id": "h06", "title": "Positive Journaling", "description": "Journal 3 things you’re grateful for", "icon": "icon.write" }
+            ],
+            "tags": ["confidence", "style", "wellness", "journaling", "hydration"]
         },
-        "tags": [
-          "Minimalism",
-          "Organization",
-          "Lifestyle"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-track-spending",
-        "title": "Track Spending",
-        "description": "Record your spending today.",
-        "category": "Life",
-        "colorToken": "color.indigo",
-        "icon": "icon.coins",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-75soft",
+            "title": "75 Soft Arc",
+            "shortSubtitle": "Strong Habits, Sustainable Balance",
+            "description": "The 75 Soft Arc is for those who want discipline without extremes. With daily workouts, hydration, reading, and mindful eating, you’ll create structure, build consistency, and see real progress, while still living with balance.",
+            "durationDays": 75,
+            "themeColor": "color.orange",
+            "coverImage": "cover.75soft",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Lasting Balance", "Consistent Progress", "Healthy Discipline"],
+            "habits": [
+                { "id": "h01", "title": "Indoor Workout", "description": "Any training you choose, gym or home", "icon": "icon.gym" },
+                { "id": "h02", "title": "Hydration", "description": "Drink 3 liters of water today", "icon": "icon.water" },
+                { "id": "h03", "title": "Daily Reading", "description": "Read 10 pages of any book", "icon": "icon.book" },
+                { "id": "h04", "title": "Nutrition Focus", "description": "Choose a diet and stick to it daily", "icon": "icon.food" }
+            ],
+            "tags": ["discipline", "balance", "reading", "hydration", "nutrition"]
         },
-        "tags": [
-          "Finance",
-          "Budget",
-          "Money"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-try-something-new",
-        "title": "Try Something New",
-        "description": "Positively impact your day.",
-        "category": "Life",
-        "colorToken": "color.pink",
-        "icon": "icon.star",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-villainera",
+            "title": "Villain Era Arc",
+            "shortSubtitle": "Protect Your Energy, Build Your Power",
+            "description": "Your villain era isn’t about being reckless, it’s about reclaiming control. The Villain Era Arc pushes you to cut toxic habits, guard your focus, and channel intensity into self-improvement so you can rise stronger, sharper, and unapologetic.",
+            "durationDays": 45,
+            "themeColor": "color.gold",
+            "coverImage": "cover.villainera",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Stronger Focus", "Unshakable Boundaries", "Relentless Growth"],
+            "habits": [
+                { "id": "h01", "title": "Daily Power Workout", "description": "Train 30–60 min with intensity daily", "icon": "icon.gym" },
+                { "id": "h02", "title": "Cut Toxic Habits", "description": "Replace one toxic habit with growth", "icon": "icon.stop" },
+                { "id": "h03", "title": "Say No Without Explaining", "description": "Respect the ‘no’ without guilt", "icon": "icon.shield" },
+                { "id": "h04", "title": "Block Distractions Daily", "description": "Block apps or remove temptations", "icon": "icon.phone" },
+                { "id": "h05", "title": "Invest in Growth Daily", "description": "Read, learn, or build 1 skill", "icon": "icon.scholar" }
+            ],
+            "tags": ["boundaries", "focus", "self-improvement", "no", "growth"]
         },
-        "tags": [
-          "Adventure",
-          "Creativity",
-          "Growth"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-walk-dog",
-        "title": "Walk Dog",
-        "description": "Walking keeps your dog happy.",
-        "category": "Life",
-        "colorToken": "color.brown",
-        "icon": "icon.dog",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-dopaminedetox",
+            "title": "Dopamine Detox Arc",
+            "shortSubtitle": "Cut the Noise, Take Back Control",
+            "description": "Your attention is your greatest asset. The Dopamine Detox Arc resets your brain by reducing screen time, limiting distractions, and creating space for deeper focus, calm, and self-control.",
+            "durationDays": 45,
+            "themeColor": "color.darkblue",
+            "coverImage": "cover.dopaminedetox",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Stronger Focus", "Mental Clarity", "Inner Control"],
+            "habits": [
+                { "id": "h01", "title": "Focus Block (No Distractions)", "description": "Work 30–60 min with no distractions", "icon": "icon.write" },
+                { "id": "h02", "title": "Phone Free Morning", "description": "Avoid scrolling after waking up", "icon": "icon.phone" },
+                { "id": "h03", "title": "Limit Social Media Time", "description": "Set time cap: 30–60 min today", "icon": "icon.phone" },
+                { "id": "h04", "title": "No Screens 1 Hr Before Bed", "description": "Shut down screens 1 hr before bed", "icon": "icon.moon" }
+            ],
+            "tags": ["dopamine detox", "focus", "phone", "screens", "distraction"]
         },
-        "tags": [
-          "Pets",
-          "Lifestyle",
-          "Routine"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        }
-      },
-      {
-        "id": "habit-wake-early",
-        "title": "Wake Up Early",
-        "description": "Wake up before 7AM today.",
-        "category": "Life",
-        "colorToken": "color.gold",
-        "icon": "icon.sunrise",
-        "defaultGoalPerDay": 1,
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "arcId": "arc-generational",
+            "title": "Generational Arc",
+            "shortSubtitle": "Small Daily Habits, Big Financial Win",
+            "description": "Wealth isn’t built overnight, it’s built through consistent actions. The Build Wealth Arc helps you track spending, learn financial skills, and save daily so you can grow control, confidence, and long-term security.",
+            "durationDays": 45,
+            "themeColor": "color.green",
+            "coverImage": "cover.generational",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Smarter Spending", "Steady Savings", "Financial Confidence"],
+            "habits": [
+                { "id": "h01", "title": "Track Spending", "description": "Write every expense today", "icon": "icon.money" },
+                { "id": "h02", "title": "Daily Finance Tip", "description": "Read, watch, or listen for 5 min", "icon": "icon.light" },
+                { "id": "h03", "title": "Consume Business Content", "description": "Books, audio, or podcasts to learn daily", "icon": "icon.business" },
+                { "id": "h04", "title": "No Impulse Buys", "description": "Wait before buying non-essentials", "icon": "icon.stop" },
+                { "id": "h05", "title": "Daily Savings", "description": "Put aside $5 or more daily", "icon": "icon.money" }
+            ],
+            "tags": ["money", "spending", "saving", "finance", "wealth"]
         },
-        "tags": [
-          "Discipline",
-          "Routine",
-          "Morning"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "arcId": "arc-levelup",
+            "title": "Level Up Arc",
+            "shortSubtitle": "Upgrade Your Habits, Upgrade Your Life",
+            "description": "Leveling up isn’t about luck, it’s about consistent progress. The Level Up Arc challenges you to refine your routines, embrace new skills, and push past comfort so every day moves you closer to your next level.",
+            "durationDays": 60,
+            "themeColor": "color.red",
+            "coverImage": "cover.levelup",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Stronger Discipline", "New Skills", "Continuous Growth"],
+            "habits": [
+                { "id": "h01", "title": "Daily Exercise", "description": "Do strength, cardio, or mobility work", "icon": "icon.gym" },
+                { "id": "h02", "title": "Daily Learning", "description": "Read, study, or practice 20 minutes", "icon": "icon.book" },
+                { "id": "h03", "title": "Log 1 Daily Metric", "description": "Measure sleep, weight, or savings", "icon": "icon.verified" },
+                { "id": "h04", "title": "Eat 1 Whole Balanced Meal", "description": "Include protein, greens, and healthy fats", "icon": "icon.food" },
+                { "id": "h05", "title": "Plan Tomorrow Before Bed", "description": "Write top 3 tasks for tomorrow", "icon": "icon.date" }
+            ],
+            "tags": ["discipline", "learning", "exercise", "planning", "growth"]
+        },
+        {
+            "arcId": "arc-monkmode",
+            "title": "Monk Mode Arc",
+            "shortSubtitle": "The Discipline Few Can Handle",
+            "description": "Monk Mode is about shutting out distractions and doubling down on self-mastery. The Monk Mode Arc strips away the non-essential, helping you cultivate discipline, focus, and inner strength to accelerate personal growth.",
+            "durationDays": 75,
+            "themeColor": "color.orange",
+            "coverImage": "cover.monkmode",
+            "category": ["Mentality"],
+            "benefits": ["Deep Focus", "Inner Discipline", "Accelerated Growth"],
+            "habits": [
+                { "id": "h01", "title": "Digital Detox Block", "description": "No scrolling or mindless apps", "icon": "icon.phone" },
+                { "id": "h02", "title": "Deep Work Session", "description": "Work 60 min with zero distractions", "icon": "icon.write" },
+                { "id": "h03", "title": "Daily Exercise", "description": "Move, lift, or train for 30+ minutes", "icon": "icon.gym" },
+                { "id": "h04", "title": "Fixed Wake Time", "description": "Rise at the same time each day", "icon": "icon.clock" }
+            ],
+            "tags": ["focus", "discipline", "deep work", "detox", "routine"]
+        },
+        {
+            "arcId": "arc-alpha",
+            "title": "Alpha Arc",
+            "shortSubtitle": "Power. Presence. Total Alpha Mode",
+            "description": "The Alpha Arc is about building undeniable strength and commanding respect. Through daily training, bold action, and cutting weakness from your life, you'll develop the focus, courage, and presence that separate leaders from followers.",
+            "durationDays": 60,
+            "themeColor": "color.beige",
+            "coverImage": "cover.alpha",
+            "category": ["Health", "Mentality", "Lifestyle"],
+            "benefits": ["Undeniable Strength", "Relentless Focus", "Commanding Confidence"],
+            "habits": [
+                { "id": "h01", "title": "Power Training", "description": "Train weights, cardio, or mobility daily", "icon": "icon.gym" },
+                { "id": "h02", "title": "Confident Posture", "description": "Stand tall, shoulders back daily", "icon": "icon.verified" },
+                { "id": "h03", "title": "Solution Focus", "description": "Replace complaints with 1 solution", "icon": "icon.light" },
+                { "id": "h04", "title": "Daily Courage", "description": "Do 1 thing you'd normally avoid", "icon": "icon.shield" },
+                { "id": "h05", "title": "Cut Weakness", "description": "Cut gossip, doomscrolling, wasted time", "icon": "icon.phone" }
+            ],
+            "tags": ["strength", "presence", "courage", "discipline"]
+        },
+        {
+            "arcId": "arc-content",
+            "title": "Content Arc",
+            "shortSubtitle": "Create Daily. Build Your Digital Empire",
+            "description": "The Content Arc is designed to make consistency your superpower. By generating ideas, publishing daily, engaging your audience, and sharpening your skills, you'll transform from posting casually to building a brand with momentum and reach.",
+            "durationDays": 90,
+            "themeColor": "color.darkblue",
+            "coverImage": "cover.content",
+            "category": ["Lifestyle"],
+            "benefits": ["Consistent Output", "Growing Audience", "Stronger Brand"],
+            "habits": [
+                { "id": "h01", "title": "Idea Bank", "description": "Write down 3 fresh ideas daily", "icon": "icon.light" },
+                { "id": "h02", "title": "Daily Publish", "description": "Upload 1 post, video, or story today", "icon": "icon.rocket" },
+                { "id": "h03", "title": "Audience Engagement", "description": "Reply, comment, or DM daily", "icon": "icon.verified" },
+                { "id": "h04", "title": "Trend Study", "description": "Research trends for 10 minutes", "icon": "icon.scholar" },
+                { "id": "h05", "title": "Skill Upgrade", "description": "Practice editing, writing, or design", "icon": "icon.paint" },
+                { "id": "h06", "title": "Reflect + Refine", "description": "Note what worked each day", "icon": "icon.write" }
+            ],
+            "tags": ["content", "publishing", "audience", "brand", "consistency"]
+        },
+        {
+            "arcId": "arc-foundermode",
+            "title": "Founder Mode Arc",
+            "shortSubtitle": "Build and Launch in 30 Days",
+            "description": "Ideas don't wait, and neither should you. The Founder Arc takes you from concept to creation in just 30 days, guiding you through daily actions that validate ideas, build structure, and launch your first version into the world.",
+            "durationDays": 30,
+            "themeColor": "color.beige",
+            "coverImage": "cover.foundermode",
+            "category": ["Mentality", "Lifestyle"],
+            "benefits": ["Validated Idea", "Launched Project", "Founder Mindset"],
+            "habits": [
+                { "id": "h01", "title": "Daily Idea Log", "description": "Write 1 idea, problem, or solution daily", "icon": "icon.light" },
+                { "id": "h02", "title": "Market Check", "description": "Scan trends, competitors, or user needs", "icon": "icon.verified" },
+                { "id": "h03", "title": "Build Sprint", "description": "Design, code, or create for 2 hours", "icon": "icon.paint" },
+                { "id": "h04", "title": "User Pulse", "description": "Message, survey, or talk to one user", "icon": "icon.mic" },
+                { "id": "h05", "title": "Launch Log", "description": "Post, tweet, or journal your progress", "icon": "icon.phone" },
+                { "id": "h06", "title": "Next Step Plan", "description": "Write your #1 priority for tomorrow", "icon": "icon.rocket" }
+            ],
+            "tags": ["startup", "build", "launch", "ideas", "progress"]
         }
-      }
     ],
-  "arcs": [
-      {
-        "id": "arc-whitesmile",
-        "title": "White Smile Arc",
-        "shortSubtitle": "A Brighter Smile Builds Instant Confidence",
-        "description": "A radiant smile transforms first impressions. The White Smile Arc builds daily habits that naturally whiten teeth, protect enamel, and enhance your overall confidence.",
-        "durationDays": 1,
-        "category": "Body",
-        "colorToken": "color.white",
-        "coverImage": "cover.whitesmile",
-        "benefits": [
-          "Whiter Teeth",
-          "Stronger Enamel",
-          "Boosted Confidence"
-        ],
-        "habitRefs": [
-          {
+    
+    
+    "habits": [
+        {
             "habitId": "habit-brush-floss",
-            "requiredPerDay": 1,
-            "customLabel": "Brush & floss",
-            "customDescription": "Keep your teeth clean and fresh twice daily."
-          },
-          {
-            "habitId": "habit-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Drink more water",
-            "customDescription": "Sip throughout the day to keep your smile bright."
-          },
-          {
-            "habitId": "habit-no-sugar",
-            "requiredPerDay": 1,
-            "customLabel": "Skip added sugar",
-            "customDescription": "Choose fruit or unsweetened options instead."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 2,
-          "Intelligence": 0
+            "title": "Brush & Floss",
+            "description": "Keep your teeth healthy daily",
+            "icon": "icon.tooth",
+            "themeColor": "color.blue",
+            "category": ["Health"],
+            "tags": ["dental", "health"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.tooth"
+        {
+            "habitId": "habit-10k-steps",
+            "title": "10K Steps",
+            "description": "Move more, feel better",
+            "icon": "icon.shoe",
+            "themeColor": "color.red",
+            "category": ["Health"],
+            "tags": ["movement", "steps"]
         },
-        "tags": [
-          "Appearance",
-          "Confidence",
-          "Dental Health",
-          "Hygiene"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-stay-hydrated",
+            "title": "Stay Hydrated",
+            "description": "Drink 2L of water today",
+            "icon": "icon.water",
+            "themeColor": "color.blue",
+            "category": ["Health"],
+            "tags": ["hydration", "health"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-hairgrowth",
-        "title": "Hair Growth Arc",
-        "shortSubtitle": "Strengthen & Nourish for Visible Growth",
-        "description": "Healthy hair begins at the root. The Hair Growth Arc helps you develop simple daily rituals that nourish your scalp, support stronger follicles, and promote visible thickness and growth.",
-        "durationDays": 1,
-        "category": "Body",
-        "colorToken": "color.brown",
-        "coverImage": "cover.hairgrowth",
-        "benefits": [
-          "Stronger Hair",
-          "Less Breakage",
-          "Visible Growth"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-scalp-massage",
-            "requiredPerDay": 1,
-            "customLabel": "Scalp massage",
-            "customDescription": "Spend 2\u20133 minutes massaging your scalp daily."
-          },
-          {
-            "habitId": "habit-eat-protein",
-            "requiredPerDay": 1,
-            "customLabel": "Add a protein serve",
-            "customDescription": "Eggs, yogurt, beans, or fish\u2014your choice."
-          },
-          {
-            "habitId": "habit-hair-oil",
-            "requiredPerDay": 1,
-            "customLabel": "Nourish your hair",
-            "customDescription": "Apply a natural oil or conditioner to protect strands."
-          },
-          {
-            "habitId": "habit-vitamin-supplements",
-            "requiredPerDay": 1,
-            "customLabel": "Daily vitamins",
-            "customDescription": "Support hair health with your chosen supplement."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 3,
-          "Intelligence": 0
+        {
+            "habitId": "habit-pushups",
+            "title": "Pushups",
+            "description": "Do more than 30 pushups today",
+            "icon": "icon.gym",
+            "themeColor": "color.red",
+            "category": ["Health"],
+            "tags": ["strength", "movement"]
         },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.hair"
+        {
+            "habitId": "habit-wake-up-early",
+            "title": "Wake Up Early",
+            "description": "Wake up before 7AM today",
+            "icon": "icon.sun",
+            "themeColor": "color.yellow",
+            "category": ["Health"],
+            "tags": ["morning", "routine"]
         },
-        "tags": [
-          "Appearance",
-          "Confidence",
-          "Growth",
-          "Hair Health"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-go-to-bed-early",
+            "title": "Go to Bed Early",
+            "description": "Go to bed before 11PM tonight",
+            "icon": "icon.moon",
+            "themeColor": "color.darkblue",
+            "category": ["Health"],
+            "tags": ["sleep", "routine"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-sculpt",
-        "title": "Sculpt Arc",
-        "shortSubtitle": "Sculpt, Tone, and Build Confidence",
-        "description": "Sculpting your body isn\u2019t about size\u2014it\u2019s about definition and confidence. The Sculpt Arc brings together training, nutrition, and recovery habits to carve a body you\u2019re proud of.",
-        "durationDays": 1,
-        "category": "Body",
-        "colorToken": "color.red",
-        "coverImage": "cover.sculpt",
-        "benefits": [
-          "Defined Physique",
-          "More Strength",
-          "Confidence Boost"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-strength-training",
-            "requiredPerDay": 1,
-            "customLabel": "Quick strength set",
-            "customDescription": "Pushups, squats, or weights\u2014pick your move."
-          },
-          {
-            "habitId": "habit-eat-protein",
-            "requiredPerDay": 1,
-            "customLabel": "Add a protein serve",
-            "customDescription": "Fuel recovery with eggs, yogurt, or lean meat."
-          },
-          {
-            "habitId": "habit-stretching",
-            "requiredPerDay": 1,
-            "customLabel": "Stretch it out",
-            "customDescription": "Spend 5 minutes stretching after activity."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 0
+        {
+            "habitId": "habit-cold-shower",
+            "title": "Cold Shower",
+            "description": "Take a cold shower today",
+            "icon": "icon.water",
+            "themeColor": "color.cyan",
+            "category": ["Health"],
+            "tags": ["recovery", "energy"]
         },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.dumbbell"
+        {
+            "habitId": "habit-avoid-sugar",
+            "title": "Avoid Sugar",
+            "description": "No sugary foods or drinks today",
+            "icon": "icon.stop",
+            "themeColor": "color.grey",
+            "category": ["Health"],
+            "tags": ["nutrition", "discipline"]
         },
-        "tags": [
-          "Fitness",
-          "Strength",
-          "Appearance",
-          "Confidence"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-beachbody",
-        "title": "Beach Body Arc",
-        "shortSubtitle": "Lean, Strong, and Summer Ready",
-        "description": "This Arc focuses on trimming fat, building tone, and boosting confidence so you feel incredible when the shirt comes off. The Beach Body Arc is your formula for lean definition and summer energy.",
-        "durationDays": 1,
-        "category": "Body",
-        "colorToken": "color.orange",
-        "coverImage": "cover.beachbody",
-        "benefits": [
-          "Leaner Physique",
-          "Higher Energy",
-          "Confidence Boost"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-cardio",
-            "requiredPerDay": 1,
-            "customLabel": "Daily cardio",
-            "customDescription": "Run, cycle, or do any heart-pumping movement."
-          },
-          {
-            "habitId": "habit-calorie-control",
-            "requiredPerDay": 1,
-            "customLabel": "Balanced eating",
-            "customDescription": "Stay mindful of calories and portions."
-          },
-          {
-            "habitId": "habit-core-training",
-            "requiredPerDay": 1,
-            "customLabel": "Core session",
-            "customDescription": "Crunches, planks, or core work\u2014your choice."
-          },
-          {
-            "habitId": "habit-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Drink more water",
-            "customDescription": "Sip through the day\u2014aim for 2L or more."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 2,
-          "Intelligence": 0
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.sun"
-        },
-        "tags": [
-          "Fitness",
-          "Appearance",
-          "Confidence",
-          "Summer"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-endurance",
-        "title": "Endurance Arc",
-        "shortSubtitle": "Stronger Heart, Endless Endurance",
-        "description": "The Endurance Arc pushes your limits gradually, training your heart, lungs, and muscles to sustain more. Build lasting stamina and resilience with habits that make you unstoppable.",
-        "durationDays": 1,
-        "category": "Body",
-        "colorToken": "color.blue",
-        "coverImage": "cover.endurance",
-        "benefits": [
-          "Stronger Heart",
-          "Greater Stamina",
-          "Improved Resilience"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-running",
-            "requiredPerDay": 1,
-            "customLabel": "Go for a run",
-            "customDescription": "Run at your own pace, even short counts."
-          },
-          {
-            "habitId": "habit-long-walk",
-            "requiredPerDay": 1,
-            "customLabel": "Take a long walk",
-            "customDescription": "Stretch your legs with 30+ minutes of walking."
-          },
-          {
-            "habitId": "habit-cardio-training",
-            "requiredPerDay": 1,
-            "customLabel": "Cardio session",
-            "customDescription": "Bike, row, swim\u2014any way to get your heart rate up."
-          },
-          {
-            "habitId": "habit-bed-early",
-            "requiredPerDay": 1,
-            "customLabel": "Wind down earlier",
-            "customDescription": "Aim to be in bed before 11 PM for recovery."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 0
-        },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.shoe"
-        },
-        "tags": [
-          "Fitness",
-          "Endurance",
-          "Cardio",
-          "Stamina"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-dream",
-        "title": "Dream Arc",
-        "shortSubtitle": "Deep Rest, Daily Energy Restored",
-        "description": "Better days start with better nights. The Dream Arc helps you establish routines that improve sleep quality, restore energy, and elevate mood.",
-        "durationDays": 30,
-        "category": "Body",
-        "colorToken": "color.purple",
-        "coverImage": "cover.dream",
-        "benefits": [
-          "Deeper Sleep",
-          "More Energy",
-          "Sharper Mind"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-sleep-schedule",
-            "requiredPerDay": 1,
-            "customLabel": "Set a sleep routine",
-            "customDescription": "Pick a consistent bedtime and wake-up time."
-          },
-          {
-            "habitId": "habit-digital-detox",
-            "requiredPerDay": 1,
-            "customLabel": "Screen-free wind down",
-            "customDescription": "Log off 30 mins before bed for deeper rest."
-          },
-          {
-            "habitId": "habit-night-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Evening hydration",
-            "customDescription": "Drink a small glass of water before bed."
-          },
-          {
-            "habitId": "habit-evening-reflection",
-            "requiredPerDay": 1,
-            "customLabel": "Reflect on your day",
-            "customDescription": "Jot down one thought or gratitude before bed."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 2
-        },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.moon"
-        },
-        "tags": [
-          "Sleep",
-          "Energy",
-          "Health",
-          "Recovery"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-hydration",
-        "title": "Hydration Arc",
-        "shortSubtitle": "More Water, More Energy, Better Skin",
-        "description": "Water is the foundation of health. The Hydration Arc builds consistency in drinking more water daily, helping your body function at its best while keeping skin and energy levels fresh.",
-        "durationDays": 21,
-        "category": "Body",
-        "colorToken": "color.beige",
-        "coverImage": "cover.hydration",
-        "benefits": [
-          "Clearer Skin",
-          "Better Digestion",
-          "More Energy"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Drink more water",
-            "customDescription": "Sip through the day\u2014aim for ~2L total."
-          },
-          {
-            "habitId": "habit-limit-soda",
-            "requiredPerDay": 1,
-            "customLabel": "Limit soda",
-            "customDescription": "Swap sugary drinks for water or unsweetened tea."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 0
-        },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.droplet"
-        },
-        "tags": [
-          "Hydration",
-          "Skin",
-          "Energy",
-          "Health"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-longevity",
-        "title": "Longevity Arc",
-        "shortSubtitle": "Build Habits for a Longer and Fulfilling Life",
-        "description": "Longevity is built one choice at a time. The Longevity Arc introduces core lifestyle habits proven to improve healthspan, resilience, and vitality for decades to come.",
-        "durationDays": 90,
-        "category": "Body",
-        "colorToken": "color.gold",
-        "coverImage": "cover.longevity",
-        "benefits": [
-          "Longer Life",
-          "Better Vitality",
-          "Disease Prevention"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-exercise",
-            "requiredPerDay": 1,
-            "customLabel": "Daily movement",
-            "customDescription": "Exercise at your level\u2014walk, stretch, or train."
-          },
-          {
+        {
             "habitId": "habit-eat-healthy",
-            "requiredPerDay": 1,
-            "customLabel": "One balanced meal",
-            "customDescription": "Protein + veggies + whole carbs if you like."
-          },
-          {
-            "habitId": "habit-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Drink more water",
-            "customDescription": "Sip through the day\u2014aim for 2L or more."
-          },
-          {
-            "habitId": "habit-sleep-schedule",
-            "requiredPerDay": 1,
-            "customLabel": "Set a sleep routine",
-            "customDescription": "Pick a consistent bedtime and wake-up time."
-          },
-          {
-            "habitId": "habit-daily-walk",
-            "requiredPerDay": 1,
-            "customLabel": "Take a daily walk",
-            "customDescription": "Get outside and move, even for 15 minutes."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 1
+            "title": "Eat Healthy",
+            "description": "Have one healthy meal today",
+            "icon": "icon.leaf",
+            "themeColor": "color.green",
+            "category": ["Health"],
+            "tags": ["nutrition", "meal"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.infinity"
+        {
+            "habitId": "habit-breath-work",
+            "title": "Breath Work",
+            "description": "Do one breathing exercise today",
+            "icon": "icon.peace",
+            "themeColor": "color.cyan",
+            "category": ["Health"],
+            "tags": ["breathwork", "calm"]
         },
-        "tags": [
-          "Longevity",
-          "Health",
-          "Vitality",
-          "Prevention"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-eat-protein",
+            "title": "Eat Protein",
+            "description": "Eat one high protein meal today",
+            "icon": "icon.food",
+            "themeColor": "color.gold",
+            "category": ["Health"],
+            "tags": ["nutrition", "protein"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-faith",
-        "title": "Faith Arc",
-        "shortSubtitle": "Grow Closer Through Scripture & Prayer",
-        "description": "Build a daily rhythm that strengthens faith and steadies the heart. The Faith Arc anchors your day in scripture, prayer, and gratitude, cultivating peace, clarity, and purpose.",
-        "durationDays": 40,
-        "category": "Mind",
-        "colorToken": "color.indigo",
-        "coverImage": "cover.faith",
-        "benefits": [
-          "Deeper Faith",
-          "Greater Peace",
-          "Stronger Purpose"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-scripture-reading",
-            "requiredPerDay": 1,
-            "customLabel": "Read a passage",
-            "customDescription": "A few verses or a short chapter\u2014your pace."
-          },
-          {
-            "habitId": "habit-morning-prayer",
-            "requiredPerDay": 1,
-            "customLabel": "Say a prayer",
-            "customDescription": "A quiet minute to speak or reflect."
-          },
-          {
-            "habitId": "habit-gratitude-journal",
-            "requiredPerDay": 1,
-            "customLabel": "Note 3 gratitudes",
-            "customDescription": "Big or small\u2014anything you appreciated today."
-          },
-          {
-            "habitId": "habit-act-of-kindness",
-            "requiredPerDay": 1,
-            "customLabel": "One kind act",
-            "customDescription": "Help, encourage, or check in with someone."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 1
+        {
+            "habitId": "habit-read",
+            "title": "Read",
+            "description": "Read ten pages of a book today",
+            "icon": "icon.book",
+            "themeColor": "color.gold",
+            "category": ["Mentality"],
+            "tags": ["learning", "focus"]
         },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.hand"
+        {
+            "habitId": "habit-journal",
+            "title": "Journal",
+            "description": "Write one journal page today",
+            "icon": "icon.write",
+            "themeColor": "color.pink",
+            "category": ["Mentality"],
+            "tags": ["reflection", "focus"]
         },
-        "tags": [
-          "Faith",
-          "Mindfulness",
-          "Gratitude",
-          "Purpose"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-meditate",
+            "title": "Meditate",
+            "description": "Meditate for five minutes today",
+            "icon": "icon.peace",
+            "themeColor": "color.purple",
+            "category": ["Mentality"],
+            "tags": ["mindfulness", "calm"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-calmmind",
-        "title": "Calm Mind Arc",
-        "shortSubtitle": "Train Calm, Focus & Presence",
-        "description": "Reduce stress and sharpen attention with short, consistent practices. The Calm Mind Arc blends breathwork, meditation, and mindful pauses to steady your nervous system and clear your mind.",
-        "durationDays": 30,
-        "category": "Mind",
-        "colorToken": "color.gray",
-        "coverImage": "cover.calmmind",
-        "benefits": [
-          "Lower Stress",
-          "Better Focus",
-          "Emotional Balance"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-breathwork-5min",
-            "requiredPerDay": 1,
-            "customLabel": "Do a breathing reset",
-            "customDescription": "5 slow breaths or a 2-min exercise."
-          },
-          {
-            "habitId": "habit-meditation-10min",
-            "requiredPerDay": 1,
-            "customLabel": "Take a quiet minute",
-            "customDescription": "1\u201310 minutes of calm, eyes open or closed."
-          },
-          {
-            "habitId": "habit-micro-presence-breaks",
-            "requiredPerDay": 1,
-            "customLabel": "Mini presence breaks",
-            "customDescription": "Pause 2\u20133 times today to notice & breathe."
-          },
-          {
-            "habitId": "habit-evening-winddown",
-            "requiredPerDay": 1,
-            "customLabel": "Screen-free wind down",
-            "customDescription": "30 mins without screens before bed."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 1
+        {
+            "habitId": "habit-new-language",
+            "title": "New Language",
+            "description": "Learn a new language",
+            "icon": "icon.scholar",
+            "themeColor": "color.purple",
+            "category": ["Mentality"],
+            "tags": ["learning", "language"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.lotus"
+        {
+            "habitId": "habit-walk-dog",
+            "title": "Walk Dog",
+            "description": "Walking keeps your dog happy",
+            "icon": "icon.shoe",
+            "themeColor": "color.green",
+            "category": ["Lifestyle"],
+            "tags": ["movement", "outdoors"]
         },
-        "tags": [
-          "Calm",
-          "Meditation",
-          "Focus",
-          "Stress"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-compliment-someone",
+            "title": "Compliment Someone",
+            "description": "Positively impact someone's day",
+            "icon": "icon.smile",
+            "themeColor": "color.yellow",
+            "category": ["Lifestyle"],
+            "tags": ["kindness", "social"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-bepresent",
-        "title": "Be Present Arc",
-        "shortSubtitle": "Daily Practice for Mindful Living",
-        "description": "Trade autopilot for awareness. The Be Present Arc adds simple cues\u2014single-tasking, phone-free moments, and mindful walks\u2014that reconnect you to the people and moments that matter.",
-        "durationDays": 21,
-        "category": "Mind",
-        "colorToken": "color.green",
-        "coverImage": "cover.bepresent",
-        "benefits": [
-          "More Presence",
-          "Less Anxiety",
-          "Deeper Connections"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-mindful-checkins-3x",
-            "requiredPerDay": 1,
-            "customLabel": "Mindful check-ins",
-            "customDescription": "Pause 3\u00d7 today\u2014notice breath, body, surroundings."
-          },
-          {
-            "habitId": "habit-single-task-block",
-            "requiredPerDay": 1,
-            "customLabel": "Single-task block",
-            "customDescription": "Focus on one thing for ~20\u201330 minutes."
-          },
-          {
-            "habitId": "habit-phone-free-meal",
-            "requiredPerDay": 1,
-            "customLabel": "Phone-free meal",
-            "customDescription": "Eat one meal without your phone nearby."
-          },
-          {
-            "habitId": "habit-mindful-walk-10min",
-            "requiredPerDay": 1,
-            "customLabel": "Mindful 10-min walk",
-            "customDescription": "Easy pace\u2014notice sounds, colors, and pace."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 1
+        {
+            "habitId": "habit-be-creative",
+            "title": "Be Creative",
+            "description": "Create: writing, art, or music",
+            "icon": "icon.paint",
+            "themeColor": "color.purple",
+            "category": ["Lifestyle"],
+            "tags": ["creativity", "expression"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.eye"
+        {
+            "habitId": "habit-call-family",
+            "title": "Call Family",
+            "description": "Call or text a family member",
+            "icon": "icon.phone",
+            "themeColor": "color.blue",
+            "category": ["Lifestyle"],
+            "tags": ["family", "connection"]
         },
-        "tags": [
-          "Mindfulness",
-          "Presence",
-          "Focus",
-          "Connection"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-one-hour-off-social",
+            "title": "1 Hour Off Social",
+            "description": "Spend 1 hour off social media",
+            "icon": "icon.phone",
+            "themeColor": "color.pink",
+            "category": ["Lifestyle"],
+            "tags": ["digital detox", "focus"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-intelligent",
-        "title": "Intelligent Arc",
-        "shortSubtitle": "Learn Something New Every Day",
-        "description": "Make daily learning automatic. The Intelligent Arc pairs focused study, note-taking, and recall so knowledge sticks and your thinking gets sharper day after day.",
-        "durationDays": 60,
-        "category": "Mind",
-        "colorToken": "color.blue",
-        "coverImage": "cover.intelligent",
-        "benefits": [
-          "Sharpened Thinking",
-          "Broader Knowledge",
-          "Better Decisions"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-learn-20min",
-            "requiredPerDay": 1,
-            "customLabel": "Learn one thing",
-            "customDescription": "Read or watch ~10\u201320 mins on a topic."
-          },
-          {
-            "habitId": "habit-notes-atomic",
-            "requiredPerDay": 1,
-            "customLabel": "Capture one note",
-            "customDescription": "Write a clear, short note in your system."
-          },
-          {
-            "habitId": "habit-daily-summary-100w",
-            "requiredPerDay": 1,
-            "customLabel": "Write a quick summary",
-            "customDescription": "~100 words on what stood out today."
-          },
-          {
-            "habitId": "habit-spaced-recall",
-            "requiredPerDay": 1,
-            "customLabel": "Quick review",
-            "customDescription": "Revisit a past note or card for 2\u20135 mins."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 2
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.brain"
-        },
-        "tags": [
-          "Learning",
-          "Cognition",
-          "Focus",
-          "Growth"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-project50",
-        "title": "Project 50 Arc",
-        "shortSubtitle": "Reset Discipline With Daily Habits",
-        "description": "A 50-day reset to rebuild structure and momentum. The Project 50 Arc strengthens routine through simple, consistent actions that compound into lasting change.",
-        "durationDays": 50,
-        "category": "Mind",
-        "colorToken": "color.black",
-        "coverImage": "cover.project50",
-        "benefits": [
-          "Stronger Discipline",
-          "Better Routine",
-          "Consistent Progress"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-wake-early",
-            "requiredPerDay": 1,
-            "customLabel": "Wake up early",
-            "customDescription": "Aim for 5\u20137 AM, but any consistent time works."
-          },
-          {
-            "habitId": "habit-deepwork-60min",
-            "requiredPerDay": 1,
-            "customLabel": "Focus block",
-            "customDescription": "Spend 60 minutes on one meaningful task."
-          },
-          {
-            "habitId": "habit-workout-45min",
-            "requiredPerDay": 1,
-            "customLabel": "Daily workout",
-            "customDescription": "Move for 45 minutes\u2014gym, home, or outdoors."
-          },
-          {
-            "habitId": "habit-read-10pages",
-            "requiredPerDay": 1,
-            "customLabel": "Read a little",
-            "customDescription": "10 pages or 15 minutes of focused reading."
-          },
-          {
-            "habitId": "habit-journal-5min",
-            "requiredPerDay": 1,
-            "customLabel": "Write a few lines",
-            "customDescription": "Capture one insight or reflection from today."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 1
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.grid50"
-        },
-        "tags": [
-          "Discipline",
-          "Routine",
-          "Momentum",
-          "Focus"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-language",
-        "title": "Language Arc",
-        "shortSubtitle": "Unlock a New Language Daily",
-        "description": "Build real fluency with small, repeated reps. The Language Arc combines vocabulary, speaking, listening, and spaced review so you progress every single day.",
-        "durationDays": 60,
-        "category": "Mind",
-        "colorToken": "color.yellow",
-        "coverImage": "cover.language",
-        "benefits": [
-          "Daily Progress",
-          "Real Conversations",
-          "Cultural Insight"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-vocab-20",
-            "requiredPerDay": 1,
-            "customLabel": "Learn new words",
-            "customDescription": "Aim for 15\u201320 words a day in your language."
-          },
-          {
-            "habitId": "habit-speaking-5min",
-            "requiredPerDay": 1,
-            "customLabel": "Practice speaking",
-            "customDescription": "Say a few phrases aloud, even to yourself."
-          },
-          {
-            "habitId": "habit-listening-10min",
-            "requiredPerDay": 1,
-            "customLabel": "Active listening",
-            "customDescription": "Listen to a podcast, show, or clip for 10 minutes."
-          },
-          {
-            "habitId": "habit-srs-review",
-            "requiredPerDay": 1,
-            "customLabel": "Review old words",
-            "customDescription": "Use flashcards or your app to revisit past terms."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 2
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.globe"
-        },
-        "tags": [
-          "Language",
-          "Learning",
-          "Fluency",
-          "Culture"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-reflection",
-        "title": "Reflection Arc",
-        "shortSubtitle": "Daily Writing Sharpens the Mind",
-        "description": "Turn thoughts into clarity. The Reflection Arc uses short journaling, gratitude, and next-day planning to organize your mind and guide better decisions.",
-        "durationDays": 30,
-        "category": "Mind",
-        "colorToken": "color.gray",
-        "coverImage": "cover.reflection",
-        "benefits": [
-          "More Clarity",
-          "Emotional Balance",
-          "Better Decisions"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-journal-10min",
-            "requiredPerDay": 1,
-            "customLabel": "Write a few lines",
-            "customDescription": "Jot down one thought or reflection from today."
-          },
-          {
-            "habitId": "habit-gratitude-3",
-            "requiredPerDay": 1,
-            "customLabel": "Note 3 gratitudes",
-            "customDescription": "List three things that made you smile today."
-          },
-          {
+        {
             "habitId": "habit-plan-tomorrow",
-            "requiredPerDay": 1,
-            "customLabel": "Plan tomorrow",
-            "customDescription": "Write 3 priorities and one first step for tomorrow."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 1
+            "title": "Plan Tomorrow",
+            "description": "Write tomorrow's plan today",
+            "icon": "icon.date",
+            "themeColor": "color.beige",
+            "category": ["Lifestyle"],
+            "tags": ["planning", "productivity"]
         },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.pen"
+        {
+            "habitId": "habit-save-money",
+            "title": "Save Money",
+            "description": "Save at least ten dollars today",
+            "icon": "icon.money",
+            "themeColor": "color.green",
+            "category": ["Lifestyle"],
+            "tags": ["money", "savings"]
         },
-        "tags": [
-          "Journaling",
-          "Clarity",
-          "Mindset",
-          "Focus"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-declutter-item",
+            "title": "Declutter Item",
+            "description": "Remove one item from your space",
+            "icon": "icon.stop",
+            "themeColor": "color.grey",
+            "category": ["Lifestyle"],
+            "tags": ["minimalism", "home"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-bookclub",
-        "title": "Book Club Arc",
-        "shortSubtitle": "Expand Perspective With Pages",
-        "description": "Read with intention and retention. The Book Club Arc blends daily pages with annotation and bite-size summaries so ideas stick and viewpoints grow.",
-        "durationDays": 30,
-        "category": "Mind",
-        "colorToken": "color.red",
-        "coverImage": "cover.bookclub",
-        "benefits": [
-          "Deeper Knowledge",
-          "Better Focus",
-          "Stronger Habits"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-read-20min",
-            "requiredPerDay": 1,
-            "customLabel": "Read a little",
-            "customDescription": "Spend ~20 minutes reading a book today."
-          },
-          {
-            "habitId": "habit-annotate-idea",
-            "requiredPerDay": 1,
-            "customLabel": "Highlight one idea",
-            "customDescription": "Mark or note down one insight as you read."
-          },
-          {
-            "habitId": "habit-summary-100w",
-            "requiredPerDay": 1,
-            "customLabel": "Write a summary",
-            "customDescription": "Capture ~100 words of reflection or recap."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 1
+        {
+            "habitId": "habit-track-spending",
+            "title": "Track Spending",
+            "description": "Record your spending today",
+            "icon": "icon.money",
+            "themeColor": "color.green",
+            "category": ["Lifestyle"],
+            "tags": ["budget", "money"]
         },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.book"
+        {
+            "habitId": "habit-try-something-new",
+            "title": "Try Something New",
+            "description": "Try something new today",
+            "icon": "icon.rocket",
+            "themeColor": "color.yellow",
+            "category": ["Lifestyle"],
+            "tags": ["novelty", "growth"]
+        }
+        ,
+        {
+            "habitId": "habit-stretch-10",
+            "title": "Stretch 10 Minutes",
+            "description": "Stretch for 10 minutes today",
+            "icon": "icon.gym",
+            "themeColor": "color.orange",
+            "category": ["Health"],
+            "tags": ["health", "mobility", "recovery"]
         },
-        "tags": [
-          "Reading",
-          "Learning",
-          "Focus",
-          "Community"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-posture-reset",
+            "title": "Posture Reset",
+            "description": "Do three posture checks today",
+            "icon": "icon.verified",
+            "themeColor": "color.beige",
+            "category": ["Health"],
+            "tags": ["health", "back", "posture"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-75hard",
-        "title": "75 Hard Arc",
-        "shortSubtitle": "Prove Your Discipline Is Unbreakable",
-        "description": "75 days, no excuses. The 75 Hard Arc challenges you to double down on daily habits that demand physical, mental, and emotional discipline. This is more than fitness\u2014it\u2019s a test of character.",
-        "durationDays": 75,
-        "category": "Life",
-        "colorToken": "color.red",
-        "coverImage": "cover.75hard",
-        "benefits": [
-          "Unshakable Discipline",
-          "Better Fitness",
-          "Mental Toughness"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-workout-45min",
-            "requiredPerDay": 1,
-            "customLabel": "Workout (45 min)",
-            "customDescription": "Any training you choose\u2014gym or home."
-          },
-          {
-            "habitId": "habit-workout-outdoor-45min",
-            "requiredPerDay": 1,
-            "customLabel": "Outdoor workout (45 min)",
-            "customDescription": "Move outside\u2014walk, run, ruck, or train."
-          },
-          {
-            "habitId": "habit-drink-1gallon",
-            "requiredPerDay": 1,
-            "customLabel": "Drink 1 gallon",
-            "customDescription": "Finish a full gallon of water today."
-          },
-          {
-            "habitId": "habit-read-10pages",
-            "requiredPerDay": 1,
-            "customLabel": "Read a little",
-            "customDescription": "Read 10 pages of a nonfiction book."
-          },
-          {
-            "habitId": "habit-no-cheatmeals",
-            "requiredPerDay": 1,
-            "customLabel": "No cheat meals",
-            "customDescription": "Stick fully to your diet today."
-          },
-          {
-            "habitId": "habit-progress-photo",
-            "requiredPerDay": 1,
-            "customLabel": "Progress photo",
-            "customDescription": "Take a daily picture to track progress."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 3,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 0
+        {
+            "habitId": "habit-alcohol-free-day",
+            "title": "Alcohol-Free Day",
+            "description": "Skip alcohol completely today",
+            "icon": "icon.stop",
+            "themeColor": "color.red",
+            "category": ["Health"],
+            "tags": ["discipline", "health"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.shield"
+        {
+            "habitId": "habit-no-caffeine-after-2",
+            "title": "No Caffeine After 2PM",
+            "description": "No caffeine after 2:00 PM",
+            "icon": "icon.stop",
+            "themeColor": "color.grey",
+            "category": ["Health"],
+            "tags": ["sleep", "health", "discipline"]
         },
-        "tags": [
-          "Discipline",
-          "Challenge",
-          "Fitness",
-          "Routine"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-eat-a-fruit",
+            "title": "Eat a Fruit",
+            "description": "Add one serving of fruit",
+            "icon": "icon.food",
+            "themeColor": "color.green",
+            "category": ["Health"],
+            "tags": ["nutrition", "health"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-winter",
-        "title": "Winter Arc",
-        "shortSubtitle": "Stay Sharp When the World Slows Down",
-        "description": "Winter tempts us into hibernation. The Winter Arc keeps your momentum alive with habits that preserve sharpness, energy, and growth\u2014even when the days are short and cold.",
-        "durationDays": 90,
-        "category": "Life",
-        "colorToken": "color.darkblue",
-        "coverImage": "cover.winter",
-        "benefits": [
-          "Consistency",
-          "Energy Through Winter",
-          "Sharper Routine"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-workout-30min",
-            "requiredPerDay": 1,
-            "customLabel": "Daily movement",
-            "customDescription": "Do at least 30 minutes of exercise indoors or outdoors."
-          },
-          {
-            "habitId": "habit-vitamin-d",
-            "requiredPerDay": 1,
-            "customLabel": "Vitamin D",
-            "customDescription": "Get sunlight or take a supplement if needed."
-          },
-          {
-            "habitId": "habit-cold-exposure",
-            "requiredPerDay": 1,
-            "customLabel": "Cold exposure",
-            "customDescription": "Take a brisk walk or a cold shower today."
-          },
-          {
-            "habitId": "habit-gratitude-journal",
-            "requiredPerDay": 1,
-            "customLabel": "Note 3 gratitudes",
-            "customDescription": "Write down 3 things you\u2019re thankful for."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 1
+        {
+            "habitId": "habit-eat-your-greens",
+            "title": "Eat Your Greens",
+            "description": "Include a serving of vegetables",
+            "icon": "icon.leaf",
+            "themeColor": "color.green",
+            "category": ["Health"],
+            "tags": ["nutrition", "health"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.diamond"
+        {
+            "habitId": "habit-cook-at-home",
+            "title": "Cook at Home",
+            "description": "Prepare one homemade meal",
+            "icon": "icon.food",
+            "themeColor": "color.orange",
+            "category": ["Lifestyle"],
+            "tags": ["nutrition", "lifestyle", "budget"]
         },
-        "tags": [
-          "Winter",
-          "Discipline",
-          "Consistency",
-          "Routine"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-sunlight-break",
+            "title": "Sunlight Break",
+            "description": "Get 10 minutes of sunlight",
+            "icon": "icon.sun",
+            "themeColor": "color.yellow",
+            "category": ["Health"],
+            "tags": ["health", "energy", "circadian"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-discomfort",
-        "title": "Discomfort Arc",
-        "shortSubtitle": "Growth Starts Where Comfort Ends",
-        "description": "True growth happens outside your comfort zone. The Discomfort Arc trains resilience by facing small, daily challenges that harden discipline and expand what you believe is possible.",
-        "durationDays": 30,
-        "category": "Life",
-        "colorToken": "color.red",
-        "coverImage": "cover.discomfort",
-        "benefits": [
-          "Resilience",
-          "Confidence",
-          "Mental Strength"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-cold-shower",
-            "requiredPerDay": 1,
-            "customLabel": "Cool finish",
-            "customDescription": "End your shower with 15\u201330 seconds of cool water."
-          },
-          {
-            "habitId": "habit-daily-workout",
-            "requiredPerDay": 1,
-            "customLabel": "Daily workout",
-            "customDescription": "Get your body moving with any exercise you choose."
-          },
-          {
-            "habitId": "habit-public-speaking",
-            "requiredPerDay": 1,
-            "customLabel": "Speak up",
-            "customDescription": "Practice saying something in front of others."
-          },
-          {
-            "habitId": "habit-daily-reflection",
-            "requiredPerDay": 1,
-            "customLabel": "Reflect on the day",
-            "customDescription": "Write one challenge you faced and how you grew."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 0
+        {
+            "habitId": "habit-mobility-flow",
+            "title": "Mobility Flow",
+            "description": "Spend 5–10 minutes on mobility",
+            "icon": "icon.gym",
+            "themeColor": "color.cyan",
+            "category": ["Health"],
+            "tags": ["mobility", "recovery", "health"]
         },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.flame"
+        {
+            "habitId": "habit-walk-breaks",
+            "title": "Walk Breaks",
+            "description": "Take three 10-minute walks today",
+            "icon": "icon.shoe",
+            "themeColor": "color.green",
+            "category": ["Health"],
+            "tags": ["movement", "steps", "health"]
         },
-        "tags": [
-          "Resilience",
-          "Discipline",
-          "Confidence",
-          "Challenge"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-gratitude-3",
+            "title": "Gratitude 3",
+            "description": "List 3 things you’re grateful for",
+            "icon": "icon.write",
+            "themeColor": "color.gold",
+            "category": ["Mentality"],
+            "tags": ["gratitude", "reflection", "mentality"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-guthealth",
-        "title": "Gut Health Arc",
-        "shortSubtitle": "Gut Reset For Skin, Mood, Energy",
-        "description": "Your gut impacts more than digestion, it influences how you look, feel, and think every day. The Gut Health Arc guides you through simple habits that calm your system, boost energy, and bring noticeable improvements to your skin and mood.",
-        "durationDays": 60,
-        "category": "Life",
-        "colorToken": "color.green",
-        "coverImage": "cover.guthealth",
-        "benefits": [
-          "Clear Skin",
-          "More Energy",
-          "Better Mood"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Drink more water",
-            "customDescription": "Sip throughout the day\u2014aim for ~2L total."
-          },
-          {
-            "habitId": "habit-no-sugar",
-            "requiredPerDay": 1,
-            "customLabel": "Skip added sugar",
-            "customDescription": "Choose fruit or unsweetened alternatives instead."
-          },
-          {
-            "habitId": "habit-bed-early",
-            "requiredPerDay": 1,
-            "customLabel": "Wind down earlier",
-            "customDescription": "Aim to be in bed before 11 PM."
-          },
-          {
-            "habitId": "habit-eat-healthy",
-            "requiredPerDay": 1,
-            "customLabel": "One fiber-rich meal",
-            "customDescription": "Add veggies, beans, or whole grains to a meal."
-          },
-          {
-            "habitId": "habit-gutfriendly-food",
-            "requiredPerDay": 1,
-            "customLabel": "Add a gut-friendly food",
-            "customDescription": "Yogurt, kefir, kimchi, sauerkraut\u2014any works."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 4,
-          "Intelligence": 0
+        {
+            "habitId": "habit-affirmations",
+            "title": "Affirmations",
+            "description": "Speak three positive affirmations",
+            "icon": "icon.star",
+            "themeColor": "color.yellow",
+            "category": ["Mentality"],
+            "tags": ["confidence", "mindset"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.coin"
+        {
+            "habitId": "habit-brain-dump",
+            "title": "Brain Dump",
+            "description": "Free-write for five minutes",
+            "icon": "icon.write",
+            "themeColor": "color.beige",
+            "category": ["Mentality"],
+            "tags": ["focus", "stress", "mentality"]
         },
-        "tags": [
-          "Nutrition",
-          "Energy",
-          "Skin",
-          "Gut Health",
-          "Mental Health"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-learn-new-word",
+            "title": "Learn a New Word",
+            "description": "Add one new word to vocabulary",
+            "icon": "icon.book",
+            "themeColor": "color.purple",
+            "category": ["Mentality"],
+            "tags": ["learning", "language"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-coldshower",
-        "title": "Cold Shower Arc",
-        "shortSubtitle": "If You Can Face This, You Can Face Anything",
-        "description": "Cold showers shock the system and sharpen the mind. The Cold Shower Arc builds mental toughness, improves circulation, and teaches you to lean into discomfort daily.",
-        "durationDays": 21,
-        "category": "Life",
-        "colorToken": "color.blue",
-        "coverImage": "cover.coldshower",
-        "benefits": [
-          "Resilience",
-          "Circulation Boost",
-          "Mental Toughness"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-cold-shower",
-            "requiredPerDay": 1,
-            "customLabel": "Cool finish",
-            "customDescription": "End your shower with 15\u201330 seconds cool."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 0,
-          "Confidence": 0,
-          "Intelligence": 0
+        {
+            "habitId": "habit-deep-work-30",
+            "title": "Deep Work 30",
+            "description": "Focus 30 minutes, no distractions",
+            "icon": "icon.write",
+            "themeColor": "color.darkblue",
+            "category": ["Mentality"],
+            "tags": ["focus", "productivity", "mentality"]
         },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.droplet"
+        {
+            "habitId": "habit-message-a-friend",
+            "title": "Message a Friend",
+            "description": "Text or DM someone you care about",
+            "icon": "icon.phone",
+            "themeColor": "color.blue",
+            "category": ["Lifestyle"],
+            "tags": ["connection", "social"]
         },
-        "tags": [
-          "Discomfort",
-          "Resilience",
-          "Health",
-          "Discipline"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
+        {
+            "habitId": "habit-make-the-bed",
+            "title": "Make the Bed",
+            "description": "Make your bed right after waking",
+            "icon": "icon.verified",
+            "themeColor": "color.yellow",
+            "category": ["Lifestyle"],
+            "tags": ["routine", "home"]
         },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-5amclub",
-        "title": "5AM Club Arc",
-        "shortSubtitle": "Join the Elite Who Rise Before Dawn",
-        "description": "The 5AM Club Arc rewires your mornings to win the day before it begins. By waking up early, moving, reflecting, and planning, you create space for growth and success.",
-        "durationDays": 30,
-        "category": "Life",
-        "colorToken": "color.gold",
-        "coverImage": "cover.5amclub",
-        "benefits": [
-          "Stronger Routine",
-          "More Productivity",
-          "Greater Energy"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-wake-5am",
-            "requiredPerDay": 1,
-            "customLabel": "Wake up at 5AM",
-            "customDescription": "Or as close as you can\u2014be consistent."
-          },
-          {
-            "habitId": "habit-morning-movement",
-            "requiredPerDay": 1,
-            "customLabel": "Move a little",
-            "customDescription": "Stretch, walk, or light cardio to wake up."
-          },
-          {
-            "habitId": "habit-journal-10min",
-            "requiredPerDay": 1,
-            "customLabel": "Write a few lines",
-            "customDescription": "Note one intention or insight for today."
-          },
-          {
-            "habitId": "habit-plan-day",
-            "requiredPerDay": 1,
-            "customLabel": "Plan your day",
-            "customDescription": "List 3 priorities and the first step."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 1
+        {
+            "habitId": "habit-inbox-zero-10",
+            "title": "Inbox Zero 10",
+            "description": "Clear messages for 10 minutes",
+            "icon": "icon.write",
+            "themeColor": "color.grey",
+            "category": ["Lifestyle"],
+            "tags": ["organization", "productivity"]
         },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.sunrise"
-        },
-        "tags": [
-          "Morning Routine",
-          "Discipline",
-          "Productivity",
-          "Growth"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-digitaldetox",
-        "title": "Digital Detox Arc",
-        "shortSubtitle": "Break Free From Endless Dopamine Loops",
-        "description": "Screens steal focus. The Digital Detox Arc helps you reclaim presence and peace by cutting unnecessary screen time, limiting social media, and replacing distraction with clarity.",
-        "durationDays": 21,
-        "category": "Life",
-        "colorToken": "color.gray",
-        "coverImage": "cover.digitaldetox",
-        "benefits": [
-          "Better Focus",
-          "More Presence",
-          "Improved Sleep"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-no-social-1hr-morning",
-            "requiredPerDay": 1,
-            "customLabel": "No socials in the AM",
-            "customDescription": "Spend your first hour offline."
-          },
-          {
-            "habitId": "habit-app-limits",
-            "requiredPerDay": 1,
-            "customLabel": "Respect app limits",
-            "customDescription": "Stay under your set screen-time caps."
-          },
-          {
-            "habitId": "habit-phone-free-meal",
-            "requiredPerDay": 1,
-            "customLabel": "Phone-free meal",
-            "customDescription": "Eat one meal without your phone nearby."
-          },
-          {
-            "habitId": "habit-read-20min",
-            "requiredPerDay": 1,
-            "customLabel": "Read a little",
-            "customDescription": "Swap scrolling for ~20 minutes of reading."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 2,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 1
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.phone"
-        },
-        "tags": [
-          "Digital Detox",
-          "Clarity",
-          "Focus",
-          "Presence"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-nosugar",
-        "title": "No Sugar Arc",
-        "shortSubtitle": "Drop Sugar, Drop Fat & Improve Your Life",
-        "description": "Refined sugar spikes and crashes energy. The No Sugar Arc helps you reset cravings, improve body composition, and stabilize mood by cutting out added sugar daily.",
-        "durationDays": 30,
-        "category": "Life",
-        "colorToken": "color.orange",
-        "coverImage": "cover.nosugar",
-        "benefits": [
-          "Weight Control",
-          "Better Energy",
-          "Improved Mood"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-no-sugar",
-            "requiredPerDay": 1,
-            "customLabel": "Skip added sugar",
-            "customDescription": "Choose unsweetened or naturally sweet options."
-          },
-          {
-            "habitId": "habit-fruit-substitute",
-            "requiredPerDay": 1,
-            "customLabel": "Fruit swap",
-            "customDescription": "Craving sweets? Try fruit instead."
-          },
-          {
-            "habitId": "habit-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Drink more water",
-            "customDescription": "Sip through the day\u2014often curbs cravings."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 0
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.nosugar"
-        },
-        "tags": [
-          "Discipline",
-          "Nutrition",
-          "Health",
-          "Lifestyle"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-noalcohol",
-        "title": "No Alcohol Arc",
-        "shortSubtitle": "Skip Alcohol, Gain Sleep, Health & Control",
-        "description": "Alcohol steals energy, focus, and sleep quality. The No Alcohol Arc clears your system, boosts recovery, and sharpens your mind by breaking reliance on daily or social drinking.",
-        "durationDays": 30,
-        "category": "Life",
-        "colorToken": "color.purple",
-        "coverImage": "cover.noalcohol",
-        "benefits": [
-          "Better Sleep",
-          "Improved Health",
-          "More Control"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-no-alcohol",
-            "requiredPerDay": 1,
-            "customLabel": "Skip alcohol",
-            "customDescription": "Choose a sober day\u2014no drinks, even casually."
-          },
-          {
-            "habitId": "habit-mocktail-substitute",
-            "requiredPerDay": 1,
-            "customLabel": "Swap with a mocktail",
-            "customDescription": "Have sparkling water, tea, or a mocktail instead."
-          },
-          {
-            "habitId": "habit-evening-reflection",
-            "requiredPerDay": 1,
-            "customLabel": "Reflect at night",
-            "customDescription": "Note how your body feels without alcohol."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 1,
-          "Intelligence": 1
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.noalcohol"
-        },
-        "tags": [
-          "Discipline",
-          "Sobriety",
-          "Clarity",
-          "Lifestyle"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-maincharacter",
-        "title": "Main Character Arc",
-        "shortSubtitle": "Live Life Like the Story Revolves Around You",
-        "description": "Take the lead role in your own story. The Main Character Arc blends confidence-building, presence, and bold actions so you stop watching life happen and start owning every scene.",
-        "durationDays": 45,
-        "category": "Life",
-        "colorToken": "color.pink",
-        "coverImage": "cover.maincharacter",
-        "benefits": [
-          "More Confidence",
-          "Greater Presence",
-          "Bold Action"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-daily-intention",
-            "requiredPerDay": 1,
-            "customLabel": "Set a daily intention",
-            "customDescription": "Decide how you want to show up today."
-          },
-          {
-            "habitId": "habit-style-upgrade",
-            "requiredPerDay": 1,
-            "customLabel": "Upgrade your style",
-            "customDescription": "Pick an outfit detail that boosts confidence."
-          },
-          {
-            "habitId": "habit-social-risk",
-            "requiredPerDay": 1,
-            "customLabel": "Take a social risk",
-            "customDescription": "Say hello, share your idea, or speak up."
-          },
-          {
-            "habitId": "habit-gratitude-self",
-            "requiredPerDay": 1,
-            "customLabel": "Self gratitude",
-            "customDescription": "Write one thing you appreciate about yourself."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 1
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.star"
-        },
-        "tags": [
-          "Confidence",
-          "Lifestyle",
-          "Presence",
-          "Identity"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-girlboss",
-        "title": "Girl Boss Arc",
-        "shortSubtitle": "Lead With Confidence, Build Your Empire",
-        "description": "Step into ownership of your goals and dreams. The Girl Boss Arc blends discipline, focus, and style so you can balance ambition with well-being while leading with confidence.",
-        "durationDays": 45,
-        "category": "Other",
-        "colorToken": "color.gold",
-        "coverImage": "cover.girlboss",
-        "benefits": [
-          "More Confidence",
-          "Greater Productivity",
-          "Stronger Leadership"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-earlystart",
-            "requiredPerDay": 1,
-            "customLabel": "Early start",
-            "customDescription": "Begin your day with a head start on priorities."
-          },
-          {
-            "habitId": "habit-plan-priorities",
-            "requiredPerDay": 1,
-            "customLabel": "Plan priorities",
-            "customDescription": "Write down the 3 most important tasks today."
-          },
-          {
-            "habitId": "habit-style-upgrade",
-            "requiredPerDay": 1,
-            "customLabel": "Upgrade your style",
-            "customDescription": "Add one detail to feel sharp and confident."
-          },
-          {
-            "habitId": "habit-networking",
-            "requiredPerDay": 1,
-            "customLabel": "Reach out",
-            "customDescription": "Connect with someone who inspires or supports you."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 2,
-          "Intelligence": 1
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.crown"
-        },
-        "tags": [
-          "Leadership",
-          "Confidence",
-          "Ambition",
-          "Productivity"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-itgirl",
-        "title": "It Girl Arc",
-        "shortSubtitle": "Glow, Confidence & Effortless Vibe",
-        "description": "The It Girl Arc is about energy, not perfection. Build simple routines for wellness, style, and social confidence that make you glow inside and out.",
-        "durationDays": 30,
-        "category": "Other",
-        "colorToken": "color.pink",
-        "coverImage": "cover.itgirl",
-        "benefits": [
-          "More Glow",
-          "Effortless Confidence",
-          "Better Energy"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-skincare",
-            "requiredPerDay": 1,
-            "customLabel": "Daily skincare",
-            "customDescription": "Cleanse, moisturize, and glow your way."
-          },
-          {
-            "habitId": "habit-movement-30min",
-            "requiredPerDay": 1,
-            "customLabel": "Move a little",
-            "customDescription": "30 minutes of walking, yoga, or any activity."
-          },
-          {
-            "habitId": "habit-hydration",
-            "requiredPerDay": 1,
-            "customLabel": "Drink more water",
-            "customDescription": "Sip through the day to stay fresh and energized."
-          },
-          {
-            "habitId": "habit-social-connection",
-            "requiredPerDay": 1,
-            "customLabel": "Connect socially",
-            "customDescription": "Check in with a friend or join a conversation."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 0,
-          "Confidence": 2,
-          "Intelligence": 1
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.star"
-        },
-        "tags": [
-          "Confidence",
-          "Lifestyle",
-          "Wellness",
-          "Energy"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-75soft",
-        "title": "75 Soft Arc",
-        "shortSubtitle": "Consistency Without Burnout",
-        "description": "A sustainable alternative to 75 Hard. The 75 Soft Arc builds discipline with daily habits in fitness, wellness, and focus\u2014without the extremes, so growth feels achievable and lasting.",
-        "durationDays": 75,
-        "category": "Other",
-        "colorToken": "color.green",
-        "coverImage": "cover.75soft",
-        "benefits": [
-          "Discipline",
-          "Balance",
-          "Consistency"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-exercise-45min",
-            "requiredPerDay": 1,
-            "customLabel": "Daily exercise",
-            "customDescription": "45 minutes of movement at your own intensity."
-          },
-          {
-            "habitId": "habit-drink-water",
-            "requiredPerDay": 1,
-            "customLabel": "Stay hydrated",
-            "customDescription": "Drink plenty of water throughout the day."
-          },
-          {
-            "habitId": "habit-read-10pages",
-            "requiredPerDay": 1,
-            "customLabel": "Read a little",
-            "customDescription": "Spend ~10 minutes or 10 pages reading."
-          },
-          {
-            "habitId": "habit-balanced-diet",
-            "requiredPerDay": 1,
-            "customLabel": "Balanced meals",
-            "customDescription": "Aim for a mix of protein, veggies, and carbs."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 1,
-          "Intelligence": 1
-        },
-        "icons": {
-          "days": "icon.calendar.day",
-          "habits": "icon.arc.leaf"
-        },
-        "tags": [
-          "Balance",
-          "Routine",
-          "Discipline",
-          "Wellness"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-villainera",
-        "title": "Villain Era Arc",
-        "shortSubtitle": "Protect Energy, Prioritize Yourself",
-        "description": "Stop people-pleasing. The Villain Era Arc isn\u2019t about being cruel\u2014it\u2019s about boundaries, self-respect, and bold choices that put you in control of your time and energy.",
-        "durationDays": 30,
-        "category": "Other",
-        "colorToken": "color.purple",
-        "coverImage": "cover.villainera",
-        "benefits": [
-          "Stronger Boundaries",
-          "Self-Respect",
-          "Bolder Action"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-say-no",
-            "requiredPerDay": 1,
-            "customLabel": "Say no",
-            "customDescription": "Turn down something that drains your energy."
-          },
-          {
-            "habitId": "habit-boundary-check",
-            "requiredPerDay": 1,
-            "customLabel": "Set a boundary",
-            "customDescription": "Protect your time by being clear with others."
-          },
-          {
-            "habitId": "habit-self-care",
-            "requiredPerDay": 1,
-            "customLabel": "Self-care act",
-            "customDescription": "Do one thing today that recharges you."
-          },
-          {
-            "habitId": "habit-bold-action",
-            "requiredPerDay": 1,
-            "customLabel": "Bold move",
-            "customDescription": "Do something today that takes courage."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 2,
-          "Intelligence": 0
-        },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.dumbell"
-        },
-        "tags": [
-          "Confidence",
-          "Boundaries",
-          "Self-Respect",
-          "Energy"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      },
-      {
-        "id": "arc-hotgirlwinter",
-        "title": "Hot Girl Winter Arc",
-        "shortSubtitle": "You\u2019re Hot\u2014Don\u2019t Let Winter Cool You Down",
-        "description": "Glow doesn\u2019t stop for cold weather. The Hot Girl Winter Arc keeps your energy, fitness, and self-care alive through cozy routines that fuel confidence year-round.",
-        "durationDays": 60,
-        "category": "Other",
-        "colorToken": "color.red",
-        "coverImage": "cover.hotgirlwinter",
-        "benefits": [
-          "Confidence Boost",
-          "Winter Energy",
-          "Glow Year-Round"
-        ],
-        "habitRefs": [
-          {
-            "habitId": "habit-daily-movement",
-            "requiredPerDay": 1,
-            "customLabel": "Move a little",
-            "customDescription": "Stretch, dance, or light workout indoors."
-          },
-          {
-            "habitId": "habit-skincare",
-            "requiredPerDay": 1,
-            "customLabel": "Daily skincare",
-            "customDescription": "Moisturize to protect against winter dryness."
-          },
-          {
-            "habitId": "habit-social-connection",
-            "requiredPerDay": 1,
-            "customLabel": "Connect socially",
-            "customDescription": "Stay warm with friends\u2014send a message or call."
-          },
-          {
-            "habitId": "habit-gratitude",
-            "requiredPerDay": 1,
-            "customLabel": "Note 3 gratitudes",
-            "customDescription": "Focus on positives to brighten short days."
-          }
-        ],
-        "pointsPerDay": {
-          "Discipline": 1,
-          "Strength": 1,
-          "Confidence": 2,
-          "Intelligence": 0
-        },
-        "icons": {
-          "days": "icon.calendar",
-          "habits": "icon.cup"
-        },
-        "tags": [
-          "Confidence",
-          "Winter",
-          "Lifestyle",
-          "Energy"
-        ],
-        "meta": {
-          "createdAt": "2025-08-29",
-          "updatedAt": "2025-08-29",
-          "author": "SeedData@app"
-        },
-        "pointsCap": 5
-      }
+        {
+            "habitId": "habit-nature-time",
+            "title": "Nature Time",
+            "description": "Spend 10 minutes outdoors",
+            "icon": "icon.leaf",
+            "themeColor": "color.green",
+            "category": ["Lifestyle"],
+            "tags": ["outdoors", "calm"]
+        }
     ]
 }
+
+

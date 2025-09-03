@@ -66,7 +66,7 @@ struct ArcDetailPreJoinView: View {
                                     TextBadgeView(title: "\(arc.durationDays) Days" , icon: "timeCircle")
                                         .background(Color.white)
                                         .cornerRadius(20)
-                                    TextBadgeView(title: "\(arc.habits?.count ?? 0) Habits" ,icon: "arc")
+                                    TextBadgeView(title: "\(arc.habitsData?.count ?? 0) Habits" ,icon: "arc")
                                         .background(Color.white)
                                         .cornerRadius(20)
                                 }
@@ -111,11 +111,9 @@ struct ArcDetailPreJoinView: View {
                                 .padding(.bottom, 0)
                                 
                                 VStack(alignment: .leading, spacing: 13) {
-                                    ForEach(arc.habitsArray) { habit in
-                                        ArcDailyHabitsCellView( habit: habit, color: .red)
-                                        
+                                    ForEach(arc.habitList) { habit in
+                                        ArcDailyHabitsCellView( habit: habit, color: ColorToken.from(string: arc.colorToken ?? "blue"))
                                     }
-                                    
                                 }
                                 
                                 .frame(maxWidth: .infinity, alignment: .leading)
