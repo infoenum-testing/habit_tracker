@@ -69,14 +69,12 @@ struct ArcDetailView: View {
                             }
 
                             VStack(spacing: 12) {
-                                ForEach(arc.wrappedHabits) { task in
-                                    if task.id != nil {
+                                ForEach(arc.wrappedHabitList) { task in
                                         ArcTaskRow(
                                             arc: arc,
                                             task: task,
                                             tint: color
                                         )
-                                    }
                                 }
                             }
                             .padding(.horizontal, 16)

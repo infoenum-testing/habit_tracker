@@ -39,25 +39,25 @@ final class AppState: ObservableObject {
     }
     
     func toggleHabit(_ habit: Habit) {
-        let day = selectedDate.stripTime()
-        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
-        if habits[idx].completions.contains(day) {
-            habits[idx].completions.remove(day)
-        } else {
-            habits[idx].completions.insert(day)
-        }
+//        let day = selectedDate.stripTime()
+//        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
+//        if habits[idx].completions.contains(day) {
+//            habits[idx].completions.remove(day)
+//        } else {
+//            habits[idx].completions.insert(day)
+//        }
     }
     
     func toggleHabitAndUpdateCount(_ habit: Habit) {
-        let day = selectedDate.stripTime()
-        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
-        if habits[idx].completions.contains(day) {
-            // was done → now unchecked
-            habits[idx].completedCount += 1
-        } else {
-            // was not done → now checked
-            habits[idx].completedCount -= 1
-        }
+//        let day = selectedDate.stripTime()
+//        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
+//        if habits[idx].completions.contains(day) {
+//            // was done → now unchecked
+//            habits[idx].completedCount += 1
+//        } else {
+//            // was not done → now checked
+//            habits[idx].completedCount -= 1
+//        }
     }
     
     

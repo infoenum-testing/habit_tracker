@@ -22,7 +22,6 @@ extension ArcTemplate {
     @NSManaged public var coverImage: String?
     @NSManaged public var descriptionText: String?
     @NSManaged public var durationDays: Int16
-    @NSManaged public var habitRefs: [[String: Any]]?
 
     @NSManaged public var icons: [String: String]?
     @NSManaged public var id: String?
@@ -33,27 +32,11 @@ extension ArcTemplate {
     @NSManaged public var shortSubtitle: String?
     @NSManaged public var tags: [String]?
     @NSManaged public var title: String?
-    @NSManaged public var habits: NSSet?
+    @NSManaged public var habitsData: [[String: Any]]?
     @NSManaged public var subscribedArcs: NSSet?
     
 }
 
-// MARK: Generated accessors for habits
-extension ArcTemplate {
-    
-    @objc(addHabitsObject:)
-    @NSManaged public func addToHabits(_ value: HabitTemplate)
-    
-    @objc(removeHabitsObject:)
-    @NSManaged public func removeFromHabits(_ value: HabitTemplate)
-    
-    @objc(addHabits:)
-    @NSManaged public func addToHabits(_ values: NSSet)
-    
-    @objc(removeHabits:)
-    @NSManaged public func removeFromHabits(_ values: NSSet)
-    
-}
 
 // MARK: Generated accessors for subscribedArcs
 extension ArcTemplate {
@@ -81,9 +64,9 @@ extension ArcTemplate {
         tags ?? []
     }
     
-    var habitsArray: [HabitTemplate] {
-        Array(habits as? Set<HabitTemplate> ?? [])
-    }
+//    var habitsArray: [HabitTemplate] {
+//        Array(habits as? Set<HabitTemplate> ?? [])
+//    }
 }
 
 
@@ -91,4 +74,41 @@ extension ArcTemplate {
 struct ArcIcons: Codable {
     var days: String
     var habits: String
+}
+
+
+extension ArcTemplate {
+    // Computed property to get habits as [HabitData]
+    var habitList: [HabitData] {
+        get {
+            guard let raw = habitsData else { return [] }
+            return raw.compactMap { dict in
+                guard
+                    let id = dict["id"] as? String,
+                    let title = dict["title"] as? String,
+                    let description = dict["description"] as? String,
+                    let icon = dict["icon"] as? String
+                else { return nil }
+                return HabitData(id: id, title: title, description: description, icon: icon)
+            }
+        }
+        set {
+            // Convert [HabitData] → [[String: Any]] before saving
+            habitsData = newValue.map { habit in
+                [
+                    "id": habit.id,
+                    "title": habit.title,
+                    "description": habit.description,
+                    "icon": habit.icon
+                ]
+            }
+        }
+    }
+}
+
+struct HabitData: Codable, Identifiable {
+    let id: String
+    let title: String
+    let description: String
+    let icon: String
 }

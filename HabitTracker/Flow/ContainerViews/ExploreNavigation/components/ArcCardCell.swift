@@ -38,7 +38,7 @@ struct ArcCardCell: View {
                                 .background(Color.black.opacity(0.75))
                                 .cornerRadius(20)
                             
-                            if let count = arc.habits?.count {
+                            if let count = arc.habitsData?.count {
                                 Text("\(count) Habits")
                                     .foregroundColor(.white)
                                     .font(Font.inter(size: 10))

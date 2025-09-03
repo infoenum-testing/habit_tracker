@@ -154,6 +154,7 @@ struct ExploreSection: View {
                     }
                 } else {
                     ForEach(appData.allArcs.prefix(4), id: \.id) { arc in
+                        
                         ArcCardCell(arc: arc){
                             router.push(to: .arcDetailPreJoinView(arcTemplate: arc))
                         }
@@ -227,7 +228,7 @@ struct ArcsView: View {
                 title: arc.title ?? "",
                 subtitle: arc.descriptionText ?? "",
                 days: "\(arc.durationDays)",
-                habits: "\(arc.habits?.count ?? 0)",
+                habits: "\(arc.habitList.count)",
                 imageName: "card",
                 color: arc.colorToken ?? ""
             )
