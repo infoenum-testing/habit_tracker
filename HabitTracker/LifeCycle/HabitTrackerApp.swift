@@ -14,9 +14,7 @@ struct HabitTrackerApp: App {
     @StateObject private var router = NavigationRouter()
     
     init() {
-            loadInitialData()
-        //loadSubscribedArcHistoryData()
-       // CoreDataManager.shared.seedDummyBadges()
+        loadInitialData()
         CoreDataManager.shared.checkAndCompleteExpiredArcs()
         }
     var body: some Scene {
@@ -60,7 +58,7 @@ struct HabitTrackerApp: App {
             let data = try Data(contentsOf: url)
             
             if let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                CoreDataManager.shared.saveSubscribedArcHistoryFromJSON(jsonDict)
+//                CoreDataManager.shared.saveSubscribedArcHistoryFromJSON(jsonDict)
             }
         } catch {
             print("Failed to load or parse subscribed_arc_history.json: \(error)")

@@ -26,10 +26,23 @@ struct ArcDetailPreJoinView: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Image("arc_details")
+            Image("card")
                 .resizable()
-                .scaledToFit()
-                .ignoresSafeArea()
+                .scaledToFill()
+                .frame(height: UIScreen.main.bounds.height * 0.35) // 35% of screen height
+                .clipped()
+
+                .overlay(
+                    LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: ColorToken.from(string: arc.colorToken ?? "").opacity(0.8), location: 0.00),
+                        Gradient.Stop(color: Color.backgroundColor, location: 1.00),
+                    ],
+                    startPoint: UnitPoint(x: 0.5, y: -0.25),
+                    endPoint: UnitPoint(x: 0.5, y: 0.75)
+                    )
+                )
+
             ZStack(alignment: .bottomLeading) {
                 VStack(alignment: .leading){
                     VStack(alignment: .leading) {
@@ -45,6 +58,7 @@ struct ArcDetailPreJoinView: View {
                             
                         }
                         .padding(.horizontal, 20)
+                        .padding(.top, 70)
                         
                         ScrollView {
                             VStack(alignment: .leading, spacing: 8){
@@ -66,7 +80,7 @@ struct ArcDetailPreJoinView: View {
                                 VStack(alignment: .leading) {
                                     if let descriptionText = arc.descriptionText {
                                         ExpandableText(descriptionText, lineLimit: 2)
-                                       
+                                        
                                     }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -78,12 +92,12 @@ struct ArcDetailPreJoinView: View {
                                 
                             }
                             .padding(.top)
-                        
-                        .padding(.horizontal, 20)
-                        
-                        DashedLine()
-                            .padding(.top, 20)
-                        
+                            
+                            .padding(.horizontal, 20)
+                            
+                            DashedLine()
+                                .padding(.top, 20)
+                            
                             VStack(alignment: .leading) {
                                 
                                 VStack(alignment: .leading, spacing: 18) {
@@ -109,7 +123,6 @@ struct ArcDetailPreJoinView: View {
                     }
                     .padding(.top)
                     .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
-                    .navigationBarBackButtonHidden()
                 }
                 
                 ShareProgressButton(title: "Join arc",buttonAction: {
@@ -124,10 +137,14 @@ struct ArcDetailPreJoinView: View {
                     }
                 })
                 .padding(.horizontal, 20)
+                .padding(.bottom, 30)
             }
             
         }
+        .navigationBarBackButtonHidden()
+        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
         .background(Color.backgroundColor)
+        .ignoresSafeArea()
         .toast(isShown: $appdata.showToast, title: "", message: appdata.toastMessage, type: appdata.toastType, alignment: .bottom)
     }
 }

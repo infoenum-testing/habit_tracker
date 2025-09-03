@@ -10,7 +10,6 @@ import SwiftUI
 struct HabitCardCellView: View {
     
     let habit: HabitTemplate
-    let action: () -> Void
     
     var body: some View {
         GeometryReader { geo in
@@ -37,6 +36,7 @@ struct HabitCardCellView: View {
                         .foregroundColor(.gray)
                         .font(.system(size: 12))
                         .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -49,9 +49,6 @@ struct HabitCardCellView: View {
                 RoundedRectangle(cornerRadius: 18)
                     .stroke(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2), lineWidth: 0.8)
             )
-            .onTapGesture {
-                action()
-            }
         }
     }
 }

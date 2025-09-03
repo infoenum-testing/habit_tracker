@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AllArcsView: View {
+    
     @EnvironmentObject var router: NavigationRouter
     @EnvironmentObject var appData: AppDataStore
     @Environment(\.dismiss) private var dismiss
@@ -34,26 +35,32 @@ struct AllArcsView: View {
         VStack(spacing: 24) {
             
             VStack(alignment: .center, spacing: 20) {
-                HStack {
+                
+                HStack(alignment: .center, spacing: 18) {
                     RoundBackButton(){
                         dismiss()
                     }
-                    
-                    Spacer()
-                    
-                    Text("Habits")
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                    HStack(spacing: 4) {
+                        Text("Arcs")
+                            .font(Font.sfPro(size: 29, weight: .medium))
+                            .foregroundColor(Color.appWhite)
+                        
+                        Image("arc")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.appWhite)
+                    }
                     
                     Spacer()
                     Color.clear.frame(width: 24, height: 24)
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
+                DashedLine()
             }
             .frame(maxWidth: .infinity, alignment: .top)
             .background(Color.navBackground.ignoresSafeArea(edges: .top))
+            
             
             
             HStack(spacing: 8) {
@@ -78,7 +85,6 @@ struct AllArcsView: View {
                     }
                 }
             }
-            
             .frame(maxWidth: .infinity, alignment: .center)
             
             if filteredArcs.isEmpty {
@@ -94,14 +100,18 @@ struct AllArcsView: View {
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(filteredArcs, id: \.id) { arc in
-                            ArcCardCell(arc: arc){
+                            
+                            Button {
                                 router.push(to: .arcDetailPreJoinView(arcTemplate: arc))
+                            } label: {
+                                ArcCardCell(arc: arc)
+                                    .aspectRatio(1, contentMode: .fit)
                             }
-                                .aspectRatio(1, contentMode: .fit)
+
+                            
                         }
                     }
                     .padding(.horizontal, 20)
-                    .padding(.top, 16)
                 }
             }
         }

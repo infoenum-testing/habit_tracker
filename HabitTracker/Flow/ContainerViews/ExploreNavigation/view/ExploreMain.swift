@@ -38,10 +38,21 @@ struct ExploreMain: View {
             ScrollView {
                 VStack(spacing: 27) {
                     
-                    HStack(spacing: 10) {
-                        ArcsView(isArc: true)
-                        ArcsView(isArc: false)
-                    }.frame(maxWidth: .infinity)
+                    if  !appData.allArcs.isEmpty {
+                        HStack(spacing: 10) {
+                            Button {
+                                router.push(to: .allArcsView)
+                            } label: {
+                                ArcsView(isArc: true)
+                            }
+                            
+                            Button {
+                                router.push(to: .allHabitsView)
+                            } label: {
+                                ArcsView(isArc: false)
+                            }
+                        }
+                    }
                     
                     DashedLine()
                     ExploreSection(
@@ -147,18 +158,26 @@ struct ExploreSection: View {
                 
                 if isHabitSection {
                     ForEach(appData.allHabits.prefix(4), id: \.id) { habit in
-                        HabitCardCellView(habit: habit) {
+                        
+                        Button {
                             selectedHabit = habit
+                        } label: {
+                            HabitCardCellView(habit: habit)
+                                .aspectRatio(1, contentMode: .fit)
                         }
-                        .aspectRatio(1, contentMode: .fit)
+                        
                     }
                 } else {
                     ForEach(appData.allArcs.prefix(4), id: \.id) { arc in
-                        
-                        ArcCardCell(arc: arc){
+                        Button {
                             router.push(to: .arcDetailPreJoinView(arcTemplate: arc))
+                        } label: {
+                            ArcCardCell(arc: arc)
+                                .aspectRatio(1, contentMode: .fit)
                         }
-                        .aspectRatio(1, contentMode: .fit)
+                        
+                        
+                        
                     }
                 }
             }
@@ -177,12 +196,12 @@ struct ArcsView: View {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
                 .fill(
                     LinearGradient(
-                    stops: [
-                    Gradient.Stop(color: Color(red: 0.21, green: 0.22, blue: 0.23), location: 0.00),
-                    Gradient.Stop(color: Color(red: 0.58, green: 0.6, blue: 0.63).opacity(0.75), location: 1.00),
-                    ],
-                    startPoint: UnitPoint(x: 0.5, y: 0),
-                    endPoint: UnitPoint(x: 0.5, y: 1.04)
+                        stops: [
+                            Gradient.Stop(color: Color(red: 0.21, green: 0.22, blue: 0.23), location: 0.00),
+                            Gradient.Stop(color: Color(red: 0.58, green: 0.6, blue: 0.63).opacity(0.75), location: 1.00),
+                        ],
+                        startPoint: UnitPoint(x: 0.5, y: 0),
+                        endPoint: UnitPoint(x: 0.5, y: 1.04)
                     )
                 )
                 .shadow(radius: 8)
@@ -190,7 +209,7 @@ struct ArcsView: View {
             VStack(spacing: 5) {
                 // Title
                 HStack {
-                    Text(isArc ? "Arcs" : "Habbits")
+                    Text(isArc ? "Arcs" : "Habits")
                         .foregroundColor(.white)
                         .font(Font.sfPro(size: 23, weight: .medium))
                         .padding(.leading)
@@ -198,7 +217,8 @@ struct ArcsView: View {
                     if isArc {
                         Image("arc")
                             .resizable()
-                            .frame(width: 16,height: 16)
+                            .foregroundStyle(Color.appWhite)
+                            .frame(width: 20,height: 20)
                     }
                     
                     Spacer()
@@ -240,8 +260,8 @@ struct ArcsView: View {
             TopHabitCardView(habit: habit)
             .rotationEffect(.degrees(index == 0 ? -8 : 14))
             .offset(x: index == 0 ? -25 : 37, y: index == 0 ? 4 : 6)
-            
-        }
+        
+    }
 }
 
 struct TopArcCardView: View {
@@ -255,7 +275,7 @@ struct TopArcCardView: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             
-           
+            
             Image(imageName)
                 .resizable()
                 .scaledToFill()
@@ -295,6 +315,7 @@ struct TopArcCardView: View {
                     .foregroundColor(.gray)
                     .font(Font.sfPro(size: 5, weight: .regular))
                     .lineLimit(2)
+                    .multilineTextAlignment(.leading)
             }
             .padding()
         }
@@ -303,10 +324,10 @@ struct TopArcCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .shadow(color: .black.opacity(0.6), radius: 3.6, x: -7.2, y: 9.6)
         .overlay(
-        RoundedRectangle(cornerRadius: 10)
-        .inset(by: 0.16)
-        .stroke(ColorToken.from(string: color), lineWidth: 1)
-
+            RoundedRectangle(cornerRadius: 10)
+                .inset(by: 0.16)
+                .stroke(ColorToken.from(string: color), lineWidth: 1)
+            
         )
     }
 }
@@ -319,44 +340,48 @@ struct TopHabitCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
             
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: 20.64, height: 20.48)
-                        .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
-                        .cornerRadius(4)
-                    if let image = habit.icon {
-                        Image(image)
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
-                    }
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 20.64, height: 20.48)
+                    .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+                    .cornerRadius(4)
+                if let image = habit.icon {
+                    Image(image)
+                        .resizable()
+                        .frame(width: 12, height: 12)
+                        .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
+                }
+            }
+            
+            
+            VStack(alignment: .leading, spacing: 4) {
+                if let title = habit.title {
+                    Text(title)
+                        .foregroundColor(.white)
+                        .font(Font.sfPro(size: 7, weight: .semibold))
                 }
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    if let title = habit.title {
-                        Text(title)
-                            .foregroundColor(.white)
-                            .font(Font.sfPro(size: 7, weight: .semibold))
-                    }
-                    
-                    if let details = habit.details {
-                        Text(details)
-                            .foregroundColor(.gray)
-                            .font(Font.sfPro(size: 5, weight: .regular))
-                            .lineLimit(2)
-                    }
+                if let details = habit.details {
+                    Text(details)
+                        .foregroundColor(.gray)
+                        .font(Font.sfPro(size: 5, weight: .regular))
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                 }
+            }
+            
         }
+        .padding()
         .frame(width: 75, height: 75)
         .background(Color.cellBackgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .shadow(color: .black.opacity(0.6), radius: 3.6, x: -7.2, y: 9.6)
         .overlay(
-        RoundedRectangle(cornerRadius: 7.36)
-        .inset(by: 0.16)
-        .stroke(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2), lineWidth: 0.32)
-
+            RoundedRectangle(cornerRadius: 7.36)
+                .inset(by: 0.16)
+                .stroke(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2), lineWidth: 0.32)
+            
         )
     }
 }

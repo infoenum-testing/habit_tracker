@@ -166,9 +166,33 @@ final class AppDataStore: ObservableObject {
     }
     
     func deleteArc(_ subArc: SubscribedArc) {
+        let context = CoreDataManager.shared.context
+        
+        // Create History entry before deleting
+        let history = History(context: context)
+        history.id = UUID()
+        history.arcId = subArc.id
+        history.arcTitle = subArc.arcTemplate?.title
+        history.arcType = "Arc"
+        history.arcDays = Int32(subArc.arcTemplate?.durationDays ?? 0)
+        history.color = subArc.themeColor
+        history.startAt = subArc.startDate
+        history.completedAt = Date()
+        history.arcStatus = .endByUser
+        
+        // Save to CoreData
+        do {
+            try context.save()
+            print("✅ Saved to history: \(history.arcTitle ?? "Unknown Arc") with status \(history.arcStatus?.rawValue ?? "")")
+        } catch {
+            print("❌ Failed to save history: \(error.localizedDescription)")
+        }
+        
+        // Now delete the SubscribedArc
         CoreDataManager.shared.deleteSubscribedArc(subArc)
         refreshData()
     }
+
     
     func fetchSubscribedArcs() -> [SubscribedArc] {
         return CoreDataManager.shared.fetchSubscribedArcs()

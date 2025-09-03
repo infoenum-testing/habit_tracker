@@ -16,7 +16,7 @@ extension HabitTemplate {
         return NSFetchRequest<HabitTemplate>(entityName: "HabitTemplate")
     }
 
-    @NSManaged public var category: String?
+    @NSManaged public var category: [String]?
     @NSManaged public var colorToken: String?
     @NSManaged public var defaultGoalPerDay: Int16
     @NSManaged public var details: String?
@@ -87,8 +87,8 @@ extension HabitTemplate {
         title ?? "Untitled"
     }
     
-    var wrappedCategory: String {
-        category ?? "General"
+    var wrappedCategory: [String] {
+        category ?? ["General"]
     }
     
     var wrappedColorToken: String {

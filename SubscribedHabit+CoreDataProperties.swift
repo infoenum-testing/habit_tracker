@@ -77,8 +77,8 @@ extension SubscribedHabit {
         habit?.title ?? "Untitled Habit"
     }
     
-    var wrappedCategory: String {
-        habit?.category ?? "General"
+    var wrappedCategory: [String] {
+        habit?.category ?? ["General"]
     }
     
     var wrappedDetails: String {

@@ -17,7 +17,7 @@ extension ArcTemplate {
     }
     
     @NSManaged public var benefits: [String]?
-    @NSManaged public var category: String?
+    @NSManaged public var category: [String]?
     @NSManaged public var colorToken: String?
     @NSManaged public var coverImage: String?
     @NSManaged public var descriptionText: String?

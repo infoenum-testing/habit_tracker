@@ -63,6 +63,7 @@ struct AllHabitsView: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
+                DashedLine()
             }
             .frame(maxWidth: .infinity, alignment: .top)
             .background(Color.navBackground.ignoresSafeArea(edges: .top))
@@ -101,11 +102,12 @@ struct AllHabitsView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 24) {
                         ForEach(filteredHabits, id: \.id) { habit in
-                            HabitCardCellView(habit: habit){
+                            Button {
                                 selectedHabit = habit
-                            }
-                            .aspectRatio(1, contentMode: .fit)
-                            
+                            } label: {
+                                HabitCardCellView(habit: habit)
+                                    .aspectRatio(1, contentMode: .fit)
+                            } 
                         }
                     }
                     .padding(.horizontal)
