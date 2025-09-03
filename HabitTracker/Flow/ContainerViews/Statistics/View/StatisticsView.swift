@@ -58,23 +58,41 @@ private struct SectionTitle: View {
 }
 
 private struct DailyPerformanceGrid: View {
-    private let metrics: [(icon: String, title: String, score: Int, delta: Int)] = [
-        ("discipline", "Discipline", 73, 1),
-        ("strength", "Strength", 68, 3),
-        ("confidence", "Confidence", 70, 3),
-        ("intelligence", "Intelligence", 71, 1)
-    ]
+    @EnvironmentObject var state: AppDataStore
 
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 2)
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 16) {
-            ForEach(metrics, id: \.title) { metric in
-                PerformanceCardView(iconName: metric.icon,
-                                    title: metric.title,
-                                    score: metric.score,
-                                    delta: metric.delta)
+        if let stats = state.todayStatistics {
+            LazyVGrid(columns: columns, spacing: 16) {
+                PerformanceCardView(
+                    iconName: "discipline",
+                    title: "Discipline",
+                    score: Int(stats.disciplineTotal),
+                    delta: Int(stats.disciplineDelta)
+                )
+                PerformanceCardView(
+                    iconName: "strength",
+                    title: "Strength",
+                    score: Int(stats.strengthTotal),
+                    delta: Int(stats.strengthDelta)
+                )
+                PerformanceCardView(
+                    iconName: "confidence",
+                    title: "Confidence",
+                    score: Int(stats.confidenceTotal),
+                    delta: Int(stats.confidenceDelta)
+                )
+                PerformanceCardView(
+                    iconName: "intelligence",
+                    title: "Intelligence",
+                    score: Int(stats.intelligenceTotal),
+                    delta: Int(stats.intelligenceDelta)
+                )
             }
+        } else {
+            Text("No statistics yet")
+                .foregroundColor(.gray)
         }
     }
 }

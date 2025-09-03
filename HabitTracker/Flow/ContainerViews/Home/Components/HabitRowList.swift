@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct HabitRowList: View {
-    @EnvironmentObject var state: AppState
+    //@EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var swipeManager: SwipeManager
     let habit: SubscribedHabit
@@ -66,7 +66,7 @@ struct HabitRowList: View {
                     .frame(height: 70)
                     
                    //  Grid view (only visible in grid layout)
-                    if state.layout == .grid {
+                    if appData.layout == .grid {
                         GridTileView(itemType: .habit, values: habit.dailyOpacities, selectedColor: color)
                             .frame(height: 100)
                             .padding(.horizontal, 10)
@@ -81,7 +81,7 @@ struct HabitRowList: View {
                 )
                 
             })
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: appData.layout)
     }
 }
 

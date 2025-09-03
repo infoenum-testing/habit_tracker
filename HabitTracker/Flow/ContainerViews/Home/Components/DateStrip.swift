@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct DateStrip: View {
-    @EnvironmentObject var state: AppState
+    @EnvironmentObject var state: AppDataStore
 
     var body: some View {
         ScrollViewReader { proxy in

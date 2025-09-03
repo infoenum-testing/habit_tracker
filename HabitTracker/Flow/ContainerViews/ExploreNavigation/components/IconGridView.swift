@@ -28,8 +28,10 @@ struct IconGridView: View {
                             .stroke(Color.white, lineWidth: 2)
                             .opacity(iconName == icon ? 1 : 0)
                         Image(iconName)
-                            .foregroundColor(iconName == icon ? .white : color)
+                            .resizable()
                             .frame(width: 32, height: 32)
+                            .foregroundColor(iconName == icon ? .white : color)
+                            
                     }
                     .foregroundStyle(color)
                     .onTapGesture {

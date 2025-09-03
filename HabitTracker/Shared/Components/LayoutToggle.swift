@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct LayoutToggle: View {
-    @EnvironmentObject var state: AppState
+    @EnvironmentObject var state: AppDataStore
     
     var body: some View {
         HStack(spacing: 5) {
@@ -50,15 +50,15 @@ struct LayoutToggle: View {
 
 
 // MARK: - Preview
-#Preview {
-    LayoutToggle()
-        .padding()
-        .background(Color.black)
-        .environmentObject(
-            AppState(arcs: MockData.arcs, habits: MockData.habits)
-        )
-        .preferredColorScheme(.dark)
-}
+//#Preview {
+//    LayoutToggle()
+//        .padding()
+//        .background(Color.black)
+//        .environmentObject(
+//            AppState(arcs: MockData.arcs, habits: MockData.habits)
+//        )
+//        .preferredColorScheme(.dark)
+//}
 
 
 //.background(

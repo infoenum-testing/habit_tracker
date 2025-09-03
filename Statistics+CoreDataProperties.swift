@@ -34,3 +34,72 @@ extension Statistics {
 extension Statistics : Identifiable {
 
 }
+
+
+extension Statistics {
+    
+    enum Category {
+        case discipline
+        case strength
+        case confidence
+        case intelligence
+        
+        init?(from string: String) {
+            switch string.lowercased() {
+            case "Discipline": self = .discipline
+            case "Strength": self = .strength
+            case "Confidence": self = .confidence
+            case "Intelligence": self = .intelligence
+            default: return nil
+            }
+        }
+        
+        static func random() -> Category {
+            let categories: [Category] = [.discipline, .strength, .confidence, .intelligence]
+            return categories.randomElement()!
+        }
+    }
+
+    
+    
+    
+    /// Add points to a specific category
+    func addPoints(to category: Category, points: Int32 = 1) {
+        switch category {
+        case .discipline:
+            disciplineTotal += points
+            disciplineDelta += points
+        case .strength:
+            strengthTotal += points
+            strengthDelta += points
+        case .confidence:
+            confidenceTotal += points
+            confidenceDelta += points
+        case .intelligence:
+            intelligenceTotal += points
+            intelligenceDelta += points
+        }
+        overallTotal += points
+        overallDelta += points
+    }
+    
+    /// Remove points if habit unchecked
+    func removePoints(from category: Category, points: Int32 = 1) {
+        switch category {
+        case .discipline:
+            disciplineTotal = max(0, disciplineTotal - points)
+            disciplineDelta = max(0, disciplineDelta - points)
+        case .strength:
+            strengthTotal = max(0, strengthTotal - points)
+            strengthDelta = max(0, strengthDelta - points)
+        case .confidence:
+            confidenceTotal = max(0, confidenceTotal - points)
+            confidenceDelta = max(0, confidenceDelta - points)
+        case .intelligence:
+            intelligenceTotal = max(0, intelligenceTotal - points)
+            intelligenceDelta = max(0, intelligenceDelta - points)
+        }
+        overallTotal = max(0, overallTotal - points)
+        overallDelta = max(0, overallDelta - points)
+    }
+}
