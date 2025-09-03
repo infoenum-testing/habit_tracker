@@ -14,9 +14,7 @@ struct HabitTrackerApp: App {
     @StateObject private var router = NavigationRouter()
     
     init() {
-            loadInitialData()
-        //loadSubscribedArcHistoryData()
-       // CoreDataManager.shared.seedDummyBadges()
+        loadInitialData()
         CoreDataManager.shared.checkAndCompleteExpiredArcs()
         }
     var body: some Scene {

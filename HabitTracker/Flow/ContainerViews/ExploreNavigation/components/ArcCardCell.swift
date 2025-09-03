@@ -10,7 +10,7 @@ import SwiftUI
 struct ArcCardCell: View {
     
     let arc: ArcTemplate
-    let action:() -> Void
+    
     
     var body: some View {
         
@@ -28,28 +28,52 @@ struct ArcCardCell: View {
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
                         // Top badges
-                        HStack(spacing: 8) {
-                            Text("\(arc.durationDays) Days")
+                        HStack(spacing: 2) {
+                            Spacer()
+                            HStack(spacing: 5) {
+                                Image("timeCircle")
+                                    .resizable()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundColor(.white)
+
+                                Text("\(arc.durationDays) Days")
+                                    .foregroundColor(.white)
+                                    .font(Font.inter(size: 10))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
+                            }
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 4)
+                            .background(Color.black.opacity(0.75))
+                            .cornerRadius(20)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
                             
-                                .foregroundColor(.white)
-                                .font(Font.inter(size: 10))
+                            if let count = arc.habits?.count {
+                                HStack(spacing: 5) {
+                                    Image("arc")
+                                        .resizable()
+                                        .frame(width: 10, height: 10)
+                                        .foregroundColor(.white)
+
+                                    Text("\(count) Habits")
+                                        .foregroundColor(.white)
+                                        .font(Font.inter(size: 10))
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.7)
+                                }
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 4)
                                 .background(Color.black.opacity(0.75))
                                 .cornerRadius(20)
-                            
-                            if let count = arc.habits?.count {
-                                Text("\(count) Habits")
-                                    .foregroundColor(.white)
-                                    .font(Font.inter(size: 10))
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 4)
-                                    .background(Color.black.opacity(0.75))
-                                    .cornerRadius(20)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
+                            Spacer()
+                            
                         }
                     }
-                    .padding()
+                    .padding(.horizontal, 5)
+                    .padding(.vertical)
                     
                     Spacer()
                     VStack(alignment: .leading, spacing: 4) {
@@ -68,21 +92,16 @@ struct ArcCardCell: View {
                     .padding(.vertical, 5)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.ultraThinMaterial.opacity(0.5))
-                    
-                    
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(width: geo.size.width, height: geo.size.width)
+            .frame(width: geo.size.width, height: geo.size.width, alignment: .center)
             .cornerRadius(20)
             .clipped()
             .overlay {
                 RoundedRectangle(cornerRadius: 20)
+                    .inset(by: 0.4)
                     .stroke(ColorToken.from(string: arc.colorToken ?? "white") , lineWidth: 1)
                     
-            }
-            .onTapGesture {
-                action()
             }
         }
     }

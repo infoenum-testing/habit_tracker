@@ -475,21 +475,10 @@ extension CoreDataManager {
     /// Fetch all ArcTemplates and print
     func fetchAllArcsData() -> [ArcTemplate] {
         let request: NSFetchRequest<ArcTemplate> = ArcTemplate.fetchRequest()
-        
         do {
             let arcs = try context.fetch(request)
-            print("Fetched Arcs: \(arcs.count)")
-            for arc in arcs {
-                print("""
-                Arc ID: \(arc.id ?? "")
-                Title: \(arc.title ?? "")
-                Duration: \(arc.durationDays) days
-                Category: \(arc.category ?? "")
-                """)
-            }
             return arcs
         } catch {
-            print("Failed to fetch arcs: \(error)")
             return []
         }
     }

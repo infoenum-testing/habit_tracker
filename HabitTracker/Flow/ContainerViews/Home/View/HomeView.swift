@@ -99,7 +99,6 @@ struct HomeView: View {
             }
             .onAppear {
               let a =  CoreDataManager.shared.fetchAllArcsData()
-                print("Fetched Arcs from CoreData: \(a.count)")
             }
            
     }
