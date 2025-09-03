@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct AppIcons {
-    static let arc = "icon.arc"
+    static let arc = "icon.book"
     static let calendar = "icon.date"
     static let camera = "icon.camera"
     static let check = "icon.check"
@@ -21,14 +21,14 @@ struct AppIcons {
     static let flame = "icon.fire"
     static let fruit = "icon.food"
     static let hand = "icon.handshake"
-    static let hat = "icon.scho;ar"
+    static let hat = "icon.scholar"
     static let leaf = "icon.leaf"
-    static let lightbulb = "icon.lightbulb"
-    static let lotus = "icon.lotus"
+    static let lightbulb = "icon.light"
+    static let lotus = "icon.stop"
     static let mic = "icon.mic"
     static let moon = "icon.moon"
     static let music = "icon.music"
-    static let pen1 = "icon.brush"
+    static let paint = "icon.paint"
     static let pen = "icon.write"
     static let phone = "icon.phone"
     static let pill = "icon.pill"
@@ -45,7 +45,7 @@ struct AppIcons {
     static let all: [String] = [
         arc, calendar, camera, check, clock, coins, cup, diamond, dumbell,
         flame, fruit, hand, hat, leaf, lightbulb, lotus, mic, moon, music,
-        pen1, pen, phone, pill, rocket, shield, shoe, smile, star, sunrise,
+        paint, pen, phone, pill, rocket, shield, shoe, smile, star, sunrise,
         tooth, verified, wallet
     ]
 }
