@@ -28,3 +28,15 @@ extension ArcProgress {
 extension ArcProgress : Identifiable {
 
 }
+
+extension ArcProgress {
+    convenience init(context: NSManagedObjectContext, date: Date, arc: SubscribedArc) {
+        self.init(context: context)
+        self.id = UUID().uuidString
+        self.date = date
+        self.subscribedArc = arc
+        self.totalHabits = Int16(arc.wrappedHabitsCount)
+        self.completedHabitIds = []
+        arc.addToProgressHistory(self)
+    }
+}

@@ -57,6 +57,7 @@ final class CoreDataManager {
     }
     
     // MARK: - Subscribe to Arc
+    
     func subscribeArc(to arcTemplate: ArcTemplate) -> Result<SubscribedArc, Error> {
         // Check if arc already exists
         let fetchRequest: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
@@ -78,30 +79,38 @@ final class CoreDataManager {
             return .failure(error)
         }
         
+        let calendar = Calendar.current
+        let now = Date()
+        
         // Create new subscription
         let subscribedArc = SubscribedArc(context: context)
         subscribedArc.id = arcTemplate.id
         subscribedArc.arcTemplate = arcTemplate
-        subscribedArc.startDate = Date()
-        subscribedArc.endDate = Calendar.current.date(
-            byAdding: .day,
-            value: Int(arcTemplate.durationDays),
-            to: Date()
-        )
-        subscribedArc.graceEndDate = Calendar.current.date(
+        subscribedArc.startDate = now
+        
+        
+        let duration = Int(arcTemplate.durationDays)
+        if let lastDay = calendar.date(byAdding: .day, value: duration - 1, to: now),
+           let endOfLastDay = calendar.date(bySettingHour: 23, minute: 59, second: 0, of: lastDay) {
+            subscribedArc.endDate = endOfLastDay
+        }
+        
+        // Grace period (24 hours after endDate)
+        subscribedArc.graceEndDate = calendar.date(
             byAdding: .hour,
             value: 24,
-            to: subscribedArc.endDate ?? Date()
+            to: subscribedArc.endDate ?? now
         )
+        
         subscribedArc.themeColor = arcTemplate.colorToken
         subscribedArc.icon = arcTemplate.icons?["days"] ?? ""
         
-        // Create ArcProgress only for today
+        
         let totalHabits = arcTemplate.habitList.count
         let progress = ArcProgress(context: context)
         progress.id = UUID().uuidString
         progress.subscribedArc = subscribedArc
-        progress.date = Calendar.current.startOfDay(for: Date())
+        progress.date = calendar.startOfDay(for: now)
         progress.totalHabits = Int16(totalHabits)
         progress.completedHabits = 0
         subscribedArc.addToProgressHistory(progress)
@@ -110,6 +119,8 @@ final class CoreDataManager {
         do {
             try context.save()
             print("✅ Subscribed to arc: \(arcTemplate.title ?? "Unknown")")
+            print("📅 StartDate: \(subscribedArc.startDate!)")
+            print("📅 EndDate: \(subscribedArc.endDate!)")
             return .success(subscribedArc)
         } catch {
             context.rollback()
@@ -117,6 +128,7 @@ final class CoreDataManager {
             return .failure(error)
         }
     }
+
 
     
     // MARK: - Unsubscribe to Arc
@@ -531,66 +543,52 @@ extension CoreDataManager {
 }
 
 extension CoreDataManager {
-    func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
+    enum ArcCompletionStatus {
+        case completed      // all habits done
+        case incomplete     // still habits remaining
+    }
+    
+    
+    func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) -> ArcCompletionStatus {
         let today = Calendar.current.startOfDay(for: Date())
-        
-        // Fetch or create today's progress
-        let progress = arc.todayProgress ?? {
-            let newProgress = ArcProgress(context: context)
-            newProgress.id = UUID().uuidString
-            newProgress.date = today
-            newProgress.subscribedArc = arc
-            newProgress.totalHabits = Int16(arc.wrappedHabitsCount)
-            newProgress.completedHabitIds = []
-            arc.addToProgressHistory(newProgress)
-            return newProgress
-        }()
-        
+        let progress = arc.todayProgress ?? ArcProgress(context: context, date: today, arc: arc)
         var completed = progress.completedHabitIds ?? []
-        
         if completed.contains(habitId) {
-            // Uncheck
             completed.removeAll { $0 == habitId }
         } else {
-            // Check
             completed.append(habitId)
         }
-        
         progress.completedHabitIds = completed
         progress.completedHabits = Int16(completed.count)
         
+        var status: ArcCompletionStatus = .incomplete
+        
+        if progress.completedHabits == progress.totalHabits, progress.totalHabits > 0 {
+            status = .completed
+        }
+        
         saveContext()
+        return status
     }
+
+
     
     func toggleHabit(_ habitId: String, in habit: SubscribedHabit) {
         let today = Calendar.current.startOfDay(for: Date())
-
+        
         // Fetch or create today's progress
-        let progress = habit.todayProgress ?? {
-            let newProgress = HabitProgress(context: context)
-            newProgress.id = UUID().uuidString
-            newProgress.date = today
-            newProgress.subscribedHabit = habit
-            newProgress.totalHabits = Int16(habit.wrappedRequiredPerDay) // expected per day
-            newProgress.completedHabitIds = []
-            newProgress.completedCount = 0
-            habit.addToProgressHistory(newProgress)
-            return newProgress
-        }()
-
+        let progress = habit.todayProgress ?? HabitProgress(context: context, date: today,habit: habit)
         var completed = progress.completedHabitIds ?? []
-
         if completed.contains(habitId) {
-            // Uncheck
             completed.removeAll { $0 == habitId }
         } else {
-            // Check
+            
             completed.append(habitId)
         }
-
+        
         progress.completedHabitIds = completed
         progress.completedCount = Int16(completed.count)
-
+        
         saveContext()
     }
 
@@ -617,104 +615,49 @@ extension CoreDataManager {
     
 }
 
-
-//For the dummy data use only
+// MARK: - History Operations
 extension CoreDataManager {
-
-    // MARK: - Fetch helpers
-    func fetchSubscribedArc(by id: String) -> SubscribedArc? {
-        let request: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id)
-        request.fetchLimit = 1
+    
+    
+    @discardableResult
+    func saveHistory(for arc: SubscribedArc, status: ArcStatus) -> History? {
+        let history = History(from: arc, status: status, context: context)
         do {
-            return try context.fetch(request).first
+            try context.save()
+            print("✅ Saved history: \(history.arcTitle ?? "Unknown") [\(status.rawValue)]")
+            return history
         } catch {
-            print("❌ Failed to fetch SubscribedArc:", error)
+            print("❌ Failed to save history: \(error.localizedDescription)")
+            context.rollback()
             return nil
         }
     }
-
     
-
-    func fetchHistory(by id: UUID) -> History? {
+    
+    func fetchHistory() -> [History] {
         let request: NSFetchRequest<History> = History.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        request.fetchLimit = 1
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "completedAt", ascending: false)
+        ]
+        
         do {
-            return try context.fetch(request).first
+            return try context.fetch(request)
         } catch {
-            print("❌ Failed to fetch History:", error)
-            return nil
+            print("❌ Failed to fetch history: \(error.localizedDescription)")
+            return []
         }
     }
-
     
-    // MARK: - Save SubscribedArc + History from JSON
-//    func saveSubscribedArcHistoryFromJSON(_ json: [String: Any]) {
-//        guard let subscribedArcsArray = json["subscribedArcs"] as? [[String: Any]],
-//              let historyArray = json["history"] as? [[String: Any]] else {
-//            print("❌ Invalid JSON structure")
-//            return
-//        }
-//
-//        let dateFormatter = ISO8601DateFormatter()
-//
-//        // Save SubscribedArcs
-//        for saData in subscribedArcsArray {
-//            guard let arcId = saData["id"] as? String else { continue }
-//
-//            // Skip if already exists
-//            if fetchSubscribedArc(by: arcId) != nil { continue }
-//
-//            let subscribedArc = SubscribedArc(context: context)
-//            subscribedArc.id = arcId
-//            subscribedArc.startDate = (saData["startDate"] as? String).flatMap { dateFormatter.date(from: $0) }
-//            subscribedArc.endDate = (saData["endDate"] as? String).flatMap { dateFormatter.date(from: $0) }
-//            subscribedArc.graceEndDate = (saData["graceEndDate"] as? String).flatMap { dateFormatter.date(from: $0) }
-//            subscribedArc.themeColor = saData["themeColor"] as? String
-//            subscribedArc.icon = saData["icon"] as? String
-//
-//            print("✅ SubscribedArc saved with id: \(arcId)")
-//        }
-//
-//        // Save History
-//        for hData in historyArray {
-//            guard let historyIdString = hData["id"] as? String,
-//                  let historyUUID = UUID(uuidString: historyIdString) else {
-//                print("⚠️ Invalid history ID (not UUID): \(String(describing: hData["id"]))")
-//                continue
-//            }
-//
-//            // Skip if already exists
-//            if fetchHistory(by: historyUUID) != nil {
-//                print("⏭ Skipped duplicate history with id: \(historyUUID)")
-//                continue
-//            }
-//
-//            let history = History(context: context)
-//            history.id = historyUUID
-//            history.arcId = hData["arcId"] as? String
-//            history.arcTitle = hData["arcTitle"] as? String
-//            history.arcType = hData["arcType"] as? String
-//            history.arcDays = Int32(hData["arcDays"] as? Int ?? 0)
-//            history.color = hData["color"] as? String
-//            history.pointsEarned = hData["pointsEarned"] as? String
-//            history.status = hData["status"] as? String
-//            history.completedAt = (hData["completedAt"] as? String).flatMap { dateFormatter.date(from: $0) }
-//            history.expiredAt = (hData["expiredAt"] as? String).flatMap { dateFormatter.date(from: $0) }
-//
-//            // Link to SubscribedArc
-//            if let subscribedArcId = hData["subscribedArc"] as? String,
-//               let subscribedArc = fetchSubscribedArc(by: subscribedArcId) {
-//                history.subscribedArc = subscribedArc
-//            }
-//
-//            print("✅ History saved with id: \(historyUUID)")
-//        }
-//
-//        saveContext()
-//
-//        let total = fetchAllHistories().count
-//        print("🎉 JSON saved successfully (\(total) histories in Core Data)")
-//    }
+    
+    func deleteHistory(_ history: History) {
+        context.delete(history)
+        do {
+            try context.save()
+            print("🗑️ Deleted history: \(history.arcTitle ?? "Unknown")")
+        } catch {
+            print("❌ Failed to delete history: \(error.localizedDescription)")
+            context.rollback()
+        }
+    }
 }
+

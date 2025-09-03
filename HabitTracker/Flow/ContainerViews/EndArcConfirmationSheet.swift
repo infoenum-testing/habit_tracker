@@ -63,11 +63,14 @@ struct EndArcConfirmationSheet: View {
             
             // End Arc Button
             Button {
-                if let arcToDelete = appData.selectedArctoDelete {
-                    appData.deleteArc(arcToDelete)
-                    dismiss()
-                    navigation.pop()
-                    navigation.dismissAll()
+                if let arc = appData.selectedArctoDelete {
+                    if let _ = appData.saveHistory(for: arc, status: .endByUser){
+                        appData.deleteArc(arc)
+                        dismiss()
+                        navigation.pop()
+                        navigation.dismissAll()
+                    }
+                    
                 }
             } label: {
                 HStack {

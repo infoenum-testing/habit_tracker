@@ -107,25 +107,26 @@ extension SubscribedArc {
     }
     
     var wrappedHabitsCount: Int {
-            arcTemplate?.habitList.count ?? 0
-        }
-        
-        /// Directly fetch all habits from the arcTemplate (as HabitData struct array)
-        var wrappedHabitList: [HabitData] {
-            arcTemplate?.habitList ?? []
-        }
-        
-        /// If you still need HabitTemplate objects
-//        var wrappedHabits: [HabitTemplate] {
-//            Array(arcTemplate?.habits as? Set<HabitTemplate> ?? [])
-//        }
-        
-        // --- Subscribed Habits ---
-        
-        var habitsArray: [SubscribedHabit] {
-            let set = subscribedHabits as? Set<SubscribedHabit> ?? []
-            return set.sorted { ($0.habit?.title ?? "") < ($1.habit?.title ?? "") }
-        }
+        arcTemplate?.habitList.count ?? 0
+    }
+    
+    
+    var wrappedHabitList: [HabitData] {
+        arcTemplate?.habitList ?? []
+    }
+    
+    
+    
+    var progress: CGFloat {
+        return wrappedHabitsCount > 0
+        ? CGFloat(completedTasksToday) / CGFloat(wrappedHabitsCount)
+        : 0
+    }
+    
+    var habitsArray: [SubscribedHabit] {
+        let set = subscribedHabits as? Set<SubscribedHabit> ?? []
+        return set.sorted { ($0.habit?.title ?? "") < ($1.habit?.title ?? "") }
+    }
     
     // MARK: - Progress History
     
@@ -151,7 +152,7 @@ extension SubscribedArc {
         return min(max(1, dayIndex), wrappedDurationDays)
     }
     
-    /// Days remaining until arc ends (never negative)
+    
     var daysRemaining: Int {
         max(0, wrappedDurationDays - currentDayIndex)
     }
@@ -201,38 +202,38 @@ extension SubscribedArc {
 }
 
 
-extension SubscribedArc {
-    /// Returns 40 opacity values (latest 40 days).
-    var last100DayOpacities: [Double] {
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
-        
-        // Build last 40 dates (most recent first, then reversed to oldest → newest)
-        let last100Dates = (0..<100).compactMap {
-            calendar.date(byAdding: .day, value: -$0, to: today)
-        }.reversed()
-        
-        return last100Dates.map { date in
-            // Find ArcProgress entry for that date
-            if let progress = progressArray.first(where: {
-                if let pDate = $0.date {
-                    return calendar.isDate(pDate, inSameDayAs: date)
-                }
-                return false
-            }) {
-                let total = Double(progress.totalHabits)
-                let completed = Double(progress.completedHabits)
-                guard total > 0 else { return 0.3 }
-                
-                let ratio = completed / total
-                return ratio == 0 ? 0.3 : 0.3 + (ratio * 0.7)
-            } else {
-                // No entry for this date → baseline opacity
-                return 0.3
-            }
-        }
-    }
-}
+//extension SubscribedArc {
+//    /// Returns 40 opacity values (latest 40 days).
+//    var last100DayOpacities: [Double] {
+//        let calendar = Calendar.current
+//        let today = calendar.startOfDay(for: Date())
+//        
+//        // Build last 40 dates (most recent first, then reversed to oldest → newest)
+//        let last100Dates = (0..<100).compactMap {
+//            calendar.date(byAdding: .day, value: -$0, to: today)
+//        }.reversed()
+//        
+//        return last100Dates.map { date in
+//            // Find ArcProgress entry for that date
+//            if let progress = progressArray.first(where: {
+//                if let pDate = $0.date {
+//                    return calendar.isDate(pDate, inSameDayAs: date)
+//                }
+//                return false
+//            }) {
+//                let total = Double(progress.totalHabits)
+//                let completed = Double(progress.completedHabits)
+//                guard total > 0 else { return 0.3 }
+//                
+//                let ratio = completed / total
+//                return ratio == 0 ? 0.3 : 0.3 + (ratio * 0.7)
+//            } else {
+//                // No entry for this date → baseline opacity
+//                return 0.3
+//            }
+//        }
+//    }
+//}
 
 
 extension SubscribedArc {

@@ -66,3 +66,19 @@ extension History {
         }
     }
 }
+
+extension History {
+    convenience init(from arc: SubscribedArc, status: ArcStatus, context: NSManagedObjectContext) {
+        self.init(context: context)
+        self.id = UUID()
+        self.arcId = arc.id
+        self.arcTitle = arc.arcTemplate?.title
+        self.arcType = "Arc"
+        self.arcDays = Int32(arc.arcTemplate?.durationDays ?? 0)
+        self.color = arc.themeColor
+        self.startAt = arc.startDate
+        self.completedAt = Date()
+        self.arcStatus = status
+    }
+}
+

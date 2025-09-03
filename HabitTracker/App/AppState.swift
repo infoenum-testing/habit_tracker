@@ -166,45 +166,45 @@ final class AppDataStore: ObservableObject {
     }
     
     func deleteArc(_ subArc: SubscribedArc) {
-        let context = CoreDataManager.shared.context
-        
-        // Create History entry before deleting
-        let history = History(context: context)
-        history.id = UUID()
-        history.arcId = subArc.id
-        history.arcTitle = subArc.arcTemplate?.title
-        history.arcType = "Arc"
-        history.arcDays = Int32(subArc.arcTemplate?.durationDays ?? 0)
-        history.color = subArc.themeColor
-        history.startAt = subArc.startDate
-        history.completedAt = Date()
-        history.arcStatus = .endByUser
-        
-        // Save to CoreData
-        do {
-            try context.save()
-            print("✅ Saved to history: \(history.arcTitle ?? "Unknown Arc") with status \(history.arcStatus?.rawValue ?? "")")
-        } catch {
-            print("❌ Failed to save history: \(error.localizedDescription)")
-        }
-        
-        // Now delete the SubscribedArc
         CoreDataManager.shared.deleteSubscribedArc(subArc)
         refreshData()
     }
 
+
+    func saveHistory(for arc: SubscribedArc, status: ArcStatus) -> History? {
+        return CoreDataManager.shared.saveHistory(for: arc, status: status)
+    }
     
     func fetchSubscribedArcs() -> [SubscribedArc] {
         return CoreDataManager.shared.fetchSubscribedArcs()
     }
 }
 
-
 extension AppDataStore {
+    
     func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
-        CoreDataManager.shared.toggleArcHabit(habitId, in: arc)
+        let status = CoreDataManager.shared.toggleArcHabit(habitId, in: arc)
+        switch status {
+        case .completed:
+            handleArcCompletion(for: arc)
+            
+        case .incomplete:
+            print("🕒 Still habits remaining")
+        }
         refreshData()
     }
+
+    private func handleArcCompletion(for arc: SubscribedArc) {
+        let today = Calendar.current.startOfDay(for: Date())
+        guard Calendar.current.isDate(today, inSameDayAs: arc.wrappedEndDate) else {
+            print("🎉 All habits done for today in arc: \(arc.wrappedTitle)")
+            return
+        }
+        if saveHistory(for: arc, status: .completed) != nil {
+            deleteArc(arc)
+        }
+    }
+
     func toggleHabit(_ habitId: String, in arc: SubscribedHabit) {
         CoreDataManager.shared.toggleHabit(habitId, in: arc)
         refreshData()

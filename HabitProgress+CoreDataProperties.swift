@@ -28,3 +28,19 @@ extension HabitProgress {
 extension HabitProgress : Identifiable {
 
 }
+
+extension HabitProgress {
+    convenience init(context: NSManagedObjectContext, date: Date, habit: SubscribedHabit) {
+        self.init(context: context)
+        self.id = UUID().uuidString
+        self.date = date
+        self.subscribedHabit = habit
+        self.totalHabits = Int16(habit.wrappedRequiredPerDay) // expected per day
+        self.completedHabitIds = []
+        self.completedCount = 0
+        habit.addToProgressHistory(self)
+    }
+}
+
+
+

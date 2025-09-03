@@ -22,12 +22,12 @@ struct ArcDetailView: View {
         appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID })
     }
     
-    private var progress: CGFloat {
-        guard let arc else { return 0 }
-        return arc.wrappedHabitsCount > 0
-            ? CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
-            : 0
-    }
+//    private var progress: CGFloat {
+//        guard let arc else { return 0 }
+//        return arc.wrappedHabitsCount > 0
+//            ? CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
+//            : 0
+//    }
 
     var body: some View {
         Group {
@@ -56,7 +56,7 @@ struct ArcDetailView: View {
                             }
                             .scrollDisabled(true)
 
-                            CircularArcProgressView(progress: progress, tint: color)
+                            CircularArcProgressView(progress: arc.progress, tint: color)
                                 .padding()
                             
                             VStack(alignment: .center, spacing: 6) {
@@ -70,11 +70,7 @@ struct ArcDetailView: View {
 
                             VStack(spacing: 12) {
                                 ForEach(arc.wrappedHabitList) { task in
-                                        ArcTaskRow(
-                                            arc: arc,
-                                            task: task,
-                                            tint: color
-                                        )
+                                        ArcTaskRow(arc: arc, task: task, tint: color)
                                 }
                             }
                             .padding(.horizontal, 16)
