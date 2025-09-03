@@ -383,7 +383,7 @@ extension CoreDataManager {
             habit.id = hData["habitId"] as? String
             habit.title = hData["title"] as? String
             habit.details = hData["description"] as? String
-            habit.category = hData["category"] as? String
+            habit.category = hData["category"] as? [String]
             habit.colorToken = hData["themeColor"] as? String
             habit.icon = hData["icon"] as? String
             habit.defaultGoalPerDay = Int16(hData["defaultGoalPerDay"] as? Int ?? 1)
@@ -406,8 +406,8 @@ extension CoreDataManager {
             arc.shortSubtitle = aData["shortSubtitle"] as? String
             arc.descriptionText = aData["description"] as? String
             arc.durationDays = Int16(aData["durationDays"] as? Int ?? 0)
-            arc.category = aData["category"] as? String
-            arc.colorToken = aData["colorToken"] as? String
+            arc.category = aData["category"] as? [String]
+            arc.colorToken = aData["themeColor"] as? String
             arc.coverImage = aData["coverImage"] as? String
             
             arc.benefits = aData["benefits"] as? [String]
@@ -650,71 +650,71 @@ extension CoreDataManager {
 
     
     // MARK: - Save SubscribedArc + History from JSON
-    func saveSubscribedArcHistoryFromJSON(_ json: [String: Any]) {
-        guard let subscribedArcsArray = json["subscribedArcs"] as? [[String: Any]],
-              let historyArray = json["history"] as? [[String: Any]] else {
-            print("❌ Invalid JSON structure")
-            return
-        }
-
-        let dateFormatter = ISO8601DateFormatter()
-
-        // Save SubscribedArcs
-        for saData in subscribedArcsArray {
-            guard let arcId = saData["id"] as? String else { continue }
-
-            // Skip if already exists
-            if fetchSubscribedArc(by: arcId) != nil { continue }
-
-            let subscribedArc = SubscribedArc(context: context)
-            subscribedArc.id = arcId
-            subscribedArc.startDate = (saData["startDate"] as? String).flatMap { dateFormatter.date(from: $0) }
-            subscribedArc.endDate = (saData["endDate"] as? String).flatMap { dateFormatter.date(from: $0) }
-            subscribedArc.graceEndDate = (saData["graceEndDate"] as? String).flatMap { dateFormatter.date(from: $0) }
-            subscribedArc.themeColor = saData["themeColor"] as? String
-            subscribedArc.icon = saData["icon"] as? String
-
-            print("✅ SubscribedArc saved with id: \(arcId)")
-        }
-
-        // Save History
-        for hData in historyArray {
-            guard let historyIdString = hData["id"] as? String,
-                  let historyUUID = UUID(uuidString: historyIdString) else {
-                print("⚠️ Invalid history ID (not UUID): \(String(describing: hData["id"]))")
-                continue
-            }
-
-            // Skip if already exists
-            if fetchHistory(by: historyUUID) != nil {
-                print("⏭ Skipped duplicate history with id: \(historyUUID)")
-                continue
-            }
-
-            let history = History(context: context)
-            history.id = historyUUID
-            history.arcId = hData["arcId"] as? String
-            history.arcTitle = hData["arcTitle"] as? String
-            history.arcType = hData["arcType"] as? String
-            history.arcDays = Int32(hData["arcDays"] as? Int ?? 0)
-            history.color = hData["color"] as? String
-            history.pointsEarned = hData["pointsEarned"] as? String
-            history.status = hData["status"] as? String
-            history.completedAt = (hData["completedAt"] as? String).flatMap { dateFormatter.date(from: $0) }
-            history.expiredAt = (hData["expiredAt"] as? String).flatMap { dateFormatter.date(from: $0) }
-
-            // Link to SubscribedArc
-            if let subscribedArcId = hData["subscribedArc"] as? String,
-               let subscribedArc = fetchSubscribedArc(by: subscribedArcId) {
-                history.subscribedArc = subscribedArc
-            }
-
-            print("✅ History saved with id: \(historyUUID)")
-        }
-
-        saveContext()
-
-        let total = fetchAllHistories().count
-        print("🎉 JSON saved successfully (\(total) histories in Core Data)")
-    }
+//    func saveSubscribedArcHistoryFromJSON(_ json: [String: Any]) {
+//        guard let subscribedArcsArray = json["subscribedArcs"] as? [[String: Any]],
+//              let historyArray = json["history"] as? [[String: Any]] else {
+//            print("❌ Invalid JSON structure")
+//            return
+//        }
+//
+//        let dateFormatter = ISO8601DateFormatter()
+//
+//        // Save SubscribedArcs
+//        for saData in subscribedArcsArray {
+//            guard let arcId = saData["id"] as? String else { continue }
+//
+//            // Skip if already exists
+//            if fetchSubscribedArc(by: arcId) != nil { continue }
+//
+//            let subscribedArc = SubscribedArc(context: context)
+//            subscribedArc.id = arcId
+//            subscribedArc.startDate = (saData["startDate"] as? String).flatMap { dateFormatter.date(from: $0) }
+//            subscribedArc.endDate = (saData["endDate"] as? String).flatMap { dateFormatter.date(from: $0) }
+//            subscribedArc.graceEndDate = (saData["graceEndDate"] as? String).flatMap { dateFormatter.date(from: $0) }
+//            subscribedArc.themeColor = saData["themeColor"] as? String
+//            subscribedArc.icon = saData["icon"] as? String
+//
+//            print("✅ SubscribedArc saved with id: \(arcId)")
+//        }
+//
+//        // Save History
+//        for hData in historyArray {
+//            guard let historyIdString = hData["id"] as? String,
+//                  let historyUUID = UUID(uuidString: historyIdString) else {
+//                print("⚠️ Invalid history ID (not UUID): \(String(describing: hData["id"]))")
+//                continue
+//            }
+//
+//            // Skip if already exists
+//            if fetchHistory(by: historyUUID) != nil {
+//                print("⏭ Skipped duplicate history with id: \(historyUUID)")
+//                continue
+//            }
+//
+//            let history = History(context: context)
+//            history.id = historyUUID
+//            history.arcId = hData["arcId"] as? String
+//            history.arcTitle = hData["arcTitle"] as? String
+//            history.arcType = hData["arcType"] as? String
+//            history.arcDays = Int32(hData["arcDays"] as? Int ?? 0)
+//            history.color = hData["color"] as? String
+//            history.pointsEarned = hData["pointsEarned"] as? String
+//            history.status = hData["status"] as? String
+//            history.completedAt = (hData["completedAt"] as? String).flatMap { dateFormatter.date(from: $0) }
+//            history.expiredAt = (hData["expiredAt"] as? String).flatMap { dateFormatter.date(from: $0) }
+//
+//            // Link to SubscribedArc
+//            if let subscribedArcId = hData["subscribedArc"] as? String,
+//               let subscribedArc = fetchSubscribedArc(by: subscribedArcId) {
+//                history.subscribedArc = subscribedArc
+//            }
+//
+//            print("✅ History saved with id: \(historyUUID)")
+//        }
+//
+//        saveContext()
+//
+//        let total = fetchAllHistories().count
+//        print("🎉 JSON saved successfully (\(total) histories in Core Data)")
+//    }
 }

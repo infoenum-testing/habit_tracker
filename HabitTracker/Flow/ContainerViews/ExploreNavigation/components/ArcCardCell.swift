@@ -49,7 +49,7 @@ struct ArcCardCell: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                             
-                            if let count = arc.habits?.count {
+                            if let count = arc.habitsData?.count {
                                 HStack(spacing: 5) {
                                     Image("arc")
                                         .resizable()
@@ -70,15 +70,6 @@ struct ArcCardCell: View {
                             }
                             Spacer()
                             
-                            if let count = arc.habitsData?.count {
-                                Text("\(count) Habits")
-                                    .foregroundColor(.white)
-                                    .font(Font.inter(size: 10))
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 4)
-                                    .background(Color.black.opacity(0.75))
-                                    .cornerRadius(20)
-                            }
                         }
                     }
                     .padding(.horizontal, 5)
