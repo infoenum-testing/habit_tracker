@@ -13,7 +13,7 @@ struct HabitCardCellView: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading) {
                 // Icon Section
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -25,12 +25,16 @@ struct HabitCardCellView: View {
                         .frame(width: 32, height: 32)
                         .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
                 }
+                .padding(.top, 12)
+                
+                Spacer() // This pushes the text section down to fill remaining space
                 
                 // Text Section
                 VStack(alignment: .leading, spacing: 6) {
                     Text(habit.title ?? "")
                         .foregroundColor(.white)
                         .font(.system(size: 14, weight: .semibold))
+                        .multilineTextAlignment(.leading)
                     
                     Text(habit.details ?? "")
                         .foregroundColor(.gray)
@@ -39,9 +43,9 @@ struct HabitCardCellView: View {
                         .multilineTextAlignment(.leading)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom, 12) // bottom padding
             }
             .padding(.horizontal, 26)
-            .padding(.vertical, 15)
             .frame(width: geo.size.width, height: geo.size.height)
             .background(Color(red: 0.15, green: 0.15, blue: 0.15))
             .cornerRadius(18)
