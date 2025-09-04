@@ -14,6 +14,7 @@ enum ArcStatus: String {
     case endByUser = "endbyuser"
     case expired = "expired"
     case completed = "completed"
+    case lateCompleted = "lateCompleted"
 }
 
 

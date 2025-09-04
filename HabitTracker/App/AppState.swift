@@ -218,7 +218,7 @@ final class AppDataStore: ObservableObject {
 extension AppDataStore {
     
     func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
-        CoreDataManager.shared.toggleArcHabit(habitId, in: arc){ isChecked in
+        CoreDataManager.shared.toggleArcHabit(habitId, in: arc) { isChecked, allCompleted in
             if isChecked {
                 print("✅ Habit checked")
                 addPoints()
@@ -226,18 +226,33 @@ extension AppDataStore {
                 print("❌ Habit unchecked")
                 removePoints()
             }
+            
+            if allCompleted {
+                print("🎉 All habits completed for today in arc: \(arc.wrappedTitle)")
+                handleArcCompletion(for: arc)
+            }
+            
             refreshData()
         }
-        
     }
+
 
     private func handleArcCompletion(for arc: SubscribedArc) {
         let today = Calendar.current.startOfDay(for: Date())
-        guard Calendar.current.isDate(today, inSameDayAs: arc.wrappedEndDate) else {
+        let calendar = Calendar.current
+        
+        let status: ArcStatus
+        
+        if calendar.isDate(today, inSameDayAs: arc.wrappedEndDate) {
+            status = .completed
+        } else if calendar.isDate(today, inSameDayAs: arc.wrappedGraceEndDate) {
+            status = .lateCompleted
+        } else {
             print("🎉 All habits done for today in arc: \(arc.wrappedTitle)")
             return
         }
-        if saveHistory(for: arc, status: .completed) != nil {
+        
+        if saveHistory(for: arc, status: status) != nil {
             deleteArc(arc)
         }
     }

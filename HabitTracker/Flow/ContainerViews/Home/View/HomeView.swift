@@ -97,9 +97,17 @@ struct HomeView: View {
                     .preferredColorScheme(.dark)
                     
             }
+        
             .onAppear {
-              let a =  CoreDataManager.shared.fetchAllArcsData()
+                for arc in appData.allSubscribedArcs {
+                    if let graceEndDate = arc.graceEndDate,
+                       graceEndDate < Date() {
+                        let _ = appData.saveHistory(for: arc, status: .expired)
+                        appData.deleteArc(arc)
+                    }
+                }
             }
+
            
     }
 }

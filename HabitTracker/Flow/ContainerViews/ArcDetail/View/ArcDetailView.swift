@@ -10,25 +10,25 @@ import SwiftUI
 
 struct ArcDetailView: View {
     @Environment(\.dismiss) private var dismiss
-   // @EnvironmentObject var state: AppState
+    // @EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var navigation: NavigationRouter
-
+    @State private var showAlert = false
     @State private var showEditArc = false
     @State private var showConfirmation = false
     let arcID: String
-   
+    
     private var arc: SubscribedArc? {
         appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID })
     }
     
-//    private var progress: CGFloat {
-//        guard let arc else { return 0 }
-//        return arc.wrappedHabitsCount > 0
-//            ? CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
-//            : 0
-//    }
-
+    //    private var progress: CGFloat {
+    //        guard let arc else { return 0 }
+    //        return arc.wrappedHabitsCount > 0
+    //            ? CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
+    //            : 0
+    //    }
+    
     var body: some View {
         Group {
             if let arc = arc {
@@ -55,7 +55,7 @@ struct ArcDetailView: View {
                                 .padding(5)
                             }
                             .scrollDisabled(true)
-
+                            
                             CircularArcProgressView(progress: arc.progress, tint: color)
                                 .padding()
                             
@@ -67,10 +67,10 @@ struct ArcDetailView: View {
                                     .font(.sfProDisplay(.medium, size: 16))
                                     .foregroundColor(.textGray)
                             }
-
+                            
                             VStack(spacing: 12) {
                                 ForEach(arc.wrappedHabitList) { task in
-                                        ArcTaskRow(arc: arc, task: task, tint: color)
+                                    ArcTaskRow(arc: arc, task: task, tint: color)
                                 }
                             }
                             .padding(.horizontal, 16)
@@ -131,6 +131,29 @@ struct ArcDetailView: View {
         }
         .onChange(of: navigation.dismissAllSheets) { _ in
             dismiss()
+        }
+        
+        .onAppear {
+            if let arc = arc {
+                checkArcStatus(for: arc)
+            }
+        }
+        .alert("Reminder", isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("You have not completed habit yet. Please complete the habit before end by today.")
+        }
+        
+    }
+    
+    private func checkArcStatus(for arc: SubscribedArc) {
+        let today = Calendar.current.startOfDay(for: Date())
+        let endDate = arc.wrappedEndDate
+        let graceDate = arc.wrappedGraceEndDate
+        
+        if Calendar.current.isDate(graceDate, inSameDayAs: today),
+           endDate < today {
+            showAlert = true
         }
     }
 }

@@ -546,7 +546,7 @@ extension CoreDataManager {
     func toggleArcHabit(
         _ habitId: String,
         in arc: SubscribedArc,
-        completion: (Bool) -> Void
+        completion: (_ isChecked: Bool, _ allCompleted: Bool) -> Void
     ) {
         let today = Calendar.current.startOfDay(for: Date())
         let progress = arc.todayProgress ?? ArcProgress(context: context, date: today, arc: arc)
@@ -560,20 +560,16 @@ extension CoreDataManager {
             completed.append(habitId)
             isNowChecked = true
         }
+        
         progress.completedHabitIds = completed
         progress.completedHabits = Int16(completed.count)
         
-        var status: ArcCompletionStatus = .incomplete
-        
-        if progress.completedHabits == progress.totalHabits, progress.totalHabits > 0 {
-            status = .completed
-        }
+        let allCompleted = progress.completedHabits == progress.totalHabits && progress.totalHabits > 0
         
         saveContext()
-        
-        // Call completion with final state
-        completion(isNowChecked)
+        completion(isNowChecked, allCompleted)
     }
+
 
     func toggleHabit(
         _ habitId: String,

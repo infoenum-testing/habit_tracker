@@ -15,7 +15,7 @@ struct HabitTrackerApp: App {
     
     init() {
         loadInitialData()
-        CoreDataManager.shared.checkAndCompleteExpiredArcs()
+        
         }
     var body: some Scene {
         WindowGroup {
