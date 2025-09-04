@@ -164,11 +164,15 @@ struct CircularArcProgressView: View {
             Circle()
                 .stroke(Color(UIColor.appGray), lineWidth: 12)
             
-            // Progress circle
+            // Progress circle with animation
             Circle()
                 .trim(from: 0, to: progress)
-                .stroke(tint, style: StrokeStyle(lineWidth: 12, lineCap: .round))
-              .rotationEffect(.degrees(-90))   // start at top
+                .stroke(
+                    tint,
+                    style: StrokeStyle(lineWidth: 12, lineCap: .round)
+                )
+                .rotationEffect(.degrees(-90)) // start at top
+                .animation(.easeInOut(duration: 0.6), value: progress) // animate
             
             // Center icon
             Image("star")
@@ -178,6 +182,7 @@ struct CircularArcProgressView: View {
         .frame(width: 135, height: 135)
     }
 }
+
 
 
 
