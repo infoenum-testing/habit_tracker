@@ -38,7 +38,7 @@ struct ArcRowList: View {
                     content: {
                 VStack(spacing: 0) {
                     HStack(spacing: 12) {
-                        IconBadge(icon: icon, tint: color)
+                        IconBadge(icon: icon, tint: color, height: 48, width: 48)
                             .padding(.leading)
                         
                         VStack(alignment: .leading, spacing: 2) {

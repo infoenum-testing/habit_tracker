@@ -21,8 +21,11 @@ struct ArcDailyHabitsCellView: View {
                       .cornerRadius(9.2)
                     
                     Image(habit.icon)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
                         .foregroundStyle(color)
-                      .frame(width: 22.05, height: 22.05)
+                     
                 }
                 .frame(width: 51.471, height: 51.072)
                 

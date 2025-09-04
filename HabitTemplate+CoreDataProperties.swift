@@ -22,7 +22,7 @@ extension HabitTemplate {
     @NSManaged public var details: String?
     @NSManaged public var icon: String?
     @NSManaged public var id: String?
-    @NSManaged public var pointsPerDay: NSObject?
+    @NSManaged public var pointsPerDay: [String: Any]?
     @NSManaged public var tags: NSObject?
     @NSManaged public var title: String?
     @NSManaged public var arcTemplates: NSSet?
@@ -113,5 +113,51 @@ extension HabitTemplate {
     
     var subscribedHabitsArray: [SubscribedHabit] {
         (subscribedHabits as? Set<SubscribedHabit>)?.sorted { $0.wrappedId < $1.wrappedId } ?? []
+    }
+}
+
+
+extension HabitTemplate {
+    var points: PointsPerDay? {
+        get {
+            guard let raw = pointsPerDay else { return nil }
+            do {
+                let data = try JSONSerialization.data(withJSONObject: raw)
+                return try JSONDecoder().decode(PointsPerDay.self, from: data)
+            } catch {
+                print("❌ Failed to decode HabitTemplate PointsPerDay:", error)
+                return nil
+            }
+        }
+        set {
+            guard let newValue = newValue else {
+                pointsPerDay = nil
+                return
+            }
+            do {
+                let data = try JSONEncoder().encode(newValue)
+                let jsonObject = try JSONSerialization.jsonObject(with: data)
+                pointsPerDay = jsonObject as? [String: Any]
+            } catch {
+                print("❌ Failed to encode HabitTemplate PointsPerDay:", error)
+            }
+        }
+    }
+}
+
+extension HabitTemplate {
+    /// Returns distribution as an array of (Statistics.Category, Int) where value > 0
+    func distributionPoints() -> [(Statistics.Category, Int)] {
+        guard let points = self.points else { return [] }
+        
+        let dist = points.distribution
+        let allPoints: [(Statistics.Category, Int)] = [
+            (.discipline, dist.discipline),
+            (.strength, dist.strength),
+            (.confidence, dist.confidence),
+            (.intelligence, dist.intelligence)
+        ]
+        
+        return allPoints.filter { $0.1 > 0 }
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 import Foundation
 
 struct StatisticsView: View {
+    @EnvironmentObject var appData: AppDataStore
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
@@ -27,6 +28,9 @@ struct StatisticsView: View {
             .padding(.horizontal, 16)
         }
         .background(Color.black.ignoresSafeArea())
+        .onAppear {
+            appData.refreshStatistics()
+        }
     }
 }
 

@@ -21,7 +21,7 @@ struct ArcTaskRow: View {
 
         return HStack(spacing: 12) {
             IconBadge(
-                icon: arc.wrappedIcon,
+                icon: task.icon,
                 tint: isCompleted ? tint : .appGray
             )
 

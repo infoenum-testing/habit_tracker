@@ -8,73 +8,6 @@
 import Foundation
 import SwiftUI
 
-//final class AppState: ObservableObject {
-//    @Published var selectedDate: Date = Date().stripTime()
-//    @Published var layout: HomeLayout = .list
-//    @Published var arcs: [Arc]
-//    @Published var habits: [Habit]
-//    
-//    init(arcs: [Arc], habits: [Habit]) {
-//        self.arcs = arcs
-//        self.habits = habits
-//    }
-//    
-//    enum ListItem: Identifiable {
-//        case arc(Arc)
-//        case habit(Habit)
-//        
-//        var id: String {
-//            switch self {
-//            case .arc(let arc): return arc.id.uuidString   // ✅ convert UUID → String
-//            case .habit(let habit): return habit.id.uuidString        // already String
-//            }
-//        }
-//    }
-//    
-//    
-//    var allItems: [ListItem] {
-//        let arcItems = arcs.map { ListItem.arc($0) }
-//        let habitItems = habits.map { ListItem.habit($0) }
-//        return arcItems + habitItems
-//    }
-//    
-//    func toggleHabit(_ habit: Habit) {
-////        let day = selectedDate.stripTime()
-////        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
-////        if habits[idx].completions.contains(day) {
-////            habits[idx].completions.remove(day)
-////        } else {
-////            habits[idx].completions.insert(day)
-////        }
-//    }
-//    
-//    func toggleHabitAndUpdateCount(_ habit: Habit) {
-////        let day = selectedDate.stripTime()
-////        guard let idx = habits.firstIndex(where: { $0.id == habit.id }) else { return }
-////        if habits[idx].completions.contains(day) {
-////            // was done → now unchecked
-////            habits[idx].completedCount += 1
-////        } else {
-////            // was not done → now checked
-////            habits[idx].completedCount -= 1
-////        }
-//    }
-//    
-//    
-//    func toggleArcTask(_ taskID: UUID, in arcID: UUID) {
-//        guard let arcIndex = arcs.firstIndex(where: { $0.id == arcID }) else { return }
-//        if let tIndex = arcs[arcIndex].tasksForToday.firstIndex(where: { $0.id == taskID }) {
-//            var arc = arcs[arcIndex]
-//            arc.tasksForToday[tIndex].isCompleted.toggle()
-//            arc.history[arc.dayNumber-1] = Int(arc.progress * 100)
-//            arcs[arcIndex] = arc
-//        }
-//    }
-//    
-//    var activeArcs: [Arc] { arcs.filter { _ in true } }
-//}
-
-
 struct GrandTotals {
     var discipline: Int32
     var strength: Int32
@@ -120,18 +53,44 @@ final class AppDataStore: ObservableObject {
     }
     
     /// Reload everything from CoreData
+    /// Reload everything from CoreData
     func refreshData() {
+        refreshHabitsAndArcs()
+        refreshSubscribed()
+        refreshStatistics()
+        refreshHistories()
+        
+    }
+
+    /// 1. Refresh all habits and arcs
+     func refreshHabitsAndArcs() {
         let manager = CoreDataManager.shared
         allHabits = manager.fetchAllHabits()
         allArcs = manager.fetchAllArcs()
+    }
+
+    /// 2. Refresh subscribed habits and arcs
+     func refreshSubscribed() {
+        let manager = CoreDataManager.shared
         allSubscribedHabits = manager.fetchSubscribedHabits()
         allSubscribedArcs = manager.fetchSubscribedArcs()
-        allHistories = manager.fetchAllHistories()
+    }
+
+    /// 3. Refresh statistics
+     func refreshStatistics() {
+        let manager = CoreDataManager.shared
         todayStatistics = manager.fetchOrCreateTodayStatistics()
         allStatistics = manager.fetchAllStatistics()
         updateGrandTotals()
+    }
+
+    /// 4. Refresh histories
+     func refreshHistories() {
+        let manager = CoreDataManager.shared
+        allHistories = manager.fetchAllHistories()
         print("\(allHistories.count)")
     }
+
     
     func updateGrandTotals() {
             let totals = fetchGrandTotals()
@@ -152,7 +111,7 @@ final class AppDataStore: ObservableObject {
         switch result {
         case .success(let subscribedArc):
             print("✅ Successfully subscribed to arc: \(subscribedArc.wrappedTitle)")
-            refreshData()
+            refreshSubscribed()
             completion?(.success(subscribedArc))
             
         case .failure(let error):
@@ -168,7 +127,7 @@ final class AppDataStore: ObservableObject {
         switch CoreDataManager.shared.unsubscribeArc(withId: arcId) {
         case .success:
             print("✅ Successfully unsubscribed from arc with id: \(arcId)")
-            refreshData()
+            refreshSubscribed()
             completion(true)
         case .failure(let error):
             print("❌ Failed to unsubscribe: \(error.localizedDescription)")
@@ -185,7 +144,7 @@ final class AppDataStore: ObservableObject {
         switch result {
         case .success(let updatedArc):
             print("Updated Arc → \(updatedArc.wrappedIcon), \(updatedArc.wrappedThemeColor)")
-            refreshData()
+            refreshSubscribed()
             completion(true)
         case .failure(let error):
             print("Failed to update arc: \(error)")
@@ -197,17 +156,19 @@ final class AppDataStore: ObservableObject {
     
     func completeArc(_ subArc: SubscribedArc) {
         CoreDataManager.shared.completeArc(subArc)
-        refreshData()
+        refreshSubscribed()
     }
     
     func deleteArc(_ subArc: SubscribedArc) {
         CoreDataManager.shared.deleteSubscribedArc(subArc)
-        refreshData()
+        refreshSubscribed()
+        refreshHistories()
     }
 
 
     func saveHistory(for arc: SubscribedArc, status: ArcStatus) -> History? {
         return CoreDataManager.shared.saveHistory(for: arc, status: status)
+        
     }
     
     func fetchSubscribedArcs() -> [SubscribedArc] {
@@ -218,21 +179,28 @@ final class AppDataStore: ObservableObject {
 extension AppDataStore {
     
     func toggleArcHabit(_ habitId: String, in arc: SubscribedArc) {
-        CoreDataManager.shared.toggleArcHabit(habitId, in: arc) { isChecked, allCompleted in
-            if isChecked {
-                print("✅ Habit checked")
-                addPoints()
-            } else {
-                print("❌ Habit unchecked")
-                removePoints()
+        CoreDataManager.shared.toggleArcHabit(habitId, in: arc)  { allCompleted, shouldAddPoints, shouldRemovePoints in
+            if shouldAddPoints == true {
+                if let distributionArray = arc.arcTemplate?.distributionPoints() {
+                    for (category, value) in distributionArray {
+                        print("\(category) → \(value)")
+                        addPoints(category: category, points: Int32(value))
+                    }
+                }
             }
-            
+            if shouldRemovePoints == true {
+                if let distributionArray = arc.arcTemplate?.distributionPoints() {
+                    for (category, value) in distributionArray {
+                        print("\(category) → \(value)")
+                        removePoints(category: category, points: Int32(value))
+                    }
+                }
+            }
             if allCompleted {
                 print("🎉 All habits completed for today in arc: \(arc.wrappedTitle)")
                 handleArcCompletion(for: arc)
             }
-            
-            refreshData()
+            refreshSubscribed()
         }
     }
 
@@ -261,12 +229,22 @@ extension AppDataStore {
         CoreDataManager.shared.toggleHabit(habitId, in: arc){ isChecked in
             if isChecked {
                 print("✅ Habit checked")
-                addPoints()
+                if let distributionArray = arc.habit?.distributionPoints() {
+                    for (category, value) in distributionArray {
+                        print("\(category) → \(value)")
+                        addPoints(category: category, points: Int32(value))
+                    }
+                }
             } else {
-                print("❌ Habit unchecked")
-                removePoints()
+                print("✅ Habit unchecked")
+                if let distributionArray = arc.habit?.distributionPoints() {
+                    for (category, value) in distributionArray {
+                        print("\(category) → \(value)")
+                        removePoints(category: category, points: Int32(value))
+                    }
+                }
             }
-            refreshData()
+            refreshSubscribed()
         }
     }
 }
@@ -281,7 +259,7 @@ extension AppDataStore {
             switch result {
             case .success(let subscribedHabit):
                 print("🎉 Subscribed: \(subscribedHabit.wrappedTitle)")
-                self.refreshData()
+                self.refreshSubscribed()
                 completion?(.success(subscribedHabit))
                 
             case .failure(let error):
@@ -302,7 +280,8 @@ extension AppDataStore {
             switch result {
             case .success:
                 print("✅ Successfully unsubscribed")
-                self.refreshData()
+                self.refreshSubscribed()
+                self.refreshHistories()
                 completion(true)
             case .failure(let error):
                 print("⚠️ Error unsubscribing: \(error.localizedDescription)")
@@ -320,7 +299,7 @@ extension AppDataStore {
 
         switch result {
         case .success(let updatedHabit):
-            self.refreshData()
+            self.refreshSubscribed()
             print("Updated Habit → \(updatedHabit.wrappedIcon), \(updatedHabit.wrappedThemeColor)")
             completion(true)
         case .failure(let error):
@@ -332,26 +311,26 @@ extension AppDataStore {
     
     func deleteHabit(_ subHabit: SubscribedHabit) {
         CoreDataManager.shared.deleteSubscribedHabit(subHabit)
-        refreshData()
+        refreshSubscribed()
     }
 }
 
 
 extension AppDataStore {
     
-    func addPoints(category: Statistics.Category = Statistics.Category.random(), points: Int32 = 1) {
+    func addPoints(category: Statistics.Category , points: Int32) {
         CoreDataManager.shared.addPoints(to: category, points: points)
-        refreshData()
+        refreshStatistics()
     }
     
-    func removePoints(category: Statistics.Category = Statistics.Category.random(), points: Int32 = 1) {
+    func removePoints(category: Statistics.Category, points: Int32) {
         CoreDataManager.shared.removePoints(from: category, points: points)
-        refreshData()
+        refreshStatistics()
     }
     
     func deleteStatistics(_ stats: Statistics) {
         CoreDataManager.shared.deleteStatistics(stats)
-        refreshData()
+        refreshStatistics()
     }
     
     func fetchTotals(for stats: Statistics) -> (discipline: Int32, strength: Int32, confidence: Int32, intelligence: Int32, overall: Int32) {
