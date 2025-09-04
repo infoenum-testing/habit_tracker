@@ -45,7 +45,7 @@ struct MyAccountView: View {
                             .frame(height: 384)
                         }
                     } else if completedHistories.isEmpty {
-                        EmptyArcCardView(title: "You dont have completed arc.")
+                        EmptyArcCardView()
                     } else {
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVGrid(

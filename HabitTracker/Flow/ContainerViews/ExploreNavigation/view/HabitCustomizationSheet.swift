@@ -71,6 +71,11 @@ struct HabitCustomizationSheet: View {
                 endPoint: .bottom
             )
         )
+        
+        .onAppear {
+            selectedIcon =  habit.wrappedIcon
+            selectedColor = habit.wrappedColorToken
+        }
     }
 }
 

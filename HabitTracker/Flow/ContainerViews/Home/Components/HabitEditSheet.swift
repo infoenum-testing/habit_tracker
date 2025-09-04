@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HabitEditSheet: View {
-    @State private var selectedIcon: String = "icon.star"
-    @State private var selectedColor: String = "color.purple"
+    @State private var selectedIcon: String = ""
+    @State private var selectedColor: String = ""
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var appData: AppDataStore
     

@@ -24,7 +24,6 @@ struct ExploreMain: View {
                 headerView
             }
             .padding(.horizontal, 28)
-            .padding(.top, 72)
             .padding(.bottom, 24)
             .frame(maxWidth: .infinity, alignment: .topLeading)
             .background(Color.navBackground)
@@ -77,8 +76,8 @@ struct ExploreMain: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color.sheetBackgroundColor)
-        .ignoresSafeArea()
+        //.background(Color.sheetBackgroundColor)
+        .background(Color.sheetBackgroundColor.ignoresSafeArea())
         .sheet(item: $selectedHabit) { habit in
             
             HabitCustomizationSheet(habit: habit)

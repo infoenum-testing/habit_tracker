@@ -73,7 +73,6 @@ struct ArcRowList: View {
                         .padding(.horizontal, 10)
                         .padding(.bottom, 10)
                     }
-
                 }
                 .background(
                     LinearGradient(
@@ -81,7 +80,8 @@ struct ArcRowList: View {
                             color.opacity(0.18),
                             color.opacity(0.28),
                             color.opacity(0.38),
-                            color.opacity(0.48)
+                            color.opacity(0.48),
+                            color.opacity(0.58),
                         ]),
                         startPoint: .bottom,
                         endPoint: .top
@@ -89,7 +89,6 @@ struct ArcRowList: View {
                     .cornerRadius(swipeManager.openRowID == arc.id ? 0 : 14)
                 )
                 .background(.black)
-               
                 .overlay(
                     RoundedRectangle(cornerRadius: swipeManager.openRowID == arc.id ? 0 : 14, style: .continuous)
                         .stroke(color, lineWidth: 1)

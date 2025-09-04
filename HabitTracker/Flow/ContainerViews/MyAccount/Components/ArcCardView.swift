@@ -60,27 +60,27 @@ struct ArcCardView: View {
 
 
 struct EmptyArcCardView: View {
-    let title: String
     let width: CGFloat = UIScreen.main.bounds.width / 2.3
     let height: CGFloat = UIScreen.main.bounds.width / 2.3
     
     var body: some View {
         VStack(spacing: 12) {
-//            Image(systemName: "checkmark.seal")
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 50, height: 50)
-//                .foregroundColor(.gray.opacity(0.7))
-            
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.gray)
-            
-            Text("Start a new arc to see it here!")
-                .font(.subheadline)
-                .foregroundColor(.gray.opacity(0.6))
+            VStack {
+                Text("You haven't completed any Arcs yet.")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                
+                Text("When you subscribe and complete an Arc it will show here.")
+                    .font(.subheadline)
+                    .foregroundColor(.gray.opacity(0.6))
+                    .multilineTextAlignment(.center)
+            }
+            .padding()
+            .padding(.vertical)
+                
         }
-        .frame(maxWidth: .infinity, minHeight: 70)
+        .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 25)
                 .fill(Color.cellBackgroundColor)

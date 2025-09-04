@@ -119,6 +119,12 @@ struct EditArcSheet: View {
             .padding(.horizontal)
             .padding(.bottom, 20)
         }.ignoresSafeArea()
+        
+            .onAppear(perform: {
+                if let arc = appData.selectedArctoDelete {
+                    selectedColor = arc.wrappedThemeColor
+                }
+            })
             .sheet(isPresented: $showConfirmation) {
                 EndArcConfirmationSheet(isPresented: $showConfirmation,
                                         arcName: "Gut Health Arc")
@@ -142,6 +148,6 @@ struct EditArcSheet: View {
 struct EditArcSheet_Previews: PreviewProvider {
     static var previews: some View {
         EditArcSheet(isPresented: .constant(true))
-            .preferredColorScheme(.dark) // remove this if you want light mode
+            .preferredColorScheme(.dark) 
     }
 }

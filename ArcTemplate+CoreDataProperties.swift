@@ -63,6 +63,9 @@ extension ArcTemplate {
     var tagsArray: [String] {
         tags ?? []
     }
+    var categoriesArray: [String] {
+        category ?? []
+    }
 }
 
 
