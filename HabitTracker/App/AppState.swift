@@ -7,17 +7,6 @@
 
 import Foundation
 import SwiftUI
-
-struct GrandTotals {
-    var discipline: Int32
-    var strength: Int32
-    var confidence: Int32
-    var intelligence: Int32
-    var overall: Int32
-}
-
-
-import Foundation
 import CoreData
 
 final class AppDataStore: ObservableObject {
@@ -30,7 +19,6 @@ final class AppDataStore: ObservableObject {
     @Published var selectedArctoDelete: SubscribedArc?
     @Published var allHistories: [History] = []
     @Published var selectedHabitToDelete: SubscribedHabit?
-    
     @Published var allStatistics: [Statistics] = []
     @Published var todayStatistics: Statistics?
     @Published var grandTotals: GrandTotals = GrandTotals(
@@ -40,10 +28,8 @@ final class AppDataStore: ObservableObject {
             intelligence: 0,
             overall: 0
         )
-    
     @Published var isShowingDeleteArcConfirmation: Bool = false
     @Published var isShowingDeleteHabitConfirmation: Bool = false
-    
     @Published  var showToast = false
     @Published  var toastMessage: String = ""
     @Published  var toastType: ToastType = .success
@@ -52,7 +38,6 @@ final class AppDataStore: ObservableObject {
         refreshData()
     }
     
-    /// Reload everything from CoreData
     /// Reload everything from CoreData
     func refreshData() {
         refreshHabitsAndArcs()

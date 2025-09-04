@@ -164,3 +164,27 @@ extension HabitTemplate {
         return allPoints.filter { $0.1 > 0 }
     }
 }
+
+
+import CoreData
+
+extension HabitTemplate {
+    convenience init(from model: HabitJSON, context: NSManagedObjectContext) {
+        self.init(context: context)
+        self.id = model.habitId
+        self.title = model.title
+        self.details = model.description
+        self.icon = model.icon
+        self.colorToken = model.themeColor
+        self.category = model.categories
+        self.defaultGoalPerDay = Int16(model.defaultGoalPerDay ?? 1)
+        self.tags = model.tags as NSObject?
+        if let points = model.points {
+            self.pointsPerDay = [
+                "awardOn": points.awardOn ?? "",
+                "distribution": points.distribution ?? [:]
+            ]
+        }
+    }
+}
+
