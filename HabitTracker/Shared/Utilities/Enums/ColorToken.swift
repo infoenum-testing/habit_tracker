@@ -13,7 +13,6 @@ enum ColorToken: String, CaseIterable {
     case orange
     case green
     case gold
-    case black
     case cyan
     case gray
     case pink
@@ -30,7 +29,6 @@ enum ColorToken: String, CaseIterable {
         case .orange: return .appOrange
         case .green: return .appGreen
         case .gold: return .appGold
-        case .black: return .appDarkGray
         case .cyan: return .appCyan
         case .gray: return .appGray
         case .pink: return .appPink
@@ -40,6 +38,38 @@ enum ColorToken: String, CaseIterable {
         }
     }
     
+    var colorGradient : [Color] {
+        switch self {
+        case .blue: return [.gradientBlueLight, .gradientBlueDark]
+        case .red:
+            return [.gradientRedLight, .gradientRedDark]
+        case .purple:
+            return [.gradientPurpleLight, .gradientPurpleDark]
+        case .orange:
+            return [.gradientOrangeLight, .gradientOrangeDark]
+        case .green:
+            return [.gradientGreenLight, .gradientGreenDark]
+        case .gold:
+            return [.gradientGoldLight, .gradientGoldDark]
+        
+        case .cyan:
+            return [.gradientCyanLight, .gradientCyanDark]
+        case .gray:
+            return [.gradientGrayLight, .gradientGrayDark]
+
+        case .pink:
+            return [.gradientPinkLight, .gradientPinkDark]
+
+        case .beige:
+            return [.gradientBeigeLight, .gradientBeigeDark]
+
+        case .darkblue:
+            return [.gradientDarkBlueLight, .gradientDarkBlueDark]
+
+        case .yellow:
+            return [.gradientYellowLight, .gradientYellowDark]
+        }
+    }
     
     var imageName: String {
         switch self {
@@ -49,7 +79,6 @@ enum ColorToken: String, CaseIterable {
         case .orange: return "arcOrange"
         case .green: return "arcGreen"
         case .gold: return "arcGold"
-        case .black: return "arcBlack"
         case .cyan: return "arcCyan"
         case .gray: return "arcGray"
         case .pink: return "arcPink"
@@ -63,11 +92,16 @@ enum ColorToken: String, CaseIterable {
         let cleaned = string
             .lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        // take the part after "color."
         let value = cleaned.replacingOccurrences(of: "color.", with: "")
-        
         return ColorToken(rawValue: value)?.color ?? .white
+    }
+    
+    static func returnGradientColors(string: String) -> [Color] {
+        let cleaned = string
+            .lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let value = cleaned.replacingOccurrences(of: "color.", with: "")
+        return ColorToken(rawValue: value)?.colorGradient ?? [.white,.white]
     }
     
     

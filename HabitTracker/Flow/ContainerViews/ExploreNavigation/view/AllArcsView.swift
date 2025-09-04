@@ -26,7 +26,7 @@ struct AllArcsView: View {
             return appData.allArcs
         } else {
             return appData.allArcs.filter { arc in
-                arc.tagsArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
+                arc.categoriesArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
             }
         }
     }

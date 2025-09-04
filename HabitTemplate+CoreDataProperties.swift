@@ -73,6 +73,9 @@ extension HabitTemplate {
     var tagsArray: [String] {
         tags as? [String] ?? []
     }
+    var categoresArray: [String] {
+        category ?? []
+    }
 }
 
 extension HabitTemplate {

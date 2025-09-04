@@ -27,7 +27,7 @@ struct AllHabitsView: View {
             return appData.allHabits
         } else {
             return appData.allHabits.filter { habit in
-                habit.tagsArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
+                habit.categoresArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
             }
         }
     }
