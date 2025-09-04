@@ -24,11 +24,5 @@ struct CustomTabBar: View {
         .padding(.horizontal, 24)
         .frame(height: 65)
         .background(.black)
-        .overlay(
-            RoundedRectangle(cornerRadius: 28)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-                .padding(.horizontal, 10)
-                .padding(.top, 1)
-        )
     }
 }
