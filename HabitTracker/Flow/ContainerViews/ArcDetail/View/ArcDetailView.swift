@@ -22,13 +22,6 @@ struct ArcDetailView: View {
         appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID })
     }
     
-    //    private var progress: CGFloat {
-    //        guard let arc else { return 0 }
-    //        return arc.wrappedHabitsCount > 0
-    //            ? CGFloat(arc.completedTasksToday) / CGFloat(arc.wrappedHabitsCount)
-    //            : 0
-    //    }
-    
     var body: some View {
         Group {
             if let arc = arc {
@@ -238,6 +231,7 @@ struct ShareProgressButton_Previews: PreviewProvider {
 
 struct DayStripView: View {
     let arc: SubscribedArc
+    let width: CGFloat = UIScreen.main.bounds.width / 5 - 10
     
     private var visibleDays: [Int?] {
         let total = arc.wrappedDurationDays
@@ -263,7 +257,7 @@ struct DayStripView: View {
                     )
                 } else {
                     Color.clear
-                        .frame(width: 70, height: 90)
+                        .frame(width: width, height: 90)
                 }
             }
         }

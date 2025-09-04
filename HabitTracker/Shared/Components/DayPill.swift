@@ -15,6 +15,7 @@ struct DayPill: View {
     var day: Int = 1
     let isSelected: Bool
     let isPast: Bool
+    let width: CGFloat = UIScreen.main.bounds.width / 5 - 10
     var body: some View {
         
         VStack(spacing: 2) {
@@ -26,7 +27,7 @@ struct DayPill: View {
                 .foregroundColor(isSelected ? .white : .white.opacity(0.5))
         }
         .foregroundStyle(.white)
-        .frame(width: 70, height: 90)
+        .frame(width: width, height: 90)
         .background(
             ZStack {
                 RoundedRectangle(cornerRadius: 25).stroke(isSelected ? .white : .white.opacity(0.7) , lineWidth: isSelected ? 2 : 1)

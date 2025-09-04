@@ -11,21 +11,23 @@ import Foundation
 struct StatisticsView: View {
     @EnvironmentObject var appData: AppDataStore
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                HeaderView()
-
-                OverallScoreCard()
-
-                SectionTitle("Daily Performance")
-
-                DailyPerformanceGrid()
-                
-                SectionTitle("Weekly Performance")
-
-                WeeklyPerformanceSection()
+        VStack {
+            HeaderView()
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 24) {
+                    
+                    OverallScoreCard()
+                    
+                    SectionTitle("Daily Performance")
+                    
+                    DailyPerformanceGrid()
+                    
+                    SectionTitle("Weekly Performance")
+                    
+                    WeeklyPerformanceSection()
+                }
+                .padding(.horizontal, 16)
             }
-            .padding(.horizontal, 16)
         }
         .background(Color.black.ignoresSafeArea())
         .onAppear {

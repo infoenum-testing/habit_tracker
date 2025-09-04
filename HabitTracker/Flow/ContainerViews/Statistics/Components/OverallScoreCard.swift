@@ -22,9 +22,9 @@ struct OverallScoreCard: View {
                                 .scaledToFit()
                                 .padding()
                         }
-                            .frame(width: 32, height: 32)
-                            .background(.appGray)
-                            .cornerRadius(8)
+                        .frame(width: 32, height: 32)
+                        .background(.appGray)
+                        .cornerRadius(8)
                         VStack(alignment: .leading) {
                             Text("[archetype]")
                                 .font(.sfProDisplay(.medium, size: 10))
@@ -34,33 +34,38 @@ struct OverallScoreCard: View {
                                 .foregroundStyle(.white)
                         }
                     }
-
-                  
-
-                    HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        VStack(alignment: .leading) {
-                            Text("\(appData.grandTotals.overall)")
-                                .font(.sfProDisplay(.bold, size: 48))
-                                .minimumScaleFactor(0.5)
-                                .foregroundStyle(.white)
-                            Text("Updated Daily")
-                                .font(.sfProDisplay(.regular, size: 13))
-                                .foregroundColor(.gray)
+                    
+                                        
+                    VStack(alignment: .leading) {
+                    HStack(alignment: .top) {
+                        Text("\(appData.grandTotals.overall)")
+                            .font(.sfProDisplay(.bold, size: 48))
+                            .minimumScaleFactor(0.5)
+                            .foregroundStyle(.white)
+                        
+                        if appData.grandTotals.overall > 0 {
+                            HStack(spacing: 4) {
+                                Text("+\(appData.grandTotals.overall)")
+                                    .font(.sfProDisplay(.medium, size: 14))
+                                    .foregroundStyle(.brightGreen)
+                                Image("arrowUpCircle")
+                                    .resizable()
+                                    .frame(width: 12, height: 12)
+                                    .font(.caption2)
+                            }
+                            .frame(width: 56, height: 25)
+                            .background(Color.capsuleGreen)
+                            .cornerRadius(12)
+                            .padding(.top, 9)
                         }
-
-                        HStack(spacing: 4) {
-                            Text("+\(appData.grandTotals.overall)")
-                                .font(.sfProDisplay(.medium, size: 14))
-                                .foregroundStyle(.brightGreen)
-                            Image("arrowUpCircle")
-                                .resizable()
-                                .frame(width: 12, height: 12)
-                                .font(.caption2)
-                        }
-                        .frame(width: 56, height: 25)
-                        .background(Color.capsuleGreen)
-                        .cornerRadius(12)
+                        
+                        
                     }
+                        Text("Updated Daily")
+                            .font(.sfProDisplay(.regular, size: 13))
+                            .foregroundColor(.gray)
+                    
+                }
                 }
                 Spacer()
                 ZStack {
