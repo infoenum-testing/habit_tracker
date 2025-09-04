@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import UIKit
+import SwiftUI
 
 // MARK: - CoreDataManager
 
@@ -17,7 +18,8 @@ final class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer
     var context: NSManagedObjectContext { persistentContainer.viewContext }
-    
+    @AppStorage("isInitialDataSaved") var isInitialDataSaved: Bool = false
+
     private init() {
         persistentContainer = NSPersistentContainer(name: "HabitTrackerDataBase")
         persistentContainer.loadPersistentStores { _, error in
@@ -436,14 +438,10 @@ extension CoreDataManager {
         }
         saveContext()
         print("JSON data saved successfully!")
+        isInitialDataSaved = true
     }
 }
 
-
-
-
-import Foundation
-import CoreData
 
 extension CoreDataManager {
     
@@ -460,48 +458,6 @@ extension CoreDataManager {
 }
 
 extension CoreDataManager {
-//    func toggleArcHabit(
-//        _ habitId: String,
-//        in arc: SubscribedArc,
-//        completion: (_ allCompleted: Bool) -> Void
-//    ) {
-//        let today = Calendar.current.startOfDay(for: Date())
-//        let progress = arc.todayProgress ?? ArcProgress(context: context, date: today, arc: arc)
-//        var completed = progress.completedHabitIds ?? []
-//        
-//        
-//        if completed.contains(habitId) {
-//            completed.removeAll { $0 == habitId }
-//        } else {
-//            completed.append(habitId)
-//        }
-//        
-//        progress.completedHabitIds = completed
-//        progress.completedHabits = Int16(completed.count)
-//        
-//        let allCompleted = progress.completedHabits == progress.totalHabits && progress.totalHabits > 0
-//        if allCompleted && !progress.pointsAwarded {
-//            if let distributionArray = arc.arcTemplate?.distributionPoints() {
-//                for (category, value) in distributionArray {
-//                    print("\(category) → \(value)")
-//                    addPoints(to: category, points: Int32(value))
-//                }
-//            }
-//            progress.pointsAwarded = true
-//        } else if !allCompleted && progress.pointsAwarded {
-//            // If user unchecks, remove points
-//            if let distributionArray = arc.arcTemplate?.distributionPoints() {
-//                for (category, value) in distributionArray {
-//                    print("\(category) → \(value)")
-//                    removePoints(from: category, points: Int32(value))
-//                }
-//            }
-//            progress.pointsAwarded = false
-//        }
-//        
-//        saveContext()
-//        completion(allCompleted)
-//    }
     
     func toggleArcHabit(
         _ habitId: String,
