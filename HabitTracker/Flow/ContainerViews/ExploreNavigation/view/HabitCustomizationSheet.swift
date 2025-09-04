@@ -45,7 +45,7 @@ struct HabitCustomizationSheet: View {
                     ShareProgressButton(title: "Save habit") {
                         appData.subscribeToHabit(to: habit) { result in
                             switch result {
-                            case .success(let message):
+                            case .success(_):
                                 appData.updateSubscribedHabit(habitID: habit.wrappedId, icon: selectedIcon, newThemeColor: selectedColor) { success in
                                     dismiss()
                                 }

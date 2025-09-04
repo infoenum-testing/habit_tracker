@@ -16,6 +16,9 @@ struct ArcDetailPreJoinView: View {
     @State private var truncated: Bool = false
     @State private var expanded: Bool = false
     let arc: ArcTemplate
+    @State private var isShowAlert = false
+        @State private var alertMessage = ""
+    
     private var moreLessText: String {
         if !truncated {
             return ""
@@ -29,7 +32,7 @@ struct ArcDetailPreJoinView: View {
             Image("card")
                 .resizable()
                 .scaledToFill()
-                .frame(height: UIScreen.main.bounds.height * 0.35) // 35% of screen height
+                .frame(height: UIScreen.main.bounds.height * 0.35)
                 .clipped()
 
                 .overlay(
@@ -61,64 +64,65 @@ struct ArcDetailPreJoinView: View {
                         .padding(.top, 70)
                         
                         ScrollView {
-                            VStack(alignment: .leading, spacing: 8){
-                                HStack(alignment: .center) {
-                                    TextBadgeView(title: "\(arc.durationDays) Days" , icon: "timeCircle")
-                                        .background(Color.white)
-                                        .cornerRadius(20)
-                                    TextBadgeView(title: "\(arc.habitsData?.count ?? 0) Habits" ,icon: "arc")
-                                        .background(Color.white)
-                                        .cornerRadius(20)
+                            VStack {
+                                VStack(alignment: .leading, spacing: 8){
+                                    HStack(alignment: .center) {
+                                        TextBadgeView(title: "\(arc.durationDays) Days" , icon: "timeCircle")
+                                            .background(Color.white)
+                                            .cornerRadius(20)
+                                        TextBadgeView(title: "\(arc.habitsData?.count ?? 0) Habits" ,icon: "arc")
+                                            .background(Color.white)
+                                            .cornerRadius(20)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    Text(arc.title ?? "")
+                                        .font(Font.sfPro(size: 38, weight: .semibold))
+                                        .foregroundStyle(Color.white)
+                                    
+                                    
+                                    VStack(alignment: .leading) {
+                                        if let descriptionText = arc.descriptionText {
+                                            ExpandableText(descriptionText, lineLimit: 2)
+                                            
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    HStack(alignment: .center) {
+                                        if let benefits = arc.benefits {
+                                            FlowLayout(tags: benefits)
+                                        }
+                                    }
+                                    
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.top)
+                                .padding(.horizontal, 20)
                                 
-                                Text(arc.title ?? "")
-                                    .font(Font.sfPro(size: 38, weight: .semibold))
-                                    .foregroundStyle(Color.white)
-                                
+                                DashedLine()
+                                    .padding(.top, 20)
                                 
                                 VStack(alignment: .leading) {
-                                    if let descriptionText = arc.descriptionText {
-                                        ExpandableText(descriptionText, lineLimit: 2)
-                                        
+                                    
+                                    VStack(alignment: .leading, spacing: 18) {
+                                        Text("Daily Habits")
+                                            .font(Font.sfPro(size: 17, weight: .medium))
+                                            .multilineTextAlignment(.center)
+                                            .foregroundColor(.white)
                                     }
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                HStack(alignment: .center) {
-                                    if let benefits = arc.benefits {
-                                        FlowLayout(tags: benefits)
+                                    .padding(.horizontal, 0)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 0)
+                                    
+                                    VStack(alignment: .leading, spacing: 13) {
+                                        ForEach(arc.habitList) { habit in
+                                            ArcDailyHabitsCellView( habit: habit, color: ColorToken.from(string: arc.colorToken ?? "blue"))
+                                        }
                                     }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-                                
+                                .padding(.horizontal, 20)
                             }
-                            .padding(.top)
-                            
-                            .padding(.horizontal, 20)
-                            
-                            DashedLine()
-                                .padding(.top, 20)
-                            
-                            VStack(alignment: .leading) {
-                                
-                                VStack(alignment: .leading, spacing: 18) {
-                                    Text("Daily Habits")
-                                        .font(Font.sfPro(size: 17, weight: .medium))
-                                        .multilineTextAlignment(.center)
-                                        .foregroundColor(.white)
-                                }
-                                .padding(.horizontal, 0)
-                                .padding(.top, 12)
-                                .padding(.bottom, 0)
-                                
-                                VStack(alignment: .leading, spacing: 13) {
-                                    ForEach(arc.habitList) { habit in
-                                        ArcDailyHabitsCellView( habit: habit, color: ColorToken.from(string: arc.colorToken ?? "blue"))
-                                    }
-                                }
-                                
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            .padding(.horizontal, 20)
+                            .padding(.bottom, 110)
                         }
                     }
                     .padding(.top)
@@ -128,9 +132,10 @@ struct ArcDetailPreJoinView: View {
                 ShareProgressButton(title: "Join arc",buttonAction: {
                     appdata.subscribe(to: arc) { result in
                         switch result {
-                        case .success(let subscribedArc):
-                            print("🎉 Subscribed and got arc: \(subscribedArc)")
-                           dismiss()
+                        case .success(_):
+                            alertMessage = "You have successfully subscribed to the arc."
+                            isShowAlert = true
+                           
                         case .failure(let error):
                             print("⚠️ Subscription failed: \(error)")
                         }
@@ -146,6 +151,16 @@ struct ArcDetailPreJoinView: View {
         .background(Color.backgroundColor)
         .ignoresSafeArea()
         .toast(isShown: $appdata.showToast, title: "", message: appdata.toastMessage, type: appdata.toastType, alignment: .bottom)
+        .alert(isPresented: $isShowAlert) {
+            Alert(
+                title: Text(""),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"), action: {
+                    dismiss()
+                })
+            )
+        }
+
     }
 }
 
