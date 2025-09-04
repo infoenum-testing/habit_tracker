@@ -47,20 +47,20 @@ struct PerformanceCardView: View {
                     Text("\(score)")
                         .font(.sfProDisplay(.bold, size: 48))
                 }
-                
-                HStack(spacing: 4) {
-                    Text("+\(delta)")
-                        .font(.sfProDisplay(.medium, size: 14))
-                        .foregroundStyle(.brightGreen)
-                    Image("arrowUpCircle")
-                        .resizable()
-                        .frame(width: 12, height: 12)
-                        .font(.caption2)
+                if delta > 0 {
+                    HStack(spacing: 4) {
+                        Text("+\(delta)")
+                            .font(.sfProDisplay(.medium, size: 14))
+                            .foregroundStyle(.brightGreen)
+                        Image("arrowUpCircle")
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                            .font(.caption2)
+                    }
+                    .frame(width: 56, height: 25)
+                    .background(Color.capsuleGreen)
+                    .cornerRadius(12)
                 }
-                .frame(width: 56, height: 25)
-                .background(Color.capsuleGreen)
-                .cornerRadius(12)
-                    
             }
         }
         .padding()
