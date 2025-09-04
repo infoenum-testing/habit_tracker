@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18C8719A2E62F775006FEEB1 /* subscribed_arc_history.json in Resources */ = {isa = PBXBuildFile; fileRef = 18C871992E62F775006FEEB1 /* subscribed_arc_history.json */; };
 		18FA5D232E6055E60069590C /* HabitEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA5D222E6055E60069590C /* HabitEditSheet.swift */; };
 		18FAA6CA2E66BCDD003907AA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6C92E66BCDD003907AA /* FlowLayout.swift */; };
 		18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CB2E66D392003907AA /* ExpandableText.swift */; };
@@ -116,7 +115,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18C871992E62F775006FEEB1 /* subscribed_arc_history.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = subscribed_arc_history.json; sourceTree = "<group>"; };
 		18FA5D222E6055E60069590C /* HabitEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditSheet.swift; sourceTree = "<group>"; };
 		18FAA6C92E66BCDD003907AA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		18FAA6CB2E66D392003907AA /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
@@ -502,7 +500,6 @@
 				B7A3CC032E50FDCC00674792 /* Shared */,
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
 				EBB66A142E5DC41500638C9B /* initialData.json */,
-				18C871992E62F775006FEEB1 /* subscribed_arc_history.json */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -773,7 +770,6 @@
 				B7A3CC2D2E50FDCC00674792 /* SF-Pro-Display-Bold.otf in Resources */,
 				B7A3CC2E2E50FDCC00674792 /* SF-Pro-Display-Light.otf in Resources */,
 				B7A3CC2F2E50FDCC00674792 /* SF-Pro-Display-Medium.otf in Resources */,
-				18C8719A2E62F775006FEEB1 /* subscribed_arc_history.json in Resources */,
 				B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */,
 				B7A3CC312E50FDCC00674792 /* SF-Pro-Display-Semibold.otf in Resources */,
 				B7A3CC322E50FDCC00674792 /* Assets.xcassets in Resources */,
