@@ -124,6 +124,7 @@ struct ArcDetailPreJoinView: View {
                             }
                             .padding(.bottom, 110)
                         }
+                        .padding(.bottom, 40)
                     }
                     .padding(.top)
                     .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)

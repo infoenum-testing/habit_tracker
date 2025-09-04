@@ -115,7 +115,7 @@ struct AllHabitsView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black.ignoresSafeArea())
+        .background(Color.backgroundColor.ignoresSafeArea())
         .navigationBarBackButtonHidden()
         .sheet(item: $selectedHabit) { habit in
             HabitCustomizationSheet(habit: habit)
