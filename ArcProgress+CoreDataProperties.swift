@@ -21,7 +21,9 @@ extension ArcProgress {
     @NSManaged public var completedHabits: Int16
     @NSManaged public var totalHabits: Int16
     @NSManaged public var subscribedArc: SubscribedArc?
-    @NSManaged public var completedHabitIds: [String]? 
+    @NSManaged public var completedHabitIds: [String]?
+    @NSManaged public var pointsAwarded: Bool
+
 
 }
 

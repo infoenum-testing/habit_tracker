@@ -12,9 +12,9 @@ enum ColorToken: String, CaseIterable {
     case purple
     case orange
     case green
-    case brown
+    case gold
     case black
-    case white
+    case cyan
     case gray
     case pink
     case beige
@@ -29,9 +29,9 @@ enum ColorToken: String, CaseIterable {
         case .purple: return .appPurple
         case .orange: return .appOrange
         case .green: return .appGreen
-        case .brown: return .appBrown
+        case .gold: return .appGold
         case .black: return .appDarkGray
-        case .white: return .appWhite
+        case .cyan: return .appCyan
         case .gray: return .appGray
         case .pink: return .appPink
         case .beige: return .appBeige
@@ -48,9 +48,9 @@ enum ColorToken: String, CaseIterable {
         case .purple: return "arcPurple"
         case .orange: return "arcOrange"
         case .green: return "arcGreen"
-        case .brown: return "arcBrown"
+        case .gold: return "arcGold"
         case .black: return "arcBlack"
-        case .white: return "arcWhite"
+        case .cyan: return "arcCyan"
         case .gray: return "arcGray"
         case .pink: return "arcPink"
         case .beige: return "arcBeige"

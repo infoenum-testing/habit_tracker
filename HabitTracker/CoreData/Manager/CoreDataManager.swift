@@ -11,10 +11,6 @@ import UIKit
 
 // MARK: - CoreDataManager
 
-import Foundation
-import CoreData
-// MARK: - Arcs
-
 final class CoreDataManager {
     
     static let shared = CoreDataManager()
@@ -395,12 +391,12 @@ extension CoreDataManager {
             habit.id = hData["habitId"] as? String
             habit.title = hData["title"] as? String
             habit.details = hData["description"] as? String
-            habit.category = hData["category"] as? [String]
+            habit.category = hData["categories"] as? [String]
             habit.colorToken = hData["themeColor"] as? String
             habit.icon = hData["icon"] as? String
             habit.defaultGoalPerDay = Int16(hData["defaultGoalPerDay"] as? Int ?? 1)
-            if let pointsDict = hData["pointsPerDay"] as? [String: Int] {
-                habit.pointsPerDay = pointsDict as NSObject
+            if let pointsDict = hData["points"] as? [String: Any] {
+                habit.pointsPerDay = pointsDict
             }
             habit.tags = hData["tags"] as? NSObject
             
@@ -411,62 +407,36 @@ extension CoreDataManager {
             if let arcId = aData["id"] as? String, fetchArc(by: arcId) != nil {
                 continue
             }
-            
             let arc = ArcTemplate(context: context)
             arc.id = aData["arcId"] as? String
             arc.title = aData["title"] as? String
             arc.shortSubtitle = aData["shortSubtitle"] as? String
             arc.descriptionText = aData["description"] as? String
             arc.durationDays = Int16(aData["durationDays"] as? Int ?? 0)
-            arc.category = aData["category"] as? [String]
+            arc.category = aData["categories"] as? [String]
             arc.colorToken = aData["themeColor"] as? String
             arc.coverImage = aData["coverImage"] as? String
-            
             arc.benefits = aData["benefits"] as? [String]
             arc.habitsData = aData["habits"] as? [[String:Any]]
             if let iconsDict = aData["icons"] as? [String: String] {
                 arc.icons = iconsDict
             }
-            
-            if let pointsDict = aData["pointsPerDay"] as? [String: Any] {
+            if let pointsDict = aData["points"] as? [String: Any] {
                 arc.pointsPerDay = pointsDict
             }
-            
-            // tags
             if let tagsArray = aData["tags"] as? [String] {
                 arc.tags = tagsArray
             }
-            
             if let createdAtStr = aData["metaCreatedAt"] as? String {
                 arc.metaCreatedAt = ISO8601DateFormatter().date(from: createdAtStr)
             }
             if let updatedAtStr = aData["metaUpdatedAt"] as? String {
                 arc.metaUpdatedAt = ISO8601DateFormatter().date(from: updatedAtStr)
             }
-            
-            
-            // Link habits to Arc
-//            if let habitRefs = aData["habits"] as? [[String: Any]] {
-//                for ref in habitRefs {
-//                    if let habitId = ref["habitId"] as? String {
-//                        if let habit = fetchHabit(by: habitId) {
-//                            arc.addToHabits(habit)
-//                        } else {
-//                            print("⚠️ Could not find habit with id \(habitId)")
-//                        }
-//                    }
-//                }
-//            }
-            
-            
         }
-        
         saveContext()
         print("JSON data saved successfully!")
     }
-    
-    
-
 }
 
 
@@ -487,88 +457,89 @@ extension CoreDataManager {
             return []
         }
     }
-    
-    
-//    func subscribeToFirstArc() -> SubscribedArc? {
-//        let arcs = fetchAllArcs()
-//        guard let firstArc = arcs.first else {
-//            print("No arcs available to subscribe")
-//            return nil
-//        }
-//        
-//        let subscribedArc = SubscribedArc(context: context)
-//        subscribedArc.id = firstArc.id
-//        subscribedArc.arcTemplate = firstArc
-//        subscribedArc.startDate = Date()
-//        subscribedArc.endDate = Calendar.current.date(byAdding: .day, value: Int(firstArc.durationDays), to: Date())
-//        subscribedArc.graceEndDate = Calendar.current.date(byAdding: .hour, value: 24, to: subscribedArc.endDate ?? Date())
-//        subscribedArc.themeColor = firstArc.colorToken
-//        subscribedArc.icon = firstArc.icons?["days"] ?? ""
-//        
-//        // Link habits from ArcTemplate to SubscribedHabit
-//        if let habits = firstArc.habits as? Set<HabitTemplate> {
-//            for habit in habits {
-//                let subHabit = SubscribedHabit(context: context)
-//                subHabit.id = habit.id
-//                subHabit.habit = habit
-//                subHabit.subscribedArc = subscribedArc
-//                subHabit.requiredPerDay = habit.defaultGoalPerDay
-//                subscribedArc.addToSubscribedHabits(subHabit)
-//            }
-//        }
-//        
-//        // ✅ Seed dummy progress history for last 2 days + today
-//        let totalHabits = firstArc.habits?.count ?? 0
-//        let calendar = Calendar.current
-//        
-//        for i in (-2...0) { // -2, -1, 0 → 2 days ago, yesterday, today
-//            let progress = ArcProgress(context: context)
-//            progress.id = UUID().uuidString
-//            progress.subscribedArc = subscribedArc
-//            progress.date = calendar.date(byAdding: .day, value: i, to: Date())
-//            progress.totalHabits = Int16(totalHabits)
-//            
-//            // Dummy completed habits (random example, can be customized)
-//            if totalHabits > 0 {
-//                progress.completedHabits = Int16(Int.random(in: 0...totalHabits))
-//            } else {
-//                progress.completedHabits = 0
-//            }
-//            
-//            subscribedArc.addToProgressHistory(progress)
-//        }
-//        saveContext()
-//        return subscribedArc
-//    }
 }
 
 extension CoreDataManager {
+//    func toggleArcHabit(
+//        _ habitId: String,
+//        in arc: SubscribedArc,
+//        completion: (_ allCompleted: Bool) -> Void
+//    ) {
+//        let today = Calendar.current.startOfDay(for: Date())
+//        let progress = arc.todayProgress ?? ArcProgress(context: context, date: today, arc: arc)
+//        var completed = progress.completedHabitIds ?? []
+//        
+//        
+//        if completed.contains(habitId) {
+//            completed.removeAll { $0 == habitId }
+//        } else {
+//            completed.append(habitId)
+//        }
+//        
+//        progress.completedHabitIds = completed
+//        progress.completedHabits = Int16(completed.count)
+//        
+//        let allCompleted = progress.completedHabits == progress.totalHabits && progress.totalHabits > 0
+//        if allCompleted && !progress.pointsAwarded {
+//            if let distributionArray = arc.arcTemplate?.distributionPoints() {
+//                for (category, value) in distributionArray {
+//                    print("\(category) → \(value)")
+//                    addPoints(to: category, points: Int32(value))
+//                }
+//            }
+//            progress.pointsAwarded = true
+//        } else if !allCompleted && progress.pointsAwarded {
+//            // If user unchecks, remove points
+//            if let distributionArray = arc.arcTemplate?.distributionPoints() {
+//                for (category, value) in distributionArray {
+//                    print("\(category) → \(value)")
+//                    removePoints(from: category, points: Int32(value))
+//                }
+//            }
+//            progress.pointsAwarded = false
+//        }
+//        
+//        saveContext()
+//        completion(allCompleted)
+//    }
+    
     func toggleArcHabit(
         _ habitId: String,
         in arc: SubscribedArc,
-        completion: (_ isChecked: Bool, _ allCompleted: Bool) -> Void
+        completion: (_ allCompleted: Bool, _ shouldAddPoints: Bool?, _ shouldRemovePoints: Bool?) -> Void
     ) {
         let today = Calendar.current.startOfDay(for: Date())
         let progress = arc.todayProgress ?? ArcProgress(context: context, date: today, arc: arc)
         var completed = progress.completedHabitIds ?? []
-        let isNowChecked: Bool
-        
+
+        // Toggle habit in completed list
         if completed.contains(habitId) {
             completed.removeAll { $0 == habitId }
-            isNowChecked = false
         } else {
             completed.append(habitId)
-            isNowChecked = true
         }
-        
+
         progress.completedHabitIds = completed
         progress.completedHabits = Int16(completed.count)
-        
+
+        // Check completion state
         let allCompleted = progress.completedHabits == progress.totalHabits && progress.totalHabits > 0
         
+        var addPointsFlag: Bool? = nil
+        var removePointsFlag: Bool? = nil
+        
+        if allCompleted && !progress.pointsAwarded {
+            addPointsFlag = true
+            progress.pointsAwarded = true
+        } else if !allCompleted && progress.pointsAwarded {
+            removePointsFlag = true
+            progress.pointsAwarded = false
+        }
+
         saveContext()
-        completion(isNowChecked, allCompleted)
+        completion(allCompleted, addPointsFlag, removePointsFlag)
     }
+
 
 
     func toggleHabit(

@@ -63,10 +63,6 @@ extension ArcTemplate {
     var tagsArray: [String] {
         tags ?? []
     }
-    
-//    var habitsArray: [HabitTemplate] {
-//        Array(habits as? Set<HabitTemplate> ?? [])
-//    }
 }
 
 
@@ -78,32 +74,94 @@ struct ArcIcons: Codable {
 
 
 extension ArcTemplate {
-    // Computed property to get habits as [HabitData]
+    /// Computed property to get habits as [HabitData]
     var habitList: [HabitData] {
         get {
             guard let raw = habitsData else { return [] }
-            return raw.compactMap { dict in
-                guard
-                    let id = dict["id"] as? String,
-                    let title = dict["title"] as? String,
-                    let description = dict["description"] as? String,
-                    let icon = dict["icon"] as? String
-                else { return nil }
-                return HabitData(id: id, title: title, description: description, icon: icon)
+            do {
+                let data = try JSONSerialization.data(withJSONObject: raw)
+                return try JSONDecoder().decode([HabitData].self, from: data)
+            } catch {
+                print("❌ Failed to decode HabitData:", error)
+                return []
             }
         }
         set {
-            // Convert [HabitData] → [[String: Any]] before saving
-            habitsData = newValue.map { habit in
-                [
-                    "id": habit.id,
-                    "title": habit.title,
-                    "description": habit.description,
-                    "icon": habit.icon
-                ]
+            do {
+                let data = try JSONEncoder().encode(newValue)
+                let jsonObject = try JSONSerialization.jsonObject(with: data)
+                habitsData = jsonObject as? [[String: Any]]
+            } catch {
+                print("❌ Failed to encode HabitData:", error)
             }
         }
     }
+}
+
+
+extension ArcTemplate {
+    var points: PointsPerDay? {
+        get {
+            guard let raw = pointsPerDay else { return nil }
+            do {
+                let data = try JSONSerialization.data(withJSONObject: raw)
+                return try JSONDecoder().decode(PointsPerDay.self, from: data)
+            } catch {
+                print("❌ Failed to decode PointsPerDay:", error)
+                return nil
+            }
+        }
+        set {
+            guard let newValue = newValue else {
+                pointsPerDay = nil
+                return
+            }
+            do {
+                let data = try JSONEncoder().encode(newValue)
+                let jsonObject = try JSONSerialization.jsonObject(with: data)
+                pointsPerDay = jsonObject as? [String: Any]
+            } catch {
+                print("❌ Failed to encode PointsPerDay:", error)
+            }
+        }
+    }
+}
+
+extension ArcTemplate {
+    /// Returns distribution as an array of (Statistics.Category, Int) where value > 0
+    func distributionPoints() -> [(Statistics.Category, Int)] {
+        guard let points = self.points else { return [] }
+        
+        let dist = points.distribution
+        let allPoints: [(Statistics.Category, Int)] = [
+            (.discipline, dist.discipline),
+            (.strength, dist.strength),
+            (.confidence, dist.confidence),
+            (.intelligence, dist.intelligence)
+        ]
+        
+        return allPoints.filter { $0.1 > 0 }
+    }
+}
+
+
+
+
+struct PointsPerDay: Codable {
+    let awardOn: String
+    let rule: Rule?
+    let distribution: Distribution
+}
+
+struct Rule: Codable {
+    let type: String
+}
+
+struct Distribution: Codable {
+    let discipline: Int
+    let strength: Int
+    let confidence: Int
+    let intelligence: Int
 }
 
 struct HabitData: Codable, Identifiable {

@@ -96,6 +96,9 @@ struct MyAccountView: View {
             .padding(.horizontal, 20)
         }
         .background(Color.black.ignoresSafeArea())
+        .onAppear {
+            appState.refreshHistories()
+        }
     }
 }
 

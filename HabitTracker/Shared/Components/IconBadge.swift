@@ -11,13 +11,15 @@ import SwiftUI
 struct IconBadge: View {
     var icon: String
     var tint: Color
+    var height: CGFloat = 35
+    var width: CGFloat = 35
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10).fill(tint)
             Image(icon)
+                .resizable()
                 .foregroundStyle(.white)
-                .font(.system(size: 14, weight: .bold))
-                
+                .frame(width: width, height: height)
         }
         .frame(width: 48, height: 48)
     }

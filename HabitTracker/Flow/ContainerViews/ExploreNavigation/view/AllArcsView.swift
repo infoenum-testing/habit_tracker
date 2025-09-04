@@ -43,12 +43,12 @@ struct AllArcsView: View {
                     HStack(spacing: 4) {
                         Text("Arcs")
                             .font(Font.sfPro(size: 29, weight: .medium))
-                            .foregroundColor(Color.appWhite)
+                            .foregroundColor(Color.appPearlWhite)
                         
                         Image("arc")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            .foregroundStyle(Color.appWhite)
+                            .foregroundStyle(Color.appPearlWhite)
                     }
                     
                     Spacer()

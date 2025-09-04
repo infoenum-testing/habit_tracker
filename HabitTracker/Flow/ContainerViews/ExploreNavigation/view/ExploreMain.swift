@@ -217,7 +217,7 @@ struct ArcsView: View {
                     if isArc {
                         Image("arc")
                             .resizable()
-                            .foregroundStyle(Color.appWhite)
+                            .foregroundStyle(Color.appPearlWhite)
                             .frame(width: 20,height: 20)
                     }
                     
