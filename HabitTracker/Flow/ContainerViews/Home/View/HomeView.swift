@@ -29,47 +29,66 @@ struct HomeView: View {
                     .foregroundStyle(.white)
                     .padding(.vertical, 10)
                     .padding(.horizontal,20)
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 12) {
-                        // Arc Cards
-                        
-                        
-                        ForEach(appData.allSubscribedArcs) { arc in
-                            ArcRowList(arc: arc) {
-                                withAnimation(.spring()) {
-                                    appData.selectedArctoDelete = arc
-                                    showEditArc = true
-                                    swipeManager.closeAll()
-                                }
-                            }
-                            .onTapGesture {
-                                withAnimation(.spring()) {
-                                    swipeManager.closeAll()
-                                }
-                                router.push(to: Route.arcDetail(id: arc.wrappedId))
-                            }
-                        }
-                        
-                        ForEach(appData.allSubscribedHabits) { habit in
-                            HabitRowList(habit: habit, editHabitAction: {
-                                withAnimation(.spring()) {
-                                    appData.selectedHabitToDelete = habit
-                                    showHabitEditSheet = true
-                                    swipeManager.closeAll()
-                                }
-                            })
-                            .onTapGesture {
-                                withAnimation(.spring()) {
-                                    swipeManager.closeAll()
-                                }
-                            }
-                        }
+                
+                if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {
+                    VStack {
+                        Spacer()
+                        Text("No tasks for today \n Add some habits or arcs to get started!")
+                            .font(.sfProDisplay(.medium, size: 16))
+                            .foregroundColor(.white.opacity(0.6))
+                            .multilineTextAlignment(.center)
+                        Spacer()
                     }
-                    .padding(.top, 8)
-                    .padding(.bottom, 16)
-                    .padding(.horizontal, 20)
+                    .frame(maxWidth: .infinity)
+                } else {
+                    
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 12) {
+                            // Arc Cards
+                            
+                           
+                            
+                            ForEach(appData.allSubscribedArcs) { arc in
+                                ArcRowList(arc: arc) {
+                                    withAnimation(.spring()) {
+                                        appData.selectedArctoDelete = arc
+                                        showEditArc = true
+                                        swipeManager.closeAll()
+                                    }
+                                }
+                                .onTapGesture {
+                                    withAnimation(.spring()) {
+                                        swipeManager.closeAll()
+                                    }
+                                    router.push(to: Route.arcDetail(id: arc.wrappedId))
+                                }
+                            }
+                            
+                            ForEach(appData.allSubscribedHabits) { habit in
+                                HabitRowList(habit: habit, editHabitAction: {
+                                    withAnimation(.spring()) {
+                                        appData.selectedHabitToDelete = habit
+                                        showHabitEditSheet = true
+                                        swipeManager.closeAll()
+                                    }
+                                })
+                                .onTapGesture {
+                                    withAnimation(.spring()) {
+                                        swipeManager.closeAll()
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.top, 8)
+                        .padding(.bottom, 16)
+                        .padding(.horizontal, 20)
+                    }
+                    .environmentObject(swipeManager)
+                    
+                    
                 }
-                .environmentObject(swipeManager)
+                
+               
             }
         }
         .toolbar(.hidden)
