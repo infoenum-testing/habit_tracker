@@ -122,6 +122,10 @@
 		EBB753392E6C508700B457C0 /* DailyPerformanceGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1222E6C43DA004E9FDB /* DailyPerformanceGrid.swift */; };
 		EBB7533A2E6C508D00B457C0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE11E2E6C435E004E9FDB /* HeaderView.swift */; };
 		EBB7533C2E6C510100B457C0 /* DayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB7533B2E6C50FD00B457C0 /* DayValue.swift */; };
+		EBB7533F2E6C540300B457C0 /* PointsPerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB7533E2E6C540200B457C0 /* PointsPerDay.swift */; };
+		EBB753412E6C542400B457C0 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB753402E6C542100B457C0 /* Rule.swift */; };
+		EBB753432E6C542E00B457C0 /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB753422E6C542C00B457C0 /* Distribution.swift */; };
+		EBB753452E6C548D00B457C0 /* HabitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB753442E6C548C00B457C0 /* HabitData.swift */; };
 		EBCBD1C12E69DAFA0031D5F6 /* HabitJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */; };
 		EBCBD1C32E69DB180031D5F6 /* ArcJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */; };
 		EBCBD1C52E69DB2E0031D5F6 /* HabitReferenceJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */; };
@@ -249,6 +253,10 @@
 		EBB753312E6C46E900B457C0 /* ColorSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionButton.swift; sourceTree = "<group>"; };
 		EBB753352E6C497600B457C0 /* EmptyArcCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyArcCardView.swift; sourceTree = "<group>"; };
 		EBB7533B2E6C50FD00B457C0 /* DayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayValue.swift; sourceTree = "<group>"; };
+		EBB7533E2E6C540200B457C0 /* PointsPerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsPerDay.swift; sourceTree = "<group>"; };
+		EBB753402E6C542100B457C0 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		EBB753422E6C542C00B457C0 /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
+		EBB753442E6C548C00B457C0 /* HabitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitData.swift; sourceTree = "<group>"; };
 		EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitJSON.swift; sourceTree = "<group>"; };
 		EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcJSON.swift; sourceTree = "<group>"; };
 		EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitReferenceJSON.swift; sourceTree = "<group>"; };
@@ -578,6 +586,7 @@
 		E983A33D2E5D9BB8001AC952 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				EBB7533D2E6C53F700B457C0 /* Model */,
 				E983A3382E5D9BB8001AC952 /* CoreDataClasses */,
 				E983A33A2E5D9BB8001AC952 /* DataModel */,
 				E983A33C2E5D9BB8001AC952 /* Manager */,
@@ -918,6 +927,17 @@
 			path = Sheet;
 			sourceTree = "<group>";
 		};
+		EBB7533D2E6C53F700B457C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBB753442E6C548C00B457C0 /* HabitData.swift */,
+				EBB753422E6C542C00B457C0 /* Distribution.swift */,
+				EBB753402E6C542100B457C0 /* Rule.swift */,
+				EBB7533E2E6C540200B457C0 /* PointsPerDay.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EBCBD1C82E69DCBD0031D5F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1043,7 @@
 				B7A3CC092E50FDCC00674792 /* DetailHeader.swift in Sources */,
 				EB96E8752E65A409005399A8 /* Toast.swift in Sources */,
 				EB1A87B92E6034F000EE0CEB /* ArcProgress+CoreDataProperties.swift in Sources */,
+				EBB753412E6C542400B457C0 /* Rule.swift in Sources */,
 				EB1A87BC2E6034F000EE0CEB /* SubscribedHabit+CoreDataProperties.swift in Sources */,
 				EB1A87BD2E6034F000EE0CEB /* SubscribedHabit+CoreDataClass.swift in Sources */,
 				EB1A87BE2E6034F000EE0CEB /* ArcProgress+CoreDataClass.swift in Sources */,
@@ -1035,6 +1056,7 @@
 				B7A3CC0C2E50FDCC00674792 /* ArcRowList.swift in Sources */,
 				B7A3CC0D2E50FDCC00674792 /* DateStrip.swift in Sources */,
 				EBB753242E6C44F100B457C0 /* TopHabitCardView.swift in Sources */,
+				EBB753452E6C548D00B457C0 /* HabitData.swift in Sources */,
 				E98D71D12E6040820090AB40 /* DailyHabitsCellView.swift in Sources */,
 				B7A3CC102E50FDCC00674792 /* HabitRowList.swift in Sources */,
 				EB4CCBA22E571D4800F76945 /* PerformanceCardView.swift in Sources */,
@@ -1044,6 +1066,7 @@
 				E98E378C2E584636003244AA /* ExploreMain.swift in Sources */,
 				B7A3CC132E50FDCC00674792 /* HomeView.swift in Sources */,
 				EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */,
+				EBB753432E6C542E00B457C0 /* Distribution.swift in Sources */,
 				EBB753222E6C447F00B457C0 /* TopArcCardView.swift in Sources */,
 				B7A3CC142E50FDCC00674792 /* CustomTabBar.swift in Sources */,
 				E98E37972E587076003244AA /* HabitCardCellView.swift in Sources */,
@@ -1080,6 +1103,7 @@
 				EBB66A092E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift in Sources */,
 				E983A34D2E5D9C55001AC952 /* ArcDetailPreJoinView.swift in Sources */,
 				EBB66A0C2E5D93EE00638C9B /* Statistics+CoreDataClass.swift in Sources */,
+				EBB7533F2E6C540300B457C0 /* PointsPerDay.swift in Sources */,
 				EBB66A0D2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift in Sources */,
 				E983A34F2E5D9C6B001AC952 /* ArcDailyHabitsCellView.swift in Sources */,
 				E983A3532E5DB216001AC952 /* HabitCustomizationSheet.swift in Sources */,

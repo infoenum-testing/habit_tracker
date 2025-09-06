@@ -68,8 +68,6 @@ extension ArcTemplate {
     }
 }
 
-
-
 struct ArcIcons: Codable {
     var days: String
     var habits: String
@@ -146,35 +144,6 @@ extension ArcTemplate {
         return allPoints.filter { $0.1 > 0 }
     }
 }
-
-
-
-
-struct PointsPerDay: Codable {
-    let awardOn: String
-    let rule: Rule?
-    let distribution: Distribution
-}
-
-struct Rule: Codable {
-    let type: String
-}
-
-struct Distribution: Codable {
-    let discipline: Int
-    let strength: Int
-    let confidence: Int
-    let intelligence: Int
-}
-
-struct HabitData: Codable, Identifiable {
-    let id: String
-    let title: String
-    let description: String
-    let icon: String
-}
-
-
 
 extension ArcTemplate {
     convenience init(from model: ArcJSON, context: NSManagedObjectContext) {
