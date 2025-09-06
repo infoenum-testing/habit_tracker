@@ -12,22 +12,30 @@ struct StatisticsView: View {
     @EnvironmentObject var appData: AppDataStore
     var body: some View {
         VStack {
-            HeaderView()
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
-                    
-                    OverallScoreCard()
-                    
-                    SectionTitle("Daily Performance")
-                    
-                    DailyPerformanceGrid()
-                    
-                    SectionTitle("Weekly Performance")
-                    
-                    WeeklyPerformanceSection()
+            VStack {
+                HeaderView()
+                   
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 24) {
+                        
+                        OverallScoreCard()
+                        
+                        SectionTitle("Daily Performance")
+                        
+                        DailyPerformanceGrid()
+                        
+                        SectionTitle("Weekly Performance")
+                        
+                        WeeklyPerformanceSection()
+                    }
+                    .padding(.horizontal, 16)
                 }
-                .padding(.horizontal, 16)
             }
+            .padding(.top,20)
+            .edgesIgnoringSafeArea(.bottom)
+            .background(Color.sheetBackground)
+            .cornerRadius(36, corners: [.topLeft, .topRight])
+               
         }
         .background(Color.black.ignoresSafeArea())
         .onAppear {

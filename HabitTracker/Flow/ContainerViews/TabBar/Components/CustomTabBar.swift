@@ -12,6 +12,7 @@ struct CustomTabBar: View {
     @Binding var tab: Int
     var body: some View {
         HStack {
+           
             TabButton(icon: "homeTab", selectedIcon: "selectedHomeTab", idx: 0, tab: $tab)
                 .frame(width: 80, height: 60)
             TabButton(icon: "navigationTab", selectedIcon: "selectedNavigationTab", idx: 1, tab: $tab)
@@ -21,8 +22,16 @@ struct CustomTabBar: View {
             TabButton(icon: "profileTab", selectedIcon: "selectedProfileTab", idx: 3, tab: $tab)
                 .frame(width: 80, height: 60)
         }
-        .padding(.horizontal, 24)
+        //.padding(.horizontal, 20)
+        .frame(maxWidth: .infinity)
         .frame(height: 65)
-        .background(.black)
+        .background(.tabBackground)
+       
+        .overlay(
+                   Rectangle()
+                    .frame(height: 0.5)
+                       .foregroundColor(.appGray),
+                   alignment: .top
+               )
     }
 }

@@ -41,10 +41,10 @@ struct WeeklyBarsCard: View {
                     AxisValueLabel {
                         if let day = value.as(String.self) {
                             Text(day)
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(.system(size: 13, weight: .medium))
                                 .foregroundStyle(Color.white)
                                 .multilineTextAlignment(.center)
-                                .minimumScaleFactor(0.8)
+                                
                         }
                     }
                 }
@@ -60,9 +60,9 @@ struct WeeklyBarsCard: View {
                     AxisValueLabel {
                         if let v = value.as(Double.self) {
                             Text(String(format: "%.0f", v))
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(.system(size: 13, weight: .medium))
                                 .foregroundStyle(Color.white)
-                                .minimumScaleFactor(0.8)
+                                
                         }
                     }
                 }

@@ -84,7 +84,7 @@ struct HomeView: View {
         }
         .toolbar(.hidden)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.black)
+        .background(Color.homeSheetBackground)
         .navigationBarHidden(true)
         .sheet(isPresented: $showHabitEditSheet) {
             HabitEditSheet()

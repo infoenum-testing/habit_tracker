@@ -337,7 +337,8 @@ extension AppDataStore {
 
         return (0..<7).map { offset in
             let date = calendar.date(byAdding: .day, value: offset, to: weekStart)!
-            let dayLabel = date.shortWeekday  // ✅ dynamic Mon, Tue, ...
+            let dayLabel = date.monthDayStacked
+
             
             var total: Double = 0
             if date <= today { // ✅ don’t allow future dates

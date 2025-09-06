@@ -74,7 +74,7 @@ struct AllHabitsView: View {
                         selectedCategory = category
                     }) {
                         Text(category)
-                            .font(Font.sfPro(size: 17, weight: .medium))
+                            .font(Font.sfPro(size: 16, weight: .regular))
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
                             .background(

@@ -14,6 +14,7 @@ struct MyAccountView: View {
     
     var body: some View {
         VStack {
+            VStack {
             HStack {
                 Spacer()
                 Text("My Account")
@@ -96,6 +97,10 @@ struct MyAccountView: View {
                 }
             }
             .padding(.horizontal, 20)
+        }.padding(.top,20)
+                .edgesIgnoringSafeArea(.bottom)
+                .background(Color.sheetBackground)
+                .cornerRadius(36, corners: [.topLeft, .topRight])
         }
         .background(Color.black.ignoresSafeArea())
         .onAppear {
@@ -109,5 +114,24 @@ struct MyAccountView_Previews: PreviewProvider {
     static var previews: some View {
         MyAccountView()
             .preferredColorScheme(.dark)
+    }
+}
+
+
+
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
     }
 }
