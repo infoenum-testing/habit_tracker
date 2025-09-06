@@ -29,7 +29,7 @@ struct PerformanceCardView: View {
                     .background(.appGray)
                     .cornerRadius(8)
                 VStack(alignment: .leading) {
-                    Text("[archetype]")
+                    Text(StringConstants.Account.archetype)
                         .font(.sfProDisplay(.medium, size: 10))
                         .foregroundColor(.gray)
                     Text(title)
@@ -42,7 +42,7 @@ struct PerformanceCardView: View {
             
             HStack() {
                 VStack(alignment: .leading) {
-                    Text("Score")
+                    Text(StringConstants.Account.score)
                         .font(.sfProDisplay(.regular, size: 12))
                     Text("\(score)")
                         .font(.sfProDisplay(.bold, size: 48))
@@ -52,7 +52,7 @@ struct PerformanceCardView: View {
                         Text("+\(delta)")
                             .font(.sfProDisplay(.medium, size: 14))
                             .foregroundStyle(.brightGreen)
-                        Image("arrowUpCircle")
+                        Image(StringConstants.Image.arrowUpCircle)
                             .resizable()
                             .frame(width: 12, height: 12)
                             .font(.caption2)

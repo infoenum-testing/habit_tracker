@@ -54,7 +54,7 @@ struct DailyHabitsCellView: View {
                       .background(Color.ractangleColor)
                       .cornerRadius(9)
 
-                    Image("check")
+                    Image(StringConstants.Image.check)
                       .frame(width: 22, height: 22)
 
                 }

@@ -12,13 +12,13 @@ struct CustomTabBar: View {
     @Binding var tab: Int
     var body: some View {
         HStack {
-            TabButton(icon: "homeTab", selectedIcon: "selectedHomeTab", idx: 0, tab: $tab)
+            TabButton(icon: StringConstants.Image.homeTab, selectedIcon: StringConstants.Image.selectedHomeTab, idx: 0, tab: $tab)
                 .frame(width: 80, height: 60)
-            TabButton(icon: "navigationTab", selectedIcon: "selectedNavigationTab", idx: 1, tab: $tab)
+            TabButton(icon: StringConstants.Image.navigationTab, selectedIcon: StringConstants.Image.selectedNavigationTab, idx: 1, tab: $tab)
                 .frame(width: 80, height: 60)
-            TabButton(icon: "graphTab", selectedIcon: "selectedGraphTab", idx: 2, tab: $tab)
+            TabButton(icon: StringConstants.Image.graphTab, selectedIcon: StringConstants.Image.selectedGraphTab, idx: 2, tab: $tab)
                 .frame(width: 80, height: 60)
-            TabButton(icon: "profileTab", selectedIcon: "selectedProfileTab", idx: 3, tab: $tab)
+            TabButton(icon: StringConstants.Image.profileTab, selectedIcon: StringConstants.Image.selectedProfileTab, idx: 3, tab: $tab)
                 .frame(width: 80, height: 60)
         }
         .padding(.horizontal, 24)

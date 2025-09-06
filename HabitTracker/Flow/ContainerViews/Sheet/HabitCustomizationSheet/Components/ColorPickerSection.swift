@@ -16,7 +16,7 @@ import SwiftUI
     
     var body: some View {
         VStack(alignment: .leading, spacing: 26) {
-            Text("Change Theme")
+            Text(StringConstants.Sheet.changeTheme)
                 .font(Font.sfPro(size: 16, weight: .medium))
                 .foregroundColor(.white)
             

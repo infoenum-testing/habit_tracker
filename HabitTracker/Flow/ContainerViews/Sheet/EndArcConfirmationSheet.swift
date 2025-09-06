@@ -54,7 +54,7 @@ struct EndArcConfirmationSheet: View {
                 .resizable()
                 .frame(width: 100, height: 100)
             
-            Text("You will lose all your progress on\n\(arcName)")
+                Text("\(StringConstants.Sheet.youWillLoseAllYour)\n\(arcName)")
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
@@ -74,10 +74,10 @@ struct EndArcConfirmationSheet: View {
                 }
             } label: {
                 HStack {
-                    Image("circleBan")
+                    Image(StringConstants.Image.circleBan)
                         .resizable()
                         .frame(width: 20, height: 20)
-                    Text("End Arc")
+                    Text(StringConstants.Sheet.endArc)
                         .font(.sfProDisplay(.semibold, size: 20))
                         .foregroundStyle(.appRed)
                 }
@@ -88,7 +88,7 @@ struct EndArcConfirmationSheet: View {
             }
             .padding(.horizontal)
             
-            ShareProgressButton(title: "Cancel",buttonAction: {
+            ShareProgressButton(title: StringConstants.Common.cancel, buttonAction: {
                 dismiss()
             })
             .padding(.horizontal)

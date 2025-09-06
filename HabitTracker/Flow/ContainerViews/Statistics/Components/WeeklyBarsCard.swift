@@ -27,8 +27,8 @@ struct WeeklyBarsCard: View {
             
             Chart(data) { item in
                 BarMark(
-                    x: .value("Day", item.day),
-                    y: .value("Value", item.value),
+                    x: .value(StringConstants.Account.day, item.day),
+                    y: .value(StringConstants.Account.value, item.value),
                     width: .fixed(16)
                 )
                 .foregroundStyle(barFill)
@@ -87,11 +87,11 @@ struct WeeklyBarsCard_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             WeeklyBarsCard()
-                .previewDisplayName("Dark")
+                .previewDisplayName(StringConstants.Account.dark)
                 .preferredColorScheme(.dark)
             
             WeeklyBarsCard()
-                .previewDisplayName("Light (for comparison)")
+                .previewDisplayName(StringConstants.Account.lightForComparison)
                 .preferredColorScheme(.light)
         }
     }

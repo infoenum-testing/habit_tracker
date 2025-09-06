@@ -16,7 +16,7 @@ struct OverallScoreCard: View {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack() {
                         VStack {
-                            Image("star")
+                            Image(StringConstants.Image.star)
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .scaledToFit()
@@ -26,10 +26,10 @@ struct OverallScoreCard: View {
                         .background(.appGray)
                         .cornerRadius(8)
                         VStack(alignment: .leading) {
-                            Text("[archetype]")
+                            Text(StringConstants.Account.archetype)
                                 .font(.sfProDisplay(.medium, size: 10))
                                 .foregroundColor(.gray)
-                            Text("Overall Score")
+                            Text(StringConstants.Account.overAllScore)
                                 .font(.sfProDisplay(.medium, size: 16))
                                 .foregroundStyle(.white)
                         }
@@ -48,7 +48,7 @@ struct OverallScoreCard: View {
                                 Text("+\(overall)")
                                     .font(.sfProDisplay(.medium, size: 14))
                                     .foregroundStyle(.brightGreen)
-                                Image("arrowUpCircle")
+                                Image(StringConstants.Image.arrowUpCircle)
                                     .resizable()
                                     .frame(width: 12, height: 12)
                             }
@@ -61,7 +61,7 @@ struct OverallScoreCard: View {
                         
                         
                     }
-                        Text("Updated Daily")
+                        Text(StringConstants.Account.updatedDaily)
                             .font(.sfProDisplay(.regular, size: 13))
                             .foregroundColor(.gray)
                     
@@ -71,7 +71,7 @@ struct OverallScoreCard: View {
                 ZStack {
                     HStack {
                         Spacer()
-                        Image("whiteCircleFilled")
+                        Image(StringConstants.Image.whiteCircleFilled)
                             .resizable()
                             .frame(width: 80, height: 80)
                             .offset(x: 5, y: 5)
@@ -79,7 +79,7 @@ struct OverallScoreCard: View {
                     .frame(height: 130)
                     //.offset(x: 15, y: 15)
                    // .background(.red)
-                    Image("graph")
+                    Image(StringConstants.Image.graph)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 130)
@@ -89,7 +89,7 @@ struct OverallScoreCard: View {
             .padding()
 
             HStack {
-                Text("Today")
+                Text(StringConstants.Account.today)
                     .font(.sfProDisplay(.medium, size: 14))
                     .foregroundStyle(.brightGreen)
                     .padding(.horizontal, 10)

@@ -11,7 +11,7 @@ struct HabitCustomizationSheet: View {
     let habit: HabitTemplate
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appData: AppDataStore
-    @State private var selectedIcon: String = "icon.clock"
+    @State private var selectedIcon: String = StringConstants.Image.iconClock
     @State private var selectedColor: String = "color.purple"
     
     private let colorsArray: [String] = AppColors.all
@@ -35,7 +35,7 @@ struct HabitCustomizationSheet: View {
                         }
                     )
                     .padding(.horizontal, 20)
-                    ShareProgressButton(title: "Save habit") {
+                    ShareProgressButton(title: StringConstants.Sheet.saveHabit) {
                         appData.subscribeToHabit(to: habit) { result in
                             switch result {
                             case .success(_):

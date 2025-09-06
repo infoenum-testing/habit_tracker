@@ -16,14 +16,14 @@ struct MyAccountView: View {
         VStack {
             HStack {
                 Spacer()
-                Text("My Account")
+                Text(StringConstants.Account.myAccount)
                     .font(.sfProDisplay(.semibold, size: 21))
                 Spacer()
             }
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    Text("Completed Arcs")
+                    Text(StringConstants.Account.completedArcs)
                         .font(.sfProDisplay(.medium, size: 19))
                     let completedHistories = appState.allHistories.filter { $0.arcStatus == .completed }
                     
@@ -75,20 +75,20 @@ struct MyAccountView: View {
                         
                     }
                     VStack(spacing: 14) {
-                        SettingsRow(imageName: "notification",
-                                    title: "Notifications",
+                        SettingsRow(imageName: StringConstants.Image.notifications,
+                                    title: StringConstants.Account.notifications,
                                     background: .appDarkGray) {
                             print("Notifications tapped")
                         }
                         
-                        SettingsRow(imageName: "profile",
-                                    title: "Account Settings",
+                        SettingsRow(imageName: StringConstants.Image.profile,
+                                    title: StringConstants.Account.accountSetting,
                                     background: .appDarkGray) {
                             print("Account Settings tapped")
                         }
                         
-                        SettingsRow(imageName: "share",
-                                    title: "Terms of Service",
+                        SettingsRow(imageName: StringConstants.Image.share,
+                                    title: StringConstants.Account.termsOfService,
                                     background: .clear) {
                             print("Terms of Service tapped")
                         }

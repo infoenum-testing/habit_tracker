@@ -17,7 +17,7 @@ struct ArcCardCell: View {
         GeometryReader { geo in
             ZStack {
 
-                Image("card")
+                Image(StringConstants.Image.card)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.size.width, height: geo.size.width)
@@ -31,12 +31,12 @@ struct ArcCardCell: View {
                         HStack(spacing: 2) {
                             Spacer()
                             HStack(spacing: 5) {
-                                Image("timeCircle")
+                                Image(StringConstants.Image.timeCircle)
                                     .resizable()
                                     .frame(width: 10, height: 10)
                                     .foregroundColor(.white)
 
-                                Text("\(arc.durationDays) Days")
+                                Text("\(arc.durationDays) \(StringConstants.ExploreNavigation.days)")
                                     .foregroundColor(.white)
                                     .font(Font.inter(size: 10))
                                     .lineLimit(1)
@@ -51,12 +51,12 @@ struct ArcCardCell: View {
                             
                             if let count = arc.habitsData?.count {
                                 HStack(spacing: 5) {
-                                    Image("arc")
+                                    Image(StringConstants.Image.arc)
                                         .resizable()
                                         .frame(width: 10, height: 10)
                                         .foregroundColor(.white)
 
-                                    Text("\(count) Habits")
+                                    Text("\(count) \(StringConstants.ExploreNavigation.days)")
                                         .foregroundColor(.white)
                                         .font(Font.inter(size: 10))
                                         .lineLimit(1)

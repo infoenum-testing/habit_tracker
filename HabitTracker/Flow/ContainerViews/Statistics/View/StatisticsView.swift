@@ -18,11 +18,11 @@ struct StatisticsView: View {
                     
                     OverallScoreCard()
                     
-                    SectionTitle("Daily Performance")
+                    SectionTitle(StringConstants.Statistic.dailyPerformance)
                     
                     DailyPerformanceGrid()
                     
-                    SectionTitle("Weekly Performance")
+                    SectionTitle(StringConstants.Statistic.weeklyPerformance)
                     
                     WeeklyPerformanceSection()
                 }

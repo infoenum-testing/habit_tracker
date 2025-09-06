@@ -15,7 +15,7 @@ struct IconGridView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 27) {
-            Text("Change icon")
+            Text(StringConstants.ExploreNavigation.changeIcon)
                 .font(Font.sfPro(size: 16, weight: .medium))
             .foregroundColor(.white)
             LazyVGrid(columns: Array(repeating: GridItem(), count: 8)) {

@@ -15,7 +15,12 @@ struct AllHabitsView: View {
     
     @State private var selectedCategory: String = "All"
     @State private var selectedHabit: HabitTemplate? = nil
-    private let categories = ["All", "Health", "Mentality", "Lifestyle"]
+    private let categories = [
+        StringConstants.ExploreNavigation.all,
+        StringConstants.ExploreNavigation.health,
+        StringConstants.ExploreNavigation.mentality,
+        StringConstants.ExploreNavigation.lifestyle
+    ]
     
     private let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -42,7 +47,7 @@ struct AllHabitsView: View {
                         Button(action: {
                             dismiss()
                         }) {
-                            Image("arrow-left")
+                            Image(StringConstants.Image.arrowLeft)
                                 .foregroundColor(.white)
                         }
                     }
@@ -52,7 +57,7 @@ struct AllHabitsView: View {
                     
                     Spacer()
                     
-                    Text("Habits")
+                    Text(StringConstants.ExploreNavigation.habits)
                         .font(Font.sfPro(size: 29, weight: .medium))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -91,7 +96,7 @@ struct AllHabitsView: View {
             if filteredHabits.isEmpty {
                 VStack {
                     Spacer()
-                    Text("No habits found")
+                    Text(StringConstants.ExploreNavigation.noHabitsFound)
                         .font(Font.sfPro(size: 20, weight: .medium))
                         .foregroundColor(.white.opacity(0.6))
                     Spacer()

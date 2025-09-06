@@ -50,14 +50,14 @@ struct ExploreMain: View {
                     }
                     DashedLine()
                     ExploreSection(
-                        title: "Trending Arcs",
+                        title: StringConstants.ExploreNavigation.trendingArcs,
                         columns: columns,
                         onViewAll: { router.push(to: .allArcsView) },
                         isHabitSection: false,
                         selectedHabit: $selectedHabit
                     )
                     ExploreSection(
-                        title: "Trending Habits",
+                        title: StringConstants.ExploreNavigation.trendingHabits,
                         columns: columns,
                         onViewAll: { router.push(to: .allHabitsView) },
                         isHabitSection: true,
@@ -84,21 +84,21 @@ struct ExploreMain: View {
 private extension ExploreMain {
     var headerView: some View {
         VStack(spacing: 20) {
-            Text("Explore")
+            Text(StringConstants.ExploreNavigation.explore)
                 .font(Font.inter(size: 22, weight: .semibold))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .top)
             
             HStack {
-                Image("magnifying-glass-2")
+                Image( StringConstants.Image.magnifyingGlass)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 28, height: 28)
                 
                 Spacer()
                 
-                Image("Vector")
+                Image(StringConstants.Image.vector)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 12, height: 12)
