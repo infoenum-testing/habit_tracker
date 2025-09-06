@@ -2,7 +2,7 @@
 //  MyAccountView.swift
 //  HabitTracker
 //
-//  Created by IE14 on 20/08/25.
+//  Created by Mayur Shrivas on 20/08/25.
 //
 
 import SwiftUI
