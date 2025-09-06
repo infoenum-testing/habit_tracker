@@ -2,23 +2,21 @@
 //  ArcDetailsView.swift
 //  HabitTracker
 //
-//  Created by ie15 on 25/08/25.
+//  Created by Mayur Shrivas on 25/08/25.
 //
 
 import SwiftUI
 
 struct ArcDetailPreJoinView: View {
     
-    
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appdata: AppDataStore
     @State private var isExpanded: Bool = false
     @State private var truncated: Bool = false
     @State private var expanded: Bool = false
-    let arc: ArcTemplate
     @State private var isShowAlert = false
-        @State private var alertMessage = ""
-    
+    @State private var alertMessage = ""
+    let arc: ArcTemplate
     private var moreLessText: String {
         if !truncated {
             return ""
@@ -34,18 +32,17 @@ struct ArcDetailPreJoinView: View {
                 .scaledToFill()
                 .frame(height: UIScreen.main.bounds.height * 0.35)
                 .clipped()
-
                 .overlay(
                     LinearGradient(
-                    stops: [
-                        Gradient.Stop(color: ColorToken.from(string: arc.colorToken ?? "").opacity(0.8), location: 0.00),
-                        Gradient.Stop(color: Color.backgroundColor, location: 1.00),
-                    ],
-                    startPoint: UnitPoint(x: 0.5, y: -0.25),
-                    endPoint: UnitPoint(x: 0.5, y: 0.75)
+                        stops: [
+                            Gradient.Stop(color: ColorToken.from(string: arc.colorToken ?? "").opacity(0.8), location: 0.00),
+                            Gradient.Stop(color: Color.backgroundColor, location: 1.00),
+                        ],
+                        startPoint: UnitPoint(x: 0.5, y: -0.25),
+                        endPoint: UnitPoint(x: 0.5, y: 0.75)
                     )
                 )
-
+            
             ZStack(alignment: .bottomLeading) {
                 VStack(alignment: .leading){
                     VStack(alignment: .leading) {
@@ -136,7 +133,7 @@ struct ArcDetailPreJoinView: View {
                         case .success(_):
                             alertMessage = "You have successfully subscribed to the arc."
                             isShowAlert = true
-                           
+                            
                         case .failure(let error):
                             print("⚠️ Subscription failed: \(error)")
                         }
@@ -145,7 +142,6 @@ struct ArcDetailPreJoinView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
             }
-            
         }
         .navigationBarBackButtonHidden()
         .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
@@ -161,28 +157,9 @@ struct ArcDetailPreJoinView: View {
                 })
             )
         }
-
     }
 }
 
-//#Preview {
-//    ArcDetailPreJoinView()
-//}
-
-struct DashedLine: View {
-    var body: some View {
-        Rectangle()
-            .frame(height: 1) // line thickness
-            .foregroundColor(.clear) // transparent fill
-            .background(
-                Color.clear
-                    .overlay(
-                        Rectangle()
-                            .stroke(Color.white.opacity(0.09), style: StrokeStyle(lineWidth: 1.14, dash: [5]))
-                    )
-            )
-    }
-}
 
 
 

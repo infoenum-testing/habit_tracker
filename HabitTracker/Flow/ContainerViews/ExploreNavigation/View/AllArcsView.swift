@@ -1,61 +1,52 @@
 //
-//  AllHabitsView.swift
+//  AllArcsView.swift
 //  HabitTracker
 //
-//  Created by Swift Copilot on 22/08/25.
+//  Created by Mayur Shrivas on 22/08/25.
 //
 
 import SwiftUI
 
-struct AllHabitsView: View {
+struct AllArcsView: View {
     
     @EnvironmentObject var router: NavigationRouter
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appData: AppDataStore
-    
+    @Environment(\.dismiss) private var dismiss
     @State private var selectedCategory: String = "All"
-    @State private var selectedHabit: HabitTemplate? = nil
     private let categories = ["All", "Health", "Mentality", "Lifestyle"]
-    
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
     ]
-    
-    private var filteredHabits: [HabitTemplate] {
+    private var filteredArcs: [ArcTemplate] {
         if selectedCategory == "All" {
-            return appData.allHabits
+            return appData.allArcs
         } else {
-            return appData.allHabits.filter { habit in
-                habit.categoresArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
+            return appData.allArcs.filter { arc in
+                arc.categoriesArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
             }
         }
     }
     
-    
     var body: some View {
         VStack(spacing: 24) {
             
-            VStack(alignment: .center, spacing: 19) {
-                HStack {
-                    HStack(alignment: .center, spacing: 8) {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Image("arrow-left")
-                                .foregroundColor(.white)
-                        }
+            VStack(alignment: .center, spacing: 20) {
+                
+                HStack(alignment: .center, spacing: 18) {
+                    RoundBackButton(){
+                        dismiss()
                     }
-                    .padding(10.8)
-                    .background(.white.opacity(0.07))
-                    .cornerRadius(55)
-                    
-                    Spacer()
-                    
-                    Text("Habits")
-                        .font(Font.sfPro(size: 29, weight: .medium))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                    HStack(spacing: 4) {
+                        Text("Arcs")
+                            .font(Font.sfPro(size: 29, weight: .medium))
+                            .foregroundColor(Color.appPearlWhite)
+                        
+                        Image("arc")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.appPearlWhite)
+                    }
                     
                     Spacer()
                     Color.clear.frame(width: 24, height: 24)
@@ -66,17 +57,17 @@ struct AllHabitsView: View {
             }
             .frame(maxWidth: .infinity, alignment: .top)
             .background(Color.navBackground.ignoresSafeArea(edges: .top))
-            
-            
-            HStack {
+            HStack(spacing: 8) {
                 ForEach(categories, id: \.self) { category in
                     Button(action: {
                         selectedCategory = category
                     }) {
                         Text(category)
+                        
                             .font(Font.sfPro(size: 17, weight: .medium))
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
+                        
                             .background(
                                 selectedCategory == category ?
                                 Color.white.opacity(0.15) : Color.clear
@@ -87,44 +78,36 @@ struct AllHabitsView: View {
                     }
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .center)
             
-            if filteredHabits.isEmpty {
+            if filteredArcs.isEmpty {
                 VStack {
                     Spacer()
-                    Text("No habits found")
+                    Text("No arcs found")
                         .font(Font.sfPro(size: 20, weight: .medium))
                         .foregroundColor(.white.opacity(0.6))
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
             } else {
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 24) {
-                        ForEach(filteredHabits, id: \.wrappedId) { habit in
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(filteredArcs, id: \.id) { arc in
+                            
                             Button {
-                                selectedHabit = habit
+                                router.push(to: .arcDetailPreJoinView(arcTemplate: arc))
                             } label: {
-                                HabitCardCellView(habit: habit)
+                                ArcCardCell(arc: arc)
                                     .aspectRatio(1, contentMode: .fit)
-                            } 
+                            }
                         }
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.backgroundColor.ignoresSafeArea())
+        .background(Color.backgroundColor)
         .navigationBarBackButtonHidden()
-        .sheet(item: $selectedHabit) { habit in
-            HabitCustomizationSheet(habit: habit)
-                .presentationDetents([.large])
-                .presentationDragIndicator(.visible)
-                .presentationCornerRadius(45)
-        }
     }
-}
-
-#Preview {
-    AllHabitsView()
 }

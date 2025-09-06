@@ -1,55 +1,61 @@
 //
-//  AllArcsView.swift
+//  AllHabitsView.swift
 //  HabitTracker
 //
-//  Created by ie15 on 22/08/25.
+//  Created by Mayur Shrivas on 22/08/25.
 //
 
 import SwiftUI
 
-struct AllArcsView: View {
+struct AllHabitsView: View {
     
     @EnvironmentObject var router: NavigationRouter
-    @EnvironmentObject var appData: AppDataStore
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedCategory: String = "All"
-    private let categories = ["All", "Health", "Mentality", "Lifestyle"]
+    @EnvironmentObject var appData: AppDataStore
     
+    @State private var selectedCategory: String = "All"
+    @State private var selectedHabit: HabitTemplate? = nil
+    private let categories = ["All", "Health", "Mentality", "Lifestyle"]
     
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
     ]
     
-    private var filteredArcs: [ArcTemplate] {
+    private var filteredHabits: [HabitTemplate] {
         if selectedCategory == "All" {
-            return appData.allArcs
+            return appData.allHabits
         } else {
-            return appData.allArcs.filter { arc in
-                arc.categoriesArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
+            return appData.allHabits.filter { habit in
+                habit.categoresArray.contains { $0.caseInsensitiveCompare(selectedCategory) == .orderedSame }
             }
         }
     }
     
+    
     var body: some View {
         VStack(spacing: 24) {
             
-            VStack(alignment: .center, spacing: 20) {
-                
-                HStack(alignment: .center, spacing: 18) {
-                    RoundBackButton(){
-                        dismiss()
+            VStack(alignment: .center, spacing: 19) {
+                HStack {
+                    HStack(alignment: .center, spacing: 8) {
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            Image("arrow-left")
+                                .foregroundColor(.white)
+                        }
                     }
-                    HStack(spacing: 4) {
-                        Text("Arcs")
-                            .font(Font.sfPro(size: 29, weight: .medium))
-                            .foregroundColor(Color.appPearlWhite)
-                        
-                        Image("arc")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundStyle(Color.appPearlWhite)
-                    }
+                    .padding(10.8)
+                    .background(.white.opacity(0.07))
+                    .cornerRadius(55)
+                    
+                    Spacer()
+                    
+                    Text("Habits")
+                        .font(Font.sfPro(size: 29, weight: .medium))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .topLeading)
                     
                     Spacer()
                     Color.clear.frame(width: 24, height: 24)
@@ -62,18 +68,15 @@ struct AllArcsView: View {
             .background(Color.navBackground.ignoresSafeArea(edges: .top))
             
             
-            
-            HStack(spacing: 8) {
+            HStack {
                 ForEach(categories, id: \.self) { category in
                     Button(action: {
                         selectedCategory = category
                     }) {
                         Text(category)
-                        
                             .font(Font.sfPro(size: 17, weight: .medium))
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
-                        
                             .background(
                                 selectedCategory == category ?
                                 Color.white.opacity(0.15) : Color.clear
@@ -81,47 +84,47 @@ struct AllArcsView: View {
                             .foregroundColor(selectedCategory == category ?
                                              Color.white : Color.white.opacity(0.6))
                             .cornerRadius(20)
-                        
                     }
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .center)
             
-            if filteredArcs.isEmpty {
+            if filteredHabits.isEmpty {
                 VStack {
                     Spacer()
-                    Text("No arcs found")
+                    Text("No habits found")
                         .font(Font.sfPro(size: 20, weight: .medium))
                         .foregroundColor(.white.opacity(0.6))
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
             } else {
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(filteredArcs, id: \.id) { arc in
-                            
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 24) {
+                        ForEach(filteredHabits, id: \.wrappedId) { habit in
                             Button {
-                                router.push(to: .arcDetailPreJoinView(arcTemplate: arc))
+                                selectedHabit = habit
                             } label: {
-                                ArcCardCell(arc: arc)
+                                HabitCardCellView(habit: habit)
                                     .aspectRatio(1, contentMode: .fit)
-                            }
-                            
-                            
+                            } 
                         }
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal)
                 }
             }
         }
-        
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.backgroundColor)
+        .background(Color.backgroundColor.ignoresSafeArea())
         .navigationBarBackButtonHidden()
+        .sheet(item: $selectedHabit) { habit in
+            HabitCustomizationSheet(habit: habit)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(45)
+        }
     }
 }
 
-//#Preview {
-//    AllArcsView()
-//}
+#Preview {
+    AllHabitsView()
+}

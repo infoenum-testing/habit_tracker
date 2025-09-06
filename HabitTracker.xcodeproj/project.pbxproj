@@ -106,6 +106,7 @@
 		EBB66A0D2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */; };
 		EBB66A132E5DC11C00638C9B /* ColorToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A122E5DC11200638C9B /* ColorToken.swift */; };
 		EBB66A152E5DC41500638C9B /* initialData.json in Resources */ = {isa = PBXBuildFile; fileRef = EBB66A142E5DC41500638C9B /* initialData.json */; };
+		EBB753192E6C413900B457C0 /* DashedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB753182E6C413600B457C0 /* DashedLine.swift */; };
 		EBCBD1C12E69DAFA0031D5F6 /* HabitJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */; };
 		EBCBD1C32E69DB180031D5F6 /* ArcJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */; };
 		EBCBD1C52E69DB2E0031D5F6 /* HabitReferenceJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */; };
@@ -217,6 +218,7 @@
 		EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EBB66A122E5DC11200638C9B /* ColorToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToken.swift; sourceTree = "<group>"; };
 		EBB66A142E5DC41500638C9B /* initialData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initialData.json; sourceTree = "<group>"; };
+		EBB753182E6C413600B457C0 /* DashedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLine.swift; sourceTree = "<group>"; };
 		EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitJSON.swift; sourceTree = "<group>"; };
 		EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcJSON.swift; sourceTree = "<group>"; };
 		EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitReferenceJSON.swift; sourceTree = "<group>"; };
@@ -237,7 +239,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18FA5D252E6062E00069590C /* view */ = {
+		18FA5D252E6062E00069590C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E98E37A02E58AE86003244AA /* AllArcsView.swift */,
@@ -247,7 +249,7 @@
 				E983A3522E5DB216001AC952 /* HabitCustomizationSheet.swift */,
 				18FAA6C92E66BCDD003907AA /* FlowLayout.swift */,
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
 		B7A3CBC12E50FDCC00674792 /* App */ = {
@@ -559,15 +561,16 @@
 		E98E378A2E5845DA003244AA /* ExploreNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				18FA5D252E6062E00069590C /* view */,
-				E98E37912E58546A003244AA /* components */,
+				18FA5D252E6062E00069590C /* View */,
+				E98E37912E58546A003244AA /* Components */,
 			);
 			path = ExploreNavigation;
 			sourceTree = "<group>";
 		};
-		E98E37912E58546A003244AA /* components */ = {
+		E98E37912E58546A003244AA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EBB753182E6C413600B457C0 /* DashedLine.swift */,
 				E983A34A2E5D9C3C001AC952 /* RoundBackButton.swift */,
 				E983A34E2E5D9C6B001AC952 /* ArcDailyHabitsCellView.swift */,
 				E98E37942E585533003244AA /* ExploreCardView.swift */,
@@ -578,7 +581,7 @@
 				E98D71D02E6040820090AB40 /* DailyHabitsCellView.swift */,
 				18FAA6CB2E66D392003907AA /* ExpandableText.swift */,
 			);
-			path = components;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		E98EDF762E5C428300E42196 /* inter */ = {
@@ -880,6 +883,7 @@
 				EB1A87BC2E6034F000EE0CEB /* SubscribedHabit+CoreDataProperties.swift in Sources */,
 				EB1A87BD2E6034F000EE0CEB /* SubscribedHabit+CoreDataClass.swift in Sources */,
 				EB1A87BE2E6034F000EE0CEB /* ArcProgress+CoreDataClass.swift in Sources */,
+				EBB753192E6C413900B457C0 /* DashedLine.swift in Sources */,
 				EB1A87BF2E6034F000EE0CEB /* SubscribedArc+CoreDataClass.swift in Sources */,
 				EB1A87C02E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift in Sources */,
 				B7A3CC0A2E50FDCC00674792 /* ArcDetailView.swift in Sources */,
