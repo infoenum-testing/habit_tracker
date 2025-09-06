@@ -9,10 +9,9 @@ import SwiftUI
 
 @main
 struct HabitTrackerApp: App {
-    //@StateObject private var state = AppState(arcs: MockData.arcs, habits: MockData.habits)
     @StateObject private var appState = AppDataStore()
     @StateObject private var router = NavigationRouter()
-    
+    @AppStorage("isInitialDataSaved") var isInitialDataSaved: Bool = false
     init() {
         loadInitialData()
         
@@ -20,7 +19,6 @@ struct HabitTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             RootTabView()
-                //.environmentObject(state)
                 .environmentObject(router)
                 .environmentObject(appState)
                 .preferredColorScheme(.dark)
@@ -41,7 +39,9 @@ struct HabitTrackerApp: App {
             // 3. Convert to Dictionary
             if let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 // 4. Save to Core Data using the manager
-                CoreDataManager.shared.saveDataFromJSON(jsonDict)
+                if isInitialDataSaved == false {
+                    CoreDataManager.shared.saveDataFromJSON(jsonDict)
+                }
             }
             
         } catch {
@@ -65,3 +65,5 @@ struct HabitTrackerApp: App {
         }
     }
 }
+
+

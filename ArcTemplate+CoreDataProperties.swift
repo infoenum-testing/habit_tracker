@@ -173,3 +173,39 @@ struct HabitData: Codable, Identifiable {
     let description: String
     let icon: String
 }
+
+
+
+extension ArcTemplate {
+    convenience init(from model: ArcJSON, context: NSManagedObjectContext) {
+        self.init(context: context)
+        self.id = model.arcId
+        self.title = model.title
+        self.shortSubtitle = model.shortSubtitle
+        self.descriptionText = model.description
+        self.durationDays = Int16(model.durationDays)
+        self.colorToken = model.themeColor
+        self.coverImage = model.coverImage
+        self.benefits = model.benefits
+        self.category = model.categories
+        self.habitsData = model.habits?.map { [
+            "id": $0.id,
+            "title": $0.title,
+            "description": $0.description,
+            "icon": $0.icon
+        ] }
+        self.icons = model.icons
+        if let points = model.points {
+            self.pointsPerDay = [
+                "awardOn": points.awardOn ?? "",
+                "distribution": points.distribution ?? [:]
+            ]
+        }
+        if let createdAt = model.metaCreatedAt {
+            self.metaCreatedAt = ISO8601DateFormatter().date(from: createdAt)
+        }
+        if let updatedAt = model.metaUpdatedAt {
+            self.metaUpdatedAt = ISO8601DateFormatter().date(from: updatedAt)
+        }
+    }
+}

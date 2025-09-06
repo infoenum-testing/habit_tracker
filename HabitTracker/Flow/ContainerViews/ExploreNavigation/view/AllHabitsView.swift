@@ -100,7 +100,7 @@ struct AllHabitsView: View {
             } else {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 24) {
-                        ForEach(filteredHabits, id: \.id) { habit in
+                        ForEach(filteredHabits, id: \.wrappedId) { habit in
                             Button {
                                 selectedHabit = habit
                             } label: {

@@ -25,12 +25,13 @@ struct HabitCardCellView: View {
                         .frame(width: 32, height: 32)
                         .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
                 }
-                .padding(.top, 12)
+                .padding(.top, 20)
+                .padding(.bottom, 10)
                 
-                Spacer() // This pushes the text section down to fill remaining space
+               // This pushes the text section down to fill remaining space
                 
                 // Text Section
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 5) {
                     Text(habit.title ?? "")
                         .foregroundColor(.white)
                         .font(Font.inter(size: 18, weight: .semibold))
@@ -43,9 +44,10 @@ struct HabitCardCellView: View {
                         .multilineTextAlignment(.leading)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, 12) // bottom padding
+                //.padding(.bottom, 10) // bottom padding
+                Spacer()
             }
-            .padding(.horizontal, 26)
+            .padding(.horizontal, 20)
             .frame(width: geo.size.width, height: geo.size.height)
             .background(Color(red: 0.15, green: 0.15, blue: 0.15))
             .cornerRadius(18)
@@ -57,8 +59,3 @@ struct HabitCardCellView: View {
     }
 }
 
-//#Preview {
-//    HabitCardCellView(habit: T##HabitTemplate, )
-//        .padding()
-//        .background(Color.black)
-//}

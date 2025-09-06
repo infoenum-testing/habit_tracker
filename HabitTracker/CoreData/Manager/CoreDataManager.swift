@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import UIKit
+import SwiftUI
 
 // MARK: - CoreDataManager
 
@@ -17,7 +18,8 @@ final class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer
     var context: NSManagedObjectContext { persistentContainer.viewContext }
-    
+    @AppStorage("isInitialDataSaved") var isInitialDataSaved: Bool = false
+
     private init() {
         persistentContainer = NSPersistentContainer(name: "HabitTrackerDataBase")
         persistentContainer.loadPersistentStores { _, error in
@@ -370,80 +372,6 @@ extension CoreDataManager {
 
 
 
-extension CoreDataManager {
-    
-    /// Save habits and arcs from JSON
-    func saveDataFromJSON(_ json: [String: Any]) {
-        guard let habitsArray = json["habits"] as? [[String: Any]],
-              let arcsArray = json["arcs"] as? [[String: Any]] else {
-            print("Invalid JSON structure")
-            return
-        }
-        
-        // Save Habits
-        for hData in habitsArray {
-            // Check if habit already exists
-            if let habitId = hData["id"] as? String, fetchHabit(by: habitId) != nil {
-                continue
-            }
-            
-            let habit = HabitTemplate(context: context)
-            habit.id = hData["habitId"] as? String
-            habit.title = hData["title"] as? String
-            habit.details = hData["description"] as? String
-            habit.category = hData["categories"] as? [String]
-            habit.colorToken = hData["themeColor"] as? String
-            habit.icon = hData["icon"] as? String
-            habit.defaultGoalPerDay = Int16(hData["defaultGoalPerDay"] as? Int ?? 1)
-            if let pointsDict = hData["points"] as? [String: Any] {
-                habit.pointsPerDay = pointsDict
-            }
-            habit.tags = hData["tags"] as? NSObject
-            
-        }
-        
-        // Save ArcTemplates
-        for aData in arcsArray {
-            if let arcId = aData["id"] as? String, fetchArc(by: arcId) != nil {
-                continue
-            }
-            let arc = ArcTemplate(context: context)
-            arc.id = aData["arcId"] as? String
-            arc.title = aData["title"] as? String
-            arc.shortSubtitle = aData["shortSubtitle"] as? String
-            arc.descriptionText = aData["description"] as? String
-            arc.durationDays = Int16(aData["durationDays"] as? Int ?? 0)
-            arc.category = aData["categories"] as? [String]
-            arc.colorToken = aData["themeColor"] as? String
-            arc.coverImage = aData["coverImage"] as? String
-            arc.benefits = aData["benefits"] as? [String]
-            arc.habitsData = aData["habits"] as? [[String:Any]]
-            if let iconsDict = aData["icons"] as? [String: String] {
-                arc.icons = iconsDict
-            }
-            if let pointsDict = aData["points"] as? [String: Any] {
-                arc.pointsPerDay = pointsDict
-            }
-            if let tagsArray = aData["tags"] as? [String] {
-                arc.tags = tagsArray
-            }
-            if let createdAtStr = aData["metaCreatedAt"] as? String {
-                arc.metaCreatedAt = ISO8601DateFormatter().date(from: createdAtStr)
-            }
-            if let updatedAtStr = aData["metaUpdatedAt"] as? String {
-                arc.metaUpdatedAt = ISO8601DateFormatter().date(from: updatedAtStr)
-            }
-        }
-        saveContext()
-        print("JSON data saved successfully!")
-    }
-}
-
-
-
-
-import Foundation
-import CoreData
 
 extension CoreDataManager {
     
@@ -460,48 +388,6 @@ extension CoreDataManager {
 }
 
 extension CoreDataManager {
-//    func toggleArcHabit(
-//        _ habitId: String,
-//        in arc: SubscribedArc,
-//        completion: (_ allCompleted: Bool) -> Void
-//    ) {
-//        let today = Calendar.current.startOfDay(for: Date())
-//        let progress = arc.todayProgress ?? ArcProgress(context: context, date: today, arc: arc)
-//        var completed = progress.completedHabitIds ?? []
-//        
-//        
-//        if completed.contains(habitId) {
-//            completed.removeAll { $0 == habitId }
-//        } else {
-//            completed.append(habitId)
-//        }
-//        
-//        progress.completedHabitIds = completed
-//        progress.completedHabits = Int16(completed.count)
-//        
-//        let allCompleted = progress.completedHabits == progress.totalHabits && progress.totalHabits > 0
-//        if allCompleted && !progress.pointsAwarded {
-//            if let distributionArray = arc.arcTemplate?.distributionPoints() {
-//                for (category, value) in distributionArray {
-//                    print("\(category) → \(value)")
-//                    addPoints(to: category, points: Int32(value))
-//                }
-//            }
-//            progress.pointsAwarded = true
-//        } else if !allCompleted && progress.pointsAwarded {
-//            // If user unchecks, remove points
-//            if let distributionArray = arc.arcTemplate?.distributionPoints() {
-//                for (category, value) in distributionArray {
-//                    print("\(category) → \(value)")
-//                    removePoints(from: category, points: Int32(value))
-//                }
-//            }
-//            progress.pointsAwarded = false
-//        }
-//        
-//        saveContext()
-//        completion(allCompleted)
-//    }
     
     func toggleArcHabit(
         _ habitId: String,
@@ -694,13 +580,7 @@ extension CoreDataManager {
     }
 }
 
-
-
-
-
-//For the dummy data use only
 extension CoreDataManager {
-    
     
     @discardableResult
     func saveHistory(for arc: SubscribedArc, status: ArcStatus) -> History? {
@@ -744,3 +624,42 @@ extension CoreDataManager {
     }
 }
 
+
+
+
+//MARK: - Import JSON Data
+extension CoreDataManager {
+    
+    /// Save habits and arcs from JSON
+    func saveDataFromJSON(_ json: [String: Any]) {
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+            let decoder = JSONDecoder()
+            
+            struct Root: Codable {
+                let arcs: [ArcJSON]
+                let habits: [HabitJSON]
+            }
+            
+            let root = try decoder.decode(Root.self, from: data)
+            
+            // Save Habits
+            for hModel in root.habits {
+                if fetchHabit(by: hModel.habitId) != nil { continue }
+                _ = HabitTemplate(from: hModel, context: context)
+            }
+            
+            // Save Arcs
+            for aModel in root.arcs {
+                if fetchArc(by: aModel.arcId) != nil { continue }
+                _ = ArcTemplate(from: aModel, context: context)
+            }
+            
+            saveContext()
+            isInitialDataSaved = true
+            print("✅ JSON data saved successfully!")
+        } catch {
+            print("❌ Failed to decode JSON: \(error)")
+        }
+    }
+}

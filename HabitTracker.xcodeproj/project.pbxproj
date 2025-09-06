@@ -110,6 +110,11 @@
 		EBB66A0D2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */; };
 		EBB66A132E5DC11C00638C9B /* ColorToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB66A122E5DC11200638C9B /* ColorToken.swift */; };
 		EBB66A152E5DC41500638C9B /* initialData.json in Resources */ = {isa = PBXBuildFile; fileRef = EBB66A142E5DC41500638C9B /* initialData.json */; };
+		EBCBD1C12E69DAFA0031D5F6 /* HabitJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */; };
+		EBCBD1C32E69DB180031D5F6 /* ArcJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */; };
+		EBCBD1C52E69DB2E0031D5F6 /* HabitReferenceJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */; };
+		EBCBD1C72E69DB420031D5F6 /* PointsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C62E69DB400031D5F6 /* PointsJSON.swift */; };
+		EBCBD1CA2E69DCD40031D5F6 /* GrandTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C92E69DCD10031D5F6 /* GrandTotals.swift */; };
 		EBE960102E618ECE005B318B /* HabitProgress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE9600E2E618ECE005B318B /* HabitProgress+CoreDataClass.swift */; };
 		EBE960112E618ECE005B318B /* HabitProgress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE9600F2E618ECE005B318B /* HabitProgress+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -220,6 +225,11 @@
 		EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EBB66A122E5DC11200638C9B /* ColorToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToken.swift; sourceTree = "<group>"; };
 		EBB66A142E5DC41500638C9B /* initialData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initialData.json; sourceTree = "<group>"; };
+		EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitJSON.swift; sourceTree = "<group>"; };
+		EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcJSON.swift; sourceTree = "<group>"; };
+		EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitReferenceJSON.swift; sourceTree = "<group>"; };
+		EBCBD1C62E69DB400031D5F6 /* PointsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsJSON.swift; sourceTree = "<group>"; };
+		EBCBD1C92E69DCD10031D5F6 /* GrandTotals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTotals.swift; sourceTree = "<group>"; };
 		EBE9600E2E618ECE005B318B /* HabitProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EBE9600F2E618ECE005B318B /* HabitProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -444,6 +454,10 @@
 		B7A3CBFE2E50FDCC00674792 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EBCBD1C62E69DB400031D5F6 /* PointsJSON.swift */,
+				EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */,
+				EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */,
+				EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */,
 				B7A3CBFB2E50FDCC00674792 /* Arc.swift */,
 				B7A3CBFC2E50FDCC00674792 /* ArcTask.swift */,
 				B7A3CBFD2E50FDCC00674792 /* Habit.swift */,
@@ -601,6 +615,7 @@
 		EB1958252E56032600454D34 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				EBCBD1C82E69DCBD0031D5F6 /* Model */,
 				EB4CCB9C2E571C6D00F76945 /* Components */,
 				EB4CCB9B2E571C5B00F76945 /* View */,
 			);
@@ -700,6 +715,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EBCBD1C82E69DCBD0031D5F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBCBD1C92E69DCD10031D5F6 /* GrandTotals.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -787,6 +810,7 @@
 				EB4CCB9E2E571C8600F76945 /* WeeklyPerformanceView.swift in Sources */,
 				18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */,
 				B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */,
+				EBCBD1C52E69DB2E0031D5F6 /* HabitReferenceJSON.swift in Sources */,
 				EB4CCB982E57192300F76945 /* ArcCardView.swift in Sources */,
 				B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */,
 				B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */,
@@ -819,6 +843,7 @@
 				B7A3CC152E50FDCC00674792 /* PlaceholderView.swift in Sources */,
 				EBE960102E618ECE005B318B /* HabitProgress+CoreDataClass.swift in Sources */,
 				EBE960112E618ECE005B318B /* HabitProgress+CoreDataProperties.swift in Sources */,
+				EBCBD1C32E69DB180031D5F6 /* ArcJSON.swift in Sources */,
 				B7A3CC162E50FDCC00674792 /* TabButton.swift in Sources */,
 				E983A3572E5DC85B001AC952 /* IconGridView.swift in Sources */,
 				E98E37A12E58AE86003244AA /* AllArcsView.swift in Sources */,
@@ -827,6 +852,7 @@
 				B7A3CC172E50FDCC00674792 /* RootTabView.swift in Sources */,
 				B7A3CC182E50FDCC00674792 /* HabitTrackerApp.swift in Sources */,
 				B7A3CC192E50FDCC00674792 /* CheckChip.swift in Sources */,
+				EBCBD1C12E69DAFA0031D5F6 /* HabitJSON.swift in Sources */,
 				18FAA6CF2E685A2B003907AA /* History+CoreDataClass.swift in Sources */,
 				18FAA6D02E685A2B003907AA /* History+CoreDataProperties.swift in Sources */,
 				EB1958272E56033300454D34 /* StatisticsView.swift in Sources */,
@@ -837,6 +863,7 @@
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
 				EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */,
 				EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */,
+				EBCBD1CA2E69DCD40031D5F6 /* GrandTotals.swift in Sources */,
 				EBB66A132E5DC11C00638C9B /* ColorToken.swift in Sources */,
 				EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */,
 				EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */,
@@ -848,6 +875,7 @@
 				E983A3532E5DB216001AC952 /* HabitCustomizationSheet.swift in Sources */,
 				B7A3CC1D2E50FDCC00674792 /* GridTileView.swift in Sources */,
 				E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */,
+				EBCBD1C72E69DB420031D5F6 /* PointsJSON.swift in Sources */,
 				EB96E8702E657F55005399A8 /* AppIcons.swift in Sources */,
 				B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */,
 				B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */,
