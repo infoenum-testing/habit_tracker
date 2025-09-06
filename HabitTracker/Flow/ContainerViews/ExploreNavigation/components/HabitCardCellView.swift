@@ -22,7 +22,7 @@ struct HabitCardCellView: View {
                     
                     Image(habit.icon ?? "tooth")
                         .resizable()
-                        .frame(width: 32, height: 32)
+                        .frame(width: 40, height: 40)
                         .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
                 }
                 .padding(.top, 20)
@@ -36,16 +36,18 @@ struct HabitCardCellView: View {
                         .foregroundColor(.white)
                         .font(Font.inter(size: 18, weight: .semibold))
                         .multilineTextAlignment(.leading)
+                        .minimumScaleFactor(0.8)
                     
                     Text(habit.details ?? "")
                         .foregroundColor(.gray)
                         .font(Font.inter(size: 14, weight: .semibold))
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
+                        .minimumScaleFactor(0.8)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                //.padding(.bottom, 10) // bottom padding
-                Spacer()
+                .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .leading)
+                .padding(.bottom, 10) // bottom padding
+               // Spacer()
             }
             .padding(.horizontal, 20)
             .frame(width: geo.size.width, height: geo.size.height)
