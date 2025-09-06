@@ -9,7 +9,6 @@ import SwiftUI
 import Foundation
 
 struct HabitRowList: View {
-    //@EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var swipeManager: SwipeManager
     let habit: SubscribedHabit

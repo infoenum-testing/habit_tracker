@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    // @EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var swipeManager = SwipeManager()
