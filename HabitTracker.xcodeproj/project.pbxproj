@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18ABE1212E6C438C004E9FDB /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1202E6C438C004E9FDB /* SectionTitle.swift */; };
+		18ABE1272E6C47F2004E9FDB /* EmptyArcCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1262E6C47F2004E9FDB /* EmptyArcCardView.swift */; };
 		18FA5D232E6055E60069590C /* HabitEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA5D222E6055E60069590C /* HabitEditSheet.swift */; };
 		18FAA6CA2E66BCDD003907AA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6C92E66BCDD003907AA /* FlowLayout.swift */; };
 		18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CB2E66D392003907AA /* ExpandableText.swift */; };
@@ -115,6 +117,10 @@
 		EBB753302E6C46C800B457C0 /* ColorPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB7532F2E6C46C500B457C0 /* ColorPickerSection.swift */; };
 		EBB753322E6C46EA00B457C0 /* ColorSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB753312E6C46E900B457C0 /* ColorSelectionButton.swift */; };
 		EBB753362E6C497800B457C0 /* EmptyArcCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB753352E6C497600B457C0 /* EmptyArcCardView.swift */; };
+		EBB753382E6C506100B457C0 /* WeeklyPerformanceSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1242E6C4412004E9FDB /* WeeklyPerformanceSection.swift */; };
+		EBB753392E6C508700B457C0 /* DailyPerformanceGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1222E6C43DA004E9FDB /* DailyPerformanceGrid.swift */; };
+		EBB7533A2E6C508D00B457C0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE11E2E6C435E004E9FDB /* HeaderView.swift */; };
+		EBB7533C2E6C510100B457C0 /* DayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB7533B2E6C50FD00B457C0 /* DayValue.swift */; };
 		EBCBD1C12E69DAFA0031D5F6 /* HabitJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */; };
 		EBCBD1C32E69DB180031D5F6 /* ArcJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */; };
 		EBCBD1C52E69DB2E0031D5F6 /* HabitReferenceJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */; };
@@ -125,6 +131,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18ABE11E2E6C435E004E9FDB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		18ABE1202E6C438C004E9FDB /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
+		18ABE1222E6C43DA004E9FDB /* DailyPerformanceGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPerformanceGrid.swift; sourceTree = "<group>"; };
+		18ABE1242E6C4412004E9FDB /* WeeklyPerformanceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPerformanceSection.swift; sourceTree = "<group>"; };
+		18ABE1262E6C47F2004E9FDB /* EmptyArcCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyArcCardView.swift; sourceTree = "<group>"; };
 		18FA5D222E6055E60069590C /* HabitEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditSheet.swift; sourceTree = "<group>"; };
 		18FAA6C92E66BCDD003907AA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		18FAA6CB2E66D392003907AA /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
@@ -235,6 +246,7 @@
 		EBB7532F2E6C46C500B457C0 /* ColorPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerSection.swift; sourceTree = "<group>"; };
 		EBB753312E6C46E900B457C0 /* ColorSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionButton.swift; sourceTree = "<group>"; };
 		EBB753352E6C497600B457C0 /* EmptyArcCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyArcCardView.swift; sourceTree = "<group>"; };
+		EBB7533B2E6C50FD00B457C0 /* DayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayValue.swift; sourceTree = "<group>"; };
 		EBCBD1C02E69DAF80031D5F6 /* HabitJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitJSON.swift; sourceTree = "<group>"; };
 		EBCBD1C22E69DB160031D5F6 /* ArcJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcJSON.swift; sourceTree = "<group>"; };
 		EBCBD1C42E69DB2C0031D5F6 /* HabitReferenceJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitReferenceJSON.swift; sourceTree = "<group>"; };
@@ -737,6 +749,7 @@
 				EBB753352E6C497600B457C0 /* EmptyArcCardView.swift */,
 				EB4CCB992E57196F00F76945 /* SettingsRow.swift */,
 				EB4CCB972E57192100F76945 /* ArcCardView.swift */,
+				18ABE1262E6C47F2004E9FDB /* EmptyArcCardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -756,6 +769,10 @@
 				EB4CCBA12E571D4600F76945 /* PerformanceCardView.swift */,
 				EB4CCB9F2E571CE400F76945 /* OverallScoreCard.swift */,
 				EB4CCB9D2E571C8300F76945 /* WeeklyPerformanceView.swift */,
+				18ABE11E2E6C435E004E9FDB /* HeaderView.swift */,
+				18ABE1202E6C438C004E9FDB /* SectionTitle.swift */,
+				18ABE1222E6C43DA004E9FDB /* DailyPerformanceGrid.swift */,
+				18ABE1242E6C4412004E9FDB /* WeeklyPerformanceSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -893,6 +910,7 @@
 		EBCBD1C82E69DCBD0031D5F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EBB7533B2E6C50FD00B457C0 /* DayValue.swift */,
 				EBCBD1C92E69DCD10031D5F6 /* GrandTotals.swift */,
 			);
 			path = Model;
@@ -1000,6 +1018,7 @@
 				EBB753192E6C413900B457C0 /* DashedLine.swift in Sources */,
 				EB1A87BF2E6034F000EE0CEB /* SubscribedArc+CoreDataClass.swift in Sources */,
 				EB1A87C02E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift in Sources */,
+				EB1A87C02E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift in Sources */,
 				B7A3CC0A2E50FDCC00674792 /* ArcDetailView.swift in Sources */,
 				EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */,
 				B7A3CC0C2E50FDCC00674792 /* ArcRowList.swift in Sources */,
@@ -1018,6 +1037,7 @@
 				B7A3CC142E50FDCC00674792 /* CustomTabBar.swift in Sources */,
 				E98E37972E587076003244AA /* HabitCardCellView.swift in Sources */,
 				B7A3CC152E50FDCC00674792 /* PlaceholderView.swift in Sources */,
+				EBB7533A2E6C508D00B457C0 /* HeaderView.swift in Sources */,
 				EBE960102E618ECE005B318B /* HabitProgress+CoreDataClass.swift in Sources */,
 				EBE960112E618ECE005B318B /* HabitProgress+CoreDataProperties.swift in Sources */,
 				EBCBD1C32E69DB180031D5F6 /* ArcJSON.swift in Sources */,
@@ -1028,6 +1048,7 @@
 				E98E37A12E58AE86003244AA /* AllArcsView.swift in Sources */,
 				EB19582A2E5603EF00454D34 /* MyAccountView.swift in Sources */,
 				E98E37902E58515B003244AA /* Color+Extension.swift in Sources */,
+				EBB753392E6C508700B457C0 /* DailyPerformanceGrid.swift in Sources */,
 				B7A3CC172E50FDCC00674792 /* RootTabView.swift in Sources */,
 				B7A3CC182E50FDCC00674792 /* HabitTrackerApp.swift in Sources */,
 				B7A3CC192E50FDCC00674792 /* CheckChip.swift in Sources */,
@@ -1055,8 +1076,10 @@
 				E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */,
 				EBCBD1C72E69DB420031D5F6 /* PointsJSON.swift in Sources */,
 				EB96E8702E657F55005399A8 /* AppIcons.swift in Sources */,
+				18ABE1212E6C438C004E9FDB /* SectionTitle.swift in Sources */,
 				B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */,
 				B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */,
+				EBB7533C2E6C510100B457C0 /* DayValue.swift in Sources */,
 				EB4CCBA02E571CE700F76945 /* OverallScoreCard.swift in Sources */,
 				EBB753362E6C497800B457C0 /* EmptyArcCardView.swift in Sources */,
 				18FAA6CA2E66BCDD003907AA /* FlowLayout.swift in Sources */,
@@ -1068,8 +1091,10 @@
 				E983A3442E5D9BC2001AC952 /* Route.swift in Sources */,
 				E983A3452E5D9BC2001AC952 /* NavigationRouter.swift in Sources */,
 				B7A3CC242E50FDCC00674792 /* Font+Extensions.swift in Sources */,
+				18ABE1272E6C47F2004E9FDB /* EmptyArcCardView.swift in Sources */,
 				EB4CCBA42E57556300F76945 /* WeeklyBarsCard.swift in Sources */,
 				B7A3CC252E50FDCC00674792 /* MockData.swift in Sources */,
+				EBB753382E6C506100B457C0 /* WeeklyPerformanceSection.swift in Sources */,
 				B7A3CC262E50FDCC00674792 /* Arc.swift in Sources */,
 				E983A3482E5D9BEF001AC952 /* SwipeManager.swift in Sources */,
 				E983A3492E5D9BEF001AC952 /* SwipeableRow.swift in Sources */,

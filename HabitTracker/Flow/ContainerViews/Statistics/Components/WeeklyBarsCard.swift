@@ -8,14 +8,6 @@
 import SwiftUI
 import Charts
 
-// MARK: - Model
-
-struct DayValue: Identifiable {
-    let id = UUID()
-    let day: String   // "Mon", "Tue", ...
-    let value: Double // 0...100
-}
-
 // MARK: - View
 
 struct WeeklyBarsCard: View {

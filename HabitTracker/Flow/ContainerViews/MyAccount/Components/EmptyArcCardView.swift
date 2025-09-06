@@ -38,3 +38,6 @@ struct EmptyArcCardView: View {
     }
 }
 
+#Preview {
+    EmptyArcCardView()
+}

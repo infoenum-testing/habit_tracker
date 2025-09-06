@@ -2,8 +2,7 @@
 //  ArcCardView.swift
 //  HabitTracker
 //
-//  Created by Mayur Shrivas on 21/08/25.
-//
+
 
 import SwiftUI
 import Foundation
