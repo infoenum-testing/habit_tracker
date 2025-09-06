@@ -43,10 +43,6 @@ struct HomeView: View {
                     
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 12) {
-                            // Arc Cards
-                            
-                           
-                            
                             ForEach(appData.allSubscribedArcs) { arc in
                                 ArcRowList(arc: arc) {
                                     withAnimation(.spring()) {
@@ -83,18 +79,13 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                     }
                     .environmentObject(swipeManager)
-                    
-                    
                 }
-                
-               
             }
         }
         .toolbar(.hidden)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)
         .navigationBarHidden(true)
-        
         .sheet(isPresented: $showHabitEditSheet) {
             HabitEditSheet()
                 .preferredColorScheme(.dark)
@@ -102,9 +93,6 @@ struct HomeView: View {
                 .presentationCornerRadius(24)
                 .presentationDragIndicator(.hidden)
         }
-        
-        
-        
         .sheet(isPresented: $showEditArc) {
             EditArcSheet(isPresented: $showEditArc)
                 .presentationDetents([.height(400)])
@@ -113,7 +101,6 @@ struct HomeView: View {
                     Color(UIColor.systemBackground)
                 }
                 .preferredColorScheme(.dark)
-            
         }
         
         .onAppear {
@@ -125,16 +112,5 @@ struct HomeView: View {
                 }
             }
         }
-        
-        
     }
 }
-
-// MARK: - Preview
-//#Preview {
-//    HomeView()
-//        .environmentObject(
-//            AppState(arcs: MockData.arcs, habits: MockData.habits)
-//        )
-//        .preferredColorScheme(.dark)
-//}
