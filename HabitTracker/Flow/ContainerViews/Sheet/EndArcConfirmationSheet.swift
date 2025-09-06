@@ -40,7 +40,7 @@ struct EndArcConfirmationSheet: View {
                     }
                 }
                 
-                Text("Are you sure you want\n to end this Arc!")
+                Text(StringConstants.Aleart.endThisArcAlert)
                     .font(.sfProDisplay(.semibold, size: 24))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
@@ -49,7 +49,7 @@ struct EndArcConfirmationSheet: View {
             
             VStack{
             
-            Image("trash")
+                Image(StringConstants.Image.trash)
                 .resizable()
                 .resizable()
                 .frame(width: 100, height: 100)
