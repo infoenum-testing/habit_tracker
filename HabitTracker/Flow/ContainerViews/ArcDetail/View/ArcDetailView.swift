@@ -209,10 +209,9 @@ struct ShareProgressButton: View {
                 HStack(spacing: 5) {
                     if let imageName = imageName {
                         Image(imageName)
-                            .font(.system(size: 18, weight: .medium))
                     }
                     Text(title)
-                        .font(.system(size: 17, weight: .semibold))
+                        .font(Font.sfPro(size: 16, weight: .semibold))
                 }
                 .foregroundColor(.black)
             }

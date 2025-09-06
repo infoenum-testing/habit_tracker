@@ -35,7 +35,6 @@ struct LayoutToggle: View {
         Button(action: action) {
             HStack{
                 Image(icon)
-                    .font(.system(size: 18, weight: .medium))
                     .foregroundColor(isSelected ? .black : .white)
                     .frame(width: 15, height: 15)
             }.frame(width: 40, height: 28)

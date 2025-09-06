@@ -44,7 +44,6 @@ struct AllHabitsView: View {
                         }) {
                             Image("arrow-left")
                                 .foregroundColor(.white)
-                                .font(.system(size: 18, weight: .semibold))
                         }
                     }
                     .padding(10.8)
@@ -54,7 +53,7 @@ struct AllHabitsView: View {
                     Spacer()
                     
                     Text("Habits")
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(Font.sfPro(size: 29, weight: .medium))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
@@ -75,7 +74,7 @@ struct AllHabitsView: View {
                         selectedCategory = category
                     }) {
                         Text(category)
-                            .font(.system(size: 15, weight: .medium))
+                            .font(Font.sfPro(size: 17, weight: .medium))
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
                             .background(
@@ -93,7 +92,7 @@ struct AllHabitsView: View {
                 VStack {
                     Spacer()
                     Text("No habits found")
-                        .font(.system(size: 20, weight: .medium))
+                        .font(Font.sfPro(size: 20, weight: .medium))
                         .foregroundColor(.white.opacity(0.6))
                     Spacer()
                 }

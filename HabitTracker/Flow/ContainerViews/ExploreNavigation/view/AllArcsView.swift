@@ -70,7 +70,7 @@ struct AllArcsView: View {
                     }) {
                         Text(category)
                             
-                            .font(.system(size: 15, weight: .medium))
+                            .font(Font.sfPro(size: 17, weight: .medium))
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
                             
@@ -91,7 +91,7 @@ struct AllArcsView: View {
                 VStack {
                     Spacer()
                     Text("No arcs found")
-                        .font(.system(size: 20, weight: .medium))
+                        .font(Font.sfPro(size: 20, weight: .medium))
                         .foregroundColor(.white.opacity(0.6))
                     Spacer()
                 }
