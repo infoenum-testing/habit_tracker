@@ -21,7 +21,7 @@ struct DailyHabitsCellView: View {
                       .background(Color.ractangleColor)
                       .cornerRadius(9)
                     
-                    Image(habit.icon ?? "icon.show")
+                    Image(habit.icon ?? "icon.shoe")
                         .resizable()
                         .frame(width: 40, height: 40)
                         .foregroundStyle(color)
