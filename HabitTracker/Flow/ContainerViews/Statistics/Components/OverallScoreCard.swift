@@ -43,21 +43,21 @@ struct OverallScoreCard: View {
                             .minimumScaleFactor(0.5)
                             .foregroundStyle(.white)
                         
-                        if appData.grandTotals.overall > 0 {
+                        if let overall = appData.todayStatistics?.overallTotal, overall > 0 {
                             HStack(spacing: 4) {
-                                Text("+\(appData.grandTotals.overall)")
+                                Text("+\(overall)")
                                     .font(.sfProDisplay(.medium, size: 14))
                                     .foregroundStyle(.brightGreen)
                                 Image("arrowUpCircle")
                                     .resizable()
                                     .frame(width: 12, height: 12)
-                                    .font(.caption2)
                             }
                             .frame(width: 56, height: 25)
                             .background(Color.capsuleGreen)
                             .cornerRadius(12)
                             .padding(.top, 9)
                         }
+
                         
                         
                     }

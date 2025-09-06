@@ -17,14 +17,10 @@
 		B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC32E50FDCC00674792 /* DayBadge.swift */; };
 		B7A3CC092E50FDCC00674792 /* DetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC42E50FDCC00674792 /* DetailHeader.swift */; };
 		B7A3CC0A2E50FDCC00674792 /* ArcDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC62E50FDCC00674792 /* ArcDetailView.swift */; };
-		B7A3CC0B2E50FDCC00674792 /* ArcRowGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC92E50FDCC00674792 /* ArcRowGrid.swift */; };
 		B7A3CC0C2E50FDCC00674792 /* ArcRowList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBCA2E50FDCC00674792 /* ArcRowList.swift */; };
 		B7A3CC0D2E50FDCC00674792 /* DateStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBCB2E50FDCC00674792 /* DateStrip.swift */; };
-		B7A3CC0E2E50FDCC00674792 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBCC2E50FDCC00674792 /* GridLayout.swift */; };
-		B7A3CC0F2E50FDCC00674792 /* HabitRowGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBCD2E50FDCC00674792 /* HabitRowGrid.swift */; };
 		B7A3CC102E50FDCC00674792 /* HabitRowList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBCE2E50FDCC00674792 /* HabitRowList.swift */; };
 		B7A3CC112E50FDCC00674792 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBCF2E50FDCC00674792 /* HomeHeader.swift */; };
-		B7A3CC122E50FDCC00674792 /* ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBD02E50FDCC00674792 /* ListLayout.swift */; };
 		B7A3CC132E50FDCC00674792 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBD22E50FDCC00674792 /* HomeView.swift */; };
 		B7A3CC142E50FDCC00674792 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBD52E50FDCC00674792 /* CustomTabBar.swift */; };
 		B7A3CC152E50FDCC00674792 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBD62E50FDCC00674792 /* PlaceholderView.swift */; };
@@ -130,14 +126,10 @@
 		B7A3CBC32E50FDCC00674792 /* DayBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBadge.swift; sourceTree = "<group>"; };
 		B7A3CBC42E50FDCC00674792 /* DetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeader.swift; sourceTree = "<group>"; };
 		B7A3CBC62E50FDCC00674792 /* ArcDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcDetailView.swift; sourceTree = "<group>"; };
-		B7A3CBC92E50FDCC00674792 /* ArcRowGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcRowGrid.swift; sourceTree = "<group>"; };
 		B7A3CBCA2E50FDCC00674792 /* ArcRowList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcRowList.swift; sourceTree = "<group>"; };
 		B7A3CBCB2E50FDCC00674792 /* DateStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStrip.swift; sourceTree = "<group>"; };
-		B7A3CBCC2E50FDCC00674792 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
-		B7A3CBCD2E50FDCC00674792 /* HabitRowGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRowGrid.swift; sourceTree = "<group>"; };
 		B7A3CBCE2E50FDCC00674792 /* HabitRowList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRowList.swift; sourceTree = "<group>"; };
 		B7A3CBCF2E50FDCC00674792 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
-		B7A3CBD02E50FDCC00674792 /* ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLayout.swift; sourceTree = "<group>"; };
 		B7A3CBD22E50FDCC00674792 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B7A3CBD52E50FDCC00674792 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		B7A3CBD62E50FDCC00674792 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
@@ -296,14 +288,10 @@
 		B7A3CBD12E50FDCC00674792 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B7A3CBC92E50FDCC00674792 /* ArcRowGrid.swift */,
 				B7A3CBCA2E50FDCC00674792 /* ArcRowList.swift */,
 				B7A3CBCB2E50FDCC00674792 /* DateStrip.swift */,
-				B7A3CBCC2E50FDCC00674792 /* GridLayout.swift */,
-				B7A3CBCD2E50FDCC00674792 /* HabitRowGrid.swift */,
 				B7A3CBCE2E50FDCC00674792 /* HabitRowList.swift */,
 				B7A3CBCF2E50FDCC00674792 /* HomeHeader.swift */,
-				B7A3CBD02E50FDCC00674792 /* ListLayout.swift */,
 				18FA5D222E6055E60069590C /* HabitEditSheet.swift */,
 			);
 			path = Components;
@@ -409,6 +397,7 @@
 		B7A3CBEA2E50FDCC00674792 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EB04CDA72E6C127100CAE7D1 /* Data */,
 				B7A3CBE82E50FDCC00674792 /* Fonts */,
 				B7A3CBE92E50FDCC00674792 /* Assets.xcassets */,
 				E98E378F2E58515B003244AA /* Color+extension.swift */,
@@ -505,7 +494,7 @@
 			children = (
 				E983A3432E5D9BC2001AC952 /* Navigation */,
 				E983A33D2E5D9BB8001AC952 /* CoreData */,
-				E98EDF7A2E5C432B00E42196 /* extension */,
+				E98EDF7A2E5C432B00E42196 /* Extension */,
 				B7A3CBC12E50FDCC00674792 /* App */,
 				B7A3CBDD2E50FDCC00674792 /* Flow */,
 				B7A3CBDF2E50FDCC00674792 /* LifeCycle */,
@@ -513,7 +502,6 @@
 				B7A3CBEA2E50FDCC00674792 /* Resources */,
 				B7A3CC032E50FDCC00674792 /* Shared */,
 				B7A3CC042E50FDCC00674792 /* Info.plist */,
-				EBB66A142E5DC41500638C9B /* initialData.json */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -521,6 +509,14 @@
 		E983A3382E5D9BB8001AC952 /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
+				EB04CDA62E6C0DE000CAE7D1 /* ArcTemplate */,
+				EB04CDA52E6C0DCE00CAE7D1 /* HabitTemplate */,
+				EB04CDA42E6C0DBE00CAE7D1 /* Statistics */,
+				EB04CDA32E6C0DAC00CAE7D1 /* SubscribedHabit */,
+				EB04CDA22E6C0D9900CAE7D1 /* SubscribedArc */,
+				EB04CDA12E6C0D8400CAE7D1 /* ArcProgress */,
+				EB04CDA02E6C0D7800CAE7D1 /* HabitProgress */,
+				EB04CD9F2E6C0D6F00CAE7D1 /* History */,
 			);
 			path = CoreDataClasses;
 			sourceTree = "<group>";
@@ -595,12 +591,12 @@
 			path = inter;
 			sourceTree = "<group>";
 		};
-		E98EDF7A2E5C432B00E42196 /* extension */ = {
+		E98EDF7A2E5C432B00E42196 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				E98EDF7B2E5C434600E42196 /* UIFont+Extension.swift */,
 			);
-			path = extension;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		EB0363762E5C75CD002A1D52 /* SwipeManager */ = {
@@ -610,6 +606,86 @@
 				E983A3472E5D9BEF001AC952 /* SwipeManager.swift */,
 			);
 			path = SwipeManager;
+			sourceTree = "<group>";
+		};
+		EB04CD9F2E6C0D6F00CAE7D1 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				18FAA6CD2E685A2B003907AA /* History+CoreDataClass.swift */,
+				18FAA6CE2E685A2B003907AA /* History+CoreDataProperties.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		EB04CDA02E6C0D7800CAE7D1 /* HabitProgress */ = {
+			isa = PBXGroup;
+			children = (
+				EBE9600E2E618ECE005B318B /* HabitProgress+CoreDataClass.swift */,
+				EBE9600F2E618ECE005B318B /* HabitProgress+CoreDataProperties.swift */,
+			);
+			path = HabitProgress;
+			sourceTree = "<group>";
+		};
+		EB04CDA12E6C0D8400CAE7D1 /* ArcProgress */ = {
+			isa = PBXGroup;
+			children = (
+				EB1A87B12E6034F000EE0CEB /* ArcProgress+CoreDataClass.swift */,
+				EB1A87B22E6034F000EE0CEB /* ArcProgress+CoreDataProperties.swift */,
+			);
+			path = ArcProgress;
+			sourceTree = "<group>";
+		};
+		EB04CDA22E6C0D9900CAE7D1 /* SubscribedArc */ = {
+			isa = PBXGroup;
+			children = (
+				EB1A87B52E6034F000EE0CEB /* SubscribedArc+CoreDataClass.swift */,
+				EB1A87B62E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift */,
+			);
+			path = SubscribedArc;
+			sourceTree = "<group>";
+		};
+		EB04CDA32E6C0DAC00CAE7D1 /* SubscribedHabit */ = {
+			isa = PBXGroup;
+			children = (
+				EB1A87B72E6034F000EE0CEB /* SubscribedHabit+CoreDataClass.swift */,
+				EB1A87B82E6034F000EE0CEB /* SubscribedHabit+CoreDataProperties.swift */,
+			);
+			path = SubscribedHabit;
+			sourceTree = "<group>";
+		};
+		EB04CDA42E6C0DBE00CAE7D1 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				EBB669FE2E5D93EE00638C9B /* Statistics+CoreDataClass.swift */,
+				EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		EB04CDA52E6C0DCE00CAE7D1 /* HabitTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */,
+				EBB669FB2E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift */,
+			);
+			path = HabitTemplate;
+			sourceTree = "<group>";
+		};
+		EB04CDA62E6C0DE000CAE7D1 /* ArcTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */,
+				EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */,
+			);
+			path = ArcTemplate;
+			sourceTree = "<group>";
+		};
+		EB04CDA72E6C127100CAE7D1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EBB66A142E5DC41500638C9B /* initialData.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		EB1958252E56032600454D34 /* Statistics */ = {
@@ -686,22 +762,6 @@
 		EBAA20352E4DBEE7001503D8 = {
 			isa = PBXGroup;
 			children = (
-				18FAA6CD2E685A2B003907AA /* History+CoreDataClass.swift */,
-				18FAA6CE2E685A2B003907AA /* History+CoreDataProperties.swift */,
-				EBE9600E2E618ECE005B318B /* HabitProgress+CoreDataClass.swift */,
-				EBE9600F2E618ECE005B318B /* HabitProgress+CoreDataProperties.swift */,
-				EB1A87B12E6034F000EE0CEB /* ArcProgress+CoreDataClass.swift */,
-				EB1A87B22E6034F000EE0CEB /* ArcProgress+CoreDataProperties.swift */,
-				EB1A87B52E6034F000EE0CEB /* SubscribedArc+CoreDataClass.swift */,
-				EB1A87B62E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift */,
-				EB1A87B72E6034F000EE0CEB /* SubscribedHabit+CoreDataClass.swift */,
-				EB1A87B82E6034F000EE0CEB /* SubscribedHabit+CoreDataProperties.swift */,
-				EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */,
-				EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */,
-				EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */,
-				EBB669FB2E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift */,
-				EBB669FE2E5D93EE00638C9B /* Statistics+CoreDataClass.swift */,
-				EBB669FF2E5D93EE00638C9B /* Statistics+CoreDataProperties.swift */,
 				B7A3CC052E50FDCC00674792 /* HabitTracker */,
 				EBAA203F2E4DBEE7001503D8 /* Products */,
 			);
@@ -824,16 +884,12 @@
 				EB1A87C02E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift in Sources */,
 				B7A3CC0A2E50FDCC00674792 /* ArcDetailView.swift in Sources */,
 				EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */,
-				B7A3CC0B2E50FDCC00674792 /* ArcRowGrid.swift in Sources */,
 				B7A3CC0C2E50FDCC00674792 /* ArcRowList.swift in Sources */,
 				B7A3CC0D2E50FDCC00674792 /* DateStrip.swift in Sources */,
-				B7A3CC0E2E50FDCC00674792 /* GridLayout.swift in Sources */,
-				B7A3CC0F2E50FDCC00674792 /* HabitRowGrid.swift in Sources */,
 				E98D71D12E6040820090AB40 /* DailyHabitsCellView.swift in Sources */,
 				B7A3CC102E50FDCC00674792 /* HabitRowList.swift in Sources */,
 				EB4CCBA22E571D4800F76945 /* PerformanceCardView.swift in Sources */,
 				B7A3CC112E50FDCC00674792 /* HomeHeader.swift in Sources */,
-				B7A3CC122E50FDCC00674792 /* ListLayout.swift in Sources */,
 				E983A3512E5D9C81001AC952 /* TextBadgeView.swift in Sources */,
 				E98E378C2E584636003244AA /* ExploreMain.swift in Sources */,
 				B7A3CC132E50FDCC00674792 /* HomeView.swift in Sources */,

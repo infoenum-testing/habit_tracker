@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct HomeHeader: View {
-   // @EnvironmentObject var state: AppState
     var body: some View {
         HStack(alignment:.center) {
             Image("star")
@@ -22,23 +21,7 @@ struct HomeHeader: View {
             Spacer()
             HStack(spacing: 10) {
                 LayoutToggle()
-//                CircleButton(icon: "bell", action: {
-//                    //
-//                }, width: 25, height: 25)
-//                    .frame(width: 50, height: 50)
             }
         }
     }
 }
-
-// MARK: - Preview
-//#Preview {
-//    HomeHeader()
-//        .padding()
-//        .background(Color.black) // so white text is visible
-//        .environmentObject(
-//            AppState(arcs: MockData.arcs, habits: MockData.habits)
-//        )
-//        .preferredColorScheme(.dark)
-//}
-
