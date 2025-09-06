@@ -34,16 +34,14 @@ struct HabitCardCellView: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(habit.title ?? "")
                         .foregroundColor(.white)
-                        .font(Font.inter(size: 18, weight: .semibold))
+                        .font(Font.inter(size: 16, weight: .semibold))
                         .multilineTextAlignment(.leading)
-                        .minimumScaleFactor(0.8)
                     
                     Text(habit.details ?? "")
                         .foregroundColor(.gray)
-                        .font(Font.inter(size: 14, weight: .semibold))
+                        .font(Font.inter(size: 12, weight: .regular))
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
-                        .minimumScaleFactor(0.8)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .leading)
                 .padding(.bottom, 10) // bottom padding
