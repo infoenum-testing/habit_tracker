@@ -16,9 +16,9 @@ struct ArcDailyHabitsCellView: View {
                 ZStack {
                     Rectangle()
                       .foregroundColor(.clear)
-                      .frame(width: 51.471, height: 51.072)
+                      .frame(width: 51, height: 51)
                       .background(Color.ractangleColor)
-                      .cornerRadius(9.2)
+                      .cornerRadius(9)
                     
                     Image(habit.icon)
                         .resizable()
@@ -27,10 +27,10 @@ struct ArcDailyHabitsCellView: View {
                         .foregroundStyle(color)
                      
                 }
-                .frame(width: 51.471, height: 51.072)
+                .frame(width: 51, height: 51)
                 
-                HStack(alignment: .center, spacing: 10.8732) {
-                    VStack(alignment: .center, spacing: 5.29808) {
+                HStack(alignment: .center, spacing: 10) {
+                    VStack(alignment: .center, spacing: 5) {
                         Text(habit.title)
                             .font(Font.sfPro(size: 17, weight: .medium))
                             .foregroundStyle(.white)
@@ -47,12 +47,12 @@ struct ArcDailyHabitsCellView: View {
                 .padding(0)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(.leading, 11.2)
-            .padding(.trailing, 19.2)
-            .padding(.vertical, 19.2)
+            .padding(.leading, 11)
+            .padding(.trailing, 19)
+            .padding(.vertical, 19)
             .frame(maxWidth: .infinity, minHeight: 73, maxHeight: 73, alignment: .leading)
             .background(Color.cellBackgroundColor)
-            .cornerRadius(10.4)
+            .cornerRadius(10)
         
     }
 }

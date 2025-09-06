@@ -36,9 +36,9 @@ struct AllHabitsView: View {
     var body: some View {
         VStack(spacing: 24) {
             
-            VStack(alignment: .center, spacing: 19.2) {
+            VStack(alignment: .center, spacing: 19) {
                 HStack {
-                    HStack(alignment: .center, spacing: 8.4) {
+                    HStack(alignment: .center, spacing: 8) {
                         Button(action: {
                             dismiss()
                         }) {
@@ -48,7 +48,7 @@ struct AllHabitsView: View {
                     }
                     .padding(10.8)
                     .background(.white.opacity(0.07))
-                    .cornerRadius(55.2)
+                    .cornerRadius(55)
                     
                     Spacer()
                     

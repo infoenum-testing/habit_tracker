@@ -17,18 +17,20 @@ struct DailyHabitsCellView: View {
                 ZStack {
                     Rectangle()
                       .foregroundColor(.clear)
-                      .frame(width: 51.471, height: 51.072)
+                      .frame(width: 51, height: 51)
                       .background(Color.ractangleColor)
-                      .cornerRadius(9.2)
+                      .cornerRadius(9)
                     
-                    Image(habit.icon ?? "apple")
+                    Image(habit.icon ?? "icon.show")
+                        .resizable()
+                        .frame(width: 40, height: 40)
                         .foregroundStyle(color)
-                      .frame(width: 22.05, height: 22.05)
+                      
                 }
-                .frame(width: 51.471, height: 51.072)
+                .frame(width: 51, height: 51)
                 
-                HStack(alignment: .center, spacing: 10.8732) {
-                    VStack(alignment: .center, spacing: 5.29808) {
+                HStack(alignment: .center, spacing: 10) {
+                    VStack(alignment: .center, spacing: 5) {
                         Text(habit.title ?? "")
                             .font(Font.sfPro(size: 17, weight: .medium))
                             .foregroundStyle(.white)
@@ -48,22 +50,22 @@ struct DailyHabitsCellView: View {
                 ZStack {
                     Rectangle()
                         .foregroundStyle(color)
-                      .frame(width: 51.471, height: 51.072)
+                      .frame(width: 51, height: 51)
                       .background(Color.ractangleColor)
-                      .cornerRadius(9.2)
+                      .cornerRadius(9)
 
                     Image("check")
                       .frame(width: 22, height: 22)
 
                 }
-                .frame(width: 51.471, height: 51.072)
+                .frame(width: 51, height: 51)
             }
-            .padding(.leading, 11.2)
-            .padding(.trailing, 19.2)
-            .padding(.vertical, 19.2)
+            .padding(.leading, 11)
+            .padding(.trailing, 19)
+            .padding(.vertical, 19)
             .frame(maxWidth: .infinity, minHeight: 73, maxHeight: 73, alignment: .leading)
             .background(Color.cellBackgroundColor)
-            .cornerRadius(10.4)
+            .cornerRadius(10)
         
     }
 }

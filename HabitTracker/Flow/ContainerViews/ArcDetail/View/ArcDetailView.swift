@@ -145,10 +145,14 @@ struct ArcDetailView: View {
         let graceDate = arc.wrappedGraceEndDate
         
         if Calendar.current.isDate(graceDate, inSameDayAs: today),
-           endDate < today {
+           endDate < today,
+           !appData.shownAlerts.contains(arc.wrappedId) {
+            
             showAlert = true
+            appData.shownAlerts.insert(arc.wrappedId) 
         }
     }
+
 }
 
 

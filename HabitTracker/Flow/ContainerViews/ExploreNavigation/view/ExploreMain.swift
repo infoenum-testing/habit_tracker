@@ -342,7 +342,7 @@ struct TopHabitCardView: View {
             ZStack {
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: 20.64, height: 20.48)
+                    .frame(width: 20, height: 20)
                     .background(Color.ractangleColor)
                     .cornerRadius(4)
                 if let image = habit.icon {
@@ -379,7 +379,7 @@ struct TopHabitCardView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 7.36)
                 .inset(by: 0.16)
-                .stroke(Color.ractangleColor.opacity(0.2), lineWidth: 0.3)
+                .stroke(Color.ractangleColor, lineWidth: 0.3)
             
         )
     }

@@ -30,6 +30,7 @@ final class AppDataStore: ObservableObject {
         )
     @Published var isShowingDeleteArcConfirmation: Bool = false
     @Published var isShowingDeleteHabitConfirmation: Bool = false
+    @Published var shownAlerts: Set<String> = []
     @Published  var showToast = false
     @Published  var toastMessage: String = ""
     @Published  var toastType: ToastType = .success

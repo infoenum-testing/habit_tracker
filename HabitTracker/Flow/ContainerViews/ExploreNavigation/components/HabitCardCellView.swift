@@ -17,7 +17,7 @@ struct HabitCardCellView: View {
                 // Icon Section
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.ractangleColor.opacity(0.2))
+                        .fill(Color.ractangleColor)
                         .frame(width: 52, height: 52)
                     
                     Image(habit.icon ?? "tooth")
