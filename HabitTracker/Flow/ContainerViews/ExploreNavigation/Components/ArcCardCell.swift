@@ -2,7 +2,7 @@
 //  ArcCardCell.swift
 //  HabitTracker
 //
-//  Created by ie15 on 22/08/25.
+//  Created by Mayur Shrivas on 22/08/25.
 //
 
 import SwiftUI

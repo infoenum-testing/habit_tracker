@@ -2,16 +2,14 @@
 //  FlowLayout.swift
 //  HabitTracker
 //
-//  Created by Apple on 02/09/25.
+// Created by Mayur Shrivas on 02/09/25.
 //
 
 import SwiftUI
 
-
 struct FlowLayout: View {
     @State public var tags: [String]
     @State private var contentHeight: CGFloat = .zero
-    //var seeAll: () -> Void
     var body: some View {
         GeometryReader { geometry in
             self.generateContent(in: geometry)
@@ -25,10 +23,8 @@ struct FlowLayout: View {
                 )
         }
         .frame(height: contentHeight)
-
+        
     }
-
-
     private func generateContent(in geometry: GeometryProxy) -> some View {
         var width = CGFloat.zero
         var height = CGFloat.zero
@@ -60,12 +56,11 @@ struct FlowLayout: View {
             }
         }
     }
-
+    
     private func item(for text: String) -> some View {
         return TextBadgeViewForGutHealth(title: text, foregroundColor: .white, icon: "check")
             .background(Color.white.opacity(0.14))
             .cornerRadius(20)
-        
     }
 }
 

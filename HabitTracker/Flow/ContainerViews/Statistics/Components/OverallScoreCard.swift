@@ -2,7 +2,7 @@
 //  OverallScoreCard.swift
 //  HabitTracker
 //
-//  Created by IE14 on 21/08/25.
+//  Created by Mayur Shrivas on 21/08/25.
 //
 
 import Foundation

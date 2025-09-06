@@ -2,7 +2,7 @@
 //  ExpandableText.swift
 //  HabitTracker
 //
-//  Created by Apple on 02/09/25.
+//  Created by Mayur Shrivas on 02/09/25.
 //
 
 import SwiftUI
@@ -79,18 +79,18 @@ struct ExpandableText: View {
                                 shrinkText = String(text.prefix(mid))
                             }
                             if truncated {
-                                shrinkText = String(shrinkText.prefix(shrinkText.count - 2))  //-2 extra as highlighted text is bold
+                                shrinkText = String(shrinkText.prefix(shrinkText.count - 2))  
                             }
                         }
                     })
-                    .hidden() // Hide the background
+                    .hidden()
             )
-            .font(Font(font)) ///set default font
+            .font(Font(font))
             if truncated {
                 Button(action: {
                     expanded.toggle()
                 }, label: {
-                    HStack { //taking tap on only last line, As it is not possible to get 'see more' location
+                    HStack {
                         Spacer()
                         Text("")
                     }.opacity(0)

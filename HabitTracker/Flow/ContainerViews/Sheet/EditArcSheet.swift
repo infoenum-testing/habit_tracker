@@ -2,7 +2,7 @@
 //  EditArcSheet.swift
 //  HabitTracker
 //
-//  Created by IE14 on 19/08/25.
+//  Created by Mayur Shrivas on 19/08/25.
 //
 
 import SwiftUI
@@ -133,14 +133,10 @@ struct EditArcSheet: View {
                     .presentationBackground {
                         Color(UIColor.systemBackground)
                     }
-                   
-                    
             }
             .onChange(of: navigation.dismissAllSheets, perform: { newValue in
                 dismiss()
             })
-            
-
     }
 }
 

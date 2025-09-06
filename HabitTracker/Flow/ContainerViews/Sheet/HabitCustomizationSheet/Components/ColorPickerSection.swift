@@ -1,0 +1,36 @@
+//
+//  ColorPickerSection.swift
+//  HabitTracker
+//
+//  Created by Mayur Shrivas on 06/09/25.
+//
+
+import Foundation
+import SwiftUI
+
+// MARK: - Color Picker
+ struct ColorPickerSection: View {
+    let colors: [String]
+    @Binding var selectedColor: String
+    let action: () -> Void
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 26) {
+            Text("Change Theme")
+                .font(Font.sfPro(size: 16, weight: .medium))
+                .foregroundColor(.white)
+            
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 16) {
+                ForEach(colors, id: \.self) { color in
+                    ColorSelectionButton(
+                        color: color,
+                        isSelected: color == selectedColor
+                    ) {
+                        selectedColor = color
+                        action()
+                    }
+                }
+            }
+        }
+    }
+}

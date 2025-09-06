@@ -2,7 +2,7 @@
 //  CoreDataManager.swift
 //  HabitTracker
 //
-//  Created by IE14 on 25/08/25.
+//  Created by Mayur Shrivas on 25/08/25.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ final class CoreDataManager {
     let persistentContainer: NSPersistentContainer
     var context: NSManagedObjectContext { persistentContainer.viewContext }
     @AppStorage("isInitialDataSaved") var isInitialDataSaved: Bool = false
-
+    
     private init() {
         persistentContainer = NSPersistentContainer(name: "HabitTrackerDataBase")
         persistentContainer.loadPersistentStores { _, error in
@@ -40,7 +40,7 @@ final class CoreDataManager {
     }
     
     // MARK: - Fetch Arcs
-   
+    
     func fetchAllArcs() -> [ArcTemplate] {
         let request: NSFetchRequest<ArcTemplate> = ArcTemplate.fetchRequest()
         return (try? context.fetch(request)) ?? []
@@ -126,8 +126,8 @@ final class CoreDataManager {
             return .failure(error)
         }
     }
-
-
+    
+    
     
     // MARK: - Unsubscribe to Arc
     
@@ -169,40 +169,40 @@ final class CoreDataManager {
     }
     
     func updateSubscribedArc(
-           withId id: String,
-           newIcon: String? = nil,
-           newThemeColor: String? = nil
-       ) -> Result<SubscribedArc, Error> {
-           
-           let request: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
-           request.predicate = NSPredicate(format: "id == %@", id)
-           request.fetchLimit = 1
-           
-           do {
-               if let subArc = try context.fetch(request).first {
-                   
-                   if let icon = newIcon {
-                       subArc.icon = icon
-                   }
-                   
-                   if let color = newThemeColor {
-                       subArc.themeColor = color
-                   }
-                   
-                   try context.save()
-                   return .success(subArc)
-               } else {
-                   return .failure(NSError(
-                       domain: "CoreDataManager",
-                       code: 404,
-                       userInfo: [NSLocalizedDescriptionKey: "SubscribedArc not found"]
-                   ))
-               }
-           } catch {
-               context.rollback()
-               return .failure(error)
-           }
-       }
+        withId id: String,
+        newIcon: String? = nil,
+        newThemeColor: String? = nil
+    ) -> Result<SubscribedArc, Error> {
+        
+        let request: NSFetchRequest<SubscribedArc> = SubscribedArc.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id)
+        request.fetchLimit = 1
+        
+        do {
+            if let subArc = try context.fetch(request).first {
+                
+                if let icon = newIcon {
+                    subArc.icon = icon
+                }
+                
+                if let color = newThemeColor {
+                    subArc.themeColor = color
+                }
+                
+                try context.save()
+                return .success(subArc)
+            } else {
+                return .failure(NSError(
+                    domain: "CoreDataManager",
+                    code: 404,
+                    userInfo: [NSLocalizedDescriptionKey: "SubscribedArc not found"]
+                ))
+            }
+        } catch {
+            context.rollback()
+            return .failure(error)
+        }
+    }
     
     
     // MARK: - Delete Subscribed Arc
@@ -292,10 +292,10 @@ extension CoreDataManager {
             completion(.failure(error))
         }
     }
-
+    
     
     /// Unsubscribe a habit (delete from Core Data)
-     func unsubscribeHabit(
+    func unsubscribeHabit(
         habitID: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
@@ -325,42 +325,42 @@ extension CoreDataManager {
     
     
     // MARK: - Update Subscribed Habit
+    
+    func updateSubscribedHabit(
+        withId id: String,
+        newIcon: String? = nil,
+        newThemeColor: String? = nil
+    ) -> Result<SubscribedHabit, Error> {
         
-        func updateSubscribedHabit(
-            withId id: String,
-            newIcon: String? = nil,
-            newThemeColor: String? = nil
-        ) -> Result<SubscribedHabit, Error> {
-            
-            let request: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
-            request.predicate = NSPredicate(format: "id == %@", id)
-            request.fetchLimit = 1
-            
-            do {
-                if let subHabit = try context.fetch(request).first {
-                    
-                    if let icon = newIcon {
-                        subHabit.icon = icon
-                    }
-                    
-                    if let color = newThemeColor {
-                        subHabit.themeColor = color
-                    }
-                    
-                    try context.save()
-                    return .success(subHabit)
-                } else {
-                    return .failure(NSError(
-                        domain: "CoreDataManager",
-                        code: 404,
-                        userInfo: [NSLocalizedDescriptionKey: "SubscribedHabit not found"]
-                    ))
+        let request: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id)
+        request.fetchLimit = 1
+        
+        do {
+            if let subHabit = try context.fetch(request).first {
+                
+                if let icon = newIcon {
+                    subHabit.icon = icon
                 }
-            } catch {
-                context.rollback()
-                return .failure(error)
+                
+                if let color = newThemeColor {
+                    subHabit.themeColor = color
+                }
+                
+                try context.save()
+                return .success(subHabit)
+            } else {
+                return .failure(NSError(
+                    domain: "CoreDataManager",
+                    code: 404,
+                    userInfo: [NSLocalizedDescriptionKey: "SubscribedHabit not found"]
+                ))
             }
+        } catch {
+            context.rollback()
+            return .failure(error)
         }
+    }
     
     func fetchSubscribedHabits() -> [SubscribedHabit] {
         let request: NSFetchRequest<SubscribedHabit> = SubscribedHabit.fetchRequest()
@@ -397,17 +397,17 @@ extension CoreDataManager {
         let today = Calendar.current.startOfDay(for: Date())
         let progress = arc.todayProgress ?? ArcProgress(context: context, date: today, arc: arc)
         var completed = progress.completedHabitIds ?? []
-
+        
         // Toggle habit in completed list
         if completed.contains(habitId) {
             completed.removeAll { $0 == habitId }
         } else {
             completed.append(habitId)
         }
-
+        
         progress.completedHabitIds = completed
         progress.completedHabits = Int16(completed.count)
-
+        
         // Check completion state
         let allCompleted = progress.completedHabits == progress.totalHabits && progress.totalHabits > 0
         
@@ -421,13 +421,13 @@ extension CoreDataManager {
             removePointsFlag = true
             progress.pointsAwarded = false
         }
-
+        
         saveContext()
         completion(allCompleted, addPointsFlag, removePointsFlag)
     }
-
-
-
+    
+    
+    
     func toggleHabit(
         _ habitId: String,
         in habit: SubscribedHabit,
@@ -439,7 +439,7 @@ extension CoreDataManager {
         let progress = habit.todayProgress ?? HabitProgress(context: context, date: today,habit: habit)
         var completed = progress.completedHabitIds ?? []
         let isNowChecked: Bool
-
+        
         if completed.contains(habitId) {
             completed.removeAll { $0 == habitId }
             isNowChecked = false
@@ -453,12 +453,12 @@ extension CoreDataManager {
         progress.completedCount = Int16(completed.count)
         
         saveContext()
-
+        
         // Call closure with updated state
         completion(isNowChecked)
     }
-
-
+    
+    
 }
 
 extension CoreDataManager {

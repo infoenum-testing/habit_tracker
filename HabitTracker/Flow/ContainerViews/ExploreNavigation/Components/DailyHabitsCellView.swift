@@ -2,7 +2,7 @@
 //  DailyHabitsCellView.swift
 //  HabitTracker
 //
-//  Created by ie15 on 28/08/25.
+// Created by Mayur Shrivas on 28/08/25.
 //
 
 import SwiftUI
