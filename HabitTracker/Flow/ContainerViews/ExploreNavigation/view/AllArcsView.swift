@@ -69,11 +69,11 @@ struct AllArcsView: View {
                         selectedCategory = category
                     }) {
                         Text(category)
-                            
+                        
                             .font(Font.sfPro(size: 17, weight: .medium))
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
-                            
+                        
                             .background(
                                 selectedCategory == category ?
                                 Color.white.opacity(0.15) : Color.clear
@@ -107,7 +107,7 @@ struct AllArcsView: View {
                                 ArcCardCell(arc: arc)
                                     .aspectRatio(1, contentMode: .fit)
                             }
-
+                            
                             
                         }
                     }
@@ -119,7 +119,6 @@ struct AllArcsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.backgroundColor)
         .navigationBarBackButtonHidden()
-        
     }
 }
 

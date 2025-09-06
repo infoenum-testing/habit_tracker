@@ -14,4 +14,7 @@ extension Color {
     static let searchBarColur = Color("262628")
     static let navBackground  = Color("1A1A1A")
     static let sheetBackgroundColor  = Color("141414")
+    static let ractangleColor  = Color("3D3E41")
+    static let darkGrayishColor  = Color("36383B")
+    static let slateGrayColor  = Color("9399A1")
 }

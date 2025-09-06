@@ -17,7 +17,7 @@ struct HabitCardCellView: View {
                 // Icon Section
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+                        .fill(Color.ractangleColor.opacity(0.2))
                         .frame(width: 52, height: 52)
                     
                     Image(habit.icon ?? "tooth")
@@ -49,11 +49,11 @@ struct HabitCardCellView: View {
             }
             .padding(.horizontal, 20)
             .frame(width: geo.size.width, height: geo.size.height)
-            .background(Color(red: 0.15, green: 0.15, blue: 0.15))
+            .background(Color.cellBackgroundColor)
             .cornerRadius(18)
             .overlay(
                 RoundedRectangle(cornerRadius: 18)
-                    .stroke(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2), lineWidth: 0.8)
+                    .stroke(Color.ractangleColor, lineWidth: 0.8)
             )
         }
     }

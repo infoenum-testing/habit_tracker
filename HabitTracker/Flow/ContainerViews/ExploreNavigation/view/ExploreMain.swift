@@ -196,8 +196,8 @@ struct ArcsView: View {
                 .fill(
                     LinearGradient(
                         stops: [
-                            Gradient.Stop(color: Color(red: 0.21, green: 0.22, blue: 0.23), location: 0.00),
-                            Gradient.Stop(color: Color(red: 0.58, green: 0.6, blue: 0.63).opacity(0.75), location: 1.00),
+                            Gradient.Stop(color: Color.darkGrayishColor, location: 0.00),
+                            Gradient.Stop(color: Color.slateGrayColor.opacity(0.75), location: 1.00),
                         ],
                         startPoint: UnitPoint(x: 0.5, y: 0),
                         endPoint: UnitPoint(x: 0.5, y: 1.04)
@@ -343,7 +343,7 @@ struct TopHabitCardView: View {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(width: 20.64, height: 20.48)
-                    .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+                    .background(Color.ractangleColor)
                     .cornerRadius(4)
                 if let image = habit.icon {
                     Image(image)
@@ -379,7 +379,7 @@ struct TopHabitCardView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 7.36)
                 .inset(by: 0.16)
-                .stroke(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2), lineWidth: 0.32)
+                .stroke(Color.ractangleColor.opacity(0.2), lineWidth: 0.3)
             
         )
     }

@@ -18,7 +18,7 @@ struct DailyHabitsCellView: View {
                     Rectangle()
                       .foregroundColor(.clear)
                       .frame(width: 51.471, height: 51.072)
-                      .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+                      .background(Color.ractangleColor)
                       .cornerRadius(9.2)
                     
                     Image(habit.icon ?? "apple")
@@ -49,7 +49,7 @@ struct DailyHabitsCellView: View {
                     Rectangle()
                         .foregroundStyle(color)
                       .frame(width: 51.471, height: 51.072)
-                      .background(Color(red: 0.61, green: 0.64, blue: 0.69).opacity(0.2))
+                      .background(Color.ractangleColor)
                       .cornerRadius(9.2)
 
                     Image("check")
