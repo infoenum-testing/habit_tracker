@@ -51,3 +51,18 @@ extension Date {
         return formatter.string(from: self)
     }
 }
+
+extension Date {
+    var monthDayStacked: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d" // "Jan 12"
+        let formatted = formatter.string(from: self)
+        
+        // Split into "Jan" and "12"
+        let parts = formatted.split(separator: " ")
+        if parts.count == 2 {
+            return "\(parts[0])\n\(parts[1])" // "Jan\n12"
+        }
+        return formatted
+    }
+}

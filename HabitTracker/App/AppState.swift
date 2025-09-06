@@ -352,7 +352,7 @@ extension AppDataStore {
         let calendar = Calendar.current
         let weekStart = Date().startOfWeek
         return (0..<7).compactMap {
-            calendar.date(byAdding: .day, value: $0, to: weekStart)?.shortWeekday
+            calendar.date(byAdding: .day, value: $0, to: weekStart)?.monthDayStacked
         }
     }
 }
