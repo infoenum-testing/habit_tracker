@@ -2,7 +2,7 @@
 //  SubscribedHabit+CoreDataClass.swift
 //  HabitTracker
 //
-//  Created by IE14 on 28/08/25.
+//  Created by Mayur Shrivas on 28/08/25.
 //
 //
 

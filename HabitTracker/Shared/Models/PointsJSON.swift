@@ -2,7 +2,7 @@
 //  PointsJSON.swift
 //  HabitTracker
 //
-//  Created by IE14 on 04/09/25.
+//  Created by Mayur Shrivas on 04/09/25.
 //
 
 

@@ -2,16 +2,14 @@
 //  DayPill.swift
 //  HabitTracker
 //
-//  Created by IE14 on 22/08/25.
+//  Created by Mayur Shrivas on 22/08/25.
 //
 
 import Foundation
 import SwiftUI
 
 struct DayPill: View {
-    //@EnvironmentObject var state: AppState
    
-   //@State var days : [Date] = []
     var day: Int = 1
     let isSelected: Bool
     let isPast: Bool
@@ -33,8 +31,5 @@ struct DayPill: View {
                 RoundedRectangle(cornerRadius: 25).stroke(isSelected ? .white : .white.opacity(0.7) , lineWidth: isSelected ? 2 : 1)
             }
         )
-        .onAppear {
-            // days = state.selectedDate.fiveDayWindow()
-        }
     }
 }
