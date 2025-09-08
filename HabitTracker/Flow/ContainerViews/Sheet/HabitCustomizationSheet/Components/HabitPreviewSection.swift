@@ -15,7 +15,7 @@ import SwiftUI
     var habit: HabitTemplate
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Text("Preview Habit")
+            Text(StringConstants.Sheet.previewHabit)
                 .font(Font.sfPro(size: 16, weight: .medium))
                 .foregroundColor(.white)
             

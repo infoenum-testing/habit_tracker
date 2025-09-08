@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18ABE1212E6C438C004E9FDB /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1202E6C438C004E9FDB /* SectionTitle.swift */; };
 		18ABE1272E6C47F2004E9FDB /* EmptyArcCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1262E6C47F2004E9FDB /* EmptyArcCardView.swift */; };
+		18ABE1292E6C545D004E9FDB /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE1282E6C545D004E9FDB /* StringConstants.swift */; };
 		18FA5D232E6055E60069590C /* HabitEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA5D222E6055E60069590C /* HabitEditSheet.swift */; };
 		18FAA6CA2E66BCDD003907AA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6C92E66BCDD003907AA /* FlowLayout.swift */; };
 		18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CB2E66D392003907AA /* ExpandableText.swift */; };
@@ -143,6 +144,7 @@
 		18ABE1222E6C43DA004E9FDB /* DailyPerformanceGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPerformanceGrid.swift; sourceTree = "<group>"; };
 		18ABE1242E6C4412004E9FDB /* WeeklyPerformanceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPerformanceSection.swift; sourceTree = "<group>"; };
 		18ABE1262E6C47F2004E9FDB /* EmptyArcCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyArcCardView.swift; sourceTree = "<group>"; };
+		18ABE1282E6C545D004E9FDB /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		18FA5D222E6055E60069590C /* HabitEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditSheet.swift; sourceTree = "<group>"; };
 		18FAA6C92E66BCDD003907AA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		18FAA6CB2E66D392003907AA /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
@@ -281,6 +283,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18ABE12B2E6C54A1004E9FDB /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				18ABE1282E6C545D004E9FDB /* StringConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		18FA5D252E6062E00069590C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				EB9E25692E6EAAC2003FC30D /* InitialDataLoader */,
+				18ABE12B2E6C54A1004E9FDB /* Constants */,
 				EB96E8762E65A7CF005399A8 /* Alert */,
 				EB96E8732E65A3FE005399A8 /* Toast */,
 				EB0363762E5C75CD002A1D52 /* SwipeManager */,
@@ -1158,6 +1169,7 @@
 				EB96E8782E65A7E6005399A8 /* AlertPresenter.swift in Sources */,
 				E983A34B2E5D9C3C001AC952 /* RoundBackButton.swift in Sources */,
 				E983A33F2E5D9BB8001AC952 /* HabitTrackerDataBase.xcdatamodeld in Sources */,
+				18ABE1292E6C545D004E9FDB /* StringConstants.swift in Sources */,
 				E983A3402E5D9BB8001AC952 /* CoreDataManager.swift in Sources */,
 				EB4CCB9A2E57197300F76945 /* SettingsRow.swift in Sources */,
 				B7A3CC2A2E50FDCC00674792 /* ItemType.swift in Sources */,

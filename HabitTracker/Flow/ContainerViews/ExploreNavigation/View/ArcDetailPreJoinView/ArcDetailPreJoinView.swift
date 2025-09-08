@@ -21,13 +21,13 @@ struct ArcDetailPreJoinView: View {
         if !truncated {
             return ""
         } else {
-            return self.expanded ? "less" : "more"
+            return self.expanded ? StringConstants.ExploreNavigation.less : StringConstants.ExploreNavigation.more
         }
     }
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Image("card")
+            Image(StringConstants.Image.card)
                 .resizable()
                 .scaledToFill()
                 .frame(height: UIScreen.main.bounds.height * 0.35)
@@ -52,7 +52,7 @@ struct ArcDetailPreJoinView: View {
                                 dismiss()
                             })
                             Spacer()
-                            RoundBackButton(icon: "shareIcon", backgroundColor: .black.opacity(0.65), action: {
+                            RoundBackButton(icon: StringConstants.Image.shareIcon, backgroundColor: .black.opacity(0.65), action: {
                                 dismiss()
                             })
                             
@@ -64,10 +64,16 @@ struct ArcDetailPreJoinView: View {
                             VStack {
                                 VStack(alignment: .leading, spacing: 8){
                                     HStack(alignment: .center) {
-                                        TextBadgeView(title: "\(arc.durationDays) Days" , icon: "timeCircle")
+                                        TextBadgeView(
+                                            title: "\(arc.durationDays) \(StringConstants.ExploreNavigation.days)",
+                                            icon: StringConstants.Image.timeCircle
+                                        )
                                             .background(Color.white)
                                             .cornerRadius(20)
-                                        TextBadgeView(title: "\(arc.habitsData?.count ?? 0) Habits" ,icon: "arc")
+                                        TextBadgeView(
+                                            title: "\(arc.habitsData?.count ?? 0) \(StringConstants.ExploreNavigation.habits)",
+                                            icon: StringConstants.Image.arc
+                                        )
                                             .background(Color.white)
                                             .cornerRadius(20)
                                     }
@@ -101,7 +107,7 @@ struct ArcDetailPreJoinView: View {
                                 VStack(alignment: .leading) {
                                     
                                     VStack(alignment: .leading, spacing: 18) {
-                                        Text("Daily Habits")
+                                        Text(StringConstants.ExploreNavigation.dailyHabits)
                                             .font(Font.sfPro(size: 17, weight: .medium))
                                             .multilineTextAlignment(.center)
                                             .foregroundColor(.white)
@@ -127,11 +133,11 @@ struct ArcDetailPreJoinView: View {
                     .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
                 }
                 
-                ShareProgressButton(title: "Join arc",buttonAction: {
+                ShareProgressButton(title: StringConstants.ExploreNavigation.joinArc, buttonAction: {
                     appdata.subscribe(to: arc) { result in
                         switch result {
                         case .success(_):
-                            alertMessage = "You have successfully subscribed to the arc."
+                            alertMessage = StringConstants.Aleart.youHaveSuccesfully
                             isShowAlert = true
                             
                         case .failure(let error):

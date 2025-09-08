@@ -31,11 +31,11 @@ struct ExploreSection: View {
                     onViewAll()
                 } label: {
                     HStack(spacing: 2) {
-                        Text("View All")
+                        Text(StringConstants.ExploreNavigation.viewAll)
                             .font(Font.sfPro(size: 16, weight: .medium))
                             .foregroundColor(.white)
                         
-                        Image("chevron-right-small")
+                        Image(StringConstants.Image.chevronRightSmall)
                             .frame(width: 28, height: 28)
                     }
                 }

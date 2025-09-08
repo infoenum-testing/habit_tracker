@@ -33,7 +33,7 @@ struct EditArcSheet: View {
                     isPresented = false
                 }) {
                     HStack {
-                        Image("arrow-left")
+                        Image(StringConstants.Image.arrowLeft)
                             .font(.title3)
                             .padding(8)
                             .foregroundStyle(.white)
@@ -44,7 +44,7 @@ struct EditArcSheet: View {
                 
                
                 Spacer()
-                Text("Edit Arc")
+                Text(StringConstants.Sheet.editArc)
                     .font(.headline)
                 Spacer()
                 Color.clear.frame(width: 30)
@@ -53,7 +53,7 @@ struct EditArcSheet: View {
             
             // Change Theme Section
             VStack(alignment: .leading, spacing: 12) {
-                Text("Change Theme")
+                Text(StringConstants.Sheet.changeTheme)
                     .font(.sfProDisplay(.semibold, size: 18))
                     .padding()
                 
@@ -73,7 +73,7 @@ struct EditArcSheet: View {
                                 )
                             
                             if color == selectedColor {
-                                Image("check")
+                                Image(StringConstants.Image.check)
                                     .resizable()
                                     .frame(width: 30, height: 30)
                                     .foregroundColor(.white)
@@ -81,10 +81,8 @@ struct EditArcSheet: View {
                         }
                         .onTapGesture {
                             selectedColor = color
-                            print("Selected color: \(color)")
                              
                             appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: color) { _ in
-                                print("Arc color updated successfully")
                                 dismiss()
                             }
                         }
@@ -101,11 +99,11 @@ struct EditArcSheet: View {
                 showConfirmation = true
             } label: {
                 HStack {
-                    Image("circleBan")
+                    Image(StringConstants.Image.circleBan)
                         .resizable()
                         .frame(width: 24, height: 24)
                         .padding(.leading, 15)
-                    Text("End Arc")
+                    Text(StringConstants.Sheet.endArc)
                         .font(.sfProDisplay(.medium, size: 20))
                         .foregroundColor(.appRed)
                     Spacer()
@@ -127,7 +125,7 @@ struct EditArcSheet: View {
             })
             .sheet(isPresented: $showConfirmation) {
                 EndArcConfirmationSheet(isPresented: $showConfirmation,
-                                        arcName: "Gut Health Arc")
+                                        arcName: StringConstants.Sheet.gutHealthArc)
                     .presentationDetents([.height(500)])
                     .presentationCornerRadius(24)
                     .presentationBackground {

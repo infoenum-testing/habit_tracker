@@ -32,13 +32,13 @@ struct ArcsView: View {
             VStack(spacing: 5) {
                 // Title
                 HStack {
-                    Text(isArc ? "Arcs" : "Habits")
+                    Text(isArc ? StringConstants.ExploreNavigation.arcs : StringConstants.ExploreNavigation.habits)
                         .foregroundColor(.white)
                         .font(Font.sfPro(size: 23, weight: .medium))
                         .padding(.leading)
                     
                     if isArc {
-                        Image("arc")
+                        Image(StringConstants.Image.arc)
                             .resizable()
                             .foregroundStyle(Color.appPearlWhite)
                             .frame(width: 20,height: 20)
@@ -72,7 +72,7 @@ struct ArcsView: View {
                 subtitle: arc.descriptionText ?? "",
                 days: "\(arc.durationDays)",
                 habits: "\(arc.habitList.count)",
-                imageName: "card",
+                imageName: StringConstants.Image.card,
                 color: arc.colorToken ?? ""
             )
             .rotationEffect(.degrees(index == 0 ? -8 : 12))

@@ -15,12 +15,12 @@ struct EmptyArcCardView: View {
     var body: some View {
         VStack(spacing: 12) {
             VStack {
-                Text("You haven't completed any Arcs yet.")
+                Text(StringConstants.Account.youHaveNotCompleted)
                     .font(.headline)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
                 
-                Text("When you subscribe and complete an Arc it will show here.")
+                Text(StringConstants.Account.whenYouSubscribe)
                     .font(.subheadline)
                     .foregroundColor(.gray.opacity(0.6))
                     .multilineTextAlignment(.center)

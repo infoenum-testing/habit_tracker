@@ -10,11 +10,11 @@ import SwiftUI
 
 struct WeeklyPerformanceView: View {
     private let values: [CGFloat] = [100, 50, 25, 100, 75, 40, 15]
-    private let days  = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+    private let days  = [StringConstants.Account.monday,StringConstants.Account.tuesday,StringConstants.Account.wednesday,StringConstants.Account.thursday,StringConstants.Account.friday,StringConstants.Account.saturday,StringConstants.Account.sunday]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Weekly Performance")
+            Text(StringConstants.Account.weeklyPerformance)
                 .font(.subheadline)
                 .bold()
                 .padding(.bottom)

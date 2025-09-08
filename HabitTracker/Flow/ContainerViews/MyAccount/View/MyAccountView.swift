@@ -45,6 +45,21 @@ struct MyAccountView: View {
                                 }
                                 .padding(.horizontal, 10)
                             }
+                            .padding(.horizontal, 8)
+                        }
+                        
+                    }
+                    VStack(spacing: 14) {
+                        SettingsRow(imageName: StringConstants.Image.notifications,
+                                    title: StringConstants.Account.notifications,
+                                    background: .appDarkGray) {
+                            print("Notifications tapped")
+                        }
+                        
+                        SettingsRow(imageName: StringConstants.Image.profile,
+                                    title: StringConstants.Account.accountSetting,
+                                    background: .appDarkGray) {
+                            print("Account Settings tapped")
                         }
                         
                         VStack(spacing: 14) {

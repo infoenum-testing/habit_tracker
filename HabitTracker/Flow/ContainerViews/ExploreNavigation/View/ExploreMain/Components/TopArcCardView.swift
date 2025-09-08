@@ -29,7 +29,7 @@ struct TopArcCardView: View {
             VStack(alignment: .leading, spacing: 4) {
                 if days != "" {
                     HStack {
-                        Text("\(days) Days")
+                        Text("\(days) \(StringConstants.ExploreNavigation.days)")
                             .foregroundColor(.white)
                             .font(Font.inter(size: 3))
                             .padding(.horizontal, 3)

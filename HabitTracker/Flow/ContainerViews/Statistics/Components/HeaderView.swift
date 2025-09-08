@@ -11,7 +11,7 @@ struct HeaderView: View {
     var body: some View {
         HStack {
             Spacer()
-            Text("Statistics")
+            Text(StringConstants.Statistic.statistics)
                 .font(.sfProDisplay(.semibold, size: 22))
             Spacer()
         }

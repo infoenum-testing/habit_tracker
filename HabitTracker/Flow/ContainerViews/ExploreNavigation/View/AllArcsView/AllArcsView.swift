@@ -13,7 +13,12 @@ struct AllArcsView: View {
     @EnvironmentObject var appData: AppDataStore
     @Environment(\.dismiss) private var dismiss
     @State private var selectedCategory: String = "All"
-    private let categories = ["All", "Health", "Mentality", "Lifestyle"]
+    private let categories = [
+        StringConstants.ExploreNavigation.all,
+        StringConstants.ExploreNavigation.health,
+        StringConstants.ExploreNavigation.mentality,
+        StringConstants.ExploreNavigation.lifestyle
+    ]
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -83,7 +88,7 @@ struct AllArcsView: View {
             if filteredArcs.isEmpty {
                 VStack {
                     Spacer()
-                    Text("No arcs found")
+                    Text(StringConstants.ExploreNavigation.noArcsFound)
                         .font(Font.sfPro(size: 20, weight: .medium))
                         .foregroundColor(.white.opacity(0.6))
                     Spacer()
