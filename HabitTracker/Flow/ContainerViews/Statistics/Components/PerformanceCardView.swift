@@ -13,7 +13,7 @@ struct PerformanceCardView: View {
     let title: String
     let score: Int
     let delta: Int
-    let width : CGFloat = UIScreen.main.bounds.width / 2.3
+    let width : CGFloat = UIScreen.main.bounds.width / 2 - 30
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {

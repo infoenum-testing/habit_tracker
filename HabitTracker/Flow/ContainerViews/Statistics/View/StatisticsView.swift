@@ -26,11 +26,13 @@ struct StatisticsView: View {
                     
                     WeeklyPerformanceSection()
                 }
+                .padding(.horizontal,20)
             }
             .padding(.top,20)
             .edgesIgnoringSafeArea(.bottom)
             .background(Color.sheetBackground)
             .cornerRadius(36, corners: [.topLeft, .topRight])
+           
                
         }
         .background(Color.black.ignoresSafeArea())

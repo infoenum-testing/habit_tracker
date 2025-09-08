@@ -14,7 +14,7 @@ struct DailyPerformanceGrid: View {
 
     var body: some View {
         if let stats = appData.todayStatistics {
-            LazyVGrid(columns: columns, spacing: 16) {
+            LazyVGrid(columns: columns, spacing: 10) {
                 PerformanceCardView(
                     iconName: StringConstants.Image.discipline,
                     title: StringConstants.Statistic.discipline,
