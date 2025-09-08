@@ -36,10 +36,10 @@ struct ArcRowList: View {
                         }
                     },
                     content: {
-                VStack(spacing: 0) {
-                    HStack(spacing: 12) {
-                        IconBadge(icon: icon, tint: color, height: 48, width: 48)
-                            .padding(.leading)
+                VStack(spacing: 5) {
+                    HStack(spacing: 10) {
+                        IconBadge(icon: icon, tint: color, height: 50, width: 50)
+                            .padding(.leading,10)
                         
                         VStack(alignment: .leading, spacing: 2) {
                             HStack {
@@ -64,7 +64,7 @@ struct ArcRowList: View {
                             completed: arc.completedTasksToday,
                             total: arc.wrappedHabitsCount
                         )
-                        .padding(.trailing)
+                        .padding(.trailing,10)
                     }
                     .frame(height: 70)
                     
@@ -77,7 +77,7 @@ struct ArcRowList: View {
                         )
                         .frame(height: 100)
                         .padding(.horizontal, 10)
-                        .padding(.bottom, 10)
+                        //.padding(.bottom, 10)
                     }
                 }
                 .background(

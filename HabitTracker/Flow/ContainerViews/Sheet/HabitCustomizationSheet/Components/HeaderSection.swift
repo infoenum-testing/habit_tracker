@@ -16,7 +16,7 @@ import SwiftUI
             RoundBackButton(backgroundColor: .black.opacity(0.65)) {
                 dismiss()
             }
-            .padding(.top, 20)
+            .padding(.top, 10)
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(habit.title ?? "")

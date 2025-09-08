@@ -19,7 +19,7 @@ struct EndArcConfirmationSheet: View {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(width: 100, height: 5)
-                .background(.white.opacity(0.2))
+                .background(.white.opacity(0.11))
                 .cornerRadius(3)
             
             ZStack(alignment: .top) {

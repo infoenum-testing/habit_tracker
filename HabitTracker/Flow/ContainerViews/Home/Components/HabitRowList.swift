@@ -35,13 +35,13 @@ struct HabitRowList: View {
             content: {
                 VStack(spacing: 0) {
                     // Header row (always visible)
-                    HStack(spacing: 12) {
+                    HStack(spacing: 10) {
                         IconBadge(icon: habit.wrappedIcon, tint: color.opacity(0.3))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.appGray, lineWidth: 1)
                             )
-                            .padding(.leading)
+                            .padding(.leading,10)
                         VStack(alignment: .leading, spacing: 2) {
                             Text(habit.wrappedTitle)
                                 .font(.sfProDisplay(.semibold, size: 16))
@@ -59,7 +59,7 @@ struct HabitRowList: View {
 
                             appData.toggleHabit(habit.wrappedId, in: subArc)
                         }
-                        .padding(.trailing)
+                        .padding(.trailing,10)
                         
                     }
                     .frame(height: 70)
@@ -69,7 +69,7 @@ struct HabitRowList: View {
                         GridTileView(itemType: .habit, values: habit.dailyOpacities, selectedColor: color)
                             .frame(height: 100)
                             .padding(.horizontal, 10)
-                            .padding(.bottom, 10)
+                            //.padding(.bottom, 10)
                     }
                 }
                 .frame(maxWidth: .infinity)

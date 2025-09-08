@@ -20,6 +20,16 @@ struct HabitCustomizationSheet: View {
         
         ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Spacer()
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 100, height: 5)
+                        .background(.white.opacity(0.11))
+                        .cornerRadius(3)
+                        .padding(.vertical)
+                    Spacer()
+                }
                 ScrollView(showsIndicators: false) {
                     HeaderSection(dismiss: dismiss, habit: habit)
                     DashedLine()
@@ -50,7 +60,7 @@ struct HabitCustomizationSheet: View {
                         }
                         
                     }
-                    .padding(.top, 26)
+                    .padding(.top, 25)
                     .padding(.horizontal, 20)
                 }
                 .toast(isShown: $appData.showToast, title: "", message: appData.toastMessage, type: appData.toastType, alignment: .bottom)

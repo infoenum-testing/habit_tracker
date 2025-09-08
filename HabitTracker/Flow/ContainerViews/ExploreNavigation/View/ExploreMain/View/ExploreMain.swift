@@ -74,7 +74,7 @@ struct ExploreMain: View {
         .sheet(item: $selectedHabit) { habit in
             HabitCustomizationSheet(habit: habit)
                 .presentationDetents([.large])
-                .presentationDragIndicator(.visible)
+                //.presentationDragIndicator(.visible)
                 .presentationCornerRadius(45)
         }
     }

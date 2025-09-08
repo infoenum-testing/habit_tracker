@@ -40,28 +40,16 @@ struct AllHabitsView: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            
             VStack(alignment: .center, spacing: 19) {
-                HStack {
-                    HStack(alignment: .center, spacing: 8) {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Image(StringConstants.Image.arrowLeft)
-                                .foregroundColor(.white)
-                                .frame(width: 25, height: 25)
-                        }
+                HStack(alignment: .center, spacing: 18) {
+                    RoundBackButton(){
+                        dismiss()
                     }
-                    .padding(10)
-                    .background(.white.opacity(0.07))
-                    .cornerRadius(55)
-                    
-                    Spacer()
-                    
-                    Text(StringConstants.ExploreNavigation.habits)
-                        .font(Font.sfPro(size: 29, weight: .medium))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                    HStack(spacing: 4) {
+                        Text(StringConstants.ExploreNavigation.habits)
+                            .font(Font.sfPro(size: 29, weight: .medium))
+                            .foregroundColor(Color.appPearlWhite)
+                    }
                     
                     Spacer()
                     Color.clear.frame(width: 24, height: 24)
@@ -125,7 +113,6 @@ struct AllHabitsView: View {
         .sheet(item: $selectedHabit) { habit in
             HabitCustomizationSheet(habit: habit)
                 .presentationDetents([.large])
-                .presentationDragIndicator(.visible)
                 .presentationCornerRadius(45)
         }
     }

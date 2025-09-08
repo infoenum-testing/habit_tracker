@@ -21,6 +21,6 @@ struct IconBadge: View {
                 .foregroundStyle(.white)
                 .frame(width: width, height: height)
         }
-        .frame(width: 48, height: 48)
+        .frame(width: 50, height: 50)
     }
 }
