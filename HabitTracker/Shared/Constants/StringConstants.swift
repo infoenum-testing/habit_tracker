@@ -49,6 +49,7 @@ internal struct StringConstants {
         static let selectedGraphTab = "selectedGraphTab"
         static let profileTab = "profileTab"
         static let selectedProfileTab = "selectedProfileTab"
+        static let arrowRight = "arrowRight"
         
     }
     
@@ -66,6 +67,8 @@ internal struct StringConstants {
         static let less = "less"
         static let more = "more"
         static let days = "Days"
+        static let daySingular = "Day"
+        static let dayPlural = "Days"
         static let habits = "Habits"
         static let dailyHabits = "Daily Habits"
         static let joinArc = "Join arc"
@@ -73,6 +76,8 @@ internal struct StringConstants {
         static let noArcsFound = "No arcs found"
         static let arcs = "Arcs"
         static let Habits = "Habits"
+        static let habitSingular = "Habit"
+        static let habitPlural = "Habits"
         static let viewAll = "View All"
         static let trendingArcs = "Trending Arcs"
         static let trendingHabits = "Trending Habits"
@@ -124,5 +129,19 @@ internal struct StringConstants {
         static let noStatistics = "No statistics yet"
         static let dailyPerformance = "Daily Performance"
         static let weeklyPerformance = "Weekly Performance"
+    }
+    
+    
+    struct ArcDetail {
+        static let challengeText = "Days Challenge"
+            static let shareIcon = "shareIcon"
+            static let widgetIcon = "widget"
+            static let shareProgress = "Share Progress"
+            static let addWidget = "Add Widget"
+            static let arcDeleted = "This arc has been deleted."
+            static let close = "Close"
+            static let reminderTitle = "Reminder"
+            static let reminderMessage = "You have not completed habit yet. Please complete the habit before end by today."
+            static let ok = "OK"
     }
 }

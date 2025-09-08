@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ArcDetailView: View {
     @Environment(\.dismiss) private var dismiss
-    // @EnvironmentObject var state: AppState
     @EnvironmentObject var appData: AppDataStore
     @EnvironmentObject var navigation: NavigationRouter
     @State private var showAlert = false
@@ -56,7 +55,7 @@ struct ArcDetailView: View {
                                 Text(arc.wrappedTitle)
                                     .font(.sfProDisplay(.semibold, size: 35))
                                     .foregroundColor(.white)
-                                Text("\(arc.wrappedDurationDays) Days Challenge")
+                                Text("\(arc.wrappedDurationDays) \(StringConstants.ArcDetail.challengeText)")
                                     .font(.sfProDisplay(.medium, size: 16))
                                     .foregroundColor(.textGray)
                             }
@@ -71,13 +70,13 @@ struct ArcDetailView: View {
                         }
                         
                         HStack {
-                            ShareProgressButton(height: 50 ,imageName: "shareIcon", title: "Share Progress") {
+                            ShareProgressButton(height: 50 ,imageName: StringConstants.ArcDetail.shareIcon, title: StringConstants.ArcDetail.shareProgress,  buttonAction:  {
                                 // handle share action
-                            }
+                            }, shouldShowArrow: false)
                             
-                            ShareProgressButton(height: 50 ,imageName: "widget", title: "Add Widget") {
+                            ShareProgressButton(height: 50 ,imageName: StringConstants.ArcDetail.widgetIcon, title: StringConstants.ArcDetail.addWidget, buttonAction: {
                                 // handle share action
-                            }
+                            }, shouldShowArrow: false)
                         }
                         .padding(.horizontal)
                         .padding(.top)
@@ -106,10 +105,10 @@ struct ArcDetailView: View {
             } else {
                 // Fallback when arc no longer exists
                 VStack {
-                    Text("This arc has been deleted.")
+                    Text(StringConstants.ArcDetail.arcDeleted)
                         .foregroundColor(.red)
                         .padding()
-                    Button("Close") { dismiss() }
+                    Button(StringConstants.ArcDetail.close) { dismiss() }
                         .padding()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -131,10 +130,10 @@ struct ArcDetailView: View {
                 checkArcStatus(for: arc)
             }
         }
-        .alert("Reminder", isPresented: $showAlert) {
-            Button("OK", role: .cancel) { }
+        .alert(StringConstants.ArcDetail.reminderTitle, isPresented: $showAlert) {
+            Button(StringConstants.ArcDetail.ok, role: .cancel) { }
         } message: {
-            Text("You have not completed habit yet. Please complete the habit before end by today.")
+            Text(StringConstants.ArcDetail.reminderMessage)
         }
         
     }
@@ -153,121 +152,4 @@ struct ArcDetailView: View {
         }
     }
 
-}
-
-
-
-
-struct CircularArcProgressView: View {
-    var progress: Double
-    var tint: Color
-    
-    var body: some View {
-        ZStack {
-            // Base circle
-            Circle()
-                .stroke(Color(UIColor.appGray), lineWidth: 12)
-            
-            // Progress circle with animation
-            Circle()
-                .trim(from: 0, to: progress)
-                .stroke(
-                    tint,
-                    style: StrokeStyle(lineWidth: 12, lineCap: .round)
-                )
-                .rotationEffect(.degrees(-90)) // start at top
-                .animation(.easeInOut(duration: 0.6), value: progress) // animate
-            
-            // Center icon
-            Image("star")
-                .resizable()
-                .frame(width: 80, height: 80)
-        }
-        .frame(width: 135, height: 135)
-    }
-}
-
-
-
-
-import SwiftUI
-
-struct ShareProgressButton: View {
-    var height: CGFloat = 60
-    var imageName: String?
-    var title: String
-    var buttonAction: () -> Void
-    var body: some View {
-        Button(action: {
-            buttonAction()
-        }) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .fill(Color(white: 0.85))
-                    .frame(height: height)
-                    .offset(y: 4)
-
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .fill(Color.white)
-                    .frame(height: height)
-                HStack(spacing: 5) {
-                    if let imageName = imageName {
-                        Image(imageName)
-                    }
-                    Text(title)
-                        .font(Font.sfPro(size: 16, weight: .semibold))
-                }
-                .foregroundColor(.black)
-            }
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-}
-
-struct ShareProgressButton_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            ShareProgressButton(imageName: "shareIcon", title: "Share Progress" ,buttonAction: {
-                // handle share action
-            })
-        }
-    }
-}
-
-
-
-struct DayStripView: View {
-    let arc: SubscribedArc
-    let width: CGFloat = UIScreen.main.bounds.width / 5 - 10
-    
-    private var visibleDays: [Int?] {
-        let total = arc.wrappedDurationDays
-        let current = arc.currentDayIndex
-        
-        // Always want 5 slots around the current day
-        let start = current - 2
-        let end = current + 2
-        
-        return (start...end).map { day in
-            (day >= 1 && day <= total) ? day : nil
-        }
-    }
-    
-    var body: some View {
-        HStack {
-            ForEach(Array(visibleDays.enumerated()), id: \.offset) { _, day in
-                if let day = day {
-                    DayPill(
-                        day: day,
-                        isSelected: (day == arc.currentDayIndex),
-                        isPast: day < arc.currentDayIndex
-                    )
-                } else {
-                    Color.clear
-                        .frame(width: width, height: 90)
-                }
-            }
-        }
-    }
 }

@@ -11,7 +11,6 @@ struct ArcCardCell: View {
     
     let arc: ArcTemplate
     
-    
     var body: some View {
         
         GeometryReader { geo in
@@ -22,7 +21,6 @@ struct ArcCardCell: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.size.width, height: geo.size.width)
                     .clipped()
-                
                 
                 // Content overlay
                 VStack(alignment: .leading) {
@@ -36,7 +34,7 @@ struct ArcCardCell: View {
                                     .frame(width: 10, height: 10)
                                     .foregroundColor(.white)
 
-                                Text("\(arc.durationDays) \(StringConstants.ExploreNavigation.days)")
+                                Text("\(arc.durationDays) \(arc.durationDays == 1 ? StringConstants.ExploreNavigation.daySingular : StringConstants.ExploreNavigation.dayPlural)")
                                     .foregroundColor(.white)
                                     .font(Font.inter(size: 10))
                                     .lineLimit(1)
@@ -56,7 +54,8 @@ struct ArcCardCell: View {
                                         .frame(width: 10, height: 10)
                                         .foregroundColor(.white)
 
-                                    Text("\(count) \(StringConstants.ExploreNavigation.days)")
+                                    Text("\(count) \(count == 1 ? StringConstants.ExploreNavigation.habitSingular : StringConstants.ExploreNavigation.habitPlural)")
+
                                         .foregroundColor(.white)
                                         .font(Font.inter(size: 10))
                                         .lineLimit(1)

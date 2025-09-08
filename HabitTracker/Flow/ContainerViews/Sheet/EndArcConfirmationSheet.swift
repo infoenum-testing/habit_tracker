@@ -90,7 +90,7 @@ struct EndArcConfirmationSheet: View {
             
             ShareProgressButton(title: StringConstants.Common.cancel, buttonAction: {
                 dismiss()
-            })
+            }, shouldShowArrow: false)
             .padding(.horizontal)
             .padding(.top, 10)
         }
