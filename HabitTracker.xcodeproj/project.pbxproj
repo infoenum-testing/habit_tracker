@@ -38,7 +38,6 @@
 		B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBF02E50FDCC00674792 /* IconBadge.swift */; };
 		B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBF12E50FDCC00674792 /* LayoutToggle.swift */; };
 		B7A3CC202E50FDCC00674792 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBF22E50FDCC00674792 /* ProgressBar.swift */; };
-		B7A3CC212E50FDCC00674792 /* ToggleChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBF32E50FDCC00674792 /* ToggleChip.swift */; };
 		B7A3CC222E50FDCC00674792 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBF52E50FDCC00674792 /* Color+Extensions.swift */; };
 		B7A3CC232E50FDCC00674792 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBF62E50FDCC00674792 /* Date+Extensions.swift */; };
 		B7A3CC242E50FDCC00674792 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBF72E50FDCC00674792 /* Font+Extensions.swift */; };
@@ -184,7 +183,6 @@
 		B7A3CBF02E50FDCC00674792 /* IconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconBadge.swift; sourceTree = "<group>"; };
 		B7A3CBF12E50FDCC00674792 /* LayoutToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutToggle.swift; sourceTree = "<group>"; };
 		B7A3CBF22E50FDCC00674792 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		B7A3CBF32E50FDCC00674792 /* ToggleChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleChip.swift; sourceTree = "<group>"; };
 		B7A3CBF52E50FDCC00674792 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		B7A3CBF62E50FDCC00674792 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		B7A3CBF72E50FDCC00674792 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
@@ -477,7 +475,6 @@
 				B7A3CBF02E50FDCC00674792 /* IconBadge.swift */,
 				B7A3CBF12E50FDCC00674792 /* LayoutToggle.swift */,
 				B7A3CBF22E50FDCC00674792 /* ProgressBar.swift */,
-				B7A3CBF32E50FDCC00674792 /* ToggleChip.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1158,7 +1155,6 @@
 				EBB753362E6C497800B457C0 /* EmptyArcCardView.swift in Sources */,
 				18FAA6CA2E66BCDD003907AA /* FlowLayout.swift in Sources */,
 				B7A3CC202E50FDCC00674792 /* ProgressBar.swift in Sources */,
-				B7A3CC212E50FDCC00674792 /* ToggleChip.swift in Sources */,
 				B7A3CC222E50FDCC00674792 /* Color+Extensions.swift in Sources */,
 				EB9E25762E6EE505003FC30D /* CircularArcProgressView.swift in Sources */,
 				E98E379F2E58A89E003244AA /* ArcCardCell.swift in Sources */,
