@@ -27,6 +27,7 @@ struct StatisticsView: View {
                     WeeklyPerformanceSection()
                 }
                 .padding(.horizontal,20)
+                .padding(.bottom,10)
             }
             .padding(.top,20)
             .edgesIgnoringSafeArea(.bottom)

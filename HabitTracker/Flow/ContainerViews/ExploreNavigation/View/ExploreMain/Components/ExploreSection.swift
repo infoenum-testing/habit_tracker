@@ -41,7 +41,7 @@ struct ExploreSection: View {
                 }
             }
             
-            LazyVGrid(columns: columns, spacing: 16) {
+            LazyVGrid(columns: columns, spacing: 15) {
                 
                 if isHabitSection {
                     ForEach(appData.allHabits.prefix(4), id: \.id) { habit in
