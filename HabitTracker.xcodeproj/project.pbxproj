@@ -97,6 +97,9 @@
 		EB96E8722E658720005399A8 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96E8712E658715005399A8 /* AppColors.swift */; };
 		EB96E8752E65A409005399A8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96E8742E65A405005399A8 /* Toast.swift */; };
 		EB96E8782E65A7E6005399A8 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96E8772E65A7E5005399A8 /* AlertPresenter.swift */; };
+		EB9E256B2E6EAACD003FC30D /* InitialDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E256A2E6EAACB003FC30D /* InitialDataLoader.swift */; };
+		EB9E256D2E6EABA9003FC30D /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E256C2E6EAB9F003FC30D /* View+Extension.swift */; };
+		EB9E25702E6EABFA003FC30D /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E256F2E6EABF9003FC30D /* RoundedCorner.swift */; };
 		EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */; };
 		EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */; };
 		EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */; };
@@ -229,6 +232,9 @@
 		EB96E8712E658715005399A8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		EB96E8742E65A405005399A8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		EB96E8772E65A7E5005399A8 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		EB9E256A2E6EAACB003FC30D /* InitialDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialDataLoader.swift; sourceTree = "<group>"; };
+		EB9E256C2E6EAB9F003FC30D /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		EB9E256F2E6EABF9003FC30D /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		EBAA203E2E4DBEE7001503D8 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArcSheet.swift; sourceTree = "<group>"; };
 		EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndArcConfirmationSheet.swift; sourceTree = "<group>"; };
@@ -460,6 +466,7 @@
 		B7A3CBF82E50FDCC00674792 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EB9E256C2E6EAB9F003FC30D /* View+Extension.swift */,
 				B7A3CBF52E50FDCC00674792 /* Color+Extensions.swift */,
 				B7A3CBF62E50FDCC00674792 /* Date+Extensions.swift */,
 				B7A3CBF72E50FDCC00674792 /* Font+Extensions.swift */,
@@ -504,6 +511,7 @@
 		B7A3CC022E50FDCC00674792 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EB9E256E2E6EABED003FC30D /* RoundedCorner */,
 				B7A3CC012E50FDCC00674792 /* Enums */,
 			);
 			path = Utilities;
@@ -512,6 +520,7 @@
 		B7A3CC032E50FDCC00674792 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EB9E25692E6EAAC2003FC30D /* InitialDataLoader */,
 				EB96E8762E65A7CF005399A8 /* Alert */,
 				EB96E8732E65A3FE005399A8 /* Toast */,
 				EB0363762E5C75CD002A1D52 /* SwipeManager */,
@@ -802,6 +811,22 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		EB9E25692E6EAAC2003FC30D /* InitialDataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				EB9E256A2E6EAACB003FC30D /* InitialDataLoader.swift */,
+			);
+			path = InitialDataLoader;
+			sourceTree = "<group>";
+		};
+		EB9E256E2E6EABED003FC30D /* RoundedCorner */ = {
+			isa = PBXGroup;
+			children = (
+				EB9E256F2E6EABF9003FC30D /* RoundedCorner.swift */,
+			);
+			path = RoundedCorner;
+			sourceTree = "<group>";
+		};
 		EBAA20352E4DBEE7001503D8 = {
 			isa = PBXGroup;
 			children = (
@@ -1033,6 +1058,7 @@
 				EB96E8752E65A409005399A8 /* Toast.swift in Sources */,
 				EB1A87B92E6034F000EE0CEB /* ArcProgress+CoreDataProperties.swift in Sources */,
 				EBB753412E6C542400B457C0 /* Rule.swift in Sources */,
+				EB9E256D2E6EABA9003FC30D /* View+Extension.swift in Sources */,
 				EB1A87BC2E6034F000EE0CEB /* SubscribedHabit+CoreDataProperties.swift in Sources */,
 				EB1A87BD2E6034F000EE0CEB /* SubscribedHabit+CoreDataClass.swift in Sources */,
 				EB1A87BE2E6034F000EE0CEB /* ArcProgress+CoreDataClass.swift in Sources */,
@@ -1048,6 +1074,7 @@
 				EBB753452E6C548D00B457C0 /* HabitData.swift in Sources */,
 				E98D71D12E6040820090AB40 /* DailyHabitsCellView.swift in Sources */,
 				B7A3CC102E50FDCC00674792 /* HabitRowList.swift in Sources */,
+				EB9E25702E6EABFA003FC30D /* RoundedCorner.swift in Sources */,
 				EB4CCBA22E571D4800F76945 /* PerformanceCardView.swift in Sources */,
 				B7A3CC112E50FDCC00674792 /* HomeHeader.swift in Sources */,
 				E983A3512E5D9C81001AC952 /* TextBadgeView.swift in Sources */,
@@ -1061,6 +1088,7 @@
 				E98E37972E587076003244AA /* HabitCardCellView.swift in Sources */,
 				B7A3CC152E50FDCC00674792 /* PlaceholderView.swift in Sources */,
 				EBB7533A2E6C508D00B457C0 /* HeaderView.swift in Sources */,
+				EB9E256B2E6EAACD003FC30D /* InitialDataLoader.swift in Sources */,
 				EBE960102E618ECE005B318B /* HabitProgress+CoreDataClass.swift in Sources */,
 				EBE960112E618ECE005B318B /* HabitProgress+CoreDataProperties.swift in Sources */,
 				EBCBD1C32E69DB180031D5F6 /* ArcJSON.swift in Sources */,

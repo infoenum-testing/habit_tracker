@@ -13,17 +13,20 @@ struct ArcCardView: View {
     let date: String
     let icon : String
     let iconColor: Color
-    let width : CGFloat = UIScreen.main.bounds.width / 2.3
-    let height : CGFloat = UIScreen.main.bounds.width / 2.3
+    let width : CGFloat = UIScreen.main.bounds.width / 2 - 40
+    let height : CGFloat = UIScreen.main.bounds.width / 2 - 40
+    
 
     var body: some View {
+        let innerHeight: CGFloat = width * (110.0 / 180.0)
+        let nestedSize: CGFloat = width * (60.0 / 180.0)
         ZStack {
             VStack {
                 // 1st layer: background large card
                 Spacer()
                 VStack {
                     // 2nd layer: background small card
-                } .frame(height: 110)
+                } .frame(height: innerHeight)
                     .frame(maxWidth: .infinity)
                     .background(.white)
                     .cornerRadius(15)
@@ -38,7 +41,7 @@ struct ArcCardView: View {
                 Image(icon)
                     .resizable()
                     .foregroundStyle(iconColor)
-                    .frame(width: 60, height: 60)
+                    .frame(width: nestedSize, height: nestedSize)
                     .shadow(radius: 5)
                     .padding(.top, 10)
                 Text(title)
