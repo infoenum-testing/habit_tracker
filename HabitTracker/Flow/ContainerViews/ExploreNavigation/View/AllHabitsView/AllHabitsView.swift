@@ -43,10 +43,12 @@ struct AllHabitsView: View {
                             dismiss()
                         }) {
                             Image("arrow-left")
+                                .resizable()
                                 .foregroundColor(.white)
+                                .frame(width: 25, height: 25)
                         }
                     }
-                    .padding(10.8)
+                    .padding(10)
                     .background(.white.opacity(0.07))
                     .cornerRadius(55)
                     

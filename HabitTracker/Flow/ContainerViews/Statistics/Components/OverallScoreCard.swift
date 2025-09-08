@@ -74,7 +74,7 @@ struct OverallScoreCard: View {
                         Image("whiteCircleFilled")
                             .resizable()
                             .frame(width: 80, height: 80)
-                            .offset(x: 5, y: 5)
+                            .offset(x: 0, y: 3)
                     }
                     .frame(height: 130)
                     //.offset(x: 15, y: 15)
@@ -84,7 +84,7 @@ struct OverallScoreCard: View {
                         .scaledToFit()
                         .frame(height: 130)
                         .offset(x: 15, y: 15)
-                }.frame(height: 130)
+                }.frame(width: UIScreen.main.bounds.width / 2 ,  height: 130)
             }
             .padding()
 

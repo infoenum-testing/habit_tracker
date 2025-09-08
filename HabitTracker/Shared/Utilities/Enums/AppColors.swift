@@ -17,10 +17,10 @@ struct AppColors {
     static let beige = "color.Beige"
     static let brown = "color.gold"
     static let gold = "color.Cyan"
-    static let gray = "color.gray"
+    static let grey = "color.grey"
 
     static let all: [String] = [
         green, purple, red, orange, yellow,
-        blue, pink, darkBlue, beige, brown, gold, gray
+        blue, pink, darkBlue, beige, brown, gold, grey
     ]
 }
