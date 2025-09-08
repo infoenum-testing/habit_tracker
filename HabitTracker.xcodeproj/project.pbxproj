@@ -546,6 +546,7 @@
 				B7A3CBFA2E50FDCC00674792 /* MockData */,
 				B7A3CBFE2E50FDCC00674792 /* Models */,
 				B7A3CC022E50FDCC00674792 /* Utilities */,
+				E98EDF7A2E5C432B00E42196 /* Extension */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -555,7 +556,6 @@
 			children = (
 				E983A3432E5D9BC2001AC952 /* Navigation */,
 				E983A33D2E5D9BB8001AC952 /* CoreData */,
-				E98EDF7A2E5C432B00E42196 /* Extension */,
 				B7A3CBC12E50FDCC00674792 /* App */,
 				B7A3CBDD2E50FDCC00674792 /* Flow */,
 				B7A3CBDF2E50FDCC00674792 /* LifeCycle */,
