@@ -12,6 +12,7 @@ struct StatisticsView: View {
     @EnvironmentObject var appData: AppDataStore
     var body: some View {
         VStack {
+            VStack {
             HeaderView()
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
@@ -26,9 +27,9 @@ struct StatisticsView: View {
                     
                     WeeklyPerformanceSection()
                 }
-                .padding(.horizontal,20)
                 .padding(.bottom,10)
-            }
+            }.padding(.horizontal,20)
+        }
             .padding(.top,20)
             .edgesIgnoringSafeArea(.bottom)
             .background(Color.sheetBackground)

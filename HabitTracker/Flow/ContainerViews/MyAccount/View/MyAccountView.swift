@@ -24,7 +24,7 @@ struct MyAccountView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Text(StringConstants.Account.completedArcs)
                             .font(.sfProDisplay(.medium, size: 19))
-                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .completed }
+                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .completed || $0.arcStatus == .lateCompleted }
                         
                         if completedHistories.isEmpty {
                             EmptyArcCardView()
@@ -39,7 +39,7 @@ struct MyAccountView: View {
                                     ForEach(appState.allHistories, id: \.id) { badge in
                                         let color = ColorToken.from(string: badge.color ?? "white")
                                         let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
-                                        if let status = badge.arcStatus, status == ArcStatus.completed {
+                                        if let status = badge.arcStatus, status == ArcStatus.completed || status == ArcStatus.lateCompleted {
                                             ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completedAt?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
                                         }
                                     }
@@ -50,27 +50,28 @@ struct MyAccountView: View {
                         }
                         
                     }
+                    .padding(.bottom, 8)
                     
-                        
-                        VStack(spacing: 14) {
-                            SettingsRow(imageName: StringConstants.Image.notifications,
-                                        title: StringConstants.Account.notifications,
-                                        background: .appDarkGray) {
-                                print("Notifications tapped")
-                            }
-                            
-                            SettingsRow(imageName: StringConstants.Image.profile,
-                                        title: StringConstants.Account.accountSetting,
-                                        background: .appDarkGray) {
-                                print("Account Settings tapped")
-                            }
-                            
-                            SettingsRow(imageName: StringConstants.Image.share,
-                                        title: StringConstants.Account.termsOfService,
-                                        background: .clear) {
-                                print("Terms of Service tapped")
-                            }
+                    
+                    VStack(spacing: 14) {
+                        SettingsRow(imageName: StringConstants.Image.notifications,
+                                    title: StringConstants.Account.notifications,
+                                    background: .appDarkGray) {
+                            print("Notifications tapped")
                         }
+                        
+                        SettingsRow(imageName: StringConstants.Image.profile,
+                                    title: StringConstants.Account.accountSetting,
+                                    background: .appDarkGray) {
+                            print("Account Settings tapped")
+                        }
+                        
+                        SettingsRow(imageName: StringConstants.Image.share,
+                                    title: StringConstants.Account.termsOfService,
+                                    background: .clear) {
+                            print("Terms of Service tapped")
+                        }
+                    }
                 }
                 .padding(.horizontal, 20)
             }.padding(.top,20)
