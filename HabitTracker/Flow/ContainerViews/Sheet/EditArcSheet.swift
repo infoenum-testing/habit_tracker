@@ -16,18 +16,19 @@ struct EditArcSheet: View {
     @EnvironmentObject var appData: AppDataStore
     let arcId: String = ""
     let habitId: String = ""
-
+    
     
     private let colorsArray: [String] = AppColors.all
     
     var body: some View {
         VStack(spacing: 10) {
             Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 100, height: 5)
-              .background(.white.opacity(0.2))
-              .cornerRadius(3)
-              .padding(.vertical)
+                .foregroundColor(.clear)
+                .frame(width: 100, height: 5)
+                .background(.white.opacity(0.2))
+                .cornerRadius(3)
+                .padding(.vertical)
+            
             HStack {
                 Button(action: {
                     isPresented = false
@@ -42,7 +43,7 @@ struct EditArcSheet: View {
                         .cornerRadius(20)
                 }
                 
-               
+                
                 Spacer()
                 Text(StringConstants.Sheet.editArc)
                     .font(.headline)
@@ -81,13 +82,14 @@ struct EditArcSheet: View {
                         }
                         .onTapGesture {
                             selectedColor = color
-                             
+                            
                             appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: color) { _ in
                                 dismiss()
                             }
                         }
                     }
                 }
+                
             }
             .padding(.horizontal)
             
@@ -117,20 +119,20 @@ struct EditArcSheet: View {
             .padding(.horizontal)
             .padding(.bottom, 20)
         }.ignoresSafeArea()
-        
-            .onAppear(perform: {
+            .task {
                 if let arc = appData.selectedArctoDelete {
                     selectedColor = arc.wrappedThemeColor
                 }
-            })
+            }
+        
             .sheet(isPresented: $showConfirmation) {
                 EndArcConfirmationSheet(isPresented: $showConfirmation,
                                         arcName: StringConstants.Sheet.gutHealthArc)
-                    .presentationDetents([.height(500)])
-                    .presentationCornerRadius(24)
-                    .presentationBackground {
-                        Color(UIColor.systemBackground)
-                    }
+                .presentationDetents([.height(500)])
+                .presentationCornerRadius(24)
+                .presentationBackground {
+                    Color(UIColor.systemBackground)
+                }
             }
             .onChange(of: navigation.dismissAllSheets, perform: { newValue in
                 dismiss()
@@ -142,6 +144,6 @@ struct EditArcSheet: View {
 struct EditArcSheet_Previews: PreviewProvider {
     static var previews: some View {
         EditArcSheet(isPresented: .constant(true))
-            .preferredColorScheme(.dark) 
+            .preferredColorScheme(.dark)
     }
 }

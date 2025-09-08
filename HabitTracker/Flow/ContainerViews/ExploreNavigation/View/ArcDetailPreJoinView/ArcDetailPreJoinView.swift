@@ -60,7 +60,7 @@ struct ArcDetailPreJoinView: View {
                         .padding(.horizontal, 20)
                         .padding(.top, 70)
                         
-                        ScrollView {
+                        ScrollView(showsIndicators: false) {
                             VStack {
                                 VStack(alignment: .leading, spacing: 8){
                                     HStack(alignment: .center) {
@@ -79,9 +79,17 @@ struct ArcDetailPreJoinView: View {
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     
-                                    Text(arc.title ?? "")
-                                        .font(Font.sfPro(size: 38, weight: .semibold))
-                                        .foregroundStyle(Color.white)
+//                                    Text(arc.title ?? "")
+//                                        .font(Font.sfPro(size: 38, weight: .semibold))
+//                                        .foregroundStyle(Color.white)
+                                    
+                                    if let title = arc.title {
+                                        Text(arcFormatted: title, fontSize: 38)
+                                            .foregroundStyle(Color.white)
+                                    } else {
+                                        Text(arcFormatted: "Arc Title")
+                                            .foregroundStyle(Color.white)
+                                    }
                                     
                                     
                                     VStack(alignment: .leading) {
@@ -118,7 +126,7 @@ struct ArcDetailPreJoinView: View {
                                     
                                     VStack(alignment: .leading, spacing: 13) {
                                         ForEach(arc.habitList) { habit in
-                                            ArcDailyHabitsCellView( habit: habit, color: ColorToken.from(string: arc.colorToken ?? "blue"))
+                                            ArcDailyHabitsCellView( habit: habit, color: .white)
                                         }
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)

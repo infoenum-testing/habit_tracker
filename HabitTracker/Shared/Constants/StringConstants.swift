@@ -60,7 +60,7 @@ internal struct StringConstants {
         static let changeTheme = "Change Theme"
         static let gutHealthArc = "Gut Health Arc"
         static let previewHabit = "Preview Habit"
-        static let saveHabit = "Save habit"
+        static let saveHabit = "Save Habit"
     }
     
     struct ExploreNavigation {

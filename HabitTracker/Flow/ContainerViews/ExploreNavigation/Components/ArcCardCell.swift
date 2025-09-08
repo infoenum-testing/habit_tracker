@@ -76,10 +76,17 @@ struct ArcCardCell: View {
                     
                     Spacer()
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(arc.title ?? "")
-                            .multilineTextAlignment(.leading)
-                            .font(Font.inter(size: 18, weight: .semibold))
-                            .foregroundColor(.white.opacity(0.75))
+                        
+                        if let title = arc.title {
+                            Text(arcFormatted: title, fontSize: 18)
+                                .multilineTextAlignment(.leading)
+                                .font(Font.inter(size: 18, weight: .semibold))
+                                .foregroundColor(.white.opacity(0.75))
+                        }
+//                        Text(arc.title ?? "")
+//                            .multilineTextAlignment(.leading)
+//                            .font(Font.inter(size: 18, weight: .semibold))
+//                            .foregroundColor(.white.opacity(0.75))
                         
                         Text(arc.shortSubtitle ?? "")
                             .multilineTextAlignment(.leading)

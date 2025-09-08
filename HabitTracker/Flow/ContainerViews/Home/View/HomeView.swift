@@ -23,10 +23,23 @@ struct HomeView: View {
                     .padding(.horizontal,20)
                 DateStrip()
                     .padding(.top, 4)
-                Text("Todays Tasks")
-                    .font(.sfProDisplay(.medium, size: 17))
-                    .foregroundStyle(.white)
-                    .padding(.vertical, 10)
+                HStack {
+                    Text("Todays Habits")
+                        .font(.sfProDisplay(.medium, size: 16))
+                        .foregroundStyle(.white)
+                        .minimumScaleFactor(0.8)
+                        
+                    Spacer()
+                    Text(Date().fullWeekday)
+                        .font(.sfProDisplay(.medium, size: 16))
+                        .foregroundStyle(.white)
+                        .minimumScaleFactor(0.8)
+                    Text(Date().monthDayYear)
+                        .font(.sfProDisplay(.medium, size: 16))
+                        .foregroundStyle(.white.opacity(0.40))
+                        .minimumScaleFactor(0.8)
+                    
+                }.padding(.vertical, 10)
                     .padding(.horizontal,20)
                 
                 if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {

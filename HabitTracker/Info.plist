@@ -12,9 +12,12 @@
 		<string>SF-Pro-Display-Regular.otf</string>
 		<string>SF-Pro-Display-Bold.otf</string>
 		<string>SF-Pro-Display-Black.otf</string>
+		<string>SF-Pro-Display-Semibold-Italic.otf</string>
+		<string>SF-Pro-Display-RegularItalic.otf</string>
 		<string>Inter_18pt-Bold.ttf</string>
 		<string>Inter_18pt-Regular.ttf</string>
 		<string>Inter_18pt-SemiBold.ttf</string>
+		<string>OpenSans-SemiBoldItalic.ttf</string>
 	</array>
 </dict>
 </plist>

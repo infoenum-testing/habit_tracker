@@ -66,3 +66,17 @@ extension Date {
         return formatted
     }
 }
+
+extension Date {
+    var fullWeekday: String {
+        let f = DateFormatter()
+        f.dateFormat = "EEEE" // Saturday
+        return f.string(from: self)
+    }
+    
+    var monthDayYear: String {
+           let f = DateFormatter()
+           f.dateFormat = "MMMM d, yyyy" // August 9, 2025
+           return f.string(from: self)
+       }
+}

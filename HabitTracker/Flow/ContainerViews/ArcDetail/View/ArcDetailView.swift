@@ -52,9 +52,16 @@ struct ArcDetailView: View {
                                 .padding()
                             
                             VStack(alignment: .center, spacing: 6) {
-                                Text(arc.wrappedTitle)
-                                    .font(.sfProDisplay(.semibold, size: 35))
+//                                Text(arc.wrappedTitle)
+//                                    .font(.sfProDisplay(.semibold, size: 35))
+//                                    .foregroundColor(.white)
+                               
+                                    Text(arcFormatted: arc.wrappedTitle, fontSize: 35)
                                     .foregroundColor(.white)
+                                        
+                               
+                                
+                                
                                 Text("\(arc.wrappedDurationDays) \(StringConstants.ArcDetail.challengeText)")
                                     .font(.sfProDisplay(.medium, size: 16))
                                     .foregroundColor(.textGray)

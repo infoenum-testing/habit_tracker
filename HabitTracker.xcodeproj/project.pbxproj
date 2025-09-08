@@ -105,6 +105,11 @@
 		EB9E25762E6EE505003FC30D /* CircularArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E25752E6EE503003FC30D /* CircularArcProgressView.swift */; };
 		EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */; };
 		EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */; };
+		EBAF59BF2E6F11C90037FA36 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF59BE2E6F11C10037FA36 /* String+Extension.swift */; };
+		EBAF59C12E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBAF59C02E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf */; };
+		EBAF59C32E6F15CA0037FA36 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */; };
+		EBAF59C52E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBAF59C42E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf */; };
+		EBAF5A012E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBAF59EA2E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf */; };
 		EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */; };
 		EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */; };
 		EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */; };
@@ -244,6 +249,11 @@
 		EBAA203E2E4DBEE7001503D8 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArcSheet.swift; sourceTree = "<group>"; };
 		EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndArcConfirmationSheet.swift; sourceTree = "<group>"; };
+		EBAF59BE2E6F11C10037FA36 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		EBAF59C02E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold-Italic.otf"; sourceTree = "<group>"; };
+		EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
+		EBAF59C42E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
+		EBAF59EA2E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -441,6 +451,7 @@
 		B7A3CBE82E50FDCC00674792 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EBAF59C62E6F1B0D0037FA36 /* OpenSans */,
 				E98EDF762E5C428300E42196 /* inter */,
 				B7A3CBE22E50FDCC00674792 /* SF-Pro-Display-Black.otf */,
 				B7A3CBE32E50FDCC00674792 /* SF-Pro-Display-Bold.otf */,
@@ -448,6 +459,8 @@
 				B7A3CBE52E50FDCC00674792 /* SF-Pro-Display-Medium.otf */,
 				B7A3CBE62E50FDCC00674792 /* SF-Pro-Display-Regular.otf */,
 				B7A3CBE72E50FDCC00674792 /* SF-Pro-Display-Semibold.otf */,
+				EBAF59C02E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf */,
+				EBAF59C42E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -482,6 +495,8 @@
 		B7A3CBF82E50FDCC00674792 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */,
+				EBAF59BE2E6F11C10037FA36 /* String+Extension.swift */,
 				EB9E256C2E6EAB9F003FC30D /* View+Extension.swift */,
 				B7A3CBF52E50FDCC00674792 /* Color+Extensions.swift */,
 				B7A3CBF62E50FDCC00674792 /* Date+Extensions.swift */,
@@ -860,6 +875,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EBAF59C62E6F1B0D0037FA36 /* OpenSans */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF59EA2E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			path = OpenSans;
+			sourceTree = "<group>";
+		};
 		EBB7531A2E6C437500B457C0 /* ExploreMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -1039,13 +1062,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBAF59C12E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf in Resources */,
 				EBB66A152E5DC41500638C9B /* initialData.json in Resources */,
+				EBAF59C52E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				E98EDF772E5C428300E42196 /* Inter_18pt-Regular.ttf in Resources */,
 				E98EDF782E5C428300E42196 /* Inter_18pt-Bold.ttf in Resources */,
 				E98EDF792E5C428300E42196 /* Inter_18pt-SemiBold.ttf in Resources */,
 				B7A3CC2B2E50FDCC00674792 /* Preview Assets.xcassets in Resources */,
 				B7A3CC2C2E50FDCC00674792 /* SF-Pro-Display-Black.otf in Resources */,
 				B7A3CC2D2E50FDCC00674792 /* SF-Pro-Display-Bold.otf in Resources */,
+				EBAF5A012E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				B7A3CC2E2E50FDCC00674792 /* SF-Pro-Display-Light.otf in Resources */,
 				B7A3CC2F2E50FDCC00674792 /* SF-Pro-Display-Medium.otf in Resources */,
 				B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */,
@@ -1062,6 +1088,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBB7532C2E6C463B00B457C0 /* HeaderSection.swift in Sources */,
+				EBAF59BF2E6F11C90037FA36 /* String+Extension.swift in Sources */,
 				18FA5D232E6055E60069590C /* HabitEditSheet.swift in Sources */,
 				EB4CCB9E2E571C8600F76945 /* WeeklyPerformanceView.swift in Sources */,
 				18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */,
@@ -1082,6 +1109,7 @@
 				EB1A87BD2E6034F000EE0CEB /* SubscribedHabit+CoreDataClass.swift in Sources */,
 				EB1A87BE2E6034F000EE0CEB /* ArcProgress+CoreDataClass.swift in Sources */,
 				EBB753192E6C413900B457C0 /* DashedLine.swift in Sources */,
+				EBAF59C32E6F15CA0037FA36 /* Text+Extension.swift in Sources */,
 				EB1A87BF2E6034F000EE0CEB /* SubscribedArc+CoreDataClass.swift in Sources */,
 				EB1A87C02E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift in Sources */,
 				EB1A87C02E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift in Sources */,

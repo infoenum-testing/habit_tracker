@@ -42,8 +42,14 @@ struct ArcRowList: View {
                             .padding(.leading)
                         
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(arc.arcTemplate?.title ?? "Arc Title")
-                                .font(.sfProDisplay(.semibold, size: 19))
+                            HStack {
+                                if let title = arc.arcTemplate?.title {
+                                    Text(arcFormatted: title)
+                                } else {
+                                    Text(arcFormatted: "Arc Title")
+                                }
+                            }
+
                             Text("Day \(arc.wrappedDurationDays)")
                                 .font(.sfProDisplay(.light, size: 14))
                                 .opacity(0.7)
@@ -98,3 +104,5 @@ struct ArcRowList: View {
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)
     }
 }
+
+

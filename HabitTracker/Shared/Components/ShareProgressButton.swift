@@ -32,7 +32,7 @@ struct ShareProgressButton: View {
                         Image(imageName)
                     }
                     Text(title)
-                        .font(Font.sfPro(size: 20, weight: .semibold))
+                        .font(Font.sfPro(size: 20, weight: .medium))
                     if shouldShowArrow {
                         Image(StringConstants.Image.arrowRight)
                             .resizable()

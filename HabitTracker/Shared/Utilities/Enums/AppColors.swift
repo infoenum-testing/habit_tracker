@@ -14,13 +14,13 @@ struct AppColors {
     static let blue = "color.blue"
     static let pink = "color.pink"
     static let darkBlue = "color.darkBlue"
-    static let beige = "color.Beige"
-    static let brown = "color.gold"
-    static let gold = "color.Cyan"
+    static let beige = "color.beige"
+    static let gold = "color.gold"
+    static let cyan = "color.cyan"
     static let grey = "color.grey"
 
     static let all: [String] = [
-        green, purple, red, orange, yellow,
-        blue, pink, darkBlue, beige, brown, gold, grey
+        green, red ,purple, orange, beige,
+        cyan, blue, yellow, pink, darkBlue, gold, grey
     ]
 }
