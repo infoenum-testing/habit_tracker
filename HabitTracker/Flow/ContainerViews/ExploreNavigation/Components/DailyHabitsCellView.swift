@@ -23,7 +23,7 @@ struct DailyHabitsCellView: View {
                     
                     Image(habit.icon ?? "icon.shoe")
                         .resizable()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 45, height: 45)
                         .foregroundStyle(color)
                       
                 }

@@ -22,7 +22,7 @@ struct HabitCardCellView: View {
                     
                     Image(habit.icon ?? "tooth")
                         .resizable()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 45, height: 45)
                         .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
                 }
                 .padding(.top, 20)

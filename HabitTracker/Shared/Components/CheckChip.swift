@@ -26,7 +26,7 @@ struct CheckChip: View {
                     .scaleEffect(isOn ? 1.1 : 1.0)
                     .animation(.spring(response: 0.2, dampingFraction: 0.6), value: isOn)
             }
-            .frame(width: 40, height: 40)
+            .frame(width: 45, height: 45)
         }
         .buttonStyle(.plain)
     }
