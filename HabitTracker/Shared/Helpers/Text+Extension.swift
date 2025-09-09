@@ -15,7 +15,7 @@ extension Text {
             self = Text(baseTitle)
                 .font(.sfProDisplay(.semibold, size: fontSize)) +
                 Text(" Arc")
-                .font(.openSans(.semiboldItalic, size: fontSize))
+                .font(.flowerOfNineties(.semiboldItalic, size: fontSize))
         } else {
             self = Text(string)
                 .font(.sfProDisplay(.semibold, size: fontSize))

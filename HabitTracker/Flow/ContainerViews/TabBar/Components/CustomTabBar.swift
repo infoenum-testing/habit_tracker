@@ -23,8 +23,9 @@ struct CustomTabBar: View {
         }
         //.padding(.horizontal, 20)
         .frame(maxWidth: .infinity)
-        .frame(height: 65)
+        .frame(height: 80)
         .background(.tabBackground)
+       
        
         .overlay(
                    Rectangle()

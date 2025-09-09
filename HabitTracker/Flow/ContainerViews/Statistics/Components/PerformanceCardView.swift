@@ -29,7 +29,7 @@ struct PerformanceCardView: View {
                     .background(.appGray)
                     .cornerRadius(8)
                 VStack(alignment: .leading) {
-                    Text(StringConstants.Account.archetype)
+                    Text(StringConstants.Account.arcetype)
                         .font(.sfProDisplay(.medium, size: 10))
                         .foregroundColor(.gray)
                     Text(title)

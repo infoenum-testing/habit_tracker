@@ -75,7 +75,7 @@ struct HabitEditSheet: View {
                 action: { }
             )
             
-            ShareProgressButton(title: "Save habit") {
+            ShareProgressButton(title: StringConstants.Sheet.saveHabit) {
                 if let habitId = appData.selectedHabitToDelete?.wrappedId {
                     appData.updateSubscribedHabit(
                         habitID: habitId,

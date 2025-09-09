@@ -26,7 +26,7 @@ struct OverallScoreCard: View {
                         .background(.appGray)
                         .cornerRadius(8)
                         VStack(alignment: .leading) {
-                            Text(StringConstants.Account.archetype)
+                            Text(StringConstants.Account.arcetype)
                                 .font(.sfProDisplay(.medium, size: 10))
                                 .foregroundColor(.gray)
                             Text(StringConstants.Account.overAllScore)
@@ -35,37 +35,32 @@ struct OverallScoreCard: View {
                         }
                     }
                     
-                                        
                     VStack(alignment: .leading) {
-                    HStack(alignment: .top) {
-                        Text("\(appData.grandTotals.overall)")
-                            .font(.sfProDisplay(.bold, size: 48))
-                            .minimumScaleFactor(0.5)
-                            .foregroundStyle(.white)
-                        
-                        if let overall = appData.todayStatistics?.overallTotal, overall > 0 {
-                            HStack(spacing: 4) {
-                                Text("+\(overall)")
-                                    .font(.sfProDisplay(.medium, size: 14))
-                                    .foregroundStyle(.brightGreen)
-                                Image(StringConstants.Image.arrowUpCircle)
-                                    .resizable()
-                                    .frame(width: 12, height: 12)
+                        HStack(alignment: .top) {
+                            Text("\(appData.grandTotals.overall)")
+                                .font(.sfProDisplay(.bold, size: 48))
+                                .minimumScaleFactor(0.5)
+                                .foregroundStyle(.white)
+                            
+                            if let overall = appData.todayStatistics?.overallTotal, overall > 0 {
+                                HStack(spacing: 4) {
+                                    Text("+\(overall)")
+                                        .font(.sfProDisplay(.medium, size: 14))
+                                        .foregroundStyle(.brightGreen)
+                                    Image(StringConstants.Image.arrowUpCircle)
+                                        .resizable()
+                                        .frame(width: 12, height: 12)
+                                }
+                                .frame(width: 56, height: 25)
+                                .background(Color.capsuleGreen)
+                                .cornerRadius(12)
+                                .padding(.top, 9)
                             }
-                            .frame(width: 56, height: 25)
-                            .background(Color.capsuleGreen)
-                            .cornerRadius(12)
-                            .padding(.top, 9)
                         }
-
-                        
-                        
-                    }
                         Text(StringConstants.Account.updatedDaily)
                             .font(.sfProDisplay(.regular, size: 13))
                             .foregroundColor(.gray)
-                    
-                }
+                    }
                 }
                 Spacer()
                 ZStack {
@@ -74,17 +69,17 @@ struct OverallScoreCard: View {
                         Image(StringConstants.Image.whiteCircleFilled)
                             .resizable()
                             .frame(width: 80, height: 80)
-                            .offset(x: 0, y: 3)
+                            .offset(x: 15, y: 23)
+                        Spacer()
                     }
                     .frame(height: 130)
-                    //.offset(x: 15, y: 15)
-                   // .background(.red)
                     Image(StringConstants.Image.graph)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 130)
                         .offset(x: 15, y: 15)
-                }.frame(width: UIScreen.main.bounds.width / 2 ,  height: 130)
+                        
+                }.frame(width: UIScreen.main.bounds.width / 2 - 20 ,  height: 130)
             }
             .padding()
 

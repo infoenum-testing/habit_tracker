@@ -29,10 +29,10 @@ struct WeeklyBarsCard: View {
                 BarMark(
                     x: .value(StringConstants.Account.day, item.day),
                     y: .value(StringConstants.Account.value, item.value),
-                    width: .fixed(16)
+                    width: .fixed(18)
                 )
                 .foregroundStyle(barFill)
-                .cornerRadius(6)
+                .cornerRadius(4)
             }
             .chartYScale(domain: 0...100)
             .chartXScale(domain: dayOrder)
@@ -41,8 +41,8 @@ struct WeeklyBarsCard: View {
                     AxisValueLabel {
                         if let day = value.as(String.self) {
                             Text(day)
-                                .font(.system(size: 13, weight: .medium))
-                                .foregroundStyle(Color.white)
+                                .font(.system(size: 15, weight: .semibold))
+                                .foregroundStyle(Color.white.opacity(0.8))
                                 .multilineTextAlignment(.center)
                                 
                         }
@@ -60,8 +60,8 @@ struct WeeklyBarsCard: View {
                     AxisValueLabel {
                         if let v = value.as(Double.self) {
                             Text(String(format: "%.0f", v))
-                                .font(.system(size: 13, weight: .medium))
-                                .foregroundStyle(Color.white)
+                                .font(.system(size: 15, weight: .semibold))
+                                .foregroundStyle(Color.white.opacity(0.8))
                                 
                         }
                     }

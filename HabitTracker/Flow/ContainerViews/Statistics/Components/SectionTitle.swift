@@ -16,7 +16,7 @@ struct SectionTitle: View {
 
     var body: some View {
         Text(title)
-            .font(.sfProDisplay(.medium, size: 16))
+            .font(.sfProDisplay(.medium, size: 17))
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

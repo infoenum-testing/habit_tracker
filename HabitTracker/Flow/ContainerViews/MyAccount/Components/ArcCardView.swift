@@ -22,6 +22,10 @@ struct ArcCardView: View {
         let nestedSize: CGFloat = width * (60.0 / 180.0)
         ZStack {
             VStack {
+                Text(StringConstants.Account.arcetype)
+                    .font(.sfProDisplay(.semibold, size: 10))
+                    .foregroundColor(.appSilver)
+                    .padding(.top, 10)
                 // 1st layer: background large card
                 Spacer()
                 VStack {

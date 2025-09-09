@@ -143,6 +143,7 @@
 		EBCBD1CA2E69DCD40031D5F6 /* GrandTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCBD1C92E69DCD10031D5F6 /* GrandTotals.swift */; };
 		EBE960102E618ECE005B318B /* HabitProgress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE9600E2E618ECE005B318B /* HabitProgress+CoreDataClass.swift */; };
 		EBE960112E618ECE005B318B /* HabitProgress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE9600F2E618ECE005B318B /* HabitProgress+CoreDataProperties.swift */; };
+		EBEAC21B2E6FF7DC003B8186 /* Flowers-Of-Nineties-Semibold-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBEAC21A2E6FF7DC003B8186 /* Flowers-Of-Nineties-Semibold-Italic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -284,6 +285,7 @@
 		EBCBD1C92E69DCD10031D5F6 /* GrandTotals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTotals.swift; sourceTree = "<group>"; };
 		EBE9600E2E618ECE005B318B /* HabitProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EBE9600F2E618ECE005B318B /* HabitProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBEAC21A2E6FF7DC003B8186 /* Flowers-Of-Nineties-Semibold-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Flowers-Of-Nineties-Semibold-Italic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +453,7 @@
 		B7A3CBE82E50FDCC00674792 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EBEAC2192E6FF6F5003B8186 /* FlowersOfNineties */,
 				EBAF59C62E6F1B0D0037FA36 /* OpenSans */,
 				E98EDF762E5C428300E42196 /* inter */,
 				B7A3CBE22E50FDCC00674792 /* SF-Pro-Display-Black.otf */,
@@ -1001,6 +1004,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		EBEAC2192E6FF6F5003B8186 /* FlowersOfNineties */ = {
+			isa = PBXGroup;
+			children = (
+				EBEAC21A2E6FF7DC003B8186 /* Flowers-Of-Nineties-Semibold-Italic.otf */,
+			);
+			path = FlowersOfNineties;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1077,6 +1088,7 @@
 				B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */,
 				B7A3CC312E50FDCC00674792 /* SF-Pro-Display-Semibold.otf in Resources */,
 				B7A3CC322E50FDCC00674792 /* Assets.xcassets in Resources */,
+				EBEAC21B2E6FF7DC003B8186 /* Flowers-Of-Nineties-Semibold-Italic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

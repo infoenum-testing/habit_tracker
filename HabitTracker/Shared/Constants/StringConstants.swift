@@ -104,7 +104,7 @@ internal struct StringConstants {
         static let value = "Value"
         static let lightForComparison = "Light (for comparison)"
         static let dark = "Dark"
-        static let archetype = "[archetype]"
+        static let arcetype = "[arcetype]"
         static let score = "Score"
         static let overAllScore = "Overall Score"
         static let updatedDaily = "Updated Daily"

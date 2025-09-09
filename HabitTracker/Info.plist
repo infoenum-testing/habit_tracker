@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Dark</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Display-Light.otf</string>
@@ -18,6 +16,7 @@
 		<string>Inter_18pt-Regular.ttf</string>
 		<string>Inter_18pt-SemiBold.ttf</string>
 		<string>OpenSans-SemiBoldItalic.ttf</string>
+		<string>Flowers-Of-Nineties-Semibold-Italic.otf</string>
 	</array>
 </dict>
 </plist>

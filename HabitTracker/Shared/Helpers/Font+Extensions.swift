@@ -27,29 +27,15 @@ extension Font {
         case semiboldItalic = "SFProDisplay-SemiboldItalic"
         case heavyItalic = "SFProDisplay-HeavyItalic"
         case blackItalic = "SFProDisplay-BlackItalic"
-       
     }
 }
 
 extension Font {
-    static func openSans(_ style: OpenSans, size: CGFloat) -> Font {
-        .custom(style.rawValue, size: size)
+    enum FlowerOfNineties: String {
+        case semiboldItalic = "FlowersOfNineties-SmboldItalic"
     }
 
-    enum OpenSans: String {
-        case light = "OpenSans-Light"
-        case regular = "OpenSans-Regular"
-        case medium = "OpenSans-Medium"
-        case semibold = "OpenSans-SemiBold"
-        case bold = "OpenSans-Bold"
-        case extrabold = "OpenSans-ExtraBold"
-
-        // Italic styles
-        case lightItalic = "OpenSans-LightItalic"
-        case regularItalic = "OpenSans-Italic" // OpenSans doesn't have "RegularItalic", it's just "Italic"
-        case mediumItalic = "OpenSans-MediumItalic"
-        case semiboldItalic = "OpenSans-SemiBoldItalic"
-        case boldItalic = "OpenSans-BoldItalic"
-        case extraboldItalic = "OpenSans-ExtraBoldItalic"
+    static func flowerOfNineties(_ style: FlowerOfNineties, size: CGFloat) -> Font {
+        .custom(style.rawValue, size: size)
     }
 }
