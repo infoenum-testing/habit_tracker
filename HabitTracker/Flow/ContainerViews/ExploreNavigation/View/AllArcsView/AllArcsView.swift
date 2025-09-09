@@ -75,7 +75,7 @@ struct AllArcsView: View {
                         
                             .background(
                                 selectedCategory == category ?
-                                Color.white.opacity(0.15) : Color.clear
+                                Color.white.opacity(0.07) : Color.clear
                             )
                             .foregroundColor(selectedCategory == category ?
                                              Color.white : Color.white.opacity(0.6))
@@ -96,7 +96,7 @@ struct AllArcsView: View {
                 .frame(maxWidth: .infinity)
             } else {
                 ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: columns, spacing: 16) {
+                    LazyVGrid(columns: columns, spacing: 15) {
                         ForEach(filteredArcs, id: \.id) { arc in
                             
                             Button {

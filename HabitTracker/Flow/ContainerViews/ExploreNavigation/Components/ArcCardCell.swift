@@ -96,8 +96,9 @@ struct ArcCardCell: View {
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 5)
+                    .padding(.bottom, 5)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(.ultraThinMaterial.opacity(0.5))
+                    .background(.ultraThinMaterial.opacity(0.15))
                 }
             }
             .frame(width: geo.size.width, height: geo.size.width, alignment: .center)

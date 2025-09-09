@@ -29,7 +29,7 @@ import SwiftUI
             if isSelected {
                 Image(StringConstants.Image.check)
                     .resizable()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 20, height: 18)
                     .foregroundColor(.white)
             }
         }

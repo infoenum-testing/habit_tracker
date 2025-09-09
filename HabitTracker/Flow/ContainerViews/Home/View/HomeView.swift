@@ -39,7 +39,7 @@ struct HomeView: View {
                         .foregroundStyle(.white.opacity(0.40))
                         .minimumScaleFactor(0.8)
                     
-                }.padding(.vertical, 10)
+                }.padding(.vertical, 20)
                     .padding(.horizontal,20)
                 
                 if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {
@@ -108,7 +108,7 @@ struct HomeView: View {
         }
         .sheet(isPresented: $showEditArc) {
             EditArcSheet(isPresented: $showEditArc)
-                .presentationDetents([.height(400)])
+                .presentationDetents([.height(510)])
                 .presentationCornerRadius(24)
                 .presentationBackground {
                     Color(UIColor.systemBackground)

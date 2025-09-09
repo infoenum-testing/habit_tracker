@@ -17,7 +17,7 @@ struct DailyHabitsCellView: View {
                 ZStack {
                     Rectangle()
                       .foregroundColor(.clear)
-                      .frame(width: 51, height: 51)
+                      .frame(width: 50, height: 50)
                       .background(Color.ractangleColor)
                       .cornerRadius(9)
                     
@@ -27,7 +27,7 @@ struct DailyHabitsCellView: View {
                         .foregroundStyle(color)
                       
                 }
-                .frame(width: 51, height: 51)
+                .frame(width: 50, height: 50)
                 
                 HStack(alignment: .center, spacing: 10) {
                     VStack(alignment: .center, spacing: 5) {
@@ -50,7 +50,7 @@ struct DailyHabitsCellView: View {
                 ZStack {
                     Rectangle()
                         .foregroundStyle(color)
-                      .frame(width: 51, height: 51)
+                      .frame(width: 45, height: 45)
                       .background(Color.ractangleColor)
                       .cornerRadius(9)
 
@@ -58,12 +58,12 @@ struct DailyHabitsCellView: View {
                       .frame(width: 22, height: 22)
 
                 }
-                .frame(width: 51, height: 51)
+                .frame(width: 45, height: 45)
             }
-            .padding(.leading, 11)
-            .padding(.trailing, 19)
-            .padding(.vertical, 19)
-            .frame(maxWidth: .infinity, minHeight: 73, maxHeight: 73, alignment: .leading)
+            .padding(.leading, 10)
+            .padding(.trailing, 10)
+            .padding(.vertical, 10)
+            .frame(maxWidth: .infinity, maxHeight: 65, alignment: .leading)
             .background(Color.cellBackgroundColor)
             .cornerRadius(10)
         

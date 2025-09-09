@@ -43,9 +43,12 @@ struct AppIcons {
     static let wallet = "icon.business"
     
     static let all: [String] = [
-        arc, calendar, camera, check, clock, coins, cup, diamond, dumbell,
-        flame, fruit, hand, hat, leaf, lightbulb, lotus, mic, moon, music,
-        paint, pen, phone, pill, rocket, shield, shoe, smile, star, sunrise,
-        tooth, verified, wallet
+        tooth, cup , fruit , dumbell, shoe, lotus, moon , leaf,
+        pill, wallet ,paint , lightbulb , flame , hat , mic, calendar,
+        phone, coins , camera, music , smile, shield , pen , sunrise,
+        verified, check , rocket , star , clock , diamond , arc , hand
     ]
 }
+
+
+

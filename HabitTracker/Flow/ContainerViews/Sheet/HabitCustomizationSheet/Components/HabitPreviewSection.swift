@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - Habit Preview
- struct HabitPreviewSection: View {
+struct HabitPreviewSection: View {
     var color: Color
     var icon: String
     var habit: HabitTemplate
@@ -18,8 +18,7 @@ import SwiftUI
             Text(StringConstants.Sheet.previewHabit)
                 .font(Font.sfPro(size: 16, weight: .medium))
                 .foregroundColor(.white)
-            
-                        DailyHabitsCellView(habit: habit, color: color)
+            DailyHabitsCellView(habit: habit, color: color)
         }
     }
 }

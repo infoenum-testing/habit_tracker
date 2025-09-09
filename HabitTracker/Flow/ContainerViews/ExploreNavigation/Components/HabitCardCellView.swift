@@ -18,7 +18,7 @@ struct HabitCardCellView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.ractangleColor)
-                        .frame(width: 52, height: 52)
+                        .frame(width: 50, height: 50)
                     
                     Image(habit.icon ?? "tooth")
                         .resizable()
@@ -35,17 +35,17 @@ struct HabitCardCellView: View {
                     Text(habit.title ?? "")
                         .foregroundColor(.white)
                         .font(Font.inter(size: 16, weight: .semibold))
+                        .lineLimit(2)
                         .multilineTextAlignment(.leading)
-                    
+                        
                     Text(habit.details ?? "")
                         .foregroundColor(.gray)
                         .font(Font.inter(size: 12, weight: .regular))
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .leading)
-                .padding(.bottom, 10) // bottom padding
-               // Spacer()
+                .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .topLeading)
+                .padding(.bottom, 10)
             }
             .padding(.horizontal, 20)
             .frame(width: geo.size.width, height: geo.size.height)

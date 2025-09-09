@@ -61,6 +61,7 @@ internal struct StringConstants {
         static let gutHealthArc = "Gut Health Arc"
         static let previewHabit = "Preview Habit"
         static let saveHabit = "Save Habit"
+        static let saveArc = "Save Arc"
     }
     
     struct ExploreNavigation {
@@ -71,7 +72,7 @@ internal struct StringConstants {
         static let dayPlural = "Days"
         static let habits = "Habits"
         static let dailyHabits = "Daily Habits"
-        static let joinArc = "Join arc"
+        static let joinArc = "Join Arc"
         static let noHabitsFound = "No habits found"
         static let noArcsFound = "No arcs found"
         static let arcs = "Arcs"

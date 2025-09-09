@@ -23,12 +23,13 @@ struct TopArcCardView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(maxWidth: .infinity)
-                .frame(height: 85)
-                .clipped()            
+                .frame(height: 80)
+                .clipped()
             // Overlay content
             VStack(alignment: .leading, spacing: 4) {
                 if days != "" {
                     HStack {
+                        Spacer()
                         Text("\(days) \(StringConstants.ExploreNavigation.days)")
                             .foregroundColor(.white)
                             .font(Font.inter(size: 3))
@@ -37,6 +38,7 @@ struct TopArcCardView: View {
                             .background(Color.black.opacity(0.75))
                             .cornerRadius(5)
                             .fixedSize(horizontal: true, vertical: false)
+                            .padding(.trailing, 4)
                         Text("\(habits) Habits")
                             .foregroundColor(.white)
                             .font(Font.inter(size: 3))
@@ -45,20 +47,26 @@ struct TopArcCardView: View {
                             .background(Color.black.opacity(0.75))
                             .cornerRadius(5)
                             .fixedSize(horizontal: true, vertical: false)
+                        Spacer()
                     }
-                    .padding(.bottom)
                 }
-                Text(title)
-                    .foregroundColor(.white)
-                    .font(Font.sfPro(size: 7, weight: .semibold))
                 
-                Text(subtitle)
-                    .foregroundColor(.gray)
-                    .font(Font.sfPro(size: 5, weight: .regular))
-                    .lineLimit(2)
-                    .multilineTextAlignment(.leading)
+                Spacer()
+                
+                    VStack(alignment: .leading) {
+                        Text(title)
+                            .foregroundColor(.white)
+                            .font(Font.sfPro(size: 7, weight: .semibold))
+                        Text(subtitle)
+                            .foregroundColor(.white)
+                            .font(Font.sfPro(size: 5, weight: .regular))
+                            .lineLimit(2)
+                            .multilineTextAlignment(.leading)
+                    
+                }
+                    .background(.ultraThinMaterial.opacity(0.15))
             }
-            .padding()
+            .padding(8)
         }
         .frame(width: 80, height: 80)
         .background(Color.cellBackgroundColor)

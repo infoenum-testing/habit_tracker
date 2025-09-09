@@ -29,7 +29,7 @@ struct IconGridView: View {
                             .opacity(iconName == icon ? 1 : 0)
                         Image(iconName)
                             .resizable()
-                            .frame(width: 32, height: 32)
+                            .frame(width: 35, height: 35)
                             .foregroundColor(iconName == icon ? .white : color)
                             
                     }

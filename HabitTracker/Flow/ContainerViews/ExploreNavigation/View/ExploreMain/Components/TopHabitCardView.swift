@@ -11,7 +11,7 @@ struct TopHabitCardView: View {
     var habit: HabitTemplate
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10){
+        VStack(alignment: .leading){
             
             ZStack {
                 Rectangle()
@@ -22,17 +22,19 @@ struct TopHabitCardView: View {
                 if let image = habit.icon {
                     Image(image)
                         .resizable()
-                        .frame(width: 12, height: 12)
+                        .frame(width: 20, height: 20)
                         .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
                 }
             }
+            .padding(.bottom,5)
             
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 2) {
                 if let title = habit.title {
                     Text(title)
                         .foregroundColor(.white)
                         .font(Font.sfPro(size: 7, weight: .semibold))
+                        
                 }
                 
                 if let details = habit.details {
@@ -41,12 +43,13 @@ struct TopHabitCardView: View {
                         .font(Font.sfPro(size: 5, weight: .regular))
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .leading)
                 }
-            }
+            }.frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .leading)
             
         }
-        .padding()
-        .frame(width: 75, height: 75)
+        .padding(10)
+        .frame(width: 80, height: 80)
         .background(Color.cellBackgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .shadow(color: .black.opacity(0.6), radius: 3.6, x: -7.2, y: 9.6)

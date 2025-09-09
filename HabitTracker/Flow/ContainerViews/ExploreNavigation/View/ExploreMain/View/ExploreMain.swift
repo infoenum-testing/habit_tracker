@@ -31,7 +31,7 @@ struct ExploreMain: View {
             
             // MARK: - Scroll Content
             ScrollView {
-                VStack(spacing: 27) {
+                VStack(spacing: 25) {
                     
                     if  !appData.allArcs.isEmpty {
                         HStack(spacing: 10) {

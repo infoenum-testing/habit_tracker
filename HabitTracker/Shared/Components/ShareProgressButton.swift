@@ -22,7 +22,7 @@ struct ShareProgressButton: View {
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color(white: 0.85))
                     .frame(height: height)
-                    .offset(y: 4)
+                    .offset(y: 6)
 
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color.white)

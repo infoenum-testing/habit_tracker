@@ -17,10 +17,10 @@ import SwiftUI
     var body: some View {
         VStack(alignment: .leading, spacing: 26) {
             Text(StringConstants.Sheet.changeTheme)
-                .font(Font.sfPro(size: 16, weight: .medium))
+                .font(Font.sfPro(size: 17, weight: .medium))
                 .foregroundColor(.white)
             
-            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 16) {
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 15) {
                 ForEach(colors, id: \.self) { color in
                     ColorSelectionButton(
                         color: color,

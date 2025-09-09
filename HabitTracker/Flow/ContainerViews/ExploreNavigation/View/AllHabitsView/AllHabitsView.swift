@@ -73,7 +73,7 @@ struct AllHabitsView: View {
                             .padding(.horizontal, 20)
                             .background(
                                 selectedCategory == category ?
-                                Color.white.opacity(0.15) : Color.clear
+                                Color.white.opacity(0.07) : Color.clear
                             )
                             .foregroundColor(selectedCategory == category ?
                                              Color.white : Color.white.opacity(0.6))
@@ -93,7 +93,7 @@ struct AllHabitsView: View {
                 .frame(maxWidth: .infinity)
             } else {
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 24) {
+                    LazyVGrid(columns: columns, spacing: 15) {
                         ForEach(filteredHabits, id: \.wrappedId) { habit in
                             Button {
                                 selectedHabit = habit

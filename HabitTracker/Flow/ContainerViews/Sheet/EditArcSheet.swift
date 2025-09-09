@@ -21,79 +21,45 @@ struct EditArcSheet: View {
     private let colorsArray: [String] = AppColors.all
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(width: 100, height: 5)
                 .background(.white.opacity(0.11))
                 .cornerRadius(3)
-                .padding(.vertical)
+                .padding(.top, 10)
             
             HStack {
-                Button(action: {
+                RoundBackButton(backgroundColor: .black.opacity(0.65)) {
                     isPresented = false
-                }) {
-                    HStack {
-                        Image(StringConstants.Image.arrowLeft)
-                            .font(.title3)
-                            .padding(8)
-                            .foregroundStyle(.white)
-                    } .frame(width: 40, height: 40)
-                        .background(.white.opacity(0.1))
-                        .cornerRadius(20)
                 }
-                
                 
                 Spacer()
                 Text(StringConstants.Sheet.editArc)
                     .font(.headline)
                 Spacer()
                 Color.clear.frame(width: 30)
-            }
-            .padding(.horizontal)
+            }.frame(height: 50)
+                .padding(.vertical,10)
+                
             
             // Change Theme Section
-            VStack(alignment: .leading, spacing: 12) {
-                Text(StringConstants.Sheet.changeTheme)
-                    .font(.sfProDisplay(.semibold, size: 18))
-                    .padding()
+           
+                ColorPickerSection(
+                    colors: colorsArray,
+                    selectedColor: $selectedColor,
+                    action: { }
+                )
                 
-                // Color grid
-                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 6), spacing: 10) {
-                    ForEach(colorsArray, id: \.self) { color in
-                        ZStack {
-                            
-                            Rectangle()
-                                .fill(ColorToken.from(string: color))
-                                .frame(width: 48, height: 48)
-                                .cornerRadius(19)
-                                .padding(5)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 19)
-                                        .stroke(color == selectedColor ? Color.white : Color.clear, lineWidth: 2)
-                                )
-                            
-                            if color == selectedColor {
-                                Image(StringConstants.Image.check)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        .onTapGesture {
-                            selectedColor = color
-                            
-                            appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: color) { _ in
-                                dismiss()
-                            }
-                        }
-                    }
-                }
-                
-            }
-            .padding(.horizontal)
             
-            Spacer()
+           // Spacer()
+            
+            ShareProgressButton(title: StringConstants.Sheet.saveArc) {
+                appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: selectedColor) { _ in
+                    dismiss()
+                }
+            }
+            .padding(.vertical, 25)
             
             // End Arc button
             Button {
@@ -116,9 +82,9 @@ struct EditArcSheet: View {
                 .cornerRadius(22)
                 
             }
-            .padding(.horizontal)
-            .padding(.bottom, 20)
+            .padding(.bottom, 25)
         }.ignoresSafeArea()
+            .padding(.horizontal,20)
             .task {
                 if let arc = appData.selectedArctoDelete {
                     selectedColor = arc.wrappedThemeColor
