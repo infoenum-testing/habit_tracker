@@ -34,7 +34,6 @@ struct HabitRowList: View {
             },
             content: {
                 VStack(spacing: 0) {
-                    // Header row (always visible)
                     HStack(spacing: 10) {
                         IconBadge(icon: habit.wrappedIcon, tint: color.opacity(0.3))
                             .overlay(
@@ -50,13 +49,9 @@ struct HabitRowList: View {
                                 .opacity(0.7)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }.foregroundStyle(.white)
-                        
                         Spacer()
-                        
                         CheckChip(isOn: habit.isHabitCompleted(habit.wrappedId), tint: color) {
-                            
                             guard let subArc = appData.allSubscribedHabits.first(where: { $0.id == habit.wrappedId }) else { return }
-
                             appData.toggleHabit(habit.wrappedId, in: subArc)
                         }
                         .padding(.trailing,10)
@@ -64,12 +59,14 @@ struct HabitRowList: View {
                     }
                     .frame(height: 70)
                     
-                   //  Grid view (only visible in grid layout)
+                    //  Grid view (only visible in grid layout)
                     if appData.layout == .grid {
+                        let newWidth = (UIScreen.main.bounds.width - 40)
+                        let newHeight = newWidth * (45.0 / 187.0)
                         GridTileView(itemType: .habit, values: habit.dailyOpacities, selectedColor: color)
-                            .frame(height: 100)
+                            .frame(height: newHeight)
                             .padding(.horizontal, 10)
-                            //.padding(.bottom, 10)
+                            .padding(.bottom, 8)
                     }
                 }
                 .frame(maxWidth: .infinity)

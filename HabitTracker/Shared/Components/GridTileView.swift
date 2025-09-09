@@ -16,11 +16,12 @@ struct GridTileView: View {
     private let columnsCount = 20
     private let rowsCount = 5
     private let spacing: CGFloat = 4
-    private let gridHeight: CGFloat = 80
+    //private let gridHeight: CGFloat = 100
     
     var body: some View {
         GeometryReader { geo in
             let totalWidth = geo.size.width
+            let totalHeight = geo.size.height
             let squareSize = (totalWidth - (CGFloat(columnsCount - 1) * spacing)) / CGFloat(columnsCount)
             
             LazyVGrid(
@@ -40,10 +41,10 @@ struct GridTileView: View {
                         .frame(width: squareSize, height: squareSize)
                 }
             }
-            .frame(height: gridHeight, alignment: .top)
+            .frame(height: totalHeight, alignment: .top)
             .frame(width: totalWidth, alignment: .center)
-            .position(x: geo.size.width / 2, y: gridHeight / 2)
+            .position(x: geo.size.width / 2, y: totalHeight / 2)
         }
-        .frame(height: gridHeight)
+        //.frame(height: gridHeight)
     }
 }

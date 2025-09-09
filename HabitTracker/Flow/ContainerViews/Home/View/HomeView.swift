@@ -18,7 +18,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 0) {
-                HomeHeader()
+                HomeHeader(swipeManager: swipeManager)
                     .padding(.top, 6)
                     .padding(.horizontal,20)
                 DateStrip()

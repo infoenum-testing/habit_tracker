@@ -70,14 +70,16 @@ struct ArcRowList: View {
                     
                     
                     if state.layout == .grid {
+                        let newWidth = (UIScreen.main.bounds.width - 30)
+                        let newHeight = newWidth * (45.0 / 187.0)
                         GridTileView(
                             itemType: .arc,
                             values: arc.dailyProgressOpacities,
                             selectedColor: color
                         )
-                        .frame(height: 100)
+                        .frame(height: newHeight)
                         .padding(.horizontal, 10)
-                        //.padding(.bottom, 10)
+                        .padding(.bottom, 8)
                     }
                 }
                 .background(
