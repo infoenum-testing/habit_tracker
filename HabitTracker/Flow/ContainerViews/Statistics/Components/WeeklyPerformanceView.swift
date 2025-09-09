@@ -11,28 +11,28 @@ import SwiftUI
 struct WeeklyPerformanceView: View {
     private let values: [CGFloat] = [100, 50, 25, 100, 75, 40, 15]
     private let days  = [StringConstants.Account.monday,StringConstants.Account.tuesday,StringConstants.Account.wednesday,StringConstants.Account.thursday,StringConstants.Account.friday,StringConstants.Account.saturday,StringConstants.Account.sunday]
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(StringConstants.Account.weeklyPerformance)
                 .font(.subheadline)
                 .bold()
                 .padding(.bottom)
-
+            
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: 18)
                     .fill(Color.black.opacity(0.15))
-
+                
                 // grid & number labels
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach([100,75,50,25,0], id: \.self) { label in
                         HStack(spacing: 6) {
                             Text("\(label)")
-                                //.font(.caption2)
+                            //.font(.caption2)
                                 .font(.system(size: 12, weight: .bold))
                                 .foregroundColor(.gray)
                                 .frame(width: 30, alignment: .leading)
-
+                            
                             Rectangle()
                                 .frame(height: 1)
                                 .foregroundColor(Color.white.opacity(0.15))
@@ -42,13 +42,13 @@ struct WeeklyPerformanceView: View {
                 }
                 .padding(.horizontal, 12)
                 .padding(.top, 12)
-
+                
                 // bars + day labels
                 GeometryReader { geo in
                     let barWidth: CGFloat = 18
                     let availableWidth = geo.size.width - 60   // space for padding + y-axis labels
                     let spacing = (availableWidth - (barWidth * 7)) / 6  // spacing between 7 bars
-
+                    
                     HStack(alignment: .bottom, spacing: spacing) {
                         ForEach(0..<values.count, id: \.self) { index in
                             VStack(spacing: 4) {
@@ -58,7 +58,7 @@ struct WeeklyPerformanceView: View {
                                         width: barWidth,
                                         height: (values[index] / 100) * (geo.size.height - 40)  // leaving top/bottom insets
                                     )
-
+                                
                                 Text(days[index])
                                     .font(.system(size: 10, weight: .bold))
                                     .foregroundColor(.gray)

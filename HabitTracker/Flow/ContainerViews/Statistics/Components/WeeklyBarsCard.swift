@@ -13,7 +13,7 @@ import Charts
 struct WeeklyBarsCard: View {
     
     @EnvironmentObject var appData: AppDataStore
-
+    
     private let cardBG = Color(.graphBackground)
     private let gridLine = Color.white
     private let yLabel  = Color.white.opacity(0.70)
@@ -44,12 +44,12 @@ struct WeeklyBarsCard: View {
                                 .font(.system(size: 15, weight: .semibold))
                                 .foregroundStyle(Color.white.opacity(0.8))
                                 .multilineTextAlignment(.center)
-                                
+                            
                         }
                     }
                 }
             }
-
+            
             .chartYAxis {
                 AxisMarks(position: .leading,
                           values: Array(stride(from: 0, through: 100, by: 25))) { value in
@@ -62,12 +62,12 @@ struct WeeklyBarsCard: View {
                             Text(String(format: "%.0f", v))
                                 .font(.system(size: 15, weight: .semibold))
                                 .foregroundStyle(Color.white.opacity(0.8))
-                                
+                            
                         }
                     }
                 }
             }
-
+            
             .chartPlotStyle { plotArea in
                 plotArea
                     .background(.clear)

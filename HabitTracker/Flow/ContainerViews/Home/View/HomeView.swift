@@ -28,7 +28,7 @@ struct HomeView: View {
                         .font(.sfProDisplay(.medium, size: 16))
                         .foregroundStyle(.white)
                         .minimumScaleFactor(0.8)
-                        
+                    
                     Spacer()
                     HStack(spacing: 4) {
                         Text(Date().fullWeekday)

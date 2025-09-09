@@ -9,9 +9,9 @@ import SwiftUI
 
 struct DailyPerformanceGrid: View {
     @EnvironmentObject var appData: AppDataStore
-
+    
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 2)
-
+    
     var body: some View {
         if let stats = appData.todayStatistics {
             LazyVGrid(columns: columns, spacing: 10) {

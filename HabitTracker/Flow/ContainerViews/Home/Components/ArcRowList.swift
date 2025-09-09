@@ -19,23 +19,23 @@ struct ArcRowList: View {
         let icon = ColorToken.imageName(from: arc.wrappedThemeColor)
         SwipeableRow(
             id: arc.wrappedId,
-                    actions: {
-                        Button(action: {
-                            print("Edit tapped for \(arc.wrappedTitle)")
-                            editArcAction()
-                        }) {
-                            HStack {
-                                Image("editIcon")
-                                    .foregroundColor(.black)
-                                    .frame(width: 30, height: 30)
-                                    .padding(.leading,20)
-                                Spacer()
-                            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                        }
-                    },
-                    content: {
+            actions: {
+                Button(action: {
+                    print("Edit tapped for \(arc.wrappedTitle)")
+                    editArcAction()
+                }) {
+                    HStack {
+                        Image("editIcon")
+                            .foregroundColor(.black)
+                            .frame(width: 30, height: 30)
+                            .padding(.leading,20)
+                        Spacer()
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                }
+            },
+            content: {
                 VStack(spacing: 5) {
                     HStack(spacing: 10) {
                         IconBadge(icon: icon, tint: color, height: 50, width: 50)
@@ -49,7 +49,7 @@ struct ArcRowList: View {
                                     Text(arcFormatted: "Arc Title")
                                 }
                             }
-
+                            
                             Text("Day \(arc.wrappedDurationDays)")
                                 .font(.sfProDisplay(.light, size: 14))
                                 .opacity(0.7)

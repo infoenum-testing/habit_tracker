@@ -14,7 +14,7 @@ struct PerformanceCardView: View {
     let score: Int
     let delta: Int
     let width : CGFloat = UIScreen.main.bounds.width / 2 - 30
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack() {
@@ -25,9 +25,9 @@ struct PerformanceCardView: View {
                         .scaledToFit()
                         .padding()
                 }
-                    .frame(width: 32, height: 32)
-                    .background(.appGray)
-                    .cornerRadius(8)
+                .frame(width: 32, height: 32)
+                .background(.appGray)
+                .cornerRadius(8)
                 VStack(alignment: .leading) {
                     Text(StringConstants.Account.arcetype)
                         .font(.sfProDisplay(.medium, size: 10))
@@ -37,7 +37,7 @@ struct PerformanceCardView: View {
                         .foregroundStyle(.white)
                 }
             }.frame(maxWidth: .infinity, alignment: .leading)
-
+            
             Spacer()
             
             HStack() {
@@ -67,11 +67,11 @@ struct PerformanceCardView: View {
         .frame(width: width, height: 150)
         .background(Color(UIColor.statsBackground))
         .cornerRadius(16)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.appGray, lineWidth: 2)
-                    )
-                .padding(2)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.appGray, lineWidth: 2)
+        )
+        .padding(2)
     }
 }
 

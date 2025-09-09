@@ -13,18 +13,18 @@ struct ArcTaskRow: View {
     let arc: SubscribedArc
     let task: HabitData
     var tint: Color
-
+    
     var body: some View {
         // Precompute expensive values
         let isCompleted = arc.isHabitCompleted(task.id)
         let taskId = task.id
-
+        
         return HStack(spacing: 12) {
             IconBadge(
                 icon: task.icon,
                 tint: isCompleted ? tint : .appGray
             )
-
+            
             VStack(alignment: .leading, spacing: 2) {
                 Text(task.title)
                     .font(.sfProDisplay(.semibold, size: 16))
@@ -33,9 +33,9 @@ struct ArcTaskRow: View {
                     .opacity(0.7)
             }
             .foregroundStyle(.white)
-
+            
             Spacer()
-
+            
             CheckChip(isOn: isCompleted, tint: tint) {
                 guard let subArc = appData.allSubscribedArcs.first(where: { $0.id == arc.wrappedId }) else { return }
                 appData.toggleArcHabit(taskId, in: subArc)

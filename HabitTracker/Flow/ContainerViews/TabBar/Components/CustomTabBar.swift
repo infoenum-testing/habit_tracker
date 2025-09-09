@@ -25,13 +25,13 @@ struct CustomTabBar: View {
         .frame(maxWidth: .infinity)
         .frame(height: 80)
         .background(.tabBackground)
-       
-       
+        
+        
         .overlay(
-                   Rectangle()
-                    .frame(height: 0.5)
-                       .foregroundColor(.appGray),
-                   alignment: .top
-               )
+            Rectangle()
+                .frame(height: 0.5)
+                .foregroundColor(.appGray),
+            alignment: .top
+        )
     }
 }
