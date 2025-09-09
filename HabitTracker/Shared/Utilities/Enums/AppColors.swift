@@ -13,7 +13,7 @@ struct AppColors {
     static let yellow = "color.yellow"
     static let blue = "color.blue"
     static let pink = "color.pink"
-    static let darkBlue = "color.darkBlue"
+    static let darkBlue = "color.darkblue"
     static let beige = "color.beige"
     static let gold = "color.gold"
     static let cyan = "color.cyan"

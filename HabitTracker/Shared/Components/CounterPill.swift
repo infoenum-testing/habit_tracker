@@ -24,7 +24,7 @@ struct CounterPill: View {
         ZStack {
             // Background ring (gray)
             Circle()
-                .stroke(Color(UIColor.appGray), lineWidth: 5)
+                .stroke(.white.opacity(0.10), lineWidth: 5)
             
             // Progress ring
             Circle()

@@ -34,6 +34,7 @@ final class AppDataStore: ObservableObject {
     @Published  var showToast = false
     @Published  var toastMessage: String = ""
     @Published  var toastType: ToastType = .success
+    @Published var isColorChanged: Bool = false
 
     init() {
         refreshData()
@@ -60,6 +61,8 @@ final class AppDataStore: ObservableObject {
         let manager = CoreDataManager.shared
         allSubscribedHabits = manager.fetchSubscribedHabits()
         allSubscribedArcs = manager.fetchSubscribedArcs()
+         NotificationCenter.default.post(name: Notification.Name("UpdateColors"), object: nil)
+
     }
 
     /// 3. Refresh statistics

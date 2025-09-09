@@ -16,7 +16,6 @@ struct ArcDetailView: View {
     @State private var showEditArc = false
     @State private var showConfirmation = false
     let arcID: String
-    
     private var arc: SubscribedArc? {
         appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID })
     }
@@ -37,9 +36,7 @@ struct ArcDetailView: View {
                                 appData.selectedArctoDelete = arc
                             }
                         )
-                        
                         ScrollView(showsIndicators: false) {
-                            
                             ScrollView(.horizontal) {
                                 HStack {
                                     DayStripView(arc: arc)
@@ -47,21 +44,11 @@ struct ArcDetailView: View {
                                 .padding(5)
                             }
                             .scrollDisabled(true)
-                            
                             CircularArcProgressView(progress: arc.progress, tint: color)
                                 .padding()
-                            
                             VStack(alignment: .center, spacing: 6) {
-//                                Text(arc.wrappedTitle)
-//                                    .font(.sfProDisplay(.semibold, size: 35))
-//                                    .foregroundColor(.white)
-                               
-                                    Text(arcFormatted: arc.wrappedTitle, fontSize: 35)
+                                Text(arcFormatted: arc.wrappedTitle, fontSize: 35)
                                     .foregroundColor(.white)
-                                        
-                               
-                                
-                                
                                 Text("\(arc.wrappedDurationDays) \(StringConstants.ArcDetail.challengeText)")
                                     .font(.sfProDisplay(.medium, size: 16))
                                     .foregroundColor(.textGray)
@@ -101,16 +88,14 @@ struct ArcDetailView: View {
                 .toolbar(.hidden)
                 .sheet(isPresented: $showEditArc) {
                     EditArcSheet(isPresented: $showEditArc)
-                        .presentationDetents([.height(400)])
+                        .presentationDetents([.height(510)])
                         .presentationCornerRadius(24)
                         .presentationBackground {
                             Color(UIColor.systemBackground)
                         }
                         .preferredColorScheme(.dark)
                 }
-                
             } else {
-                // Fallback when arc no longer exists
                 VStack {
                     Text(StringConstants.ArcDetail.arcDeleted)
                         .foregroundColor(.red)
@@ -123,7 +108,6 @@ struct ArcDetailView: View {
             }
         }
         .onChange(of: appData.allSubscribedArcs) { _ in
-            // auto-dismiss if arc no longer exists
             if appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID }) == nil {
                 dismiss()
             }
@@ -142,7 +126,6 @@ struct ArcDetailView: View {
         } message: {
             Text(StringConstants.ArcDetail.reminderMessage)
         }
-        
     }
     
     private func checkArcStatus(for arc: SubscribedArc) {
@@ -155,8 +138,7 @@ struct ArcDetailView: View {
            !appData.shownAlerts.contains(arc.wrappedId) {
             
             showAlert = true
-            appData.shownAlerts.insert(arc.wrappedId) 
+            appData.shownAlerts.insert(arc.wrappedId)
         }
     }
-
 }

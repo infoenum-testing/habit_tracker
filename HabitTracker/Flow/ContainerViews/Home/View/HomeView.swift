@@ -30,16 +30,18 @@ struct HomeView: View {
                         .minimumScaleFactor(0.8)
                         
                     Spacer()
-                    Text(Date().fullWeekday)
-                        .font(.sfProDisplay(.medium, size: 16))
-                        .foregroundStyle(.white)
-                        .minimumScaleFactor(0.8)
-                    Text(Date().monthDayYear)
-                        .font(.sfProDisplay(.medium, size: 16))
-                        .foregroundStyle(.white.opacity(0.40))
-                        .minimumScaleFactor(0.8)
+                    HStack(spacing: 4) {
+                        Text(Date().fullWeekday)
+                            .font(.sfProDisplay(.medium, size: 16))
+                            .foregroundStyle(.white)
+                            .minimumScaleFactor(0.8)
+                        Text(Date().monthDayYear)
+                            .font(.sfProDisplay(.medium, size: 16))
+                            .foregroundStyle(.white.opacity(0.40))
+                            .minimumScaleFactor(0.8)
+                    }
                     
-                }.padding(.vertical, 20)
+                }.padding(.vertical, 12)
                     .padding(.horizontal,20)
                 
                 if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {
