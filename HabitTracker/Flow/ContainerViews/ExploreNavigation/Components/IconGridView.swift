@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IconGridView: View {
-   
+    
     let icons: [String] = AppIcons.all
     var color: Color
     @Binding var icon: String
@@ -17,7 +17,7 @@ struct IconGridView: View {
         VStack(alignment: .leading, spacing: 27) {
             Text(StringConstants.ExploreNavigation.changeIcon)
                 .font(Font.sfPro(size: 16, weight: .medium))
-            .foregroundColor(.white)
+                .foregroundColor(.white)
             LazyVGrid(columns: Array(repeating: GridItem(), count: 8)) {
                 ForEach(0..<icons.count, id: \.self) { index in
                     let iconName = icons[index]
@@ -31,7 +31,7 @@ struct IconGridView: View {
                             .resizable()
                             .frame(width: 35, height: 35)
                             .foregroundColor(iconName == icon ? .white : color)
-                            
+                        
                     }
                     .foregroundStyle(color)
                     .onTapGesture {

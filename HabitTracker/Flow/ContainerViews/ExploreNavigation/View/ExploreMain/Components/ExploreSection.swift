@@ -62,9 +62,6 @@ struct ExploreSection: View {
                             ArcCardCell(arc: arc)
                                 .aspectRatio(1, contentMode: .fit)
                         }
-                        
-                        
-                        
                     }
                 }
             }

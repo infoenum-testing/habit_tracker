@@ -50,6 +50,7 @@ internal struct StringConstants {
         static let profileTab = "profileTab"
         static let selectedProfileTab = "selectedProfileTab"
         static let arrowRight = "arrowRight"
+        static let xmark = "xmark"
         
     }
     
@@ -62,6 +63,12 @@ internal struct StringConstants {
         static let previewHabit = "Preview Habit"
         static let saveHabit = "Save Habit"
         static let saveArc = "Save Arc"
+    }
+    
+    struct Home {
+        static let todaysHabits = "Todays Habits"
+        static let noTaskForToday = "No tasks for today \n Add some habits or arcs to get started!"
+        
     }
     
     struct ExploreNavigation {
@@ -135,14 +142,14 @@ internal struct StringConstants {
     
     struct ArcDetail {
         static let challengeText = "Days Challenge"
-            static let shareIcon = "shareIcon"
-            static let widgetIcon = "widget"
-            static let shareProgress = "Share Progress"
-            static let addWidget = "Add Widget"
-            static let arcDeleted = "This arc has been deleted."
-            static let close = "Close"
-            static let reminderTitle = "Reminder"
-            static let reminderMessage = "You have not completed habit yet. Please complete the habit before end by today."
-            static let ok = "OK"
+        static let shareIcon = "shareIcon"
+        static let widgetIcon = "widget"
+        static let shareProgress = "Share Progress"
+        static let addWidget = "Add Widget"
+        static let arcDeleted = "This arc has been deleted."
+        static let close = "Close"
+        static let reminderTitle = "Reminder"
+        static let reminderMessage = "You have not completed habit yet. Please complete the habit before end by today."
+        static let ok = "OK"
     }
 }

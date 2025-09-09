@@ -8,20 +8,17 @@
 import SwiftUI
 
 struct ArcCardCell: View {
-    
     let arc: ArcTemplate
     
     var body: some View {
         
         GeometryReader { geo in
             ZStack {
-
                 Image(StringConstants.Image.card)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.size.width, height: geo.size.width)
                     .clipped()
-                
                 // Content overlay
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
@@ -33,7 +30,7 @@ struct ArcCardCell: View {
                                     .resizable()
                                     .frame(width: 10, height: 10)
                                     .foregroundColor(.white)
-
+                                
                                 Text("\(arc.durationDays) \(arc.durationDays == 1 ? StringConstants.ExploreNavigation.daySingular : StringConstants.ExploreNavigation.dayPlural)")
                                     .foregroundColor(.white)
                                     .font(Font.inter(size: 10))
@@ -45,7 +42,7 @@ struct ArcCardCell: View {
                             .background(Color.black.opacity(0.75))
                             .cornerRadius(20)
                             .frame(maxWidth: .infinity, alignment: .leading)
-
+                            
                             
                             if let count = arc.habitsData?.count {
                                 HStack(spacing: 5) {
@@ -53,9 +50,9 @@ struct ArcCardCell: View {
                                         .resizable()
                                         .frame(width: 10, height: 10)
                                         .foregroundColor(.white)
-
+                                    
                                     Text("\(count) \(count == 1 ? StringConstants.ExploreNavigation.habitSingular : StringConstants.ExploreNavigation.habitPlural)")
-
+                                    
                                         .foregroundColor(.white)
                                         .font(Font.inter(size: 10))
                                         .lineLimit(1)
@@ -83,11 +80,6 @@ struct ArcCardCell: View {
                                 .font(Font.inter(size: 18, weight: .semibold))
                                 .foregroundColor(.white.opacity(0.75))
                         }
-//                        Text(arc.title ?? "")
-//                            .multilineTextAlignment(.leading)
-//                            .font(Font.inter(size: 18, weight: .semibold))
-//                            .foregroundColor(.white.opacity(0.75))
-                        
                         Text(arc.shortSubtitle ?? "")
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
@@ -108,7 +100,7 @@ struct ArcCardCell: View {
                 RoundedRectangle(cornerRadius: 20)
                     .inset(by: 0.4)
                     .stroke(ColorToken.from(string: arc.colorToken ?? "white") , lineWidth: 1)
-                    
+                
             }
         }
     }

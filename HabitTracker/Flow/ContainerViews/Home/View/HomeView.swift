@@ -24,7 +24,7 @@ struct HomeView: View {
                 DateStrip()
                     .padding(.top, 4)
                 HStack {
-                    Text("Todays Habits")
+                    Text(StringConstants.Home.todaysHabits)
                         .font(.sfProDisplay(.medium, size: 16))
                         .foregroundStyle(.white)
                         .minimumScaleFactor(0.8)
@@ -47,7 +47,7 @@ struct HomeView: View {
                 if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {
                     VStack {
                         Spacer()
-                        Text("No tasks for today \n Add some habits or arcs to get started!")
+                        Text(StringConstants.Home.noTaskForToday)
                             .font(.sfProDisplay(.medium, size: 16))
                             .foregroundColor(.white.opacity(0.6))
                             .multilineTextAlignment(.center)

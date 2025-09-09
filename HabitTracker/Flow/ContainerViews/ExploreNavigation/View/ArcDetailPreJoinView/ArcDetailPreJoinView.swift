@@ -68,20 +68,16 @@ struct ArcDetailPreJoinView: View {
                                             title: "\(arc.durationDays) \(StringConstants.ExploreNavigation.days)",
                                             icon: StringConstants.Image.timeCircle
                                         )
-                                            .background(Color.white)
-                                            .cornerRadius(20)
+                                        .background(Color.white)
+                                        .cornerRadius(20)
                                         TextBadgeView(
                                             title: "\(arc.habitsData?.count ?? 0) \(StringConstants.ExploreNavigation.habits)",
                                             icon: StringConstants.Image.arc
                                         )
-                                            .background(Color.white)
-                                            .cornerRadius(20)
+                                        .background(Color.white)
+                                        .cornerRadius(20)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    
-//                                    Text(arc.title ?? "")
-//                                        .font(Font.sfPro(size: 38, weight: .semibold))
-//                                        .foregroundStyle(Color.white)
                                     
                                     if let title = arc.title {
                                         Text(arcFormatted: title, fontSize: 38)

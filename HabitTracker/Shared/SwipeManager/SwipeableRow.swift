@@ -42,7 +42,7 @@ struct SwipeableRow<Content: View, Actions: View>: View {
             
             // Main content
             content
-                
+            
                 .offset(x: currentOffset)
                 .simultaneousGesture(
                     DragGesture()

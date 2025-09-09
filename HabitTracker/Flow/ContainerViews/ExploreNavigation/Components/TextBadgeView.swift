@@ -51,13 +51,11 @@ struct TextBadgeViewForGutHealth: View {
                 .lineLimit(1)
                 .foregroundStyle(foregroundColor)
                 .font(Font.sfPro(size: 14))
-                
+            
         }
         .padding(.vertical, 8)
         .padding(.leading, 9)
         .padding(.trailing, 11)
-        
-        
     }
 }
 

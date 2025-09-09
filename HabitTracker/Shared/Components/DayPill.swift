@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct DayPill: View {
-   
+    
     var day: Int = 1
     let isSelected: Bool
     let isPast: Bool

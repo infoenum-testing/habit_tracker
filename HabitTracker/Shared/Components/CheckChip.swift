@@ -12,7 +12,7 @@ struct CheckChip: View {
     var isOn: Bool
     var tint: Color
     var tap: () -> Void
-
+    
     var body: some View {
         Button(action: tap) {
             ZStack {

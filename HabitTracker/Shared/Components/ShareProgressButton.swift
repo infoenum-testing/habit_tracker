@@ -13,7 +13,7 @@ struct ShareProgressButton: View {
     var title: String
     var buttonAction: () -> Void
     var shouldShowArrow: Bool = true
-        
+    
     var body: some View {
         Button(action: {
             buttonAction()
@@ -23,7 +23,7 @@ struct ShareProgressButton: View {
                     .fill(Color(white: 0.85))
                     .frame(height: height)
                     .offset(y: 6)
-
+                
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color.white)
                     .frame(height: height)

@@ -53,18 +53,18 @@ struct TopArcCardView: View {
                 
                 Spacer()
                 
-                    VStack(alignment: .leading) {
-                        Text(title)
-                            .foregroundColor(.white)
-                            .font(Font.sfPro(size: 7, weight: .semibold))
-                        Text(subtitle)
-                            .foregroundColor(.white)
-                            .font(Font.sfPro(size: 5, weight: .regular))
-                            .lineLimit(2)
-                            .multilineTextAlignment(.leading)
+                VStack(alignment: .leading) {
+                    Text(title)
+                        .foregroundColor(.white)
+                        .font(Font.sfPro(size: 7, weight: .semibold))
+                    Text(subtitle)
+                        .foregroundColor(.white)
+                        .font(Font.sfPro(size: 5, weight: .regular))
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                     
                 }
-                    .background(.ultraThinMaterial.opacity(0.15))
+                .background(.ultraThinMaterial.opacity(0.15))
             }
             .padding(8)
         }

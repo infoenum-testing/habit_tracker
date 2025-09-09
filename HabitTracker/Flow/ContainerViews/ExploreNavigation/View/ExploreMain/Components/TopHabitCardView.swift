@@ -34,7 +34,7 @@ struct TopHabitCardView: View {
                     Text(title)
                         .foregroundColor(.white)
                         .font(Font.sfPro(size: 7, weight: .semibold))
-                        
+                    
                 }
                 
                 if let details = habit.details {

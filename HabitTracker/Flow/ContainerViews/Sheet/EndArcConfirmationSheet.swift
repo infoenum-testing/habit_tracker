@@ -30,7 +30,7 @@ struct EndArcConfirmationSheet: View {
                         
                     }) {
                         HStack {
-                            Image(systemName: "xmark")
+                            Image(systemName: StringConstants.Image.xmark)
                                 .font(.title3)
                                 .padding(8)
                                 .foregroundStyle(.white)
@@ -48,17 +48,17 @@ struct EndArcConfirmationSheet: View {
             
             
             VStack{
-            
+                
                 Image(StringConstants.Image.trash)
-                .resizable()
-                .resizable()
-                .frame(width: 100, height: 100)
-            
+                    .resizable()
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                
                 Text("\(StringConstants.Sheet.youWillLoseAllYour)\n\(arcName)")
-                .multilineTextAlignment(.center)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .padding(.top,20)
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding(.top,20)
             }.padding(.vertical,20)
             
             // End Arc Button
@@ -70,7 +70,6 @@ struct EndArcConfirmationSheet: View {
                         navigation.pop()
                         navigation.dismissAll()
                     }
-                    
                 }
             } label: {
                 HStack {

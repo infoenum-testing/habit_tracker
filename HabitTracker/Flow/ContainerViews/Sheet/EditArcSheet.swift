@@ -17,7 +17,6 @@ struct EditArcSheet: View {
     let arcId: String = ""
     let habitId: String = ""
     
-    
     private let colorsArray: [String] = AppColors.all
     
     var body: some View {
@@ -33,7 +32,6 @@ struct EditArcSheet: View {
                 RoundBackButton(backgroundColor: .black.opacity(0.65)) {
                     isPresented = false
                 }
-                
                 Spacer()
                 Text(StringConstants.Sheet.editArc)
                     .font(.headline)
@@ -41,19 +39,11 @@ struct EditArcSheet: View {
                 Color.clear.frame(width: 30)
             }.frame(height: 50)
                 .padding(.vertical,10)
-                
-            
-            // Change Theme Section
-           
-                ColorPickerSection(
-                    colors: colorsArray,
-                    selectedColor: $selectedColor,
-                    action: { }
-                )
-                
-            
-           // Spacer()
-            
+            ColorPickerSection(
+                colors: colorsArray,
+                selectedColor: $selectedColor,
+                action: { }
+            )
             ShareProgressButton(title: StringConstants.Sheet.saveArc) {
                 appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: selectedColor) { _ in
                     dismiss()
@@ -61,9 +51,7 @@ struct EditArcSheet: View {
             }
             .padding(.vertical, 25)
             
-            // End Arc button
             Button {
-                // action
                 showConfirmation = true
             } label: {
                 HStack {
@@ -80,7 +68,6 @@ struct EditArcSheet: View {
                 .frame(height: 70)
                 .background(.redDark)
                 .cornerRadius(22)
-                
             }
             .padding(.bottom, 25)
         }.ignoresSafeArea()

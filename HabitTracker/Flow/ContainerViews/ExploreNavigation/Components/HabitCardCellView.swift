@@ -14,7 +14,6 @@ struct HabitCardCellView: View {
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading) {
-                // Icon Section
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.ractangleColor)
@@ -27,17 +26,13 @@ struct HabitCardCellView: View {
                 }
                 .padding(.top, 20)
                 .padding(.bottom, 10)
-                
-               // This pushes the text section down to fill remaining space
-                
-                // Text Section
                 VStack(alignment: .leading, spacing: 5) {
                     Text(habit.title ?? "")
                         .foregroundColor(.white)
                         .font(Font.inter(size: 16, weight: .semibold))
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
-                        
+                    
                     Text(habit.details ?? "")
                         .foregroundColor(.gray)
                         .font(Font.inter(size: 12, weight: .regular))

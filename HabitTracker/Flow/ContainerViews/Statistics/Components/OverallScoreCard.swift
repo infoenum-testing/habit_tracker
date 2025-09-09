@@ -64,25 +64,28 @@ struct OverallScoreCard: View {
                 }
                 Spacer()
                 ZStack {
-                    HStack {
-                        Spacer()
-                        Image(StringConstants.Image.whiteCircleFilled)
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .offset(x: 15, y: 23)
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Image(StringConstants.Image.whiteCircleFilled)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .offset(x: 15, y: 0)
+                        }
+                        .frame(height: 130)
                         Spacer()
                     }
-                    .frame(height: 130)
                     Image(StringConstants.Image.graph)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 130)
                         .offset(x: 15, y: 15)
-                        
+                    
                 }.frame(width: UIScreen.main.bounds.width / 2 - 20 ,  height: 130)
             }
             .padding()
-
+            
             HStack {
                 Text(StringConstants.Account.today)
                     .font(.sfProDisplay(.medium, size: 14))
@@ -90,11 +93,11 @@ struct OverallScoreCard: View {
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
             }
-           
-                .background(Color.green.opacity(0.25))
-                .cornerRadius(12)
-                .padding(.top, 20)
-                .padding(.trailing, 20)
+            
+            .background(Color.green.opacity(0.25))
+            .cornerRadius(12)
+            .padding(.top, 20)
+            .padding(.trailing, 20)
         }
         .background(Color.statsBackground)
         .frame(height: 160)
@@ -103,7 +106,7 @@ struct OverallScoreCard: View {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.appGray, lineWidth: 1)
         )
-       
+        
     }
 }
 
@@ -114,5 +117,5 @@ struct OverallScoreCard_Previews: PreviewProvider {
             .background(Color.black.ignoresSafeArea())
     }
 }
-     
-    
+
+

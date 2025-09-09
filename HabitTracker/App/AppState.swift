@@ -21,13 +21,6 @@ final class AppDataStore: ObservableObject {
     @Published var selectedHabitToDelete: SubscribedHabit?
     @Published var allStatistics: [Statistics] = []
     @Published var todayStatistics: Statistics?
-    @Published var grandTotals: GrandTotals = GrandTotals(
-            discipline: 0,
-            strength: 0,
-            confidence: 0,
-            intelligence: 0,
-            overall: 0
-        )
     @Published var isShowingDeleteArcConfirmation: Bool = false
     @Published var isShowingDeleteHabitConfirmation: Bool = false
     @Published var shownAlerts: Set<String> = []
@@ -35,7 +28,14 @@ final class AppDataStore: ObservableObject {
     @Published  var toastMessage: String = ""
     @Published  var toastType: ToastType = .success
     @Published var isColorChanged: Bool = false
-
+    @Published var grandTotals: GrandTotals = GrandTotals(
+        discipline: 0,
+        strength: 0,
+        confidence: 0,
+        intelligence: 0,
+        overall: 0
+    )
+    
     init() {
         refreshData()
     }
@@ -46,55 +46,53 @@ final class AppDataStore: ObservableObject {
         refreshSubscribed()
         refreshStatistics()
         refreshHistories()
-        
     }
-
+    
     /// 1. Refresh all habits and arcs
-     func refreshHabitsAndArcs() {
+    func refreshHabitsAndArcs() {
         let manager = CoreDataManager.shared
         allHabits = manager.fetchAllHabits()
         allArcs = manager.fetchAllArcs()
     }
-
+    
     /// 2. Refresh subscribed habits and arcs
-     func refreshSubscribed() {
+    func refreshSubscribed() {
         let manager = CoreDataManager.shared
         allSubscribedHabits = manager.fetchSubscribedHabits()
         allSubscribedArcs = manager.fetchSubscribedArcs()
     }
-
+    
     /// 3. Refresh statistics
-     func refreshStatistics() {
+    func refreshStatistics() {
         let manager = CoreDataManager.shared
         todayStatistics = manager.fetchOrCreateTodayStatistics()
         allStatistics = manager.fetchAllStatistics()
         updateGrandTotals()
     }
-
+    
     /// 4. Refresh histories
-     func refreshHistories() {
+    func refreshHistories() {
         let manager = CoreDataManager.shared
         allHistories = manager.fetchAllHistories()
         print("\(allHistories.count)")
     }
-
+    
     
     func updateGrandTotals() {
-            let totals = fetchGrandTotals()
-            self.grandTotals = GrandTotals(
-                discipline: totals.discipline,
-                strength: totals.strength,
-                confidence: totals.confidence,
-                intelligence: totals.intelligence,
-                overall: totals.overall
-            )
-        }
+        let totals = fetchGrandTotals()
+        self.grandTotals = GrandTotals(
+            discipline: totals.discipline,
+            strength: totals.strength,
+            confidence: totals.confidence,
+            intelligence: totals.intelligence,
+            overall: totals.overall
+        )
+    }
     
     // MARK: - Actions
     
     func subscribe(to arc: ArcTemplate, completion: ((Result<SubscribedArc, Error>) -> Void)? = nil) {
         let result = CoreDataManager.shared.subscribeArc(to: arc)
-        
         switch result {
         case .success(let subscribedArc):
             print("✅ Successfully subscribed to arc: \(subscribedArc.wrappedTitle)")
@@ -139,8 +137,6 @@ final class AppDataStore: ObservableObject {
         }
     }
     
-    
-    
     func completeArc(_ subArc: SubscribedArc) {
         CoreDataManager.shared.completeArc(subArc)
         refreshSubscribed()
@@ -151,11 +147,9 @@ final class AppDataStore: ObservableObject {
         refreshSubscribed()
         refreshHistories()
     }
-
-
+    
     func saveHistory(for arc: SubscribedArc, status: ArcStatus) -> History? {
         return CoreDataManager.shared.saveHistory(for: arc, status: status)
-        
     }
     
     func fetchSubscribedArcs() -> [SubscribedArc] {
@@ -190,14 +184,12 @@ extension AppDataStore {
             refreshSubscribed()
         }
     }
-
-
+    
+    
     private func handleArcCompletion(for arc: SubscribedArc) {
         let today = Calendar.current.startOfDay(for: Date())
         let calendar = Calendar.current
-        
         let status: ArcStatus
-        
         if calendar.isDate(today, inSameDayAs: arc.wrappedEndDate) {
             status = .completed
         } else if calendar.isDate(today, inSameDayAs: arc.wrappedGraceEndDate) {
@@ -206,12 +198,11 @@ extension AppDataStore {
             print("🎉 All habits done for today in arc: \(arc.wrappedTitle)")
             return
         }
-        
         if saveHistory(for: arc, status: status) != nil {
             deleteArc(arc)
         }
     }
-
+    
     func toggleHabit(_ habitId: String, in arc: SubscribedHabit) {
         CoreDataManager.shared.toggleHabit(habitId, in: arc){ isChecked in
             if isChecked {
@@ -248,7 +239,6 @@ extension AppDataStore {
                 print("🎉 Subscribed: \(subscribedHabit.wrappedTitle)")
                 self.refreshSubscribed()
                 completion?(.success(subscribedHabit))
-                
             case .failure(let error):
                 print("⚠️ Error subscribing: \(error.localizedDescription)")
                 completion?(.failure(error))
@@ -283,7 +273,6 @@ extension AppDataStore {
             newIcon: icon,
             newThemeColor: newThemeColor
         )
-
         switch result {
         case .success(let updatedHabit):
             self.refreshSubscribed()
@@ -293,7 +282,6 @@ extension AppDataStore {
             print("Failed to update habit: \(error)")
             completion(false)
         }
-
     }
     
     func deleteHabit(_ subHabit: SubscribedHabit) {
@@ -335,22 +323,18 @@ extension AppDataStore {
         let calendar = Calendar.current
         let weekStart = Date().startOfWeek
         let today = Date().stripTime()
-
         return (0..<7).map { offset in
             let date = calendar.date(byAdding: .day, value: offset, to: weekStart)!
             let dayLabel = date.monthDayStacked
-
-            
             var total: Double = 0
             if date <= today { // ✅ don’t allow future dates
                 let dayStat = stats.first { calendar.isDate($0.date ?? Date(), inSameDayAs: date) }
                 total = Double(dayStat?.overallTotal ?? 0)
             }
-
             return DayValue(day: dayLabel, value: total)
         }
     }
-
+    
     var currentWeekDayLabels: [String] {
         let calendar = Calendar.current
         let weekStart = Date().startOfWeek
