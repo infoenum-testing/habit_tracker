@@ -11,8 +11,8 @@ import SwiftUI
 struct IconBadge: View {
     var icon: String
     var tint: Color
-    var height: CGFloat = 45
-    var width: CGFloat = 45
+    var height: CGFloat = 20
+    var width: CGFloat = 20
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10).fill(tint)
