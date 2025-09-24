@@ -106,3 +106,93 @@ struct ArcCardCell: View {
     }
 }
 
+struct NewArcsCell: View {
+    let arc: ArcTemplate
+    
+    var body: some View {
+        ZStack {
+            
+            Image(StringConstants.Image.card)
+                .resizable()
+                .scaledToFill()
+                .clipped()
+            
+            VStack() {
+                Text(arc.title ?? "Arc Title")
+                    .font(.sfProDisplay(.medium, size: 16))
+                    .foregroundStyle(.white)
+                    .lineLimit(2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                HStack {
+                    HStack {
+                        Image(StringConstants.Image.timeCircle)
+                            .resizable()
+                            .frame(width: 10, height: 10)
+                            .foregroundColor(.white)
+                        
+                        Text("\(arc.durationDays) \(arc.durationDays == 1 ? StringConstants.ExploreNavigation.daySingular : StringConstants.ExploreNavigation.dayPlural)")
+                            .foregroundColor(.white)
+                            .font(Font.inter(size: 10, weight: .medium))
+                            .lineLimit(1)
+                            
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Color.white.opacity(0.06))
+                    .cornerRadius(12)
+                    .overlay(
+                     RoundedRectangle(cornerRadius: 12)
+                    .stroke(ColorToken.from(string: arc.colorToken ?? "white"), lineWidth: 0.5))
+                    
+                    HStack {
+                        HStack(spacing: 1) {
+                            ForEach(0..<5) { _ in
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(Color.red)
+                                    .frame(width: 1.5, height: 7)
+                            }
+                        }
+                        
+                        Text("Easy")
+                            .foregroundColor(.white)
+                            .font(Font.inter(size: 10, weight: .medium))
+                            .lineLimit(1)
+                            
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(.white.opacity(0.06))
+                    .cornerRadius(12)
+                    
+                    Spacer()
+                    
+                    HStack {
+                        
+                        Image(StringConstants.Image.userGroup)
+                            .resizable()
+                            .frame(width: 12, height: 10)
+                            .foregroundColor(.white)
+                        
+                        Text("15, 678  Active Users")
+                            .foregroundColor(.white)
+                            .font(Font.inter(size: 10))
+                            .lineLimit(1)
+                            
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(.white.opacity(0.06))
+                    .cornerRadius(12)
+                }
+            }.frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 80)
+        .cornerRadius(12)
+        .padding(.horizontal, 24)
+    }
+}
+
+

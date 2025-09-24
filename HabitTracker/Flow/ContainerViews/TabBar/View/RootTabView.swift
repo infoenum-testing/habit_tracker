@@ -20,7 +20,8 @@ struct RootTabView: View {
                 case 0:
                     HomeView()
                 case 1:
-                    ExploreMain()
+                   // ExploreMain()
+                     NewExploreMain()
                 case 2:
                     StatisticsView()
                 default:

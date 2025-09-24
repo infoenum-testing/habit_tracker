@@ -30,44 +30,44 @@ struct ExploreMain: View {
             DashedLine()
             
             // MARK: - Scroll Content
-            ScrollView {
-                VStack(spacing: 25) {
-                    
-                    if  !appData.allArcs.isEmpty {
-                        HStack(spacing: 10) {
-                            Button {
-                                router.push(to: .allArcsView)
-                            } label: {
-                                ArcsView(isArc: true)
-                            }
-                            
-                            Button {
-                                router.push(to: .allHabitsView)
-                            } label: {
-                                ArcsView(isArc: false)
+                ScrollView {
+                    VStack(spacing: 25) {
+                        
+                        if  !appData.allArcs.isEmpty {
+                            HStack(spacing: 10) {
+                                Button {
+                                    router.push(to: .allArcsView)
+                                } label: {
+                                    ArcsView(isArc: true)
+                                }
+                                
+                                Button {
+                                    router.push(to: .allHabitsView)
+                                } label: {
+                                    ArcsView(isArc: false)
+                                }
                             }
                         }
+                        DashedLine()
+                        ExploreSection(
+                            title: StringConstants.ExploreNavigation.trendingArcs,
+                            columns: columns,
+                            onViewAll: { router.push(to: .allArcsView) },
+                            isHabitSection: false,
+                            selectedHabit: $selectedHabit
+                        )
+                        ExploreSection(
+                            title: StringConstants.ExploreNavigation.trendingHabits,
+                            columns: columns,
+                            onViewAll: { router.push(to: .allHabitsView) },
+                            isHabitSection: true,
+                            
+                            selectedHabit: $selectedHabit
+                        )
                     }
-                    DashedLine()
-                    ExploreSection(
-                        title: StringConstants.ExploreNavigation.trendingArcs,
-                        columns: columns,
-                        onViewAll: { router.push(to: .allArcsView) },
-                        isHabitSection: false,
-                        selectedHabit: $selectedHabit
-                    )
-                    ExploreSection(
-                        title: StringConstants.ExploreNavigation.trendingHabits,
-                        columns: columns,
-                        onViewAll: { router.push(to: .allHabitsView) },
-                        isHabitSection: true,
-                        
-                        selectedHabit: $selectedHabit
-                    )
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 24)
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 24)
-            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color.sheetBackgroundColor.ignoresSafeArea())

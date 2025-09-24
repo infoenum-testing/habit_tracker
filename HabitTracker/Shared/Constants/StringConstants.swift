@@ -51,6 +51,9 @@ internal struct StringConstants {
         static let selectedProfileTab = "selectedProfileTab"
         static let arrowRight = "arrowRight"
         static let xmark = "xmark"
+        static let arcIcon = "arcIcon"
+        static let habitIcon = "habitIcon"
+        static let userGroup = "user-group"
         
     }
     

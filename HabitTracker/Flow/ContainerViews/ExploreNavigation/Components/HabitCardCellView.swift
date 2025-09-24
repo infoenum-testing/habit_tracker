@@ -54,3 +54,46 @@ struct HabitCardCellView: View {
     }
 }
 
+
+struct NewHabitCardCell: View {
+    
+    let habit: HabitTemplate
+    
+    var body: some View {
+        HStack {
+            Image(habit.icon ?? "tooth")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
+                .padding(.leading, 10)
+            
+            
+            VStack(alignment: .leading, spacing: 3) {
+                Text(habit.title ?? "")
+                    .foregroundColor(.white)
+                    .font(Font.sfPro(size: 14, weight: .semibold))
+                
+                Text(habit.details ?? "")
+                    .font(Font.sfPro(size: 12, weight: .light))
+                    .foregroundColor(.white.opacity(0.75))
+                    
+            }
+            
+            Spacer()
+            
+            Button(action: {
+                
+            }) {
+                Text("ADD")
+                    .font(Font.sfPro(size: 14, weight: .medium))
+                    .foregroundColor(.white.opacity(0.5))
+            }.padding(.trailing, 17)
+        }
+         .padding(.vertical, 10)
+         .background(Color(red: 0.04, green: 0.04, blue: 0.04))
+         .cornerRadius(18)
+         .padding(.horizontal, 24)
+         
+    }
+}
+

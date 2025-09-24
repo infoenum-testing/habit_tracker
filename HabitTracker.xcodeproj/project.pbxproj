@@ -105,6 +105,8 @@
 		EB9E25762E6EE505003FC30D /* CircularArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E25752E6EE503003FC30D /* CircularArcProgressView.swift */; };
 		EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */; };
 		EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */; };
+		EBACBE132E83CEAE00256172 /* NewExploreMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBACBE122E83CEAE00256172 /* NewExploreMain.swift */; };
+		EBACBE152E83E82E00256172 /* ExploreHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBACBE142E83E82E00256172 /* ExploreHeaderView.swift */; };
 		EBAF59BF2E6F11C90037FA36 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF59BE2E6F11C10037FA36 /* String+Extension.swift */; };
 		EBAF59C12E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBAF59C02E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf */; };
 		EBAF59C32E6F15CA0037FA36 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */; };
@@ -250,6 +252,8 @@
 		EBAA203E2E4DBEE7001503D8 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArcSheet.swift; sourceTree = "<group>"; };
 		EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndArcConfirmationSheet.swift; sourceTree = "<group>"; };
+		EBACBE122E83CEAE00256172 /* NewExploreMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExploreMain.swift; sourceTree = "<group>"; };
+		EBACBE142E83E82E00256172 /* ExploreHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHeaderView.swift; sourceTree = "<group>"; };
 		EBAF59BE2E6F11C10037FA36 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		EBAF59C02E6F14060037FA36 /* SF-Pro-Display-Semibold-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold-Italic.otf"; sourceTree = "<group>"; };
 		EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
@@ -657,6 +661,7 @@
 				E983A3562E5DC85B001AC952 /* IconGridView.swift */,
 				E98D71D02E6040820090AB40 /* DailyHabitsCellView.swift */,
 				18FAA6CB2E66D392003907AA /* ExpandableText.swift */,
+				EBACBE142E83E82E00256172 /* ExploreHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -899,6 +904,7 @@
 			isa = PBXGroup;
 			children = (
 				E98E378B2E584636003244AA /* ExploreMain.swift */,
+				EBACBE122E83CEAE00256172 /* NewExploreMain.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1141,6 +1147,7 @@
 				E98E378C2E584636003244AA /* ExploreMain.swift in Sources */,
 				B7A3CC132E50FDCC00674792 /* HomeView.swift in Sources */,
 				EBAAE88E2E54B98F000F47B9 /* EditArcSheet.swift in Sources */,
+				EBACBE132E83CEAE00256172 /* NewExploreMain.swift in Sources */,
 				EBB753432E6C542E00B457C0 /* Distribution.swift in Sources */,
 				EBB753222E6C447F00B457C0 /* TopArcCardView.swift in Sources */,
 				B7A3CC142E50FDCC00674792 /* CustomTabBar.swift in Sources */,
@@ -1187,6 +1194,7 @@
 				E98EDF7C2E5C434600E42196 /* UIFont+Extension.swift in Sources */,
 				EBCBD1C72E69DB420031D5F6 /* PointsJSON.swift in Sources */,
 				EB96E8702E657F55005399A8 /* AppIcons.swift in Sources */,
+				EBACBE152E83E82E00256172 /* ExploreHeaderView.swift in Sources */,
 				18ABE1212E6C438C004E9FDB /* SectionTitle.swift in Sources */,
 				B7A3CC1E2E50FDCC00674792 /* IconBadge.swift in Sources */,
 				B7A3CC1F2E50FDCC00674792 /* LayoutToggle.swift in Sources */,
@@ -1354,10 +1362,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitTracker/Preview Content\"";
-				DEVELOPMENT_TEAM = 7UUTF6T5P9;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7UUTF6T5P9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitTracker/Info.plist;
@@ -1376,6 +1386,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.infoenumapps.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = infoenumapps;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
