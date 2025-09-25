@@ -77,7 +77,7 @@ internal struct StringConstants {
     struct ExploreNavigation {
         static let less = "less"
         static let more = "more"
-        static let days = "Days"
+        static let days = "Day Challenge"
         static let daySingular = "Day"
         static let dayPlural = "Days"
         static let habits = "Habits"

@@ -58,9 +58,14 @@ struct FlowLayout: View {
     }
     
     private func item(for text: String) -> some View {
-        return TextBadgeViewForGutHealth(title: text, foregroundColor: .white, icon: "check")
-            .background(Color.white.opacity(0.14))
+        return TextBadgeViewForGutHealth(title: text, foregroundColor: .white, icon: "arrow-up-double")
+            //.background(.ultraThinMaterial.opacity(2.7))
             .cornerRadius(20)
+            .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.white.opacity(0.10), lineWidth: 1) // border color & thickness
+                    )
+            .padding(2)
     }
 }
 

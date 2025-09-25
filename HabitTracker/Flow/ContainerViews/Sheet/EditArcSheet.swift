@@ -100,3 +100,13 @@ struct EditArcSheet_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
+
+
+
+
+//    .sheet(item: $selectedHabit) { habit in
+//        HabitCustomizationSheet(habit: habit)
+//            .presentationDetents([.large])
+//        //.presentationDragIndicator(.visible)
+//            .presentationCornerRadius(45)
+//    }

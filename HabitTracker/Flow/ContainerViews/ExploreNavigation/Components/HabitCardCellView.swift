@@ -21,6 +21,7 @@ struct HabitCardCellView: View {
                     
                     Image(habit.icon ?? "tooth")
                         .resizable()
+                        .scaledToFill()
                         .frame(width: 20, height: 20)
                         .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
                 }
@@ -58,42 +59,47 @@ struct HabitCardCellView: View {
 struct NewHabitCardCell: View {
     
     let habit: HabitTemplate
+    let addAction: () -> Void
+    @Binding var selectedHabit: HabitTemplate?
     
     var body: some View {
-        HStack {
-            Image(habit.icon ?? "tooth")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .foregroundStyle(ColorToken.from(string: habit.colorToken ?? ""))
-                .padding(.leading, 10)
-            
-            
-            VStack(alignment: .leading, spacing: 3) {
-                Text(habit.title ?? "")
-                    .foregroundColor(.white)
-                    .font(Font.sfPro(size: 14, weight: .semibold))
-                
-                Text(habit.details ?? "")
-                    .font(Font.sfPro(size: 12, weight: .light))
-                    .foregroundColor(.white.opacity(0.75))
-                    
-            }
-            
-            Spacer()
-            
-            Button(action: {
-                
-            }) {
-                Text("ADD")
-                    .font(Font.sfPro(size: 14, weight: .medium))
-                    .foregroundColor(.white.opacity(0.5))
-            }.padding(.trailing, 17)
+        VStack {
+            VStack(alignment: .leading, spacing: 15) {
+                HStack(spacing: 10) {
+                    VStack {
+                        Image(habit.icon ?? "tooth")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundStyle(.white)
+                    }.frame(width: 40, height: 40)
+                        .padding(.leading)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(habit.title ?? "")
+                            .foregroundColor(.white)
+                            .font(Font.sfPro(size: 14, weight: .semibold))
+                        Text(habit.details ?? "")
+                            .font(Font.sfPro(size: 12, weight: .light))
+                            .foregroundColor(.white.opacity(0.75))
+                    }
+                    Spacer()
+                    Button(action: {
+                        selectedHabit = habit
+                        if selectedHabit != nil {
+                            print("Selected habit: \(selectedHabit?.title ?? "")")
+                            addAction()
+                        }
+                        
+                    }) {
+                        Text("ADD")
+                            .font(Font.sfPro(size: 14, weight: .medium))
+                            .foregroundColor(.white.opacity(0.5))
+                    }
+                    .padding(.trailing)
+                }
+            }.frame(height: 60)
+                .background(Color(red: 0.04, green: 0.04, blue: 0.04))
+                .cornerRadius(18)
         }
-         .padding(.vertical, 10)
-         .background(Color(red: 0.04, green: 0.04, blue: 0.04))
-         .cornerRadius(18)
-         .padding(.horizontal, 24)
-         
     }
 }
 

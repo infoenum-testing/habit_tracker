@@ -9,16 +9,16 @@ import SwiftUI
 
 struct TextBadgeView: View {
     var title: String = "60 Days"
-    var foregroundColor: Color = Color.black
+    var foregroundColor: Color = Color.white
     var icon: String?
     var body: some View {
         HStack(alignment: .center){
-            if let icon = icon, !icon.isEmpty {
-                Image(icon)
-                    .resizable()
-                    .foregroundStyle(Color.black)
-                    .frame(width: 12, height: 12)
-            }
+//            if let icon = icon, !icon.isEmpty {
+//                Image(icon)
+//                    .resizable()
+//                    .foregroundStyle(Color.black)
+//                    .frame(width: 12, height: 12)
+//            }
             Text(title)
                 .foregroundStyle(foregroundColor)
                 .font(Font.sfPro(size: 14))

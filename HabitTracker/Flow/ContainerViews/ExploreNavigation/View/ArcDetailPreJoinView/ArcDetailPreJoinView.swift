@@ -35,24 +35,24 @@ struct ArcDetailPreJoinView: View {
                 .overlay(
                     LinearGradient(
                         stops: [
-                            Gradient.Stop(color: ColorToken.from(string: arc.colorToken ?? "").opacity(0.8), location: 0.00),
-                            Gradient.Stop(color: Color.backgroundColor, location: 1.00),
+                            Gradient.Stop(color: Color(red: 0.08, green: 0.08, blue: 0.09).opacity(0.5), location: 0.00),
+                                  Gradient.Stop(color: Color(red: 0.08, green: 0.08, blue: 0.09), location: 1.00),
                         ],
-                        startPoint: UnitPoint(x: 0.5, y: -0.25),
-                        endPoint: UnitPoint(x: 0.5, y: 0.75)
+                        startPoint: UnitPoint(x: 0.5, y: 0),
+                          endPoint: UnitPoint(x: 0.5, y: 1)
                     )
                 )
-            
+                .blur(radius: 2.5)
             ZStack(alignment: .bottomLeading) {
                 VStack(alignment: .leading){
                     VStack(alignment: .leading) {
                         
                         HStack(alignment: .top) {
-                            RoundBackButton(backgroundColor: .black.opacity(0.65), action: {
+                            RoundBackButton(backgroundColor: .white.opacity(0.35), action: {
                                 dismiss()
                             })
                             Spacer()
-                            RoundBackButton(icon: StringConstants.Image.shareIcon, backgroundColor: .black.opacity(0.65), action: {
+                            RoundBackButton(icon: StringConstants.Image.shareIcon, backgroundColor: .white.opacity(0.35), action: {
                                 dismiss()
                             })
                             
@@ -63,21 +63,7 @@ struct ArcDetailPreJoinView: View {
                         ScrollView(showsIndicators: false) {
                             VStack {
                                 VStack(alignment: .leading, spacing: 8){
-                                    HStack(alignment: .center) {
-                                        TextBadgeView(
-                                            title: "\(arc.durationDays) \(StringConstants.ExploreNavigation.days)",
-                                            icon: StringConstants.Image.timeCircle
-                                        )
-                                        .background(Color.white)
-                                        .cornerRadius(20)
-                                        TextBadgeView(
-                                            title: "\(arc.habitsData?.count ?? 0) \(StringConstants.ExploreNavigation.habits)",
-                                            icon: StringConstants.Image.arc
-                                        )
-                                        .background(Color.white)
-                                        .cornerRadius(20)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    
                                     
                                     if let title = arc.title {
                                         Text(arcFormatted: title, fontSize: 38)
@@ -86,6 +72,24 @@ struct ArcDetailPreJoinView: View {
                                         Text(arcFormatted: "Arc Title")
                                             .foregroundStyle(Color.white)
                                     }
+                                    
+                                    
+                                    HStack(alignment: .center) {
+                                        TextBadgeView(
+                                            title: "\(arc.durationDays) \(StringConstants.ExploreNavigation.days)",
+                                            icon: StringConstants.Image.timeCircle
+                                        )
+                                        .background(.ultraThinMaterial.opacity(0.5))
+                                        .cornerRadius(20)
+                                        TextBadgeView(
+                                            title: "Created by Arcetype Staff",
+                                            icon: StringConstants.Image.arc
+                                        )
+                                        .background(.ultraThinMaterial.opacity(0.5))
+                                        .cornerRadius(20)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                   
                                     
                                     
                                     VStack(alignment: .leading) {

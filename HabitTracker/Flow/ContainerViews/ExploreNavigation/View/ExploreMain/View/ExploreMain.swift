@@ -85,7 +85,7 @@ private extension ExploreMain {
     var headerView: some View {
         VStack(spacing: 20) {
             Text(StringConstants.ExploreNavigation.explore)
-                .font(Font.inter(size: 22, weight: .semibold))
+                .font(Font.inter(size: 18, weight: .semibold))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .top)

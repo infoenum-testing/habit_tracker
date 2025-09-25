@@ -118,11 +118,13 @@ struct NewArcsCell: View {
                 .clipped()
             
             VStack() {
-                Text(arc.title ?? "Arc Title")
-                    .font(.sfProDisplay(.medium, size: 16))
-                    .foregroundStyle(.white)
-                    .lineLimit(2)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                if let title = arc.title {
+                    Text(arcFormatted: title, fontSize: 18, arcColor:  ColorToken.from(string: arc.colorToken ?? "yellow") , titleColor: .white)
+                        .lineLimit(2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                }
+                
                 
                 HStack {
                     HStack {
@@ -139,7 +141,7 @@ struct NewArcsCell: View {
                     }
                     .padding(.horizontal, 10)
                     .padding(.vertical, 6)
-                    .background(Color.white.opacity(0.06))
+                    .background(.ultraThinMaterial.opacity(0.5))
                     .cornerRadius(12)
                     .overlay(
                      RoundedRectangle(cornerRadius: 12)
@@ -162,7 +164,7 @@ struct NewArcsCell: View {
                     }
                     .padding(.horizontal, 10)
                     .padding(.vertical, 6)
-                    .background(.white.opacity(0.06))
+                    .background(.ultraThinMaterial.opacity(0.5))
                     .cornerRadius(12)
                     
                     Spacer()
@@ -182,17 +184,18 @@ struct NewArcsCell: View {
                     }
                     .padding(.horizontal, 10)
                     .padding(.vertical, 6)
-                    .background(.white.opacity(0.06))
+                    .background(.ultraThinMaterial.opacity(0.5))
                     .cornerRadius(12)
                 }
             }.frame(maxWidth: .infinity, alignment: .leading)
             .padding()
+            .background(.black.opacity(0.1))
         }
         .frame(maxWidth: .infinity)
         .frame(height: 80)
         .cornerRadius(12)
-        .padding(.horizontal, 24)
     }
 }
+
 
 

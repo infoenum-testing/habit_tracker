@@ -87,6 +87,7 @@
 		EB1A87BF2E6034F000EE0CEB /* SubscribedArc+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A87B52E6034F000EE0CEB /* SubscribedArc+CoreDataClass.swift */; };
 		EB1A87C02E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A87B62E6034F000EE0CEB /* SubscribedArc+CoreDataProperties.swift */; };
 		EB1AE4CC2E5872DC006BB759 /* DayPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE4CB2E5872CE006BB759 /* DayPill.swift */; };
+		EB28DBC72E852A9B00869B2C /* Inter_18pt-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB28DBC62E852A9B00869B2C /* Inter_18pt-MediumItalic.ttf */; };
 		EB4CCB982E57192300F76945 /* ArcCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB972E57192100F76945 /* ArcCardView.swift */; };
 		EB4CCB9A2E57197300F76945 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB992E57196F00F76945 /* SettingsRow.swift */; };
 		EB4CCB9E2E571C8600F76945 /* WeeklyPerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CCB9D2E571C8300F76945 /* WeeklyPerformanceView.swift */; };
@@ -233,6 +234,7 @@
 		EB1A87B72E6034F000EE0CEB /* SubscribedHabit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EB1A87B82E6034F000EE0CEB /* SubscribedHabit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribedHabit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EB1AE4CB2E5872CE006BB759 /* DayPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPill.swift; sourceTree = "<group>"; };
+		EB28DBC62E852A9B00869B2C /* Inter_18pt-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EB4CCB972E57192100F76945 /* ArcCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcCardView.swift; sourceTree = "<group>"; };
 		EB4CCB992E57196F00F76945 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		EB4CCB9D2E571C8300F76945 /* WeeklyPerformanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPerformanceView.swift; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 				E98EDF732E5C428300E42196 /* Inter_18pt-Bold.ttf */,
 				E98EDF742E5C428300E42196 /* Inter_18pt-Regular.ttf */,
 				E98EDF752E5C428300E42196 /* Inter_18pt-SemiBold.ttf */,
+				EB28DBC62E852A9B00869B2C /* Inter_18pt-MediumItalic.ttf */,
 			);
 			path = inter;
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 				B7A3CC2C2E50FDCC00674792 /* SF-Pro-Display-Black.otf in Resources */,
 				B7A3CC2D2E50FDCC00674792 /* SF-Pro-Display-Bold.otf in Resources */,
 				EBAF5A012E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				EB28DBC72E852A9B00869B2C /* Inter_18pt-MediumItalic.ttf in Resources */,
 				B7A3CC2E2E50FDCC00674792 /* SF-Pro-Display-Light.otf in Resources */,
 				B7A3CC2F2E50FDCC00674792 /* SF-Pro-Display-Medium.otf in Resources */,
 				B7A3CC302E50FDCC00674792 /* SF-Pro-Display-Regular.otf in Resources */,

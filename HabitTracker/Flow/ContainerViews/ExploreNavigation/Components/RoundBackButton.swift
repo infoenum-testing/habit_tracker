@@ -19,7 +19,7 @@ struct RoundBackButton: View {
             }) {
                 Image(icon)
                     .resizable()
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .frame(width: 25, height: 25)
             }
         }

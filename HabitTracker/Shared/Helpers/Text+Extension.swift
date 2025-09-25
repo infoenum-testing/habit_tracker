@@ -15,10 +15,36 @@ extension Text {
             self = Text(baseTitle)
                 .font(.sfProDisplay(.semibold, size: fontSize)) +
                 Text(" Arc")
-                .font(.flowerOfNineties(.semiboldItalic, size: fontSize))
+                .font(.inter(.mediumItalic, size: fontSize))
         } else {
             self = Text(string)
                 .font(.sfProDisplay(.semibold, size: fontSize))
+        }
+    }
+}
+
+
+import SwiftUI
+
+extension Text {
+    init(arcFormatted string: String,
+         fontSize: CGFloat = 19,
+         arcColor: Color = .red,
+         titleColor: Color = .white) {
+        
+        if string.hasSuffix("Arc") {
+            let baseTitle = String(string.dropLast(3)).trimmingCharacters(in: .whitespaces)
+            
+            self = Text(baseTitle)
+                .font(.sfProDisplay(.medium, size: fontSize))
+                .foregroundColor(titleColor) +
+            Text(" Arc")
+                .font(.inter(.mediumItalic, size: fontSize))
+                .foregroundColor(arcColor)
+        } else {
+            self = Text(string)
+                .font(.sfProDisplay(.medium, size: fontSize))
+                .foregroundColor(titleColor)
         }
     }
 }

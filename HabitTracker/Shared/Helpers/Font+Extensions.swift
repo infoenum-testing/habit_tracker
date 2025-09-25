@@ -39,3 +39,13 @@ extension Font {
         .custom(style.rawValue, size: size)
     }
 }
+
+extension Font {
+    enum Inter: String {
+        case mediumItalic = "Inter18pt-MediumItalic"
+    }
+
+    static func inter(_ style: Inter, size: CGFloat) -> Font {
+        .custom(style.rawValue, size: size)
+    }
+}
