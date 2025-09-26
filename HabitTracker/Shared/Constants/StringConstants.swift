@@ -18,6 +18,7 @@ internal struct StringConstants {
     }
     
     struct Image {
+        static let dummyArcImages = ["card","ARC1","ARC2","ARC3","ARC4"]
         static let trash = "trash"
         static let circleBan = "circleBan"
         static let arrowLeft = "arrow-left"

@@ -36,7 +36,7 @@ struct ExploreMain: View {
                         if  !appData.allArcs.isEmpty {
                             HStack(spacing: 10) {
                                 Button {
-                                    router.push(to: .allArcsView)
+                                    router.push(to: .allArcsView(title: ""))
                                 } label: {
                                     ArcsView(isArc: true)
                                 }
@@ -52,7 +52,7 @@ struct ExploreMain: View {
                         ExploreSection(
                             title: StringConstants.ExploreNavigation.trendingArcs,
                             columns: columns,
-                            onViewAll: { router.push(to: .allArcsView) },
+                            onViewAll: { router.push(to: .allArcsView(title: "")) },
                             isHabitSection: false,
                             selectedHabit: $selectedHabit
                         )

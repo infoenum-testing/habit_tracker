@@ -44,15 +44,36 @@ struct ArcDetailView: View {
                                 .padding(5)
                             }
                             .scrollDisabled(true)
-                            CircularArcProgressView(progress: arc.progress, tint: color)
-                                .padding()
+                           // CircularArcProgressView(progress: arc.progress, tint: color)
+                            
                             VStack(alignment: .center, spacing: 6) {
-                                Text(arcFormatted: arc.wrappedTitle, fontSize: 35)
-                                    .foregroundColor(.white)
-                                Text("\(arc.wrappedDurationDays) \(StringConstants.ArcDetail.challengeText)")
-                                    .font(.sfProDisplay(.medium, size: 16))
-                                    .foregroundColor(.textGray)
+                                HStack {
+                                    Text(arcFormatted: arc.wrappedTitle, fontSize: 35, arcColor: ColorToken.from(string: arc.wrappedThemeColor))
+                                        .foregroundColor(.white)
+                                    
+                                    Button {
+                                        
+                                    } label: {
+                                        Image("infoIcon")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                            
+                                    }
+                                }
+                                
+                                Text(arcFormattedSelectedText: "Created by Arcetype Staff", italicString: "Arcetype Staff", fontSize: 12)
+                                
+//                                Text("\(arc.wrappedDurationDays) \(StringConstants.ArcDetail.challengeText)")
+//                                    .font(.sfProDisplay(.medium, size: 16))
+//                                    .foregroundColor(.textGray)
                             }
+                            
+                            
+                            LinearArcProgressView(title: "Habits Completed", completed: 2, total: 4, tint: ColorToken.from(string: arc.wrappedThemeColor))
+                                        .padding()
+                                        .padding(.horizontal,30)
+                                                                       
+                           
                             
                             VStack(spacing: 12) {
                                 ForEach(arc.wrappedHabitList) { task in
@@ -63,23 +84,24 @@ struct ArcDetailView: View {
                             .padding(.vertical, 16)
                         }
                         
-                        HStack {
-                            ShareProgressButton(height: 50 ,imageName: StringConstants.ArcDetail.shareIcon, title: StringConstants.ArcDetail.shareProgress,  buttonAction:  {
-                                // handle share action
-                            }, shouldShowArrow: false)
-                            
-                            ShareProgressButton(height: 50 ,imageName: StringConstants.ArcDetail.widgetIcon, title: StringConstants.ArcDetail.addWidget, buttonAction: {
-                                // handle share action
-                            }, shouldShowArrow: false)
-                        }
-                        .padding(.horizontal)
-                        .padding(.top)
+//                        HStack {
+//                            ShareProgressButton(height: 50 ,imageName: StringConstants.ArcDetail.shareIcon, title: StringConstants.ArcDetail.shareProgress,  buttonAction:  {
+//                                // handle share action
+//                            }, shouldShowArrow: false)
+//                            
+//                            ShareProgressButton(height: 50 ,imageName: StringConstants.ArcDetail.widgetIcon, title: StringConstants.ArcDetail.addWidget, buttonAction: {
+//                                // handle share action
+//                            }, shouldShowArrow: false)
+//                        }
+//                        .padding(.horizontal)
+//                        .padding(.top)
                     }
+                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(
                     LinearGradient(
-                        colors: [color.opacity(0.55), .black, .black],
+                        colors: [.white.opacity(0.32), .white.opacity(0.10), .white.opacity(0.08)],
                         startPoint: .top,
                         endPoint: .bottom
                     )

@@ -9,7 +9,7 @@ import Foundation
 
 enum Route: Hashable {
     case arcDetail(id: String)
-    case allArcsView
+    case allArcsView(title: String)
     case allHabitsView
     case arcDetailPreJoinView(arcTemplate: ArcTemplate)
 }
@@ -19,8 +19,8 @@ extension Route: View {
         switch self {
         case .arcDetail(let id):
             ArcDetailView(arcID: id)
-        case .allArcsView:
-            AllArcsView()
+        case .allArcsView(let title):
+            AllArcsView(title: title)
         case .allHabitsView:
             AllHabitsView()
         case .arcDetailPreJoinView(let arcTemplate):

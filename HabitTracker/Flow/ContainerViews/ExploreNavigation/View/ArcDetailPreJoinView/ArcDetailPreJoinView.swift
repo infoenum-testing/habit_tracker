@@ -64,13 +64,13 @@ struct ArcDetailPreJoinView: View {
                             VStack {
                                 VStack(alignment: .leading, spacing: 8){
                                     
-                                    
-                                    if let title = arc.title {
-                                        Text(arcFormatted: title, fontSize: 38)
-                                            .foregroundStyle(Color.white)
-                                    } else {
-                                        Text(arcFormatted: "Arc Title")
-                                            .foregroundStyle(Color.white)
+                                    VStack {
+                                        if let title = arc.title {
+                                            Text(arcFormatted: title, fontSize: 38, arcColor:  ColorToken.from(string: arc.colorToken ?? ""))
+                                        } else {
+                                            Text(arcFormatted: "Arc Title")
+                                                .foregroundStyle(Color.white)
+                                        }
                                     }
                                     
                                     
@@ -104,7 +104,6 @@ struct ArcDetailPreJoinView: View {
                                             FlowLayout(tags: benefits)
                                         }
                                     }
-                                    
                                 }
                                 .padding(.top)
                                 .padding(.horizontal, 20)
@@ -115,8 +114,7 @@ struct ArcDetailPreJoinView: View {
                                 VStack(alignment: .leading) {
                                     
                                     VStack(alignment: .leading, spacing: 18) {
-                                        Text(StringConstants.ExploreNavigation.dailyHabits)
-                                            .font(Font.sfPro(size: 17, weight: .medium))
+                                        Text(arcFormattedSelectedText: "Daily Habits", italicString: "Habits", fontSize: 17)
                                             .multilineTextAlignment(.center)
                                             .foregroundColor(.white)
                                     }
@@ -136,6 +134,7 @@ struct ArcDetailPreJoinView: View {
                             .padding(.bottom, 110)
                         }
                         .padding(.bottom, 40)
+                        .padding(.top, 50)
                     }
                     .padding(.top)
                     .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)

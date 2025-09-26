@@ -15,13 +15,13 @@ struct IconBadge: View {
     var width: CGFloat = 20
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10).fill(tint)
+            RoundedRectangle(cornerRadius: 10).fill(Color.customBlack)
             Image(icon)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.white)
+                .foregroundStyle(tint)
                 .frame(width: width, height: height)
         }
-        .frame(width: 50, height: 50)
+        .frame(width: 42, height: 42)
     }
 }

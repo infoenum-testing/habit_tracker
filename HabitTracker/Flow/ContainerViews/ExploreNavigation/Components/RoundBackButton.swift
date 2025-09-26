@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoundBackButton: View {
     var icon: String = StringConstants.Image.arrowLeft
+    var iconColor: Color = .black
     var backgroundColor: Color = .white.opacity(0.07)
     let action: () -> Void
     var body: some View {
@@ -19,7 +20,7 @@ struct RoundBackButton: View {
             }) {
                 Image(icon)
                     .resizable()
-                    .foregroundColor(.black)
+                    .foregroundColor(iconColor)
                     .frame(width: 25, height: 25)
             }
         }

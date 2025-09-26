@@ -31,7 +31,8 @@ struct DayStripView: View {
                     DayPill(
                         day: day,
                         isSelected: (day == arc.currentDayIndex),
-                        isPast: day < arc.currentDayIndex
+                        isPast: day < arc.currentDayIndex,
+                        borderColor: ColorToken.from(string: arc.wrappedThemeColor) 
                     )
                 } else {
                     Color.clear

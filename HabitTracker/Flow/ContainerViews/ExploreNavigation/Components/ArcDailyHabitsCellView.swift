@@ -16,28 +16,28 @@ struct ArcDailyHabitsCellView: View {
             ZStack {
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: 51, height: 51)
-                    .background(Color.ractangleColor)
+                    .frame(width: 42, height: 42)
+                    .background(Color.customBlack)
                     .cornerRadius(9)
                 
                 Image(habit.icon)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 40, height: 40)
+                    .frame(width: 20, height: 20)
                     .foregroundStyle(color)
                 
             }
-            .frame(width: 51, height: 51)
+            .frame(width: 42, height: 42)
             
             HStack(alignment: .center, spacing: 10) {
                 VStack(alignment: .center, spacing: 5) {
                     Text(habit.title)
-                        .font(Font.sfPro(size: 17, weight: .medium))
+                        .font(Font.sfPro(size: 14, weight: .medium))
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
                     Text(habit.description)
-                        .font(Font.sfPro(size: 14))
+                        .font(Font.sfPro(size: 12))
                         .foregroundColor(.white.opacity(0.6))
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                 }
@@ -47,12 +47,11 @@ struct ArcDailyHabitsCellView: View {
             .padding(0)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.leading, 11)
-        .padding(.trailing, 19)
-        .padding(.vertical, 19)
-        .frame(maxWidth: .infinity, minHeight: 73, maxHeight: 73, alignment: .leading)
-        .background(Color.cellBackgroundColor)
-        .cornerRadius(10)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity, minHeight: 60, maxHeight: 60, alignment: .leading)
+        .background(Color.customBlack)
+        .cornerRadius(18)
         
     }
 }

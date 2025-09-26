@@ -22,15 +22,19 @@ struct ArcTaskRow: View {
         return HStack(spacing: 12) {
             IconBadge(
                 icon: task.icon,
-                tint: isCompleted ? tint : .appGray
+                tint: isCompleted ? .white.opacity(0.4) : .white
             )
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(task.title)
                     .font(.sfProDisplay(.semibold, size: 16))
+                    .strikethrough(isCompleted, color: .white.opacity(0.8))
+                    .opacity(isCompleted ? 0.4 : 1.0)
+                
                 Text(task.description)
                     .font(.sfProDisplay(.light, size: 14))
-                    .opacity(0.7)
+                    .strikethrough(isCompleted, color: .white.opacity(0.8))
+                    .opacity(isCompleted ? 0.4 : 0.7)
             }
             .foregroundStyle(.white)
             
@@ -41,14 +45,12 @@ struct ArcTaskRow: View {
                 appData.toggleArcHabit(taskId, in: subArc)
             }
         }
-        .padding(12)
+        .frame(maxWidth: .infinity)
+        .frame(height: 60)
+        .padding(.horizontal)
         .background(
-            RoundedRectangle(cornerRadius: 14)
-                .fill(Color(UIColor.appDarkGray))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(.white.opacity(0.06), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 18)
+                .fill(Color.customBlack)
         )
         .scaleEffect(isCompleted ? 1.02 : 1.0)
         .animation(

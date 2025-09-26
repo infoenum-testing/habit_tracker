@@ -112,10 +112,17 @@ struct NewArcsCell: View {
     var body: some View {
         ZStack {
             
-            Image(StringConstants.Image.card)
+            Image(StringConstants.Image.dummyArcImages.randomElement() ?? "card" )
                 .resizable()
                 .scaledToFill()
                 .clipped()
+                //.blur(radius: 2)
+            
+            VStack {
+                Color.black.opacity(0.3)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
             
             VStack() {
                 if let title = arc.title {

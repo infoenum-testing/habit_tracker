@@ -17,11 +17,11 @@ struct DetailHeader: View {
     var body: some View {
         VStack {
             HStack {
-                CircleButton(icon: "back", action: {
+                RoundBackButton(iconColor: .white,backgroundColor: .black.opacity(0.65), action: {
                     backButtonTapped()
                 })
                 Spacer()
-                CircleButton(icon: "pencil", action: {
+                RoundBackButton(icon: StringConstants.Image.shareIcon,iconColor: .white, backgroundColor: .black.opacity(0.65), action: {
                     editButtonTapped()
                 })
             }

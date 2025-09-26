@@ -14,6 +14,7 @@ struct DayPill: View {
     let isSelected: Bool
     let isPast: Bool
     let width: CGFloat = UIScreen.main.bounds.width / 5 - 10
+    var borderColor = Color.white
     var body: some View {
         
         VStack(spacing: 2) {
@@ -28,7 +29,7 @@ struct DayPill: View {
         .frame(width: width, height: 90)
         .background(
             ZStack {
-                RoundedRectangle(cornerRadius: 25).stroke(isSelected ? .white : .white.opacity(0.7) , lineWidth: isSelected ? 2 : 1)
+                RoundedRectangle(cornerRadius: 25).stroke(isSelected ? borderColor : .white.opacity(0.7) , lineWidth: isSelected ? 2 : 1)
             }
         )
     }

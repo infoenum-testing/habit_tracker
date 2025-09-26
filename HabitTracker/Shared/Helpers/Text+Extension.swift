@@ -36,7 +36,7 @@ extension Text {
             let baseTitle = String(string.dropLast(3)).trimmingCharacters(in: .whitespaces)
             
             self = Text(baseTitle)
-                .font(.sfProDisplay(.medium, size: fontSize))
+                .font(Font.inter(size: fontSize, weight: .medium))
                 .foregroundColor(titleColor) +
             Text(" Arc")
                 .font(.inter(.mediumItalic, size: fontSize))
@@ -45,6 +45,25 @@ extension Text {
             self = Text(string)
                 .font(.sfProDisplay(.medium, size: fontSize))
                 .foregroundColor(titleColor)
+        }
+    }
+}
+
+
+
+extension Text {
+    init(arcFormattedSelectedText string: String, italicString: String, fontSize: CGFloat = 19) {
+        if string.hasSuffix(italicString) {
+            let stringcharCount = italicString.count
+            let baseTitle = String(string.dropLast(stringcharCount)).trimmingCharacters(in: .whitespaces)
+            
+            self = Text(baseTitle)
+                .font(Font.inter(size: fontSize, weight: .medium)) +
+                Text(" \(italicString)")
+                .font(.inter(.mediumItalic, size: fontSize))
+        } else {
+            self = Text(string)
+                .font(.sfProDisplay(.semibold, size: fontSize))
         }
     }
 }
