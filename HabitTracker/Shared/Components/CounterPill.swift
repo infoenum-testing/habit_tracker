@@ -23,6 +23,12 @@ struct CounterPill: View {
     var body: some View {
         ZStack {
             // Background ring (gray)
+            VStack {
+                
+            }.frame(width: 40 , height: 40)
+                .background(Color.customBlack)
+                .cornerRadius(20)
+            
             Circle()
                 .stroke(.white.opacity(0.10), lineWidth: 5)
             
@@ -33,10 +39,19 @@ struct CounterPill: View {
                 .rotationEffect(.degrees(-90))  // Start from top
             
             // Text in the middle
-            Text(text)
-                .font(.sfProDisplay(.bold, size: 14))
-                .foregroundColor(.white)
+            HStack(spacing:0) {
+                Text("\(completed)")
+                    .font(.sfProDisplay(.medium, size: 16))
+                    .foregroundColor(.white)
+                Text("/")
+                    .font(.sfProDisplay(.medium, size: 16))
+                    .foregroundColor(.white.opacity(0.5))
+                Text("\(total)")
+                    .font(.sfProDisplay(.medium, size: 16))
+                    .foregroundColor(.white.opacity(0.5))
+            }
         }
-        .frame(width: 45, height: 45)
+        .frame(width: 48, height: 48)
+       
     }
 }

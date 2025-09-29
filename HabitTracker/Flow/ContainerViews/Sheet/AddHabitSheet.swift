@@ -44,6 +44,7 @@ struct AddHabitSheet: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 20, height: 20)
+                                        .opacity(isSelected ? 1 : 0.40)
                                 }
                                 .frame(width: width, height: height)
                                 .background(Color.white.opacity(0.10))
@@ -109,7 +110,7 @@ struct AddHabitSheet: View {
                 .padding(.horizontal)
                 .padding(.bottom,50)
                 
-                ShareProgressButton(title: StringConstants.Sheet.saveHabit) {
+                ShareProgressButton(title: StringConstants.Sheet.addHabit, buttonAction:  {
                     appData.subscribeToHabit(to: habit) { result in
                         switch result {
                         case .success(_):
@@ -126,15 +127,15 @@ struct AddHabitSheet: View {
                             appData.toastType = .alert
                         }
                     }
-                }
+                }, shouldShowArrow: false)
                 .padding(.horizontal, 20)
                 
-                ShareProgressButton(title: StringConstants.Sheet.saveArc) {
-                    appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: selectedColor) { _ in
-                        dismiss()
-                    }
-                }
-                .padding(.vertical, 25)
+//                ShareProgressButton(title: StringConstants.Sheet.saveArc) {
+//                    appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: selectedColor) { _ in
+//                        dismiss()
+//                    }
+//                }
+//                .padding(.vertical, 25)
                 
                 Spacer()
             }

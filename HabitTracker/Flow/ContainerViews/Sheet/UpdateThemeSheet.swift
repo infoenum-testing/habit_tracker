@@ -42,13 +42,12 @@ struct UpdateThemeSheet: View {
                         LazyHStack(spacing: 20) {
                             ForEach(AppColors.all, id: \.self) { icon in
                                 let isSelected = icon == selectedColor
-                                let width: CGFloat = isSelected ? 50 : 34
-                                let height: CGFloat = isSelected ? 50 : 34
+                                let width: CGFloat = isSelected ? 60 : 40
+                                let height: CGFloat = isSelected ? 60 : 40
                                 VStack {
-                                    Image(icon)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 20, height: 20)
+                                    Circle()
+                                        .fill(ColorToken.from(string: icon))
+                                        .frame(width: isSelected ? 36 : 30, height: isSelected ? 36 : 30)
                                 }
                                 .frame(width: width, height: height)
                                 .background(Color.white.opacity(0.10))
@@ -78,23 +77,17 @@ struct UpdateThemeSheet: View {
                             }
                         }
                     }
-//                    .onAppear {
-//                        // ensure habit icon is set first
-//                       // selectedColor = habit.wrappedColorToken
-//                        
-//                        // scroll AFTER a tiny delay (so layout is ready)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                            withAnimation {
-//                                proxy.scrollTo(selectedColor, anchor: .center)
-//                            }
-//                        }
-//                    }
                 }
+                .padding(.top, 40)
                 
-                
-                
+                ShareProgressButton(title: "Update Theme", buttonAction:  {
+                    appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: selectedColor) { _ in
+                        dismiss()
+                    }
+                }, shouldShowArrow: false)
+                .padding(20)
             }
             
-        }.frame(height: 300)
+        }.frame(height: 270)
     }
 }

@@ -29,17 +29,17 @@ struct HabitRowList: View {
                         Spacer()
                     }.frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                 }
             },
             content: {
                 VStack(spacing: 0) {
                     HStack(spacing: 10) {
-                        IconBadge(icon: habit.wrappedIcon, tint: color.opacity(0.3))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.appGray, lineWidth: 1)
-                            )
+                        IconBadge(icon: habit.wrappedIcon, tint: .white)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 10)
+//                                    .stroke(.appGray, lineWidth: 1)
+//                            )
                             .padding(.leading,10)
                         VStack(alignment: .leading, spacing: 2) {
                             Text(habit.wrappedTitle)
@@ -57,7 +57,7 @@ struct HabitRowList: View {
                         .padding(.trailing,10)
                         
                     }
-                    .frame(height: 70)
+                    .frame(height: 60)
                     
                     //  Grid view (only visible in grid layout)
                     if appData.layout == .grid {
@@ -70,11 +70,13 @@ struct HabitRowList: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .background(
-                    RoundedRectangle(cornerRadius: swipeManager.openRowID == habit.id ? 0 : 14, style: .continuous)
-                        .fill(Color(UIColor.black))
-                        .overlay(RoundedRectangle(cornerRadius: swipeManager.openRowID == habit.id ? 0 : 14).stroke(Color(UIColor.appGray), lineWidth: 1.5))
-                )
+                .background(Color.customBlack)
+                .cornerRadius(swipeManager.openRowID == habit.id ? 0 : 18, antialiased: true)
+//                .background(
+//                    RoundedRectangle(cornerRadius: swipeManager.openRowID == habit.id ? 0 : 14, style: .continuous)
+//                        .fill(Color(UIColor.black))
+//                        .overlay(RoundedRectangle(cornerRadius: swipeManager.openRowID == habit.id ? 0 : 14).stroke(Color(UIColor.appGray), lineWidth: 1.5))
+//                )
                 
             })
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: appData.layout)

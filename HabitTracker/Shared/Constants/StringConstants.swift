@@ -66,6 +66,7 @@ internal struct StringConstants {
         static let gutHealthArc = "Gut Health Arc"
         static let previewHabit = "Preview Habit"
         static let saveHabit = "Save Habit"
+        static let addHabit = "Add Habit"
         static let saveArc = "Save Arc"
     }
     

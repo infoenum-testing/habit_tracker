@@ -14,6 +14,7 @@ struct ArcDetailView: View {
     @EnvironmentObject var navigation: NavigationRouter
     @State private var showAlert = false
     @State private var showEditArc = false
+    @State private var showUpdateThemeSheet = false
     @State private var showConfirmation = false
     let arcID: String
     private var arc: SubscribedArc? {
@@ -52,7 +53,7 @@ struct ArcDetailView: View {
                                         .foregroundColor(.white)
                                     
                                     Button {
-                                        
+                                        showUpdateThemeSheet = true
                                     } label: {
                                         Image("infoIcon")
                                             .resizable()
@@ -117,6 +118,18 @@ struct ArcDetailView: View {
                         }
                         .preferredColorScheme(.dark)
                 }
+                
+                .sheet(isPresented: $showUpdateThemeSheet) {
+                    UpdateThemeSheet(isPresented: $showUpdateThemeSheet)
+                        .presentationDetents([.height(300)])
+                        .presentationCornerRadius(24)
+                        .presentationBackground {
+                            Color(UIColor.systemBackground)
+                        }
+                        .preferredColorScheme(.dark)
+                }
+                
+                
             } else {
                 VStack {
                     Text(StringConstants.ArcDetail.arcDeleted)

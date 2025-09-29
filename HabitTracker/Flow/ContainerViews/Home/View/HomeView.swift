@@ -58,33 +58,49 @@ struct HomeView: View {
                     
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 12) {
-                            ForEach(appData.allSubscribedArcs) { arc in
-                                ArcRowList(arc: arc) {
-                                    withAnimation(.spring()) {
-                                        appData.selectedArctoDelete = arc
-                                        showEditArc = true
-                                        swipeManager.closeAll()
+                            
+                            VStack {
+                                    SectionHeader(title: "My Arcs") {
+                                        print("Add Arc tapped")
                                     }
-                                }
-                                .onTapGesture {
-                                    withAnimation(.spring()) {
-                                        swipeManager.closeAll()
+                                    .padding(.vertical,10)
+                                
+                                
+                                ForEach(appData.allSubscribedArcs) { arc in
+                                    ArcRowList(arc: arc) {
+                                        withAnimation(.spring()) {
+                                            appData.selectedArctoDelete = arc
+                                            showEditArc = true
+                                            swipeManager.closeAll()
+                                        }
                                     }
-                                    router.push(to: Route.arcDetail(id: arc.wrappedId))
+                                   
+                                        .onTapGesture {
+                                            withAnimation(.spring()) {
+                                                swipeManager.closeAll()
+                                            }
+                                            router.push(to: Route.arcDetail(id: arc.wrappedId))
+                                        }
                                 }
                             }
-                            
-                            ForEach(appData.allSubscribedHabits) { habit in
-                                HabitRowList(habit: habit, editHabitAction: {
-                                    withAnimation(.spring()) {
-                                        appData.selectedHabitToDelete = habit
-                                        showHabitEditSheet = true
-                                        swipeManager.closeAll()
-                                    }
-                                })
-                                .onTapGesture {
-                                    withAnimation(.spring()) {
-                                        swipeManager.closeAll()
+                            VStack {
+                                SectionHeader(title: "Habits") {
+                                    print("Add Arc tapped")
+                                }
+                                .padding(.vertical,10)
+                                
+                                ForEach(appData.allSubscribedHabits) { habit in
+                                    HabitRowList(habit: habit, editHabitAction: {
+                                        withAnimation(.spring()) {
+                                            appData.selectedHabitToDelete = habit
+                                            showHabitEditSheet = true
+                                            swipeManager.closeAll()
+                                        }
+                                    })
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            swipeManager.closeAll()
+                                        }
                                     }
                                 }
                             }
@@ -117,7 +133,6 @@ struct HomeView: View {
                 }
                 .preferredColorScheme(.dark)
         }
-        
         .onAppear {
             for arc in appData.allSubscribedArcs {
                 if let graceEndDate = arc.graceEndDate,
@@ -126,6 +141,30 @@ struct HomeView: View {
                     appData.deleteArc(arc)
                 }
             }
+        }
+    }
+    
+    private struct SectionHeader: View {
+        let title: String
+        let action: () -> Void
+        
+        var body: some View {
+            HStack {
+                Text(title)
+                    .font(.sfProDisplay(.medium, size: 22))
+                    .foregroundColor(.white)
+                
+                Spacer()
+                
+                Button(action: action) {
+                    HStack {
+                        Image("plusButton")
+                            .resizable()
+                            .frame(width: 22, height: 22)
+                            .padding()
+                    }
+                }
+            }.frame(height: 30)
         }
     }
 }

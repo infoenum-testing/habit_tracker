@@ -24,7 +24,7 @@ struct MyAccountView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Text(StringConstants.Account.completedArcs)
                             .font(.sfProDisplay(.medium, size: 19))
-                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .completed || $0.arcStatus == .lateCompleted }
+                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .endByUser || $0.arcStatus == .lateCompleted }
                         
                         if completedHistories.isEmpty {
                             EmptyArcCardView()
@@ -39,7 +39,7 @@ struct MyAccountView: View {
                                     ForEach(appState.allHistories, id: \.id) { badge in
                                         let color = ColorToken.from(string: badge.color ?? "white")
                                         let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
-                                        if let status = badge.arcStatus, status == ArcStatus.completed || status == ArcStatus.lateCompleted {
+                                        if let status = badge.arcStatus, status == ArcStatus.endByUser || status == ArcStatus.lateCompleted {
                                             ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completedAt?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
                                         }
                                     }
