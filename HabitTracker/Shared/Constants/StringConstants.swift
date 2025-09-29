@@ -55,6 +55,11 @@ internal struct StringConstants {
         static let arcIcon = "arcIcon"
         static let habitIcon = "habitIcon"
         static let userGroup = "user-group"
+        static let powerLevelIcon = "powerLevelIcon"
+        static let trophyIcon = "trophyIcon"
+        static let coin = "coin"
+        static let medalIcon = "medalIcon"
+        
         
     }
     
@@ -120,6 +125,8 @@ internal struct StringConstants {
         static let arcetype = "[arcetype]"
         static let score = "Score"
         static let overAllScore = "Overall Score"
+        static let powerLevel = "Power Level"
+        static let logo = "logo"
         static let updatedDaily = "Updated Daily"
         static let today = "Today"
         static let weeklyPerformance = "Weekly Performance"

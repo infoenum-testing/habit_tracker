@@ -8,79 +8,50 @@
 import Foundation
 import SwiftUI
 
-struct PerformanceCardView: View {
-    let iconName: String
+struct CompletedArcView: View {
+    
     let title: String
-    let score: Int
-    let delta: Int
-    let width : CGFloat = UIScreen.main.bounds.width / 2 - 30
+    let days: Int
+    let date: String
+    let icon : String
+    let iconColor: Color
+    let count: Int
+    
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack() {
-                VStack {
-                    Image(iconName)
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .scaledToFit()
-                        .padding()
-                }
-                .frame(width: 32, height: 32)
-                .background(.appGray)
-                .cornerRadius(8)
-                VStack(alignment: .leading) {
-                    Text(StringConstants.Account.arcetype)
-                        .font(.sfProDisplay(.medium, size: 10))
-                        .foregroundColor(.gray)
-                    Text(title)
-                        .font(.sfProDisplay(.medium, size: 16))
-                        .foregroundStyle(.white)
-                }
-            }.frame(maxWidth: .infinity, alignment: .leading)
+        
+        ZStack {
             
-            Spacer()
-            
-            HStack() {
-                VStack(alignment: .leading) {
-                    Text(StringConstants.Account.score)
-                        .font(.sfProDisplay(.regular, size: 12))
-                    Text("\(score)")
-                        .font(.sfProDisplay(.bold, size: 48))
-                }
-                if delta > 0 {
+            Image(StringConstants.Image.coin)
+                .offset(x: 14)
+                .overlay(alignment: .topTrailing, content: {
                     HStack(spacing: 4) {
-                        Text("+\(delta)")
-                            .font(.sfProDisplay(.medium, size: 14))
-                            .foregroundStyle(.brightGreen)
-                        Image(StringConstants.Image.arrowUpCircle)
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .font(.caption2)
-                    }
-                    .frame(width: 56, height: 25)
-                    .background(Color.capsuleGreen)
-                    .cornerRadius(12)
-                }
-            }
-        }
-        .padding()
-        .frame(width: width, height: 150)
-        .background(Color(UIColor.statsBackground))
+                        Image(StringConstants.Image.medalIcon)
+                        
+                        Text("\(count) x")
+                            .font(.sfProDisplay(.medium, size: 12))
+                            .foregroundColor(Color(red: 0.13, green: 0.13, blue: 0.13))
+
+                    }.padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .frame(height: 18, alignment: .center)
+                        .background(Color.appCyan)
+                        .cornerRadius(40).padding(.top, 6)
+                })
+            
+            VStack {
+                Spacer()
+                Text(title)
+                    .font(.inter(size: 15, weight: .medium))
+                    .foregroundStyle(.white)
+                
+                Text(date)
+                    .font(.inter(size: 10))
+                    .foregroundColor(.white.opacity(0.5))
+                
+            }.offset(y: -9)
+        }.padding(.bottom, 10).frame(maxWidth: .infinity)
+        .background(Color(red: 0.08, green: 0.08, blue: 0.08).opacity(0.31))
         .cornerRadius(16)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.appGray, lineWidth: 2)
-        )
-        .padding(2)
-    }
-}
-
-
-struct PerformanceCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PerformanceCardView(iconName: "discipline", title: "Discipline", score: 73, delta: 6)
-            .preferredColorScheme(.dark)
-            .padding()
-            .previewLayout(.sizeThatFits)
     }
 }

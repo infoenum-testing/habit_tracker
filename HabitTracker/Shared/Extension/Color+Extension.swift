@@ -18,6 +18,7 @@ extension Color {
     static let darkGrayishColor  = Color("36383B")
     static let slateGrayColor  = Color("9399A1")
     static let homeSheetBackground  = Color("151518")
+    static let cardBackgroundColor = Color("222222")
     static let customBlack  = Color("09090B")
     static let progressBackground  = Color("F5F5F5")
 }

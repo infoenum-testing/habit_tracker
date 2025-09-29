@@ -10,36 +10,31 @@ import Foundation
 
 struct StatisticsView: View {
     @EnvironmentObject var appData: AppDataStore
+    @State private var showInfoPopup: Bool = false
+    
     var body: some View {
         VStack {
             VStack {
-            HeaderView()
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
                     
-                    OverallScoreCard()
+                    OverallScoreCard(showInfoPopup: $showInfoPopup)
                     
-                    SectionTitle(StringConstants.Statistic.dailyPerformance)
+                    CompletedArcsGrid()
                     
-                    DailyPerformanceGrid()
-                    
-                    SectionTitle(StringConstants.Statistic.weeklyPerformance)
-                    
-                    WeeklyPerformanceSection()
                 }
                 .padding(.bottom,10)
             }.padding(.horizontal,20)
-        }
-            .padding(.top,20)
-            .edgesIgnoringSafeArea(.bottom)
-            .background(Color.sheetBackground)
-            .cornerRadius(36, corners: [.topLeft, .topRight])
-           
-               
+        }.padding(.top,20)
         }
         .background(Color.black.ignoresSafeArea())
         .onAppear {
             appData.refreshStatistics()
+        }
+        .overlay {
+            if showInfoPopup {
+                InfoPopupView(showInfoPopup: $showInfoPopup)
+            }
         }
     }
 }
