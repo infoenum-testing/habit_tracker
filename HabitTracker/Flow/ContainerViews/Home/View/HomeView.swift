@@ -85,7 +85,7 @@ struct HomeView: View {
                             }
                             VStack {
                                 SectionHeader(title: "Habits") {
-                                    print("Add Arc tapped")
+                                    print("Add Habit tapped")
                                 }
                                 .padding(.vertical,10)
                                 
