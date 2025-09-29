@@ -14,6 +14,8 @@ struct HomeView: View {
     @State private var showEditArc = false
     @State private var showHabitEditSheet = false
     @State private var showToast: Bool = false
+    @State private var showCreateHabitSheet = false
+    @State private var showCreateArcSheet = false
     
     var body: some View {
         ZStack {
@@ -62,6 +64,7 @@ struct HomeView: View {
                             VStack {
                                     SectionHeader(title: "My Arcs") {
                                         print("Add Arc tapped")
+                                        showCreateArcSheet = true
                                     }
                                     .padding(.vertical,10)
                                 
@@ -86,6 +89,7 @@ struct HomeView: View {
                             VStack {
                                 SectionHeader(title: "Habits") {
                                     print("Add Habit tapped")
+                                    showCreateHabitSheet = true
                                 }
                                 .padding(.vertical,10)
                                 
@@ -133,6 +137,19 @@ struct HomeView: View {
                 }
                 .preferredColorScheme(.dark)
         }
+        
+        .sheet(isPresented: $showCreateArcSheet) {
+            CreateArcView()
+                .presentationDetents([.large])
+                .presentationCornerRadius(24)
+                .presentationBackground {
+                    Color(UIColor.systemBackground)
+                }
+                .preferredColorScheme(.dark)
+        }
+        
+       
+        
         .onAppear {
             for arc in appData.allSubscribedArcs {
                 if let graceEndDate = arc.graceEndDate,

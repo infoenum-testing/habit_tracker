@@ -130,13 +130,6 @@ struct AddHabitSheet: View {
                 }, shouldShowArrow: false)
                 .padding(.horizontal, 20)
                 
-//                ShareProgressButton(title: StringConstants.Sheet.saveArc) {
-//                    appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: selectedColor) { _ in
-//                        dismiss()
-//                    }
-//                }
-//                .padding(.vertical, 25)
-                
                 Spacer()
             }
         }
