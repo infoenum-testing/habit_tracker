@@ -10,7 +10,26 @@ import SwiftUI
 
 struct OverallScoreCard: View {
     
+    @EnvironmentObject var appData: AppDataStore
     @Binding var showInfoPopup: Bool
+    
+    
+    // Precompute characters and their colors
+      private var digitsWithColors: [(String, Color)] {
+          let overall = appData.grandTotals.overall
+          let padded = String(format: "%04d", overall)
+          var result: [(String, Color)] = []
+          var started = false
+          for char in padded {
+              if started || char != "0" {
+                  result.append((String(char), .white))
+                  started = true
+              } else {
+                  result.append((String(char), .gray))
+              }
+          }
+          return result
+      }
     
     var body: some View {
         ZStack {
@@ -54,41 +73,48 @@ struct OverallScoreCard: View {
                     }
                 }
                 
-                HStack(spacing: 0) {
-                    Text("0")
-                        .foregroundStyle(.gray)
-                    Text("231")
-                        .foregroundStyle(.white)
-                    
-                }.font(.sfPro(size: 90, weight: .bold))
-                
-                HStack(spacing: 10) {
-                    HStack {
-                        
-                        Text("+8")
-                            .font(.sfPro(size: 12, weight: .medium))
-                            .foregroundStyle(.appCyan)
-                        
-                        ZStack {
-                            
-                            Circle().fill(Color.appCyan).frame(width: 15, height: 15)
-                            
-                            Image(StringConstants.Image.chevronRightSmall)
-                                .resizable()
-                                .foregroundColor(.black)
-                                .frame(width: 8, height: 5)
-                        }
-                        
-                    }.padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .background(Color(red: 0.21, green: 0.25, blue: 0.12))
-                        .cornerRadius(99)
-                    
-                    Text("Updated today")
-                        .font(.sfPro(size: 14))
-                        .foregroundColor(.white.opacity(0.5))
-
+                HStack {
+                    Spacer()
+                    HStack(spacing: 0) {
+                                ForEach(Array(digitsWithColors.enumerated()), id: \.offset) { _, item in
+                                    Text(item.0)
+                                        .foregroundStyle(item.1)
+                                        .font(.sfPro(size: 90, weight: .bold))
+                                }
+                            }
+                    Spacer()
                 }
+
+                if let overall = appData.todayStatistics?.overallTotal, overall > 0 {
+                    HStack(spacing: 10) {
+                        HStack {
+                            
+                            Text("+\(overall)")
+                                .font(.sfPro(size: 12, weight: .medium))
+                                .foregroundStyle(.appCyan)
+                            
+                            ZStack {
+                                
+                                Circle().fill(Color.appCyan).frame(width: 15, height: 15)
+                                
+                                Image(StringConstants.Image.chevronRightSmall)
+                                    .resizable()
+                                    .foregroundColor(.black)
+                                    .frame(width: 8, height: 5)
+                            }
+                            
+                        }.padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(Color(red: 0.21, green: 0.25, blue: 0.12))
+                            .cornerRadius(99)
+                        
+                        Text(StringConstants.Account.updatedDaily)
+                            .font(.sfPro(size: 14))
+                            .foregroundColor(.white.opacity(0.5))
+
+                    }
+                }
+
                 
             }.padding(.leading, 50)
             

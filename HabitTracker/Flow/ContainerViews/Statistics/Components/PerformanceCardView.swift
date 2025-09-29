@@ -8,12 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct PerformanceCardView: View {
+struct CompletedArcView: View {
     
-    let iconName: String
     let title: String
-    let score: Int
-    let delta: Int
+    let days: Int
+    let date: String
+    let icon : String
+    let iconColor: Color
+    let count: Int
+    
     
     var body: some View {
         
@@ -25,7 +28,7 @@ struct PerformanceCardView: View {
                     HStack(spacing: 4) {
                         Image(StringConstants.Image.medalIcon)
                         
-                        Text("\(score)x")
+                        Text("\(count) x")
                             .font(.sfProDisplay(.medium, size: 12))
                             .foregroundColor(Color(red: 0.13, green: 0.13, blue: 0.13))
 
@@ -42,7 +45,7 @@ struct PerformanceCardView: View {
                     .font(.inter(size: 15, weight: .medium))
                     .foregroundStyle(.white)
                 
-                Text("Jul 15 2025")
+                Text(date)
                     .font(.inter(size: 10))
                     .foregroundColor(.white.opacity(0.5))
                 

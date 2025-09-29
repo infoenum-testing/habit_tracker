@@ -20,7 +20,7 @@ struct StatisticsView: View {
                     
                     OverallScoreCard(showInfoPopup: $showInfoPopup)
                     
-                    DailyPerformanceGrid()
+                    CompletedArcsGrid()
                     
                 }
                 .padding(.bottom,10)
