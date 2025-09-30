@@ -9,21 +9,25 @@ import SwiftUI
 
 struct CreateHabitView: View {
     
-   // let habit: HabitTemplate
+    @Binding var habit: CreatedHabit
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appData: AppDataStore
     @State private var selectedIcon: String = StringConstants.Image.iconClock
     @State private var selectedColor: String = "color.purple"
     @State private var profileText = ""
     @State private var inputText: String = ""
-    @State private var textWidth: CGFloat = 100 // minimum width
-
-
-    
+    @State private var textWidth: CGFloat = 120
+    @FocusState private var isTextFieldActive: Bool
     private let colorsArray: [String] = AppColors.all
-    init() {
-        UITextView.appearance().backgroundColor = .clear
-    }
+    var onSave: (CreatedHabit) -> Void
+    
+    @State private var tempHabit: CreatedHabit = CreatedHabit(title: "", description: "", icon: "circle", color: "color.purple")
+
+    init(habit: Binding<CreatedHabit>, onSave: @escaping (CreatedHabit) -> Void) {
+            self._habit = habit
+            self.onSave = onSave
+            self._tempHabit = State(initialValue: habit.wrappedValue)
+        }
     
     var body: some View {
         
@@ -44,7 +48,7 @@ struct CreateHabitView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 20) {
                             ForEach(AppIcons.all, id: \.self) { icon in
-                                let isSelected = icon == selectedIcon
+                                let isSelected = icon == tempHabit.icon
                                 let width: CGFloat = isSelected ? 50 : 34
                                 let height: CGFloat = isSelected ? 50 : 34
                                 VStack {
@@ -59,18 +63,26 @@ struct CreateHabitView: View {
                                 .cornerRadius(width / 2)
                                 .background(
                                     Circle()
-                                        .strokeBorder(Color.white, lineWidth: selectedIcon == icon ? 3 : 0)
+                                        .strokeBorder(Color.white, lineWidth: tempHabit.icon == icon ? 3 : 0)
                                 )
                                 .id(icon)
                                 .onTapGesture {
                                     withAnimation {
-                                        selectedIcon = icon
+                                        tempHabit.icon = icon
                                         proxy.scrollTo(icon, anchor: .center)
                                     }
                                 }
                             }
                         }
                         .padding(.horizontal)
+                    }
+                    .task {
+                        tempHabit.icon = habit.icon
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                withAnimation {
+                                    proxy.scrollTo(tempHabit.icon, anchor: .center)
+                                }
+                            }
                     }
                 }
                 .frame(height: 50)
@@ -79,7 +91,7 @@ struct CreateHabitView: View {
                            Spacer()
                            ZStack(alignment: .bottom) {
                                // The TextField
-                               TextField("Enter text", text: $inputText)
+                               TextField("Habit Title", text: $tempHabit.title)
                                    .font(Font.inter(size: 24, weight: .bold))
                                    .multilineTextAlignment(.center)
                                    .foregroundColor(.white)
@@ -112,14 +124,15 @@ struct CreateHabitView: View {
                 
                 HStack(alignment: .top) {
                     
-                    TextField("Enter habit’s description", text: $profileText,  axis: .vertical)
+                    TextField("Enter habit’s description", text: $tempHabit.description,  axis: .vertical)
                         .lineLimit(.none)
                         .padding(10)
                         .tint(.white)
+                        
                     
                 }
                 .frame(height: 100, alignment: .topLeading)
-                .background(.white.opacity(0.06))
+                .background(.white.opacity(0.04))
                 .cornerRadius(11)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 15)
@@ -127,22 +140,8 @@ struct CreateHabitView: View {
                 Spacer()
                 
                 ShareProgressButton(title: StringConstants.Sheet.addHabit, buttonAction:  {
-//                    appData.subscribeToHabit(to: habit) { result in
-//                        switch result {
-//                        case .success(_):
-//                            appData.updateSubscribedHabit(
-//                                habitID: habit.wrappedId,
-//                                icon: selectedIcon,
-//                                newThemeColor: selectedColor
-//                            ) { success in
-//                                dismiss()
-//                            }
-//                        case .failure(let error):
-//                            appData.toastMessage = error.localizedDescription
-//                            appData.showToast = true
-//                            appData.toastType = .alert
-//                        }
-//                    }
+                    onSave(tempHabit)
+                    dismiss()
                 }, shouldShowArrow: false)
                 .padding(.horizontal, 20)
                

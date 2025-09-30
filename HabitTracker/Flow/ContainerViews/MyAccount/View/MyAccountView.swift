@@ -21,36 +21,36 @@ struct MyAccountView: View {
                     Spacer()
                 }
                 ScrollView(showsIndicators: false) {
-                    VStack(alignment: .leading, spacing: 24) {
-                        Text(StringConstants.Account.completedArcs)
-                            .font(.sfProDisplay(.medium, size: 19))
-                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .endByUser || $0.arcStatus == .lateCompleted }
-                        
-                        if completedHistories.isEmpty {
-                            EmptyArcCardView()
-                                .padding(.vertical, 14)
-                        } else {
-                            ScrollView(showsIndicators: false) {
-                                LazyVGrid(
-                                    columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 2), // 2 columns
-                                    spacing: 15
-                                ){
-                                    
-                                    ForEach(appState.allHistories, id: \.id) { badge in
-                                        let color = ColorToken.from(string: badge.color ?? "white")
-                                        let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
-                                        if let status = badge.arcStatus, status == ArcStatus.endByUser || status == ArcStatus.lateCompleted {
-                                            ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completedAt?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
-                                        }
-                                    }
-                                }
-                                .padding(.horizontal, 10)
-                            }
-                            .padding(.horizontal, 8)
-                        }
-                        
-                    }
-                    .padding(.bottom, 8)
+//                    VStack(alignment: .leading, spacing: 24) {
+//                        Text(StringConstants.Account.completedArcs)
+//                            .font(.sfProDisplay(.medium, size: 19))
+//                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .completed || $0.arcStatus == .lateCompleted }
+//                        
+//                        if completedHistories.isEmpty {
+//                            EmptyArcCardView()
+//                                .padding(.vertical, 14)
+//                        } else {
+//                            ScrollView(showsIndicators: false) {
+//                                LazyVGrid(
+//                                    columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 2), // 2 columns
+//                                    spacing: 15
+//                                ){
+//                                    
+//                                    ForEach(appState.allHistories, id: \.id) { badge in
+//                                        let color = ColorToken.from(string: badge.color ?? "white")
+//                                        let badgeImage: String = ColorToken.imageName(from: badge.color ?? "white")
+//                                        if let status = badge.arcStatus, status == ArcStatus.completed || status == ArcStatus.lateCompleted {
+//                                            ArcCardView(title: badge.arcTitle ?? "",  days: Int(badge.arcDays), date: badge.completedAt?.toReadableString() ?? "", icon: badgeImage, iconColor: color)
+//                                        }
+//                                    }
+//                                }
+//                                .padding(.horizontal, 10)
+//                            }
+//                            .padding(.horizontal, 8)
+//                        }
+//                        
+//                    }
+//                    .padding(.bottom, 8)
                     
                     
                     VStack(spacing: 14) {

@@ -15,6 +15,7 @@ struct UpdateThemeSheet: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var navigation: NavigationRouter
     @EnvironmentObject var appData: AppDataStore
+    
     let arcId: String = ""
     let habitId: String = ""
     

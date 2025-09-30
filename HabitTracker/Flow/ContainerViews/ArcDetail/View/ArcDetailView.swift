@@ -40,7 +40,7 @@ struct ArcDetailView: View {
                         ScrollView(showsIndicators: false) {
                             ScrollView(.horizontal) {
                                 HStack {
-                                    DayStripView(arc: arc)
+                                    DayStripView(arc: arc, arcColor: ColorToken.from(string: arc.wrappedThemeColor))
                                 }
                                 .padding(5)
                             }
@@ -53,6 +53,7 @@ struct ArcDetailView: View {
                                         .foregroundColor(.white)
                                     
                                     Button {
+                                        appData.selectedArctoDelete = arc
                                         showUpdateThemeSheet = true
                                     } label: {
                                         Image("infoIcon")
@@ -70,7 +71,7 @@ struct ArcDetailView: View {
                             }
                             
                             
-                            LinearArcProgressView(title: "Habits Completed", completed: 2, total: 4, tint: ColorToken.from(string: arc.wrappedThemeColor))
+                            LinearArcProgressView(title: "Habits Completed", completed: arc.completedTasksToday, total: arc.wrappedHabitsCount, tint: ColorToken.from(string: arc.wrappedThemeColor))
                                         .padding()
                                         .padding(.horizontal,30)
                                                                        

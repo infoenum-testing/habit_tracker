@@ -10,6 +10,7 @@ import SwiftUI
 struct DayStripView: View {
     let arc: SubscribedArc
     let width: CGFloat = UIScreen.main.bounds.width / 5 - 10
+    var arcColor: Color
     
     private var visibleDays: [Int?] {
         let total = arc.wrappedDurationDays
@@ -32,7 +33,7 @@ struct DayStripView: View {
                         day: day,
                         isSelected: (day == arc.currentDayIndex),
                         isPast: day < arc.currentDayIndex,
-                        borderColor: ColorToken.from(string: arc.wrappedThemeColor) 
+                        borderColor: arcColor
                     )
                 } else {
                     Color.clear

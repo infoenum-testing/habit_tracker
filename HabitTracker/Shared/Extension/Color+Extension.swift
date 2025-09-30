@@ -21,4 +21,5 @@ extension Color {
     static let cardBackgroundColor = Color("222222")
     static let customBlack  = Color("09090B")
     static let progressBackground  = Color("F5F5F5")
+    static let color_151518 = Color("151518")
 }

@@ -73,6 +73,7 @@ internal struct StringConstants {
         static let saveHabit = "Save Habit"
         static let addHabit = "Add Habit"
         static let saveArc = "Save Arc"
+        static let createArc = "Create Arc"
     }
     
     struct Home {

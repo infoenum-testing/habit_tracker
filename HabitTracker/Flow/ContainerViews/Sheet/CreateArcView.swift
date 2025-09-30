@@ -7,132 +7,280 @@
 
 import SwiftUI
 
+struct CreatedHabit: Identifiable, Hashable {
+    let id = UUID()
+    var title: String
+    var description: String
+    var icon: String
+    var color: String
+}
+
 struct CreateArcView: View {
-    @State private var selectedColor: Int = 2
-    @State private var habits: [String] = ["Habit #1", "Habit #2"]
-    @State private var arcDuration: String = "15 days"
-    
-    let colors: [Color] = [.orange, .red, .yellow, .green, .purple, .blue]
+    @State private var habits: [CreatedHabit] = []
+    @State private var arcDuration: Int = 15
+    @State private var selectedColor: String = ""
+    @State private var profileText = ""
+    @State private var inputText: String = ""
+    @State private var textWidth: CGFloat = 120
+    @State private var showHabitSheet = false
+    @State private var editingHabitIndex: Int? = nil
     
     var body: some View {
-        VStack(spacing: 20) {
-            // Color selector
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    ForEach(colors.indices, id: \.self) { index in
-                        Circle()
-                            .fill(colors[index])
-                            .frame(width: 30, height: 30)
-                            .overlay(
-                                Circle()
-                                    .strokeBorder(Color.white, lineWidth: selectedColor == index ? 3 : 0)
-                            )
+        VStack {
+            topSheetIndicator
+                .padding(.top,20)
+            
+            ScrollView(showsIndicators: false) {
+                colourPannel
+                    .padding(.top,40)
+                arcTextField
+                    .padding(.vertical,40)
+                VStack(spacing: 12) {
+                    ForEach(habits.indices, id: \.self) { index in
+                        habitCell(for: index)
                             .onTapGesture {
-                                selectedColor = index
+                                editingHabitIndex = index
+                                showHabitSheet.toggle()
                             }
                     }
+                    addNewHabitButton
                 }
-                .padding(.top, 10)
+                selectArcDuration
+                    .padding(.bottom,10)
             }
+            ShareProgressButton(title: StringConstants.Sheet.createArc, buttonAction:  {
+                // Add logic
+            }, shouldShowArrow: true)
+        }
+        .padding()
+        .background(Color.color_151518.ignoresSafeArea())
+        
+        .sheet(isPresented: $showHabitSheet) {
             
-            // Title
-            Text("My New Arc")
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.white)
-                .padding(.top, 10)
+            CreateHabitView(
+                            habit: editingHabitIndex != nil
+                                ? $habits[editingHabitIndex!]
+                                : .constant(CreatedHabit(title: "", description: "", icon: "circle", color: "color.purple")),
+                            onSave: { newHabit in
+                                if let index = editingHabitIndex {
+                                    habits[index] = newHabit
+                                } else {
+                                    habits.append(newHabit)
+                                }
+                            }
+                        )
             
-            Divider().background(Color.white.opacity(0.2))
+//                    CreateHabitView(
+//                        habit: editingHabitIndex != nil ? $habits[editingHabitIndex!] : .constant(CreatedHabit(title: "", description: "", icon: "circle", color: "color.purple"))
+//                    )
+                    .presentationDetents([.height(450)])
+                    .presentationCornerRadius(24)
+                    .presentationBackground {
+                        Color(UIColor.systemBackground)
+                    }
+                    .preferredColorScheme(.dark)
             
-            // Habits list
-            VStack(spacing: 12) {
-                ForEach(habits.indices, id: \.self) { index in
-                    HStack {
-                        Circle()
-                            .strokeBorder(Color.white, lineWidth: 2)
-                            .frame(width: 18, height: 18)
-                        
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(habits[index])
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.white)
-                            Text("Describe your habit")
-                                .font(.system(size: 13))
-                                .foregroundColor(.white.opacity(0.6))
+                }
+    }
+    
+    // MARK: - Private Views
+    
+    
+    private var topSheetIndicator : some View {
+        HStack {
+            Spacer()
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 119, height: 5)
+                .background(.white.opacity(0.2))
+                .cornerRadius(15)
+            Spacer()
+        }
+    }
+    
+    private var colourPannel : some View {
+        
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: 20) {
+                    ForEach(AppColors.all, id: \.self) { icon in
+                        let isSelected = icon == selectedColor
+                        let width: CGFloat = isSelected ? 60 : 40
+                        let height: CGFloat = isSelected ? 60 : 40
+                        VStack {
+                            Circle()
+                                .fill(ColorToken.from(string: icon))
+                                .frame(width: isSelected ? 36 : 30, height: isSelected ? 36 : 30)
                         }
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            // edit action
-                        }) {
-                            Image(systemName: "square.and.pencil")
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .background(Color.black.opacity(0.4))
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .frame(width: width, height: height)
+                        .background(Color.white.opacity(0.10))
+                        .cornerRadius(width / 2)
+                        .background(
+                            Circle()
+                                .strokeBorder(Color.white, lineWidth: selectedColor == icon ? 3 : 0)
+                        )
+                        .id(icon)
+                        .onTapGesture {
+                            withAnimation {
+                                selectedColor = icon
+                                proxy.scrollTo(icon, anchor: .center)
+                            }
                         }
                     }
-                    .padding()
-                    .background(Color.black.opacity(0.6))
-                    .cornerRadius(12)
                 }
+                .padding(.horizontal)
+            }
+        }
+        .frame(height: 60)
+    }
+    
+    private var arcTextField: some View {
+        HStack {
+            Spacer()
+            ZStack(alignment: .bottom) {
+                // The TextField
+                TextField("Arc Title", text: $inputText)
+                    .font(Font.inter(size: 24, weight: .bold))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+                    .tint(.white)
+                    .background(
+                        // Hidden text to measure width
+                        Text(inputText.isEmpty ? " " : inputText)
+                            .font(Font.inter(size: 24, weight: .bold))
+                            .background(GeometryReader { geo in
+                                Color.clear.onAppear {
+                                    textWidth = max(100, geo.size.width) // minimum 40
+                                }
+                                .onChange(of: inputText) { _ in
+                                    textWidth = max(100, geo.size.width)
+                                }
+                            })
+                            .hidden()
+                    )
                 
-                // Add new habit button
-                Button(action: {
-                    habits.append("Habit #\(habits.count + 1)")
-                }) {
-                    HStack {
-                        Image(systemName: "plus.circle")
-                        Text("Add new habit")
-                    }
-                    .foregroundColor(.white.opacity(0.7))
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.black.opacity(0.3))
-                    .cornerRadius(12)
-                }
+                // Underline
+                Rectangle()
+                    .frame(width: textWidth, height: 1)
+                    .foregroundColor(.white.opacity(0.6))
+                    .offset(y: 10)
             }
+            Spacer()
+        }
+        .frame(height: 40)
+    }
+    
+    private func habitCell(for index: Int) -> some View {
+        HStack(spacing: 5) {
+            HStack {
+                Image(habits[index].icon)
+                    .resizable()
+                    .frame(width: 18, height: 18)
+                    .foregroundStyle(.white)
+            }
+            .frame(width: 42, height: 42)
+            .cornerRadius(10)
             
-            // Arc Duration dropdown
-            Menu {
-                Button("7 days") { arcDuration = "7 days" }
-                Button("15 days") { arcDuration = "15 days" }
-                Button("30 days") { arcDuration = "30 days" }
-            } label: {
-                HStack {
-                    Image(systemName: "calendar")
-                    Text(arcDuration)
-                    Spacer()
-                    Image(systemName: "chevron.down")
-                }
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.black.opacity(0.6))
-                .cornerRadius(12)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(habits[index].title)
+                    .font(.sfProDisplay(.semibold, size: 14))
+                    .foregroundColor(.white)
+                Text(habits[index].description)
+                    .font(.sfProDisplay(.light, size: 12))
+                    .foregroundColor(.white.opacity(0.7))
             }
             
             Spacer()
             
-            // Create Arc button
-            Button(action: {
-                // create arc action
-            }) {
+//            Button(action: {
+//                // edit action
+//            }) {
+                Image("editButton")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(.white)
+                    .frame(width: 42, height: 42)
+                    .background(Color.white.opacity(0.10))
+                    .cornerRadius(10)
+            //}
+        }
+        .padding(10)
+        .frame(height: 60)
+        .background(Color.black.opacity(0.6))
+        .cornerRadius(14)
+    }
+    
+    // MARK: - Add New Habit Button
+    private var addNewHabitButton: some View {
+        Button(action: {
+            editingHabitIndex = nil
+                                showHabitSheet.toggle()
+        }) {
+            HStack(spacing: 10) {
+                Image("plusButton")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                Text("Add new habit")
+                    .font(.sfProDisplay(.semibold, size: 14))
+                    .foregroundStyle(.white.opacity(0.5))
+            }
+            .foregroundColor(.white.opacity(0.7))
+            .frame(maxWidth: .infinity)
+            .frame(height: 60)
+            .cornerRadius(18)
+            .overlay(
+                RoundedRectangle(cornerRadius: 18)
+                    .stroke(Color.white.opacity(0.10), lineWidth: 1)
+            )
+        }
+    }
+    
+    private var arcDurationTitle : some View {
+        Text("Arc Duration")
+            .font(.inter(size: 18, weight: .medium))
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var selectArcDuration : some View {
+        
+        VStack(spacing: 10) {
+            arcDurationTitle
+            Menu {
+                Button("15 days") { arcDuration = 15 }
+                Button("30 days") { arcDuration = 30 }
+                Button("45 days") { arcDuration = 45 }
+                Button("60 days") { arcDuration = 60 }
+                Button("75 days") { arcDuration = 75 }
+                Button("90 days") { arcDuration = 90 }
+            } label: {
                 HStack {
+                    Image("calendar")
+                        .resizable()
+                        .frame(width: 22 , height: 22)
+                        .padding(.horizontal, 10)
+                    
+                    Text("\(arcDuration) days")
+                        .font(Font.inter(size: 16, weight: .medium))
+                    
                     Spacer()
-                    Text("Create Arc")
-                        .font(.system(size: 18, weight: .semibold))
-                    Spacer()
-                    Image(systemName: "chevron.right")
+                    Image("arrowDown")
+                        .resizable()
+                        .frame(width: 12 , height: 6)
+                        .padding(20)
                 }
-                .foregroundColor(.black)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(15)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+                .background(.white.opacity(0.05))
+                .cornerRadius(14)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color.white.opacity(0.10), lineWidth: 1)
+                )
             }
         }
-        .padding()
-        .background(Color.black.ignoresSafeArea())
+        .padding(.top, 30)
     }
 }
 
