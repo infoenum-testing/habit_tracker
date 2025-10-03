@@ -11,9 +11,10 @@ struct CardSwitcherView: View {
     @Binding var selectedCard: Int
     @Binding var showBorderAnimation: Bool
     @State private var layoutRefreshTrigger: Int = 0
-    let array: [[String: Any]] = [
-        ["title": "Text", "des" : "DAY 24/30\nGUT HEALTH ARC\n$225 CHALLENGE", "isGrid": false],
-        ["title": "Grid", "des" : "DAY 24/30\nGUT HEALTH ARC\n$225 CHALLENGE", "isGrid": true]
+    let arc: SubscribedArc
+    @State var array: [[String: Any]] = [
+        ["title": "Text", "isGrid": false],
+        ["title": "Grid", "isGrid": true]
     ]
     @State private var isSelectedText: Bool = true
     @State private var isSelectedGrid: Bool = false
@@ -34,7 +35,7 @@ struct CardSwitcherView: View {
             HStackSnap(selectedIndex: $selectedCard, layoutRefreshTrigger: $layoutRefreshTrigger , selectedLeadingOffset: 0, nextCardIndex: 0, shouldAutoScrollCard: false , alignment: .center(50)) {
                 ForEach(Array(array.enumerated()), id: \.offset) { index, element in
                     if let isGrid = element["isGrid"]as? Bool, let des = element["des"] as? String {
-                        CardView(description: des, bgColor: Color.black , scale: CGSize(width: selectedCard == index ? 1.0 : 0.93,height: selectedCard == index ? 1.0 : 0.93), isGrid: isGrid , shouldShowAnimation: selectedCard == index  ? $showBorderAnimation : .constant(false))
+                        CardView(description: des, bgColor: Color.black , scale: CGSize(width: selectedCard == index ? 1.0 : 0.93,height: selectedCard == index ? 1.0 : 0.93), isGrid: isGrid, arc: arc , shouldShowAnimation: selectedCard == index  ? $showBorderAnimation : .constant(false))
                             .tag(index)
                             .snapAlignmentHelper(id: index)
                     }
@@ -59,6 +60,14 @@ struct CardSwitcherView: View {
                     isSelectedGrid = true
                 }
             }
+        }
+        .onAppear {
+            let day = arc.wrappedDurationDays
+            let countDayComplete = arc.dailyProgressOpacities.filter { $0 >= 1.0 }.count
+            let description = "DAY \(countDayComplete)/\(day)\nGUT HEALTH ARC\nARCETYPE MEMBERS CLUB\nSS25 CHALLENGE"
+
+            array[0]["des"] = description
+            array[1]["des"] = description
         }
     }
     

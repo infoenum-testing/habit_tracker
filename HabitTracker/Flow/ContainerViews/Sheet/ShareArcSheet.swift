@@ -12,7 +12,7 @@ struct ShareArcSheet: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedCard: Int = 0 // Track selected card
     @State private var showBorderAnimation: Bool = false
-    
+    let arc: SubscribedArc
     var body: some View {
         
         ZStack {
@@ -28,7 +28,7 @@ struct ShareArcSheet: View {
                 
                 ScrollView(showsIndicators: false) {
                     // CardSwitcherView now binds selectedCard
-                    CardSwitcherView(selectedCard: $selectedCard, showBorderAnimation: $showBorderAnimation)
+                    CardSwitcherView(selectedCard: $selectedCard, showBorderAnimation: $showBorderAnimation, arc: arc)
                     
                     ShareArcBottomView(saveButtonAction: {
                         showBorderAnimation = true
@@ -70,14 +70,14 @@ struct ShareArcSheet: View {
     }
 
     func getSelectedCardView() -> some View {
-        let cardData = CardSwitcherView(selectedCard: $selectedCard, showBorderAnimation: $showBorderAnimation).array[selectedCard]
+        let cardData = CardSwitcherView(selectedCard: $selectedCard, showBorderAnimation: $showBorderAnimation, arc: arc).array[selectedCard]
         let des = cardData["des"] as? String ?? ""
         let isGrid = cardData["isGrid"] as? Bool ?? false
         return CardView(
             description: des,
             bgColor: .clear,
             scale: CGSize(width: 0.93, height: 0.93),
-            isGrid: isGrid,
+            isGrid: isGrid, arc: arc,
             shouldShowAnimation: .constant(false)
         ).clearForExport()
     }

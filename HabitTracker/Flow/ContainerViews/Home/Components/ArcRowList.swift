@@ -38,15 +38,15 @@ struct ArcRowList: View {
             content: {
                 ZStack {
                     Image("ARC1")
-                                       .resizable()
-                                       .scaledToFill()
-                                       .blur(radius: 2)
-                                       .frame(height: 80)
-                                       .clipped()
-                                   
-                                   // Overlay tint
-                                   Color.black.opacity(0.3)
-                                       .frame(height: 80)
+                        .resizable()
+                        .scaledToFill()
+                        .blur(radius: 2)
+                        .frame(height: 80)
+                        .clipped()
+                    
+                    // Overlay tint
+                    Color.black.opacity(0.3)
+                        .frame(height: 80)
                 
                     VStack(spacing: 5) {
                         HStack(spacing: 10) {
@@ -89,18 +89,20 @@ struct ArcRowList: View {
                         }
                     }
                     
-//                        if state.layout == .grid {
-//                            let newWidth = (UIScreen.main.bounds.width - 30)
-//                            let newHeight = newWidth * (45.0 / 187.0)
-//                            GridTileView(
-//                                itemType: .arc,
-//                                values: arc.dailyProgressOpacities,
-//                                selectedColor: color
-//                            )
-//                            .frame(height: newHeight)
-//                            .padding(.horizontal, 10)
-//                            .padding(.bottom, 8)
-//                        }
+                        if state.layout == .grid {
+                            let newWidth = (UIScreen.main.bounds.width - 30)
+                            let newHeight = newWidth * (45.0 / 187.0)
+                            GridTileView(
+                                itemType: .arc,
+                                values: arc.dailyProgressOpacities,
+                                selectedColor: color,
+                                columnsCount: 20,
+                                rowsCount: 5
+                            )
+                            .frame(height: newHeight)
+                            .padding(.horizontal, 10)
+                            .padding(.bottom, 8)
+                        }
                     }
                     .frame(height: 80)
                     .background(.black)

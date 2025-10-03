@@ -12,9 +12,9 @@ struct GridTileView: View {
     let itemType: ItemType
     let values: [Double]
     let selectedColor: Color
+    let columnsCount: Int
+    let rowsCount: Int
     
-    private let columnsCount = 20
-    private let rowsCount = 5
     private let spacing: CGFloat = 4
     //private let gridHeight: CGFloat = 100
     

@@ -13,6 +13,7 @@ struct CardView: View {
     let bgColor: Color
     let scale: CGSize
     let isGrid: Bool
+    var arc: SubscribedArc
     @Binding var shouldShowAnimation: Bool
     @State private var borderProgress: CGFloat = 0.0
     @State private var showSuccessPopup: Bool = false
@@ -28,20 +29,13 @@ struct CardView: View {
                 
                 if isGrid {
                     VStack {
-                        HStack(spacing: 4) { // Use HStack or VStack as needed
-                            ForEach(0..<15, id: \.self) { _ in
-                                Rectangle()
-                                    .frame(width: 10, height: 10)
-                                    .foregroundColor(.white) // optional color
-                            }
-                        }
-                        HStack(spacing: 4) { // Use HStack or VStack as needed
-                            ForEach(0..<15, id: \.self) { _ in
-                                Rectangle()
-                                    .frame(width: 10, height: 10)
-                                    .foregroundColor(.white) // optional color
-                            }
-                        }
+                        let newWidth = (UIScreen.main.bounds.width - 40)
+                        let newHeight = newWidth * (45.0 / 187.0)
+                        let color = Color.white
+                        GridTileView(itemType: .habit, values: arc.dailyProgressOpacities, selectedColor: color, columnsCount: 15, rowsCount: arc.wrappedDurationDays/15)
+                            .frame(height: newHeight)
+                            .padding(.horizontal, 15)
+                            .padding(.bottom, 8)
                     }
                 }
             }
@@ -136,22 +130,13 @@ extension CardView {
                     .multilineTextAlignment(.center)
                 
                 if isGrid {
-                    VStack {
-                        HStack(spacing: 4) {
-                            ForEach(0..<15, id: \.self) { _ in
-                                Rectangle()
-                                    .frame(width: 10, height: 10)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        HStack(spacing: 4) {
-                            ForEach(0..<15, id: \.self) { _ in
-                                Rectangle()
-                                    .frame(width: 10, height: 10)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    }
+                    let newWidth = (UIScreen.main.bounds.width - 40)
+                    let newHeight = newWidth * (45.0 / 187.0)
+                    let color = Color.white
+                    GridTileView(itemType: .habit, values: arc.dailyProgressOpacities, selectedColor: color,columnsCount: 15, rowsCount: 4)
+                        .frame(height: newHeight)
+                        .padding(.horizontal, 15)
+                        .padding(.bottom, 8)
                 }
             }
         }

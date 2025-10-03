@@ -174,11 +174,13 @@ struct ArcDetailView: View {
 extension ArcDetailView {
     @ViewBuilder
     private var editSheet: some View {
-        ShareArcSheet()
-            .presentationDetents([.large])
-            .presentationCornerRadius(24)
-            .presentationBackground { Color(UIColor.systemBackground) }
-            .preferredColorScheme(.dark)
+        if let avaliableArc = arc {
+            ShareArcSheet(arc: avaliableArc)
+                .presentationDetents([.large])
+                .presentationCornerRadius(24)
+                .presentationBackground { Color(UIColor.systemBackground) }
+                .preferredColorScheme(.dark)
+        }
     }
 
     @ViewBuilder
