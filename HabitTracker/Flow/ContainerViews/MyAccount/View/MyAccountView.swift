@@ -24,7 +24,7 @@ struct MyAccountView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Text(StringConstants.Account.completedArcs)
                             .font(.sfProDisplay(.medium, size: 19))
-                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .endByUser || $0.arcStatus == .lateCompleted }
+                        let completedHistories = appState.allHistories.filter { $0.arcStatus == .completed || $0.arcStatus == .lateCompleted }
                         
                         if completedHistories.isEmpty {
                             EmptyArcCardView()
