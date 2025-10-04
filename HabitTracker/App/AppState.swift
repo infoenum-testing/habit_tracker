@@ -53,6 +53,7 @@ final class AppDataStore: ObservableObject {
         let manager = CoreDataManager.shared
         allHabits = manager.fetchAllHabits()
         allArcs = manager.fetchAllArcs()
+        print(allArcs)
     }
     
     /// 2. Refresh subscribed habits and arcs
@@ -154,6 +155,22 @@ final class AppDataStore: ObservableObject {
     
     func fetchSubscribedArcs() -> [SubscribedArc] {
         return CoreDataManager.shared.fetchSubscribedArcs()
+    }
+}
+
+
+extension AppDataStore {
+    
+    // MARK: - Save User Created Arc
+    func saveUserCreatedArc(_ createdArc: CreatedArc) {
+        CoreDataManager.shared.saveUserCreatedArc(createdArc)
+        refreshHabitsAndArcs() // reload after save
+    }
+    
+    // MARK: - Save User Created Habit
+    func saveUserCreatedHabit(_ createdHabit: CreatedHabit) {
+        CoreDataManager.shared.saveUserCreatedHabit(createdHabit)
+        refreshHabitsAndArcs() // reload after save
     }
 }
 

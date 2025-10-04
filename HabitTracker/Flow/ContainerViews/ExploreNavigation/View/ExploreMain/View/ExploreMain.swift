@@ -98,7 +98,7 @@ private extension ExploreMain {
                 
                 Spacer()
                 
-                Image(StringConstants.Image.vector)
+                Image(StringConstants.Image.cancelIcon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 12, height: 12)

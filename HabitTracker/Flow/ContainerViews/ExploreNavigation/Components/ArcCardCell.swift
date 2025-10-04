@@ -201,6 +201,7 @@ struct NewArcsCell: View {
         .frame(maxWidth: .infinity)
         .frame(height: 80)
         .cornerRadius(12)
+        .contentShape(Rectangle())
     }
 }
 

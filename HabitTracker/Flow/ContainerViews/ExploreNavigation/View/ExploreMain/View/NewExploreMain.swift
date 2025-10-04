@@ -116,7 +116,7 @@ extension NewExploreMain {
                     .frame(maxWidth: .infinity)
                     .frame(height: 20)
                 
-                Image(StringConstants.Image.vector)
+                Image(StringConstants.Image.cancelIcon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 12, height: 12)

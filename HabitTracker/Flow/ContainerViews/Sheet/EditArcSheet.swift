@@ -26,12 +26,12 @@ struct EditArcSheet: View {
                 .frame(width: 100, height: 5)
                 .background(.white.opacity(0.11))
                 .cornerRadius(3)
-                .padding(.top, 10)
+                .padding(.top, 20)
             
             HStack {
-                RoundBackButton(backgroundColor: .black.opacity(0.65)) {
+                RoundBackButton(iconColor: .white,backgroundColor: .black.opacity(0.65), action: {
                     isPresented = false
-                }
+                })
                 Spacer()
                 Text(StringConstants.Sheet.editArc)
                     .font(.headline)
@@ -39,11 +39,58 @@ struct EditArcSheet: View {
                 Color.clear.frame(width: 30)
             }.frame(height: 50)
                 .padding(.vertical,10)
-            ColorPickerSection(
-                colors: colorsArray,
-                selectedColor: $selectedColor,
-                action: { }
-            )
+//            ColorPickerSection(
+//                colors: colorsArray,
+//                selectedColor: $selectedColor,
+//                action: { }
+//            )
+            
+            
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(AppColors.all, id: \.self) { icon in
+                            let isSelected = icon == selectedColor
+                            let width: CGFloat = isSelected ? 60 : 40
+                            let height: CGFloat = isSelected ? 60 : 40
+                            VStack {
+                                Circle()
+                                    .fill(ColorToken.from(string: icon))
+                                    .frame(width: isSelected ? 36 : 30, height: isSelected ? 36 : 30)
+                            }
+                            .frame(width: width, height: height)
+                            .background(Color.white.opacity(0.10))
+                            .cornerRadius(width / 2)
+                            .background(
+                                Circle()
+                                    .strokeBorder(Color.white, lineWidth: selectedColor == icon ? 3 : 0)
+                            )
+                            .id(icon)
+                            .onTapGesture {
+                                withAnimation {
+                                    selectedColor = icon
+                                    proxy.scrollTo(icon, anchor: .center)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .task {
+                    if let arc = appData.selectedArctoDelete {
+                        selectedColor = arc.wrappedThemeColor
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            withAnimation {
+                                proxy.scrollTo(selectedColor, anchor: .center)
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+            
+            
             ShareProgressButton(title: StringConstants.Sheet.saveArc) {
                 appData.updateSubscribedArc(arcId: appData.selectedArctoDelete?.wrappedId ?? "", icon: nil, newThemeColor: selectedColor) { _ in
                     dismiss()
@@ -72,11 +119,11 @@ struct EditArcSheet: View {
             .padding(.bottom, 25)
         }.ignoresSafeArea()
             .padding(.horizontal,20)
-            .task {
-                if let arc = appData.selectedArctoDelete {
-                    selectedColor = arc.wrappedThemeColor
-                }
-            }
+//            .task {
+//                if let arc = appData.selectedArctoDelete {
+//                    selectedColor = arc.wrappedThemeColor
+//                }
+//            }
         
             .sheet(isPresented: $showConfirmation) {
                 EndArcConfirmationSheet(isPresented: $showConfirmation,

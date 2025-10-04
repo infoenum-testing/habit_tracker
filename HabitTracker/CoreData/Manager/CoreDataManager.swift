@@ -369,6 +369,78 @@ extension CoreDataManager {
 }
 
 
+// MARK: - Save User Created Data
+extension CoreDataManager {
+    
+    /// Save a user-created arc (with its habits) into Core Data
+    func saveUserCreatedArc(_ createdArc: CreatedArc) {
+        if fetchArc(by: createdArc.id.uuidString) != nil {
+            print("⚠️ Arc already exists, skipping...")
+            return
+        }
+        
+        // Create ArcTemplate entity
+        let arc = ArcTemplate(context: context)
+        arc.id = createdArc.id.uuidString
+        arc.title = createdArc.title
+        arc.descriptionText = createdArc.description
+        arc.colorToken = createdArc.color
+        arc.durationDays = Int16(createdArc.duration)
+        arc.coverImage = createdArc.icon    
+        
+        // Convert habits into JSON-storable format
+        let habitObjects: [[String: Any]] = createdArc.habits.map { habit in
+            return [
+                "id": habit.id.uuidString,
+                "title": habit.title,
+                "description": habit.description,
+                "icon": habit.icon
+            ]
+        }
+        arc.habitsData = habitObjects
+        
+        // ✅ Save each HabitTemplate (so they exist globally too)
+        for habit in createdArc.habits {
+            // Avoid duplicates
+            if fetchHabit(by: habit.id.uuidString) != nil { continue }
+            
+            let h = HabitTemplate(context: context)
+            h.id = habit.id.uuidString
+            h.title = habit.title
+            h.details = habit.description
+            h.icon = habit.icon
+            h.colorToken = habit.color
+            h.defaultGoalPerDay = 1
+            h.category = ["UserCreated"]
+        }
+        
+        saveContext()
+        print("✅ User-created arc saved: \(createdArc.title)")
+    }
+}
+
+extension CoreDataManager {
+    func saveUserCreatedHabit(_ createdHabit: CreatedHabit) {
+        // Prevent duplicates
+        if fetchHabit(by: createdHabit.id.uuidString) != nil {
+            print("⚠️ Habit already exists, skipping...")
+            return
+        }
+        
+        let habit = HabitTemplate(context: context)
+        habit.id = createdHabit.id.uuidString
+        habit.title = createdHabit.title
+        habit.details = createdHabit.description
+        habit.icon = createdHabit.icon
+        habit.colorToken = createdHabit.color
+        habit.defaultGoalPerDay = 1
+        habit.category = ["UserCreated"]
+        
+        saveContext()
+        print("✅ User-created habit saved: \(createdHabit.title)")
+    }
+}
+
 
 
 

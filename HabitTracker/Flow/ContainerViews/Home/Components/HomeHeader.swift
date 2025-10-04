@@ -10,12 +10,11 @@ import SwiftUI
 
 struct HomeHeader: View {
     @ObservedObject var swipeManager: SwipeManager
+    @EnvironmentObject var router: NavigationRouter
+    @EnvironmentObject var appData: AppDataStore
+
     var body: some View {
         HStack(alignment:.center) {
-//            Image("star")
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 20, height: 20)
             Text("logo")
                 .font(.sfProDisplay(.medium, size: 26))
                 .foregroundStyle(.white)
@@ -33,7 +32,7 @@ struct HomeHeader: View {
                             .shadow(radius: 10)
                     }
                     
-                    Text("\(1) Active Arcs")
+                    Text("\(appData.allSubscribedArcs.count) Active Arcs")
                         .font(.sfProDisplay(.medium, size: 14))
                         .foregroundStyle(.white)
                 }
@@ -44,28 +43,31 @@ struct HomeHeader: View {
                     .stroke(Color.white.opacity(0.3), lineWidth: 1)
             )
             
-            
-            VStack {
-                HStack(spacing: 10) {
-                    Image("arrow-up-double")
-                        .resizable()
-                        .frame(width: 15, height: 15)
+            Button {
+                router.tab = 2
+            } label: {
+                VStack {
+                    HStack(spacing: 10) {
+                        Image("arrow-up-double")
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                        
+                        Text("\(appData.grandTotals.overall)")
+                            .font(.sfProDisplay(.medium, size: 14))
+                            .foregroundStyle(.white)
+                    }.padding()
                     
-                    Text("\(231)")
-                        .font(.sfProDisplay(.medium, size: 14))
-                        .foregroundStyle(.white)
-                }.padding()
+                }.frame(height: 30)
+                    .background(Color.white.opacity(0.10))
+                    .cornerRadius(13)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 13)
+                            .stroke(Color.white.opacity(0.3), lineWidth: 1)
+                    )
+            }
+
                 
-            }.frame(height: 30)
-                .background(Color.white.opacity(0.10))
-                .cornerRadius(13)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 13)
-                        .stroke(Color.white.opacity(0.3), lineWidth: 1)
-                )
-//            HStack(spacing: 10) {
-//                LayoutToggle(swipeManager: swipeManager)
-//            }
+            
         }
     }
 }

@@ -30,7 +30,7 @@ internal struct StringConstants {
         static let arc = "arc"
         static let chevronRightSmall = "chevron-right-small"
         static let magnifyingGlass =  "magnifying-glass-2"
-        static let vector = "Vector"
+        static let cancelIcon = "cancelIcon"
         static let notifications = "notification"
         static let profile = "profile"
         static let share = "share"

@@ -40,7 +40,7 @@ struct ArcDetailView: View {
                         ScrollView(showsIndicators: false) {
                             ScrollView(.horizontal) {
                                 HStack {
-                                    DayStripView(arc: arc, arcColor: ColorToken.from(string: arc.wrappedThemeColor))
+                                    DayStripView(arc: arc, arcColor: ColorToken.from(string: arc.wrappedThemeColor), isTaskCompleted: arc.completedTasksToday == arc.wrappedHabitsCount )
                                 }
                                 .padding(5)
                             }

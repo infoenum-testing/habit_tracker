@@ -16,7 +16,7 @@ struct HomeView: View {
     @State private var showToast: Bool = false
     @State private var showCreateHabitSheet = false
     @State private var showCreateArcSheet = false
-    @State private var createdHabit = CreatedHabit(title: "", description: "", icon: "", color: "")
+    @State private var createdHabit = CreatedHabit(id: UUID(), title: "", description: "", icon: "", color: "")
     
     var body: some View {
         ZStack {
@@ -133,7 +133,7 @@ struct HomeView: View {
         
         .sheet(isPresented: $showEditArc) {
             EditArcSheet(isPresented: $showEditArc)
-                .presentationDetents([.height(510)])
+                .presentationDetents([.height(400)])
                 .presentationCornerRadius(24)
                 .presentationBackground {
                     Color(UIColor.systemBackground)

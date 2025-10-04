@@ -16,7 +16,7 @@ struct HabitEditSheet: View {
     private let colorsArray: [String] = AppColors.all
     
     // set your preferred content height
-    private let preferredHeight: CGFloat = 800
+    private let preferredHeight: CGFloat = 500
     let deviceHeight = UIScreen.main.bounds.height
     
     var body: some View {
@@ -66,14 +66,102 @@ struct HabitEditSheet: View {
                     .frame(width: 40, height: 40)
             }
             
-            IconGridView(color: ColorToken.from(string: selectedColor), icon: $selectedIcon)
-                .padding(.vertical, 26)
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(AppIcons.all, id: \.self) { icon in
+                            let isSelected = icon == selectedIcon
+                            let width: CGFloat = isSelected ? 50 : 34
+                            let height: CGFloat = isSelected ? 50 : 34
+                            VStack {
+                                Image(icon)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                    .opacity(isSelected ? 1 : 0.40)
+                            }
+                            .frame(width: width, height: height)
+                            .background(Color.white.opacity(0.10))
+                            .cornerRadius(width / 2)
+                            .background(
+                                Circle()
+                                    .strokeBorder(Color.white, lineWidth: selectedIcon == icon ? 3 : 0)
+                            )
+                            .id(icon)
+                            .onTapGesture {
+                                withAnimation {
+                                    selectedIcon = icon
+                                    proxy.scrollTo(icon, anchor: .center)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .task {
+                    if let habit = appData.selectedHabitToDelete {
+                        selectedIcon = habit.wrappedIcon
+                        selectedColor = habit.wrappedThemeColor
+                  //  selectedIcon = habit.icon
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        withAnimation {
+                            proxy.scrollTo(selectedIcon, anchor: .center)
+                        }
+                    }
+                }
+                }
+            }
+            .frame(height: 50)
+            .padding(.vertical, 30)
             
-            ColorPickerSection(
-                colors: colorsArray,
-                selectedColor: $selectedColor,
-                action: { }
-            )
+//            ColorPickerSection(
+//                colors: colorsArray,
+//                selectedColor: $selectedColor,
+//                action: { }
+//            )
+            
+            
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(AppColors.all, id: \.self) { icon in
+                            let isSelected = icon == selectedColor
+                            let width: CGFloat = isSelected ? 60 : 40
+                            let height: CGFloat = isSelected ? 60 : 40
+                            VStack {
+                                Circle()
+                                    .fill(ColorToken.from(string: icon))
+                                    .frame(width: isSelected ? 36 : 30, height: isSelected ? 36 : 30)
+                            }
+                            .frame(width: width, height: height)
+                            .background(Color.white.opacity(0.10))
+                            .cornerRadius(width / 2)
+                            .background(
+                                Circle()
+                                    .strokeBorder(Color.white, lineWidth: selectedColor == icon ? 3 : 0)
+                            )
+                            .id(icon)
+                            .onTapGesture {
+                                withAnimation {
+                                    selectedColor = icon
+                                    proxy.scrollTo(icon, anchor: .center)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .task {
+                    if let arc = appData.selectedArctoDelete {
+                        selectedColor = arc.wrappedThemeColor
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            withAnimation {
+                                proxy.scrollTo(selectedColor, anchor: .center)
+                            }
+                        }
+                    }
+                }
+            }
             
             ShareProgressButton(title: StringConstants.Sheet.saveHabit) {
                 if let habitId = appData.selectedHabitToDelete?.wrappedId {

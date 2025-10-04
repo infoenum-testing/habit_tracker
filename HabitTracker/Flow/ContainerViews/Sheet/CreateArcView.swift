@@ -7,8 +7,20 @@
 
 import SwiftUI
 
+struct CreatedArc: Identifiable, Hashable {
+    let id : UUID
+    var title: String
+    var description: String
+    var icon: String
+    var color: String
+    var duration: Int
+    var habits: [CreatedHabit]
+}
+
+
+
 struct CreatedHabit: Identifiable, Hashable {
-    let id = UUID()
+    let id: UUID
     var title: String
     var description: String
     var icon: String
@@ -24,6 +36,9 @@ struct CreateArcView: View {
     @State private var textWidth: CGFloat = 120
     @State private var showHabitSheet = false
     @State private var editingHabitIndex: Int? = nil
+    
+    @EnvironmentObject var dataStore: AppDataStore
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -48,19 +63,21 @@ struct CreateArcView: View {
                 selectArcDuration
                     .padding(.bottom,10)
             }
-            ShareProgressButton(title: StringConstants.Sheet.createArc, buttonAction:  {
-                // Add logic
-            }, shouldShowArrow: true)
+            ShareProgressButton(
+                title: StringConstants.Sheet.createArc,
+                buttonAction: saveArc,
+                shouldShowArrow: true
+            )
         }
         .padding()
         .background(Color.color_151518.ignoresSafeArea())
         
         .sheet(isPresented: $showHabitSheet) {
             
-            CreateHabitView(
+            CreateHabitView(isFromCreateArc: true,
                             habit: editingHabitIndex != nil
                                 ? $habits[editingHabitIndex!]
-                                : .constant(CreatedHabit(title: "", description: "", icon: "circle", color: "color.purple")),
+                            : .constant(CreatedHabit(id: UUID(), title: "", description: "", icon: "circle", color: "color.purple")),
                             onSave: { newHabit in
                                 if let index = editingHabitIndex {
                                     habits[index] = newHabit
@@ -282,6 +299,44 @@ struct CreateArcView: View {
         }
         .padding(.top, 30)
     }
+    
+    // MARK: - Save Arc
+       private func saveArc() {
+           guard !habits.isEmpty else { return }
+
+           // 1️⃣ Generate a unique id for the Arc
+           let arcID = UUID()
+
+           // 2️⃣ Create Arc
+           let newArc = CreatedArc(
+               id: arcID,
+               title: inputText.isEmpty ? "Untitled Arc" : inputText,
+               description: "User created arc",
+               icon: "circle",
+               color: selectedColor.isEmpty ? "color.green" : selectedColor,
+               duration: arcDuration,
+               habits: habits
+           )
+
+           // 3️⃣ Save Arc
+           dataStore.saveUserCreatedArc(newArc)
+
+           // 4️⃣ Fetch saved ArcTemplate from Core Data by id
+           if let savedArcTemplate = dataStore.allArcs.last {
+               // 5️⃣ Subscribe to this Arc
+               dataStore.subscribe(to: savedArcTemplate) { result in
+                   switch result {
+                   case .success(let subscribedArc):
+                       print("✅ Arc created and subscribed: \(subscribedArc.wrappedTitle)")
+                   case .failure(let error):
+                       print("❌ Failed to subscribe arc: \(error.localizedDescription)")
+                   }
+               }
+           }
+           
+           
+           dismiss()   // ✅ close the sheet after saving
+       }
 }
 
 struct CreateArcView_Previews: PreviewProvider {

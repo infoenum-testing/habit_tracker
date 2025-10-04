@@ -10,7 +10,8 @@ import Foundation
 final class NavigationRouter: ObservableObject {
     @Published var routes = [Route]()
     @Published var dismissAllSheets = false
-    
+    @Published var tab: Int = 0
+
     
     func push(to screen: Route) {
         routes.append(screen)

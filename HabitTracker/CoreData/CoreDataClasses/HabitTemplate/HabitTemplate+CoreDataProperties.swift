@@ -151,7 +151,7 @@ extension HabitTemplate {
 extension HabitTemplate {
     /// Returns distribution as an array of (Statistics.Category, Int) where value > 0
     func distributionPoints() -> [(Statistics.Category, Int)] {
-        guard let points = self.points else { return [] }
+        guard let points = self.points else { return [(.discipline, 1)] }
         
         let dist = points.distribution
         let allPoints: [(Statistics.Category, Int)] = [

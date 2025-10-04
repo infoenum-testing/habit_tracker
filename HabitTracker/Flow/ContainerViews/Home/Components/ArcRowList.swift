@@ -16,7 +16,7 @@ struct ArcRowList: View {
     
     var body: some View {
         let color = ColorToken.from(string: arc.wrappedThemeColor)
-      //  let icon = ColorToken.imageName(from: arc.wrappedThemeColor)
+        //  let icon = ColorToken.imageName(from: arc.wrappedThemeColor)
         SwipeableRow(
             id: arc.wrappedId,
             actions: {
@@ -38,16 +38,16 @@ struct ArcRowList: View {
             content: {
                 ZStack {
                     Image("ARC1")
-                                       .resizable()
-                                       .scaledToFill()
-                                       .blur(radius: 2)
-                                       .frame(height: 80)
-                                       .clipped()
-                                   
-                                   // Overlay tint
-                                   Color.black.opacity(0.3)
-                                       .frame(height: 80)
-                
+                        .resizable()
+                        .scaledToFill()
+                        .blur(radius: 2)
+                        .frame(height: 80)
+                        .clipped()
+                    
+                    // Overlay tint
+                    Color.black.opacity(0.3)
+                        .frame(height: 80)
+                    
                     VStack(spacing: 5) {
                         HStack(spacing: 10) {
                             VStack(alignment: .leading, spacing: 5) {
@@ -61,14 +61,14 @@ struct ArcRowList: View {
                                 .background(Color.clear)
                                 .overlay(
                                     Capsule()
-                                        .stroke(ColorToken.from(string: arc.wrappedThemeColor).opacity(0.7), lineWidth: 1)
+                                        .stroke(ColorToken.from(string: arc.wrappedThemeColor), lineWidth: 1)
                                 )
                                 .frame(height: 20)
                                 
                                 
                                 HStack {
                                     if let title = arc.arcTemplate?.title {
-                                        Text(arcFormatted: title)
+                                        Text(arcFormatted: title, arcColor: ColorToken.from(string: arc.wrappedThemeColor))
                                     } else {
                                         Text(arcFormatted: "Arc Title")
                                     }
@@ -89,24 +89,24 @@ struct ArcRowList: View {
                         }
                     }
                     
-//                        if state.layout == .grid {
-//                            let newWidth = (UIScreen.main.bounds.width - 30)
-//                            let newHeight = newWidth * (45.0 / 187.0)
-//                            GridTileView(
-//                                itemType: .arc,
-//                                values: arc.dailyProgressOpacities,
-//                                selectedColor: color
-//                            )
-//                            .frame(height: newHeight)
-//                            .padding(.horizontal, 10)
-//                            .padding(.bottom, 8)
-//                        }
-                    }
-                    .frame(height: 80)
-                    .background(.black)
-                    .cornerRadius(swipeManager.openRowID == arc.id ? 0 : 18)
-                    .contentShape(Rectangle())
-                   
+                    //                        if state.layout == .grid {
+                    //                            let newWidth = (UIScreen.main.bounds.width - 30)
+                    //                            let newHeight = newWidth * (45.0 / 187.0)
+                    //                            GridTileView(
+                    //                                itemType: .arc,
+                    //                                values: arc.dailyProgressOpacities,
+                    //                                selectedColor: color
+                    //                            )
+                    //                            .frame(height: newHeight)
+                    //                            .padding(.horizontal, 10)
+                    //                            .padding(.bottom, 8)
+                    //                        }
+                }
+                .frame(height: 80)
+                .background(.black)
+                .cornerRadius(swipeManager.openRowID == arc.id ? 0 : 18)
+                .contentShape(Rectangle())
+                
             }
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: state.layout)

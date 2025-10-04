@@ -10,13 +10,13 @@ import Foundation
 
 struct RootTabView: View {
     @EnvironmentObject var state: AppDataStore
-    @State private var tab: Int = 0
+    //@State private var tab: Int = 0
     @EnvironmentObject private var router: NavigationRouter
     
     var body: some View {
         NavigationStack(path: $router.routes) {
             VStack(spacing: 0) {
-                switch tab {
+                switch router.tab {
                 case 0:
                     HomeView()
                 case 1:
@@ -27,7 +27,7 @@ struct RootTabView: View {
                 default:
                     MyAccountView()
                 }
-                CustomTabBar(tab: $tab)
+                CustomTabBar(tab: $router.tab)
             }
             .ignoresSafeArea(.keyboard)
             .navigationDestination(for: Route.self) { $0 }
