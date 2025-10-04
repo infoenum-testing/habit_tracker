@@ -11,17 +11,18 @@ enum ToastType {
     case success
     case alert
     
-    var backgroundColor: Color {
+    var borderColor: Color {
         switch self {
-        case .success: return .green
-        case .alert: return .red
+        case .success: return Color.brightGreen
+        case .alert: return Color.appRed
         }
     }
     
     var icon: Image {
+       
         switch self {
-        case .success: return Image(systemName: "checkmark.circle.fill")
-        case .alert: return Image(systemName: "exclamationmark.triangle.fill")
+        case .success: return Image("checkmark-circle")
+        case .alert: return Image("icon.stop")
         }
     }
 }
@@ -52,34 +53,35 @@ struct Toast: View {
     var body: some View {
         VStack {
             if isShown {
-                HStack(spacing: 12) {
-                    
-                    VStack(alignment: .leading, spacing: 2) {
+                HStack {
+                    HStack(spacing: 12) {
+                            type.icon
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundStyle(type.borderColor)
                         Text(message)
-                            .font(.subheadline)
-                            .foregroundStyle(type.backgroundColor)
+                            .font(Font.sfPro(size: 18, weight: .medium))
+                            .foregroundStyle(.white)
                             .multilineTextAlignment(.leading)
                     }
+                    .padding(.horizontal, 20)
                 }
-                .padding(.vertical, 14)
-                .padding(.horizontal, 20)
-                .background(
-                    RoundedRectangle(cornerRadius: 30, style: .continuous)
-                        .fill(.black.opacity(0.8))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                                .stroke(.appGray, lineWidth: 1)
-                        )
+                .frame(height: 55)
+                .background(Color.customBlack)
+                .cornerRadius(20)
+                .padding(1)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(type.borderColor, lineWidth: 1)
                 )
-                //.shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 4)
-                .padding(.horizontal, 16)
+                .padding()
                 .transition(.asymmetric(
                     insertion: .move(edge: alignmentToEdge(alignment)).combined(with: .opacity),
                     removal: .move(edge: alignmentToEdge(alignment)).combined(with: .opacity)
                 ))
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation(.easeInOut(duration: 0.3)) {
+                        withAnimation(.easeInOut(duration: 0.5)) {
                             isShown = false
                         }
                     }

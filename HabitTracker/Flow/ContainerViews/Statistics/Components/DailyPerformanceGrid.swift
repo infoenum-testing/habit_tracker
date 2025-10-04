@@ -9,31 +9,25 @@ import SwiftUI
 
 struct CompletedArcsGrid: View {
     @EnvironmentObject var appState: AppDataStore
+    @ObservedObject var statisticsViewModel : StatisticsViewModel
 
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 2)
 
-    // ✅ Computed property for unique histories with latest completedAt
-    private var uniqueHistories: [(history: History, count: Int)] {
-        // 1️⃣ Filter by status
-        let filtered = appState.allHistories.filter { history in
-            guard let status = history.status else { return false }
-            return status == ArcStatus.endByUser.rawValue || status == ArcStatus.lateCompleted.rawValue
-        }
-
-        // 2️⃣ Group by arcId (duplicates)
-        let grouped = Dictionary(grouping: filtered, by: { $0.arcId ?? "" })
-
-        // 3️⃣ Take the latest completedAt per group + count
-        return grouped.compactMap { (_, historiesForArc) -> (History, Int)? in
-            // Pick the latest completion date in this group
-            guard let latestHistory = historiesForArc.max(by: {
-                ($0.completedAt ?? Date.distantPast) < ($1.completedAt ?? Date.distantPast)
-            }) else {
-                return nil
-            }
-            return (latestHistory, historiesForArc.count)
-        }
-    }
+//    private var uniqueHistories: [(history: History, count: Int)] {
+//        let filtered = appState.allHistories.filter { history in
+//            guard let status = history.status else { return false }
+//            return status == ArcStatus.endByUser.rawValue || status == ArcStatus.lateCompleted.rawValue
+//        }
+//        let grouped = Dictionary(grouping: filtered, by: { $0.arcId ?? "" })
+//        return grouped.compactMap { (_, historiesForArc) -> (History, Int)? in
+//            guard let latestHistory = historiesForArc.max(by: {
+//                ($0.completedAt ?? Date.distantPast) < ($1.completedAt ?? Date.distantPast)
+//            }) else {
+//                return nil
+//            }
+//            return (latestHistory, historiesForArc.count)
+//        }
+//    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -56,10 +50,10 @@ struct CompletedArcsGrid: View {
             .padding(.vertical, 18)
 
             // Grid of unique histories
-            if uniqueHistories.count > 0 {
+            if statisticsViewModel.completedArcs.count > 0 {
                 // Show grid only if there are completed arcs
                 LazyVGrid(columns: columns, spacing: 7) {
-                    ForEach(uniqueHistories, id: \.history.id) { (history, count) in
+                    ForEach(statisticsViewModel.completedArcs, id: \.0.id) { (history, count) in
                         let color = ColorToken.from(string: history.color ?? "white")
                         let badgeImage = ColorToken.imageName(from: history.color ?? "white")
 

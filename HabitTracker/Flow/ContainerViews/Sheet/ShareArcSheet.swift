@@ -12,6 +12,8 @@ struct ShareArcSheet: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedCard: Int = 0 // Track selected card
     @State private var showBorderAnimation: Bool = false
+    @State private var showToast: Bool = false
+    @State private var toastMessage: String = "Arc link copied to clipboard"
     let arc: SubscribedArc
     var body: some View {
         
@@ -33,13 +35,18 @@ struct ShareArcSheet: View {
                     ShareArcBottomView(saveButtonAction: {
                         showBorderAnimation = true
                         saveSelectedCardTransparent()
+                    }, copyButtonAction: {
+                        showToast = true
                     })
+                   
                 }
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.homeSheetBackground)
+            .disabled(showToast) // Disable buttons when toast is shown
         }
+        .toast(isShown: $showToast, title: "", message: toastMessage, type: .success, alignment: .bottom)
     }
     
     private func saveSelectedCardTransparent() {

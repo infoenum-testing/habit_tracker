@@ -52,9 +52,10 @@ struct HabitEditSheet: View {
             }
             
             HStack {
-                RoundBackButton(backgroundColor: .black.opacity(0.65)) {
+                RoundBackButton(iconColor: .white,backgroundColor: .black.opacity(0.65), action: {
                     dismiss()
-                }
+                })
+                
                 Spacer()
                 Text("Edit Habit")
                     .foregroundStyle(.white)
@@ -65,6 +66,7 @@ struct HabitEditSheet: View {
                     .fill(Color.clear)
                     .frame(width: 40, height: 40)
             }
+            .padding(.horizontal, 20)
             
             ScrollViewReader { proxy in
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -175,6 +177,7 @@ struct HabitEditSheet: View {
                 }
             }
             .padding(.vertical, 26)
+            .padding(.horizontal, 20)
             
             Button {
                 if let habit = appData.selectedHabitToDelete {
@@ -198,8 +201,9 @@ struct HabitEditSheet: View {
                 .cornerRadius(22)
             }
             .padding(.bottom, 26)
+            .padding(.horizontal, 20)
         }
-        .padding(.horizontal, 20)
+       
         .onAppear {
             if let habit = appData.selectedHabitToDelete {
                 selectedIcon = habit.wrappedIcon

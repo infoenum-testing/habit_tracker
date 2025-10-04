@@ -36,6 +36,22 @@ final class AppDataStore: ObservableObject {
         overall: 0
     )
     
+     var digitsWithColors: [(String, Color)] {
+        let overall = grandTotals.overall
+        let padded = String(format: "%04d", overall)
+        var result: [(String, Color)] = []
+        var started = false
+        for char in padded {
+            if started || char != "0" {
+                result.append((String(char), .white))
+                started = true
+            } else {
+                result.append((String(char), .gray))
+            }
+        }
+        return result
+    }
+        
     init() {
         refreshData()
     }

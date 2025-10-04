@@ -31,11 +31,13 @@ struct CreateArcView: View {
     @State private var habits: [CreatedHabit] = []
     @State private var arcDuration: Int = 15
     @State private var selectedColor: String = ""
-    @State private var profileText = ""
-    @State private var inputText: String = ""
+    @State private var arcTitle: String = ""
     @State private var textWidth: CGFloat = 120
     @State private var showHabitSheet = false
     @State private var editingHabitIndex: Int? = nil
+    
+    @State private var showToast: Bool = false
+    @State private var toastMessage: String = ""
     
     @EnvironmentObject var dataStore: AppDataStore
     @Environment(\.dismiss) var dismiss
@@ -70,34 +72,32 @@ struct CreateArcView: View {
             )
         }
         .padding()
+        .disabled(showToast)
         .background(Color.color_151518.ignoresSafeArea())
+        .toast(isShown: $showToast, title: "", message: toastMessage, type: .alert, alignment: .bottom)
         
         .sheet(isPresented: $showHabitSheet) {
             
             CreateHabitView(isFromCreateArc: true,
                             habit: editingHabitIndex != nil
-                                ? $habits[editingHabitIndex!]
+                            ? $habits[editingHabitIndex!]
                             : .constant(CreatedHabit(id: UUID(), title: "", description: "", icon: "circle", color: "color.purple")),
                             onSave: { newHabit in
-                                if let index = editingHabitIndex {
-                                    habits[index] = newHabit
-                                } else {
-                                    habits.append(newHabit)
-                                }
-                            }
-                        )
-            
-//                    CreateHabitView(
-//                        habit: editingHabitIndex != nil ? $habits[editingHabitIndex!] : .constant(CreatedHabit(title: "", description: "", icon: "circle", color: "color.purple"))
-//                    )
-                    .presentationDetents([.height(450)])
-                    .presentationCornerRadius(24)
-                    .presentationBackground {
-                        Color(UIColor.systemBackground)
-                    }
-                    .preferredColorScheme(.dark)
-            
+                if let index = editingHabitIndex {
+                    habits[index] = newHabit
+                } else {
+                    habits.append(newHabit)
                 }
+            }
+            )
+            .presentationDetents([.height(450)])
+            .presentationCornerRadius(24)
+            .presentationBackground {
+                Color(UIColor.systemBackground)
+            }
+            .preferredColorScheme(.dark)
+            
+        }
     }
     
     // MARK: - Private Views
@@ -156,20 +156,20 @@ struct CreateArcView: View {
             Spacer()
             ZStack(alignment: .bottom) {
                 // The TextField
-                TextField("Arc Title", text: $inputText)
+                TextField("Arc Title", text: $arcTitle)
                     .font(Font.inter(size: 24, weight: .bold))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                     .tint(.white)
                     .background(
                         // Hidden text to measure width
-                        Text(inputText.isEmpty ? " " : inputText)
+                        Text(arcTitle.isEmpty ? " " : arcTitle)
                             .font(Font.inter(size: 24, weight: .bold))
                             .background(GeometryReader { geo in
                                 Color.clear.onAppear {
                                     textWidth = max(100, geo.size.width) // minimum 40
                                 }
-                                .onChange(of: inputText) { _ in
+                                .onChange(of: arcTitle) {
                                     textWidth = max(100, geo.size.width)
                                 }
                             })
@@ -209,17 +209,13 @@ struct CreateArcView: View {
             
             Spacer()
             
-//            Button(action: {
-//                // edit action
-//            }) {
-                Image("editButton")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundStyle(.white)
-                    .frame(width: 42, height: 42)
-                    .background(Color.white.opacity(0.10))
-                    .cornerRadius(10)
-            //}
+            Image("editButton")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundStyle(.white)
+                .frame(width: 42, height: 42)
+                .background(Color.white.opacity(0.10))
+                .cornerRadius(10)
         }
         .padding(10)
         .frame(height: 60)
@@ -231,7 +227,7 @@ struct CreateArcView: View {
     private var addNewHabitButton: some View {
         Button(action: {
             editingHabitIndex = nil
-                                showHabitSheet.toggle()
+            showHabitSheet.toggle()
         }) {
             HStack(spacing: 10) {
                 Image("plusButton")
@@ -301,42 +297,50 @@ struct CreateArcView: View {
     }
     
     // MARK: - Save Arc
-       private func saveArc() {
-           guard !habits.isEmpty else { return }
-
-           // 1️⃣ Generate a unique id for the Arc
-           let arcID = UUID()
-
-           // 2️⃣ Create Arc
-           let newArc = CreatedArc(
-               id: arcID,
-               title: inputText.isEmpty ? "Untitled Arc" : inputText,
-               description: "User created arc",
-               icon: "circle",
-               color: selectedColor.isEmpty ? "color.green" : selectedColor,
-               duration: arcDuration,
-               habits: habits
-           )
-
-           // 3️⃣ Save Arc
-           dataStore.saveUserCreatedArc(newArc)
-
-           // 4️⃣ Fetch saved ArcTemplate from Core Data by id
-           if let savedArcTemplate = dataStore.allArcs.last {
-               // 5️⃣ Subscribe to this Arc
-               dataStore.subscribe(to: savedArcTemplate) { result in
-                   switch result {
-                   case .success(let subscribedArc):
-                       print("✅ Arc created and subscribed: \(subscribedArc.wrappedTitle)")
-                   case .failure(let error):
-                       print("❌ Failed to subscribe arc: \(error.localizedDescription)")
-                   }
-               }
-           }
-           
-           
-           dismiss()   // ✅ close the sheet after saving
-       }
+    private func saveArc() {
+        
+        if selectedColor.isEmpty {
+            toastMessage = "Please select color"
+            showToast = true
+            return
+        }
+        
+        if arcTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            toastMessage = "Title is required"
+            showToast = true
+            return
+        }
+        
+        if habits.isEmpty {
+            toastMessage = "Please add habit"
+            showToast = true
+            return
+        }
+        
+        guard !habits.isEmpty else { return }
+        let arcID = UUID()
+        let newArc = CreatedArc(
+            id: arcID,
+            title: arcTitle.isEmpty ? "Untitled Arc" : arcTitle,
+            description: "User created arc",
+            icon: "circle",
+            color: selectedColor.isEmpty ? "color.green" : selectedColor,
+            duration: arcDuration,
+            habits: habits
+        )
+        dataStore.saveUserCreatedArc(newArc)
+        if let savedArcTemplate = dataStore.allArcs.last {
+            dataStore.subscribe(to: savedArcTemplate) { result in
+                switch result {
+                case .success(let subscribedArc):
+                    print("✅ Arc created and subscribed: \(subscribedArc.wrappedTitle)")
+                case .failure(let error):
+                    print("❌ Failed to subscribe arc: \(error.localizedDescription)")
+                }
+            }
+        }
+        dismiss()
+    }
 }
 
 struct CreateArcView_Previews: PreviewProvider {

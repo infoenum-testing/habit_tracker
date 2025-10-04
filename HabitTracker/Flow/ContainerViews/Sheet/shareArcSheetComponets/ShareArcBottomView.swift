@@ -10,7 +10,7 @@ import SwiftUI
 struct ShareArcBottomView: View {
     
     let saveButtonAction: () -> Void
-    
+    let copyButtonAction: () -> Void
     var body: some View {
         VStack(spacing: 0) {
             ShareProgressButton(title: "Save", buttonAction : {
@@ -51,6 +51,7 @@ struct ShareArcBottomView: View {
 
                     Button(action: {
                         UIPasteboard.general.string = "arcetype.com/arc/guthealth"
+                        copyButtonAction()
                     }) {
                         Image(.copyIcon)
                             .resizable()

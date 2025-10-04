@@ -15,9 +15,9 @@ struct ShareProgressButton: View {
     var shouldShowArrow: Bool = true
     
     var body: some View {
-        Button(action: {
-            buttonAction()
-        }) {
+//        Button(action: {
+//            buttonAction()
+//        }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color(white: 0.85))
@@ -41,8 +41,11 @@ struct ShareProgressButton: View {
                 }
                 .foregroundColor(.black)
             }
-        }
-        .buttonStyle(PlainButtonStyle())
+            .onTapGesture {
+                buttonAction()
+            }
+//        }
+//        .buttonStyle(PlainButtonStyle())
     }
 }
 
