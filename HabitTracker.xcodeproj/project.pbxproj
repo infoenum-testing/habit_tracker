@@ -15,7 +15,17 @@
 		18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CB2E66D392003907AA /* ExpandableText.swift */; };
 		18FAA6CF2E685A2B003907AA /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CD2E685A2B003907AA /* History+CoreDataClass.swift */; };
 		18FAA6D02E685A2B003907AA /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CE2E685A2B003907AA /* History+CoreDataProperties.swift */; };
+		6A59B73D2E8BF7DE003424CA /* HStackSnapCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7382E8BF7DE003424CA /* HStackSnapCore.swift */; };
+		6A59B73E2E8BF7DE003424CA /* SnapAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7342E8BF7DE003424CA /* SnapAlignment.swift */; };
+		6A59B73F2E8BF7DE003424CA /* GeometryReaderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7372E8BF7DE003424CA /* GeometryReaderOverlay.swift */; };
+		6A59B7402E8BF7DE003424CA /* HStackSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B73B2E8BF7DE003424CA /* HStackSnap.swift */; };
+		6A59B7412E8BF7DE003424CA /* SnapAlignmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7392E8BF7DE003424CA /* SnapAlignmentHelper.swift */; };
+		6A59B7422E8BF7DE003424CA /* SnapToScrollEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7352E8BF7DE003424CA /* SnapToScrollEvent.swift */; };
+		6A59B7432E8BF7DE003424CA /* SizeOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7332E8BF7DE003424CA /* SizeOverride.swift */; };
+		6A59B7442E8BF7DE003424CA /* ContentPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7322E8BF7DE003424CA /* ContentPreferenceKey.swift */; };
 		6A5AD4442E86DE6C00E6AF9D /* InfoPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5AD4432E86DE6C00E6AF9D /* InfoPopupView.swift */; };
+		6AFA0D342E8ABEBB001E9141 /* ShareArcSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFA0D332E8ABEBB001E9141 /* ShareArcSheet.swift */; };
+		6DFF664C2E8F926F00B3AF7C /* NotCourierSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DFF664B2E8F926F00B3AF7C /* NotCourierSans-Bold.otf */; };
 		B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC02E50FDCC00674792 /* AppState.swift */; };
 		B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */; };
 		B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC32E50FDCC00674792 /* DayBadge.swift */; };
@@ -168,7 +178,17 @@
 		18FAA6CB2E66D392003907AA /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		18FAA6CD2E685A2B003907AA /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
 		18FAA6CE2E685A2B003907AA /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6A59B7322E8BF7DE003424CA /* ContentPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPreferenceKey.swift; sourceTree = "<group>"; };
+		6A59B7332E8BF7DE003424CA /* SizeOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeOverride.swift; sourceTree = "<group>"; };
+		6A59B7342E8BF7DE003424CA /* SnapAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAlignment.swift; sourceTree = "<group>"; };
+		6A59B7352E8BF7DE003424CA /* SnapToScrollEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToScrollEvent.swift; sourceTree = "<group>"; };
+		6A59B7372E8BF7DE003424CA /* GeometryReaderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderOverlay.swift; sourceTree = "<group>"; };
+		6A59B7382E8BF7DE003424CA /* HStackSnapCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnapCore.swift; sourceTree = "<group>"; };
+		6A59B7392E8BF7DE003424CA /* SnapAlignmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAlignmentHelper.swift; sourceTree = "<group>"; };
+		6A59B73B2E8BF7DE003424CA /* HStackSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnap.swift; sourceTree = "<group>"; };
 		6A5AD4432E86DE6C00E6AF9D /* InfoPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopupView.swift; sourceTree = "<group>"; };
+		6AFA0D332E8ABEBB001E9141 /* ShareArcSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareArcSheet.swift; sourceTree = "<group>"; };
+		6DFF664B2E8F926F00B3AF7C /* NotCourierSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotCourierSans-Bold.otf"; sourceTree = "<group>"; };
 		B7A3CBC02E50FDCC00674792 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTaskRow.swift; sourceTree = "<group>"; };
 		B7A3CBC32E50FDCC00674792 /* DayBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBadge.swift; sourceTree = "<group>"; };
@@ -308,6 +328,14 @@
 		EBEAC21A2E6FF7DC003B8186 /* Flowers-Of-Nineties-Semibold-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Flowers-Of-Nineties-Semibold-Italic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6A59B7452E8BFCBE003424CA /* shareArcSheetComponets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = shareArcSheetComponets;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		EBAA203B2E4DBEE7001503D8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -337,6 +365,37 @@
 				EBB7531A2E6C437500B457C0 /* ExploreMain */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		6A59B7362E8BF7DE003424CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6A59B7322E8BF7DE003424CA /* ContentPreferenceKey.swift */,
+				6A59B7332E8BF7DE003424CA /* SizeOverride.swift */,
+				6A59B7342E8BF7DE003424CA /* SnapAlignment.swift */,
+				6A59B7352E8BF7DE003424CA /* SnapToScrollEvent.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6A59B73A2E8BF7DE003424CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A59B7372E8BF7DE003424CA /* GeometryReaderOverlay.swift */,
+				6A59B7382E8BF7DE003424CA /* HStackSnapCore.swift */,
+				6A59B7392E8BF7DE003424CA /* SnapAlignmentHelper.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6A59B73C2E8BF7DE003424CA /* Card Animation */ = {
+			isa = PBXGroup;
+			children = (
+				6A59B7362E8BF7DE003424CA /* Model */,
+				6A59B73A2E8BF7DE003424CA /* Views */,
+				6A59B73B2E8BF7DE003424CA /* HStackSnap.swift */,
+			);
+			path = "Card Animation";
 			sourceTree = "<group>";
 		};
 		B7A3CBC12E50FDCC00674792 /* App */ = {
@@ -473,6 +532,7 @@
 		B7A3CBE82E50FDCC00674792 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6DFF664B2E8F926F00B3AF7C /* NotCourierSans-Bold.otf */,
 				EBEAC2192E6FF6F5003B8186 /* FlowersOfNineties */,
 				EBAF59C62E6F1B0D0037FA36 /* OpenSans */,
 				E98EDF762E5C428300E42196 /* inter */,
@@ -574,6 +634,7 @@
 		B7A3CC032E50FDCC00674792 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6A59B73C2E8BF7DE003424CA /* Card Animation */,
 				EB9E25692E6EAAC2003FC30D /* InitialDataLoader */,
 				18ABE12B2E6C54A1004E9FDB /* Constants */,
 				EB96E8762E65A7CF005399A8 /* Alert */,
@@ -1005,10 +1066,12 @@
 			children = (
 				EB98CB002E8AD65200B837A5 /* CreateArcView.swift */,
 				EB98CAFE2E8ABF0000B837A5 /* CreateHabitView.swift */,
+				6A59B7452E8BFCBE003424CA /* shareArcSheetComponets */,
 				EB3BDDEE2E86DF8800B1F83C /* UpdateThemeSheet.swift */,
 				EB3BDDE42E8695A400B1F83C /* AddHabitSheet.swift */,
 				EBAAE88F2E54B9A7000F47B9 /* EndArcConfirmationSheet.swift */,
 				EBAAE88D2E54B989000F47B9 /* EditArcSheet.swift */,
+				6AFA0D332E8ABEBB001E9141 /* ShareArcSheet.swift */,
 				EBB753282E6C461100B457C0 /* HabitCustomizationSheet */,
 			);
 			path = Sheet;
@@ -1056,6 +1119,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6A59B7452E8BFCBE003424CA /* shareArcSheetComponets */,
 			);
 			name = HabitTracker;
 			packageProductDependencies = (
@@ -1112,6 +1178,7 @@
 				B7A3CC2B2E50FDCC00674792 /* Preview Assets.xcassets in Resources */,
 				B7A3CC2C2E50FDCC00674792 /* SF-Pro-Display-Black.otf in Resources */,
 				B7A3CC2D2E50FDCC00674792 /* SF-Pro-Display-Bold.otf in Resources */,
+				6DFF664C2E8F926F00B3AF7C /* NotCourierSans-Bold.otf in Resources */,
 				EBAF5A012E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				EB28DBC72E852A9B00869B2C /* Inter_18pt-MediumItalic.ttf in Resources */,
 				B7A3CC2E2E50FDCC00674792 /* SF-Pro-Display-Light.otf in Resources */,
@@ -1143,6 +1210,14 @@
 				EB4CCB982E57192300F76945 /* ArcCardView.swift in Sources */,
 				B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */,
 				B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */,
+				6A59B73D2E8BF7DE003424CA /* HStackSnapCore.swift in Sources */,
+				6A59B73E2E8BF7DE003424CA /* SnapAlignment.swift in Sources */,
+				6A59B73F2E8BF7DE003424CA /* GeometryReaderOverlay.swift in Sources */,
+				6A59B7402E8BF7DE003424CA /* HStackSnap.swift in Sources */,
+				6A59B7412E8BF7DE003424CA /* SnapAlignmentHelper.swift in Sources */,
+				6A59B7422E8BF7DE003424CA /* SnapToScrollEvent.swift in Sources */,
+				6A59B7432E8BF7DE003424CA /* SizeOverride.swift in Sources */,
+				6A59B7442E8BF7DE003424CA /* ContentPreferenceKey.swift in Sources */,
 				B7A3CC092E50FDCC00674792 /* DetailHeader.swift in Sources */,
 				EB96E8752E65A409005399A8 /* Toast.swift in Sources */,
 				EB1A87B92E6034F000EE0CEB /* ArcProgress+CoreDataProperties.swift in Sources */,
@@ -1213,6 +1288,7 @@
 				EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */,
 				EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */,
 				EBB66A092E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift in Sources */,
+				6AFA0D342E8ABEBB001E9141 /* ShareArcSheet.swift in Sources */,
 				E983A34D2E5D9C55001AC952 /* ArcDetailPreJoinView.swift in Sources */,
 				EB98CAFF2E8ABF0F00B837A5 /* CreateHabitView.swift in Sources */,
 				EBB66A0C2E5D93EE00638C9B /* Statistics+CoreDataClass.swift in Sources */,
@@ -1403,13 +1479,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitTracker/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need access to save images to your photo library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to save screenshots.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1438,13 +1516,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitTracker/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need access to save images to your photo library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to save screenshots.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

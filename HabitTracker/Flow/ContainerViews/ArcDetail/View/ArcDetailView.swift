@@ -110,25 +110,18 @@ struct ArcDetailView: View {
                 )
                 .navigationBarBackButtonHidden()
                 .toolbar(.hidden)
-                .sheet(isPresented: $showEditArc) {
-                    EditArcSheet(isPresented: $showEditArc)
-                        .presentationDetents([.height(510)])
-                        .presentationCornerRadius(24)
-                        .presentationBackground {
-                            Color(UIColor.systemBackground)
-                        }
-                        .preferredColorScheme(.dark)
-                }
-                
-                .sheet(isPresented: $showUpdateThemeSheet) {
-                    UpdateThemeSheet(isPresented: $showUpdateThemeSheet)
-                        .presentationDetents([.height(300)])
-                        .presentationCornerRadius(24)
-                        .presentationBackground {
-                            Color(UIColor.systemBackground)
-                        }
-                        .preferredColorScheme(.dark)
-                }
+//                .sheet(isPresented: $showEditArc) {
+//                    EditArcSheet(isPresented: $showEditArc)
+//                        .presentationDetents([.height(510)])
+//                        .presentationCornerRadius(24)
+//                        .presentationBackground {
+//                            Color(UIColor.systemBackground)
+//                        }
+//                        .preferredColorScheme(.dark)
+//                    
+//                }
+                .sheet(isPresented: $showEditArc) { editSheet }
+                .sheet(isPresented: $showUpdateThemeSheet) { themeSheet }
                 
                 
             } else {
@@ -176,5 +169,27 @@ struct ArcDetailView: View {
             showAlert = true
             appData.shownAlerts.insert(arc.wrappedId)
         }
+    }
+}
+
+extension ArcDetailView {
+    @ViewBuilder
+    private var editSheet: some View {
+        if let avaliableArc = arc {
+            ShareArcSheet(arc: avaliableArc)
+                .presentationDetents([.large])
+                .presentationCornerRadius(24)
+                .presentationBackground { Color(UIColor.systemBackground) }
+                .preferredColorScheme(.dark)
+        }
+    }
+
+    @ViewBuilder
+    private var themeSheet: some View {
+        UpdateThemeSheet(isPresented: $showUpdateThemeSheet)
+            .presentationDetents([.height(300)])
+            .presentationCornerRadius(24)
+            .presentationBackground { Color(UIColor.systemBackground) }
+            .preferredColorScheme(.dark)
     }
 }

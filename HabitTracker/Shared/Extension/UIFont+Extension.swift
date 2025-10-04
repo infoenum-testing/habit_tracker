@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 extension Font {
     
@@ -37,6 +37,15 @@ extension Font {
             return Font.custom("SFProDisplay-Bold", size: size)
         case .medium:
             return Font.custom("SFProDisplay-Medium", size: size)
+        default:
+            return Font.custom("SFProDisplay-Regular", size: size)
+        }
+    }
+    
+    static func NotCourierSans(size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        switch weight {
+        case .bold:
+            return Font.custom("NotCourierSans-Bold", size: size)
         default:
             return Font.custom("SFProDisplay-Regular", size: size)
         }

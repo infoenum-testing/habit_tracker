@@ -60,14 +60,14 @@ struct HabitRowList: View {
                     .frame(height: 60)
                     
                     //  Grid view (only visible in grid layout)
-                    if appData.layout == .grid {
-                        let newWidth = (UIScreen.main.bounds.width - 40)
-                        let newHeight = newWidth * (45.0 / 187.0)
-                        GridTileView(itemType: .habit, values: habit.dailyOpacities, selectedColor: color)
-                            .frame(height: newHeight)
-                            .padding(.horizontal, 10)
-                            .padding(.bottom, 8)
-                    }
+//                    if appData.layout == .grid {
+//                        let newWidth = (UIScreen.main.bounds.width - 40)
+//                        let newHeight = newWidth * (45.0 / 187.0)
+//                        GridTileView(itemType: .habit, values: habit.dailyOpacities, selectedColor: color)
+//                            .frame(height: newHeight)
+//                            .padding(.horizontal, 10)
+//                            .padding(.bottom, 8)
+//                    }
                 }
                 .frame(maxWidth: .infinity)
                 .background(Color.customBlack)

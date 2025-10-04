@@ -1,0 +1,86 @@
+//
+//  CardSwitcherView.swift
+//  HabitTracker
+//
+//  Created by ie13 on 30/09/25.
+
+import SwiftUI
+
+struct CardSwitcherView: View {
+    
+    @Binding var selectedCard: Int
+    @Binding var showBorderAnimation: Bool
+    @State private var layoutRefreshTrigger: Int = 0
+    let arc: SubscribedArc
+    @State var array: [[String: Any]] = [
+        ["title": "Text", "isGrid": false],
+        ["title": "Grid", "isGrid": true]
+    ]
+    @State private var isSelectedText: Bool = true
+    @State private var isSelectedGrid: Bool = false
+
+    var body: some View {
+        VStack {
+            // Card container
+            Text(array[selectedCard]["title"] as? String ?? "Card")
+                .font(.inter(size: 12, weight: .medium))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(.white.opacity(0.06))
+                .cornerRadius(8)
+                .padding(.top, 28)
+                .padding(.bottom, 28)
+            
+            HStackSnap(selectedIndex: $selectedCard, layoutRefreshTrigger: $layoutRefreshTrigger , selectedLeadingOffset: 0, nextCardIndex: 0, shouldAutoScrollCard: false , alignment: .center(50)) {
+                ForEach(Array(array.enumerated()), id: \.offset) { index, element in
+                    if let isGrid = element["isGrid"]as? Bool, let des = element["des"] as? String {
+                        CardView(description: des, bgColor: Color.black , scale: CGSize(width: selectedCard == index ? 1.0 : 0.93,height: selectedCard == index ? 1.0 : 0.93), isGrid: isGrid, arc: arc , shouldShowAnimation: selectedCard == index  ? $showBorderAnimation : .constant(false))
+                            .tag(index)
+                            .snapAlignmentHelper(id: index)
+                    }
+                }
+            } eventHandler: { event in
+                handleSnapToScrollEvent(event: event)
+            }
+            .frame(height: 360)
+            .frame(width: UIScreen.main.bounds.width)
+            .padding(.bottom, 15)
+            
+            // Bottom buttons
+            HStack(spacing: 50) {
+                SelectionOptionCellView(imageName: "textAlignment", title: "Text", isSelected: isSelectedText) {
+                    selectedCard = 0
+                    isSelectedText  = true
+                    isSelectedGrid = false
+                }
+                SelectionOptionCellView(imageName: "gridIcon", title: "Grid", isSelected: isSelectedGrid) {
+                    selectedCard = 1
+                    isSelectedText = false
+                    isSelectedGrid = true
+                }
+            }
+        }
+        .onAppear {
+            let day = arc.wrappedDurationDays
+            let countDayComplete = arc.dailyProgressOpacities.filter { $0 >= 1.0 }.count
+            let description = "DAY \(countDayComplete)/\(day)\nGUT HEALTH ARC\nARCETYPE MEMBERS CLUB\nSS25 CHALLENGE"
+
+            array[0]["des"] = description
+            array[1]["des"] = description
+        }
+    }
+    
+    func handleSnapToScrollEvent(event: SnapToScrollEvent) {
+        switch event {
+        case .didLayout(layoutInfo: _):
+            break
+        case let .swipe(index: index):
+            selectedCard = index
+            isSelectedText = index == 0
+            isSelectedGrid = index == 1
+        case .didEndUserInteraction(hasEnd: _):
+            break
+        }
+    }
+}
