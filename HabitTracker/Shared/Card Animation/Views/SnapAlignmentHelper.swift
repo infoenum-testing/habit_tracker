@@ -3,37 +3,37 @@ import SwiftUI
 
 // MARK: - SnapAlignmentHelper
 
-struct SnapAlignmentHelper<ID: Hashable>: ViewModifier {
-
+struct SnapAlignmentHelper<ID: Hashable, Content: View>: View {
     @EnvironmentObject var sizeOverride: SizeOverride
 
     var id: ID
     var coordinateSpace: String?
-
-    func body(content: Content) -> some View {
-
-        switch sizeOverride.itemWidth {
-
-        case let .some(value):
-
+    var content: Content
+    
+    init(id: ID, coordinateSpace: String?, content: Content) {
+        self.id = id
+        self.coordinateSpace = coordinateSpace
+        self.content = content
+    }
+    
+    var body: some View {
+        if let width = sizeOverride.itemWidth {
             content
-                .frame(width: value)
+                .frame(width: width)
                 .overlay(GeometryReaderOverlay(id: id, coordinateSpace: coordinateSpace))
-
-        case .none:
-
+        } else {
             content
                 .overlay(GeometryReaderOverlay(id: id, coordinateSpace: coordinateSpace))
         }
     }
 }
 
+// Extension to provide the same API as before
 extension View {
-
     public func snapAlignmentHelper<ID: Hashable>(
         id: ID,
         coordinateSpace: String? = .none) -> some View {
-
-        modifier(SnapAlignmentHelper(id: id, coordinateSpace: coordinateSpace))
+        
+        SnapAlignmentHelper(id: id, coordinateSpace: coordinateSpace, content: self)
     }
 }

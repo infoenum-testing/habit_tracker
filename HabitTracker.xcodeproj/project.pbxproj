@@ -15,16 +15,16 @@
 		18FAA6CC2E66D392003907AA /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CB2E66D392003907AA /* ExpandableText.swift */; };
 		18FAA6CF2E685A2B003907AA /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CD2E685A2B003907AA /* History+CoreDataClass.swift */; };
 		18FAA6D02E685A2B003907AA /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA6CE2E685A2B003907AA /* History+CoreDataProperties.swift */; };
-		6A59B73D2E8BF7DE003424CA /* HStackSnapCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7382E8BF7DE003424CA /* HStackSnapCore.swift */; };
-		6A59B73E2E8BF7DE003424CA /* SnapAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7342E8BF7DE003424CA /* SnapAlignment.swift */; };
-		6A59B73F2E8BF7DE003424CA /* GeometryReaderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7372E8BF7DE003424CA /* GeometryReaderOverlay.swift */; };
-		6A59B7402E8BF7DE003424CA /* HStackSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B73B2E8BF7DE003424CA /* HStackSnap.swift */; };
-		6A59B7412E8BF7DE003424CA /* SnapAlignmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7392E8BF7DE003424CA /* SnapAlignmentHelper.swift */; };
-		6A59B7422E8BF7DE003424CA /* SnapToScrollEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7352E8BF7DE003424CA /* SnapToScrollEvent.swift */; };
-		6A59B7432E8BF7DE003424CA /* SizeOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7332E8BF7DE003424CA /* SizeOverride.swift */; };
-		6A59B7442E8BF7DE003424CA /* ContentPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59B7322E8BF7DE003424CA /* ContentPreferenceKey.swift */; };
 		6A5AD4442E86DE6C00E6AF9D /* InfoPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5AD4432E86DE6C00E6AF9D /* InfoPopupView.swift */; };
 		6AFA0D342E8ABEBB001E9141 /* ShareArcSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFA0D332E8ABEBB001E9141 /* ShareArcSheet.swift */; };
+		6D13CAEE2E90F0AD000D45E8 /* HStackSnapCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE92E90F0AD000D45E8 /* HStackSnapCore.swift */; };
+		6D13CAEF2E90F0AD000D45E8 /* SnapAlignmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAEA2E90F0AD000D45E8 /* SnapAlignmentHelper.swift */; };
+		6D13CAF02E90F0AD000D45E8 /* HStackSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAEC2E90F0AD000D45E8 /* HStackSnap.swift */; };
+		6D13CAF12E90F0AD000D45E8 /* ContentPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE32E90F0AD000D45E8 /* ContentPreferenceKey.swift */; };
+		6D13CAF22E90F0AD000D45E8 /* SizeOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE42E90F0AD000D45E8 /* SizeOverride.swift */; };
+		6D13CAF32E90F0AD000D45E8 /* SnapToScrollEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE62E90F0AD000D45E8 /* SnapToScrollEvent.swift */; };
+		6D13CAF42E90F0AD000D45E8 /* SnapAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE52E90F0AD000D45E8 /* SnapAlignment.swift */; };
+		6D13CAF52E90F0AD000D45E8 /* GeometryReaderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE82E90F0AD000D45E8 /* GeometryReaderOverlay.swift */; };
 		6DFF664C2E8F926F00B3AF7C /* NotCourierSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DFF664B2E8F926F00B3AF7C /* NotCourierSans-Bold.otf */; };
 		B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC02E50FDCC00674792 /* AppState.swift */; };
 		B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */; };
@@ -178,16 +178,16 @@
 		18FAA6CB2E66D392003907AA /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		18FAA6CD2E685A2B003907AA /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
 		18FAA6CE2E685A2B003907AA /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		6A59B7322E8BF7DE003424CA /* ContentPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPreferenceKey.swift; sourceTree = "<group>"; };
-		6A59B7332E8BF7DE003424CA /* SizeOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeOverride.swift; sourceTree = "<group>"; };
-		6A59B7342E8BF7DE003424CA /* SnapAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAlignment.swift; sourceTree = "<group>"; };
-		6A59B7352E8BF7DE003424CA /* SnapToScrollEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToScrollEvent.swift; sourceTree = "<group>"; };
-		6A59B7372E8BF7DE003424CA /* GeometryReaderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderOverlay.swift; sourceTree = "<group>"; };
-		6A59B7382E8BF7DE003424CA /* HStackSnapCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnapCore.swift; sourceTree = "<group>"; };
-		6A59B7392E8BF7DE003424CA /* SnapAlignmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAlignmentHelper.swift; sourceTree = "<group>"; };
-		6A59B73B2E8BF7DE003424CA /* HStackSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnap.swift; sourceTree = "<group>"; };
 		6A5AD4432E86DE6C00E6AF9D /* InfoPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopupView.swift; sourceTree = "<group>"; };
 		6AFA0D332E8ABEBB001E9141 /* ShareArcSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareArcSheet.swift; sourceTree = "<group>"; };
+		6D13CAE32E90F0AD000D45E8 /* ContentPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPreferenceKey.swift; sourceTree = "<group>"; };
+		6D13CAE42E90F0AD000D45E8 /* SizeOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeOverride.swift; sourceTree = "<group>"; };
+		6D13CAE52E90F0AD000D45E8 /* SnapAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAlignment.swift; sourceTree = "<group>"; };
+		6D13CAE62E90F0AD000D45E8 /* SnapToScrollEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToScrollEvent.swift; sourceTree = "<group>"; };
+		6D13CAE82E90F0AD000D45E8 /* GeometryReaderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderOverlay.swift; sourceTree = "<group>"; };
+		6D13CAE92E90F0AD000D45E8 /* HStackSnapCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnapCore.swift; sourceTree = "<group>"; };
+		6D13CAEA2E90F0AD000D45E8 /* SnapAlignmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAlignmentHelper.swift; sourceTree = "<group>"; };
+		6D13CAEC2E90F0AD000D45E8 /* HStackSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnap.swift; sourceTree = "<group>"; };
 		6DFF664B2E8F926F00B3AF7C /* NotCourierSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotCourierSans-Bold.otf"; sourceTree = "<group>"; };
 		B7A3CBC02E50FDCC00674792 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTaskRow.swift; sourceTree = "<group>"; };
@@ -367,33 +367,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6A59B7362E8BF7DE003424CA /* Model */ = {
+		6D13CAE72E90F0AD000D45E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6A59B7322E8BF7DE003424CA /* ContentPreferenceKey.swift */,
-				6A59B7332E8BF7DE003424CA /* SizeOverride.swift */,
-				6A59B7342E8BF7DE003424CA /* SnapAlignment.swift */,
-				6A59B7352E8BF7DE003424CA /* SnapToScrollEvent.swift */,
+				6D13CAE32E90F0AD000D45E8 /* ContentPreferenceKey.swift */,
+				6D13CAE42E90F0AD000D45E8 /* SizeOverride.swift */,
+				6D13CAE52E90F0AD000D45E8 /* SnapAlignment.swift */,
+				6D13CAE62E90F0AD000D45E8 /* SnapToScrollEvent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		6A59B73A2E8BF7DE003424CA /* Views */ = {
+		6D13CAEB2E90F0AD000D45E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6A59B7372E8BF7DE003424CA /* GeometryReaderOverlay.swift */,
-				6A59B7382E8BF7DE003424CA /* HStackSnapCore.swift */,
-				6A59B7392E8BF7DE003424CA /* SnapAlignmentHelper.swift */,
+				6D13CAE82E90F0AD000D45E8 /* GeometryReaderOverlay.swift */,
+				6D13CAE92E90F0AD000D45E8 /* HStackSnapCore.swift */,
+				6D13CAEA2E90F0AD000D45E8 /* SnapAlignmentHelper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		6A59B73C2E8BF7DE003424CA /* Card Animation */ = {
+		6D13CAED2E90F0AD000D45E8 /* Card Animation */ = {
 			isa = PBXGroup;
 			children = (
-				6A59B7362E8BF7DE003424CA /* Model */,
-				6A59B73A2E8BF7DE003424CA /* Views */,
-				6A59B73B2E8BF7DE003424CA /* HStackSnap.swift */,
+				6D13CAE72E90F0AD000D45E8 /* Model */,
+				6D13CAEB2E90F0AD000D45E8 /* Views */,
+				6D13CAEC2E90F0AD000D45E8 /* HStackSnap.swift */,
 			);
 			path = "Card Animation";
 			sourceTree = "<group>";
@@ -634,7 +634,7 @@
 		B7A3CC032E50FDCC00674792 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				6A59B73C2E8BF7DE003424CA /* Card Animation */,
+				6D13CAED2E90F0AD000D45E8 /* Card Animation */,
 				EB9E25692E6EAAC2003FC30D /* InitialDataLoader */,
 				18ABE12B2E6C54A1004E9FDB /* Constants */,
 				EB96E8762E65A7CF005399A8 /* Alert */,
@@ -1206,18 +1206,18 @@
 				EB9E25722E6EE49F003FC30D /* DayStripView.swift in Sources */,
 				B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */,
 				EBCBD1C52E69DB2E0031D5F6 /* HabitReferenceJSON.swift in Sources */,
+				6D13CAEE2E90F0AD000D45E8 /* HStackSnapCore.swift in Sources */,
+				6D13CAEF2E90F0AD000D45E8 /* SnapAlignmentHelper.swift in Sources */,
+				6D13CAF02E90F0AD000D45E8 /* HStackSnap.swift in Sources */,
+				6D13CAF12E90F0AD000D45E8 /* ContentPreferenceKey.swift in Sources */,
+				6D13CAF22E90F0AD000D45E8 /* SizeOverride.swift in Sources */,
+				6D13CAF32E90F0AD000D45E8 /* SnapToScrollEvent.swift in Sources */,
+				6D13CAF42E90F0AD000D45E8 /* SnapAlignment.swift in Sources */,
+				6D13CAF52E90F0AD000D45E8 /* GeometryReaderOverlay.swift in Sources */,
 				EB9E25742E6EE4D7003FC30D /* ShareProgressButton.swift in Sources */,
 				EB4CCB982E57192300F76945 /* ArcCardView.swift in Sources */,
 				B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */,
 				B7A3CC082E50FDCC00674792 /* DayBadge.swift in Sources */,
-				6A59B73D2E8BF7DE003424CA /* HStackSnapCore.swift in Sources */,
-				6A59B73E2E8BF7DE003424CA /* SnapAlignment.swift in Sources */,
-				6A59B73F2E8BF7DE003424CA /* GeometryReaderOverlay.swift in Sources */,
-				6A59B7402E8BF7DE003424CA /* HStackSnap.swift in Sources */,
-				6A59B7412E8BF7DE003424CA /* SnapAlignmentHelper.swift in Sources */,
-				6A59B7422E8BF7DE003424CA /* SnapToScrollEvent.swift in Sources */,
-				6A59B7432E8BF7DE003424CA /* SizeOverride.swift in Sources */,
-				6A59B7442E8BF7DE003424CA /* ContentPreferenceKey.swift in Sources */,
 				B7A3CC092E50FDCC00674792 /* DetailHeader.swift in Sources */,
 				EB96E8752E65A409005399A8 /* Toast.swift in Sources */,
 				EB1A87B92E6034F000EE0CEB /* ArcProgress+CoreDataProperties.swift in Sources */,
