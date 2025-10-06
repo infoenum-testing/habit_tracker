@@ -12,6 +12,7 @@ struct ShareArcSheet: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedCard: Int = 0 // Track selected card
     @State private var showBorderAnimation: Bool = false
+    @State private var showToast: Bool = false
     let arc: SubscribedArc
     var body: some View {
         
@@ -33,12 +34,21 @@ struct ShareArcSheet: View {
                     ShareArcBottomView(saveButtonAction: {
                         showBorderAnimation = true
                         saveSelectedCardTransparent()
+                    }, copyButtonAction: {
+                        withAnimation {
+                            showToast = true
+                            Task {
+                                try await Task.sleep(nanoseconds: 1_000_000_000)
+                                showToast = false
+                            }
+                        }
                     })
                 }
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.homeSheetBackground)
+            .toastView(isShown: $showToast, message: "Arc link copied to clipboard", alignment: .bottom)
         }
     }
     

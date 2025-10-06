@@ -24,7 +24,8 @@ struct HomeView: View {
                 HomeHeader(swipeManager: swipeManager)
                     .padding(.top, 6)
                     .padding(.horizontal,20)
-                DateStrip()
+                //                DateStrip()
+                OneWeekView(arc: appData.allSubscribedArcs)
                     .padding(.top, 4)
                 HStack {
                     Text(StringConstants.Home.todaysHabits)
@@ -63,11 +64,11 @@ struct HomeView: View {
                         VStack(spacing: 12) {
                             
                             VStack {
-                                    SectionHeader(title: "My Arcs") {
-                                        print("Add Arc tapped")
-                                        showCreateArcSheet = true
-                                    }
-                                    .padding(.vertical,10)
+                                SectionHeader(title: "My Arcs") {
+                                    print("Add Arc tapped")
+                                    showCreateArcSheet = true
+                                }
+                                .padding(.vertical,10)
                                 
                                 
                                 ForEach(appData.allSubscribedArcs) { arc in
@@ -78,13 +79,13 @@ struct HomeView: View {
                                             swipeManager.closeAll()
                                         }
                                     }
-                                   
-                                        .onTapGesture {
-                                            withAnimation(.spring()) {
-                                                swipeManager.closeAll()
-                                            }
-                                            router.push(to: Route.arcDetail(id: arc.wrappedId))
+                                    
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            swipeManager.closeAll()
                                         }
+                                        router.push(to: Route.arcDetail(id: arc.wrappedId))
+                                    }
                                 }
                             }
                             VStack {

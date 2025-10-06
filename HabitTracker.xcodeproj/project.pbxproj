@@ -25,6 +25,8 @@
 		6D13CAF32E90F0AD000D45E8 /* SnapToScrollEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE62E90F0AD000D45E8 /* SnapToScrollEvent.swift */; };
 		6D13CAF42E90F0AD000D45E8 /* SnapAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE52E90F0AD000D45E8 /* SnapAlignment.swift */; };
 		6D13CAF52E90F0AD000D45E8 /* GeometryReaderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13CAE82E90F0AD000D45E8 /* GeometryReaderOverlay.swift */; };
+		6DCCF4E72E912443009DE8DD /* OneWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCCF4E62E912443009DE8DD /* OneWeekView.swift */; };
+		6DD348F82E93885B00B745BB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD348F72E93885B00B745BB /* ToastView.swift */; };
 		6DFF664C2E8F926F00B3AF7C /* NotCourierSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DFF664B2E8F926F00B3AF7C /* NotCourierSans-Bold.otf */; };
 		B7A3CC062E50FDCC00674792 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC02E50FDCC00674792 /* AppState.swift */; };
 		B7A3CC072E50FDCC00674792 /* ArcTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */; };
@@ -188,6 +190,8 @@
 		6D13CAE92E90F0AD000D45E8 /* HStackSnapCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnapCore.swift; sourceTree = "<group>"; };
 		6D13CAEA2E90F0AD000D45E8 /* SnapAlignmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAlignmentHelper.swift; sourceTree = "<group>"; };
 		6D13CAEC2E90F0AD000D45E8 /* HStackSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackSnap.swift; sourceTree = "<group>"; };
+		6DCCF4E62E912443009DE8DD /* OneWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWeekView.swift; sourceTree = "<group>"; };
+		6DD348F72E93885B00B745BB /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		6DFF664B2E8F926F00B3AF7C /* NotCourierSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotCourierSans-Bold.otf"; sourceTree = "<group>"; };
 		B7A3CBC02E50FDCC00674792 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B7A3CBC22E50FDCC00674792 /* ArcTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTaskRow.swift; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 		B7A3CBD42E50FDCC00674792 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6DCCF4E62E912443009DE8DD /* OneWeekView.swift */,
 				B7A3CBD12E50FDCC00674792 /* Components */,
 				B7A3CBD32E50FDCC00674792 /* View */,
 			);
@@ -917,6 +922,7 @@
 		EB96E8732E65A3FE005399A8 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
+				6DD348F72E93885B00B745BB /* ToastView.swift */,
 				EB96E8742E65A405005399A8 /* Toast.swift */,
 			);
 			path = Toast;
@@ -1285,6 +1291,7 @@
 				EBCBD1CA2E69DCD40031D5F6 /* GrandTotals.swift in Sources */,
 				EBB66A132E5DC11C00638C9B /* ColorToken.swift in Sources */,
 				EB98CB012E8AD65400B837A5 /* CreateArcView.swift in Sources */,
+				6DD348F82E93885B00B745BB /* ToastView.swift in Sources */,
 				EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */,
 				EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */,
 				EBB66A092E5D93EE00638C9B /* HabitTemplate+CoreDataProperties.swift in Sources */,
@@ -1324,6 +1331,7 @@
 				B7A3CC262E50FDCC00674792 /* Arc.swift in Sources */,
 				E983A3482E5D9BEF001AC952 /* SwipeManager.swift in Sources */,
 				6A5AD4442E86DE6C00E6AF9D /* InfoPopupView.swift in Sources */,
+				6DCCF4E72E912443009DE8DD /* OneWeekView.swift in Sources */,
 				E983A3492E5D9BEF001AC952 /* SwipeableRow.swift in Sources */,
 				B7A3CC272E50FDCC00674792 /* ArcTask.swift in Sources */,
 				EBB753202E6C441300B457C0 /* ArcsView.swift in Sources */,

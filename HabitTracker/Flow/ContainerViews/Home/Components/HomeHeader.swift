@@ -38,10 +38,10 @@ struct HomeHeader: View {
                 }
                 .padding()
             }.frame(height: 30)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
-            )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.3), lineWidth: 1)
+                )
             
             Button {
                 router.tab = 2
@@ -65,9 +65,6 @@ struct HomeHeader: View {
                             .stroke(Color.white.opacity(0.3), lineWidth: 1)
                     )
             }
-
-                
-            
         }
     }
 }

@@ -40,6 +40,18 @@ extension View {
                 .padding(.bottom)
         }
     }
+    
+    func toastView (
+        isShown: Binding<Bool>,
+        message: String,
+        alignment: Alignment = .top
+    ) -> some View {
+        ZStack {
+            self
+            ToastView(isShown: isShown, message: message, alignment: alignment)
+                .padding(.bottom)
+        }
+    }
 }
 
 struct Toast: View {
