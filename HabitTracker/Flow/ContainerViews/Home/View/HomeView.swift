@@ -127,7 +127,7 @@ struct HomeView: View {
         .sheet(isPresented: $showHabitEditSheet) {
             HabitEditSheet()
                 .preferredColorScheme(.dark)
-                .presentationDetents([.fraction(0.95)])
+                .presentationDetents([.height(500)])
                 .presentationCornerRadius(24)
                 .presentationDragIndicator(.hidden)
         }
@@ -153,7 +153,7 @@ struct HomeView: View {
         }
         
         .sheet(isPresented: $showCreateHabitSheet) {
-            CreateHabitView(habit: $createdHabit, onSave: {_ in })
+            CreateHabitView(isFromCreateArc: false, habit: $createdHabit, onSave: {_ in })
                 .presentationDetents([.height(450)])
                 .presentationCornerRadius(24)
                 .presentationBackground {

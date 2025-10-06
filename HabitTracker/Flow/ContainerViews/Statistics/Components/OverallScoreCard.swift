@@ -11,25 +11,25 @@ import SwiftUI
 struct OverallScoreCard: View {
     
     @EnvironmentObject var appData: AppDataStore
-    @Binding var showInfoPopup: Bool
+    @ObservedObject var statisticsViewModel : StatisticsViewModel
     
     
     // Precompute characters and their colors
-      private var digitsWithColors: [(String, Color)] {
-          let overall = appData.grandTotals.overall
-          let padded = String(format: "%04d", overall)
-          var result: [(String, Color)] = []
-          var started = false
-          for char in padded {
-              if started || char != "0" {
-                  result.append((String(char), .white))
-                  started = true
-              } else {
-                  result.append((String(char), .gray))
-              }
-          }
-          return result
-      }
+//      private var digitsWithColors: [(String, Color)] {
+//          let overall = appData.grandTotals.overall
+//          let padded = String(format: "%04d", overall)
+//          var result: [(String, Color)] = []
+//          var started = false
+//          for char in padded {
+//              if started || char != "0" {
+//                  result.append((String(char), .white))
+//                  started = true
+//              } else {
+//                  result.append((String(char), .gray))
+//              }
+//          }
+//          return result
+//      }
     
     var body: some View {
         ZStack {
@@ -40,7 +40,8 @@ struct OverallScoreCard: View {
                         
                         Button(action: {
                             withAnimation {
-                                showInfoPopup.toggle()
+                                statisticsViewModel.showInfoPopup = true
+                                
                             }
                         }){
                             HStack {
@@ -83,7 +84,7 @@ struct OverallScoreCard: View {
                     HStack {
                         // Spacer()
                         HStack(spacing: 0) {
-                            ForEach(Array(digitsWithColors.enumerated()), id: \.offset) { _, item in
+                            ForEach(Array(appData.digitsWithColors.enumerated()), id: \.offset) { _, item in
                                 Text(item.0)
                                     .foregroundStyle(item.1)
                                     .font(.sfPro(size: 90, weight: .bold))

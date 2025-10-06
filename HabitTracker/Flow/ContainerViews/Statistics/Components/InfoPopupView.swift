@@ -9,21 +9,27 @@ import SwiftUI
 
 struct InfoPopupView: View {
     
-    @Binding var showInfoPopup: Bool
-    
+    @EnvironmentObject var appData: AppDataStore
+    @ObservedObject var statisticsViewModel : StatisticsViewModel
+
+
     var body: some View {
         ZStack {
             VStack(spacing: 40) {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     
-                    Text("9235")
-                        .foregroundStyle(.white)
-                        .font(.sfPro(size: 80, weight: .bold))
+                    HStack(spacing: 0) {
+                        ForEach(Array(appData.digitsWithColors.enumerated()), id: \.offset) { _, item in
+                            Text(item.0)
+                                .foregroundStyle(item.1)
+                                .font(.sfPro(size: 90, weight: .bold))
+                        }
+                    }
                     
                     HStack {
                         
-                        Text("+8")
+                        Text("+\(appData.todayStatistics)")
                             .font(.sfPro(size: 12, weight: .medium))
                             .foregroundStyle(.appCyan)
                         
@@ -59,7 +65,7 @@ struct InfoPopupView: View {
                     
                 Button(action: {
                     withAnimation {
-                        showInfoPopup = false
+                        statisticsViewModel.showInfoPopup = false
                     }
                 }
                 ) {

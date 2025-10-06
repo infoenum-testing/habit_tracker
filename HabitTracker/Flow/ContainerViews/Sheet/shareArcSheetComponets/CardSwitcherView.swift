@@ -32,7 +32,7 @@ struct CardSwitcherView: View {
                 .padding(.top, 28)
                 .padding(.bottom, 28)
             
-            HStackSnap(selectedIndex: $selectedCard, layoutRefreshTrigger: $layoutRefreshTrigger , selectedLeadingOffset: 0, nextCardIndex: 0, shouldAutoScrollCard: false , alignment: .center(50)) {
+            HStackSnap(selectedIndex: $selectedCard, layoutRefreshTrigger: $layoutRefreshTrigger , selectedLeadingOffset: 0, nextCardIndex: 0, shouldAutoScrollCard: false , alignment: .center(UIScreen.main.bounds.width < 400 ? 50 : 70)) {
                 ForEach(Array(array.enumerated()), id: \.offset) { index, element in
                     if let isGrid = element["isGrid"]as? Bool, let des = element["des"] as? String {
                         CardView(description: des, bgColor: Color.black , scale: CGSize(width: selectedCard == index ? 1.0 : 0.93,height: selectedCard == index ? 1.0 : 0.93), isGrid: isGrid, arc: arc , shouldShowAnimation: selectedCard == index  ? $showBorderAnimation : .constant(false))

@@ -53,6 +53,7 @@ struct ShareArcBottomView: View {
                     Button(action: {
                         copyButtonAction()
                         UIPasteboard.general.string = "arcetype.com/arc/guthealth"
+                        copyButtonAction()
                     }) {
                         Image(.copyIcon)
                             .resizable()

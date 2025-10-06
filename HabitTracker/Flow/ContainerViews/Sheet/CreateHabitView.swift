@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateHabitView: View {
-    var isFromCreateArc : Bool = false
+    var isFromCreateArc : Bool
     @Binding var habit: CreatedHabit
     @State private var tempHabit: CreatedHabit = CreatedHabit(id: UUID(), title: "", description: "", icon: "", color: "")
     @EnvironmentObject var dataStore: AppDataStore
@@ -19,11 +19,14 @@ struct CreateHabitView: View {
     @State private var profileText = ""
     @State private var inputText: String = ""
     @State private var textWidth: CGFloat = 120
+    @State private var showToast: Bool = false
+    @State private var toastMessage: String = ""
     @FocusState private var isTextFieldActive: Bool
     private let colorsArray: [String] = AppColors.all
     var onSave: (CreatedHabit) -> Void
     
-    init(isFromCreateArc: Bool = false,habit: Binding<CreatedHabit>, onSave: @escaping (CreatedHabit) -> Void) {
+    init(isFromCreateArc: Bool ,habit: Binding<CreatedHabit>, onSave: @escaping (CreatedHabit) -> Void) {
+        self.isFromCreateArc = isFromCreateArc
         self._habit = habit
         self.onSave = onSave
         self._tempHabit = State(initialValue: habit.wrappedValue)
@@ -104,7 +107,7 @@ struct CreateHabitView: View {
                                         Color.clear.onAppear {
                                             textWidth = max(120, geo.size.width)
                                         }
-                                        .onChange(of: inputText) { _ in
+                                        .onChange(of: inputText) {
                                             textWidth = max(120, geo.size.width)
                                         }
                                     })
@@ -136,6 +139,30 @@ struct CreateHabitView: View {
                 Spacer()
                 
                 ShareProgressButton(title: StringConstants.Sheet.addHabit, buttonAction:  {
+                    
+                    if tempHabit.icon.isEmpty {
+                        print("❌ Error: Habit Icon must be selected")
+                        toastMessage = "Please select an icon"
+                        showToast = true
+                        return
+                    }
+                    
+                    if tempHabit.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        print("❌ Error: Habit title is required")
+                        toastMessage = "Title is required"
+                        showToast = true
+                        return
+                    }
+                    
+                    if tempHabit.description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        print("❌ Error: Habit description is required")
+                        toastMessage = "Description is required"
+                        showToast = true
+                        return
+                    }
+                    
+                   
+                    
                     if isFromCreateArc {
                         onSave(tempHabit)
                         dismiss()
@@ -147,6 +174,8 @@ struct CreateHabitView: View {
             }
         }
         .frame(height: 400)
+        .disabled(showToast)
+        .toast(isShown: $showToast, title: "", message: toastMessage, type: .alert, alignment: .bottom)
     }
     
     // MARK: - Save Arc
