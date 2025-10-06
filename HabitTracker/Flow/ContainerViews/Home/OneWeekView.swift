@@ -84,14 +84,16 @@ struct OneWeekView: View {
                                     .foregroundColor(.white)
                                     .padding(10)
                                if date < Date() && !calendar.isDate(date, inSameDayAs: currentDate)  {
-                                   ZStack {
-                                       Circle()
-                                           .fill(Color._151518.opacity(0.5))
-                                           .frame(width: 22, height: 22)
+                                   
+                                   HStack {
                                        Image(.tickIcon)
                                            .resizable()
-                                           .frame(width: 8, height: 6, alignment: .center)
+                                           .frame(width: 12, height: 8, alignment: .center)
                                    }
+                                   .frame(width: 22, height: 22)
+                                   .background(Color.black.opacity(0.7))
+                                   .clipShape(Circle())
+
                                 }
                             }
                             

@@ -28,10 +28,11 @@ struct InfoPopupView: View {
                     }
                     
                     HStack {
-                        
-                        Text("+\(appData.todayStatistics)")
-                            .font(.sfPro(size: 12, weight: .medium))
-                            .foregroundStyle(.appCyan)
+                        if let overall = appData.todayStatistics?.overallTotal, overall > 0 {
+                            Text("+\(overall)")
+                                .font(.sfPro(size: 12, weight: .medium))
+                                .foregroundStyle(.appCyan)
+                        }
                         
                         ZStack {
                             

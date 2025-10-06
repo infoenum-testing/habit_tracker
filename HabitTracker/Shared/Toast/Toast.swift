@@ -83,8 +83,15 @@ struct Toast: View {
                 .cornerRadius(20)
                 .padding(1)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(type.borderColor, lineWidth: 1)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(type.borderColor, lineWidth: 3)
+                            .blur(radius: 10)
+                            .shadow(radius: 40)
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(type.borderColor, lineWidth: 1)
+                    }
+                    
                 )
                 .padding()
                 .transition(.asymmetric(

@@ -33,6 +33,7 @@ struct StatisticsView: View {
                 VStack {
                     InfoPopupView(statisticsViewModel: statisticsViewModel)
                 }                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.6))
             }
         }
         .background(Color.black.ignoresSafeArea())
