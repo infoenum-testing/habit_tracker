@@ -26,27 +26,27 @@ struct HomeView: View {
                     .padding(.horizontal,20)
                 //                DateStrip()
                 OneWeekView(arc: appData.allSubscribedArcs)
-                    .padding(.top, 4)
-                HStack {
-                    Text(StringConstants.Home.todaysHabits)
-                        .font(.sfProDisplay(.medium, size: 16))
-                        .foregroundStyle(.white)
-                        .minimumScaleFactor(0.8)
-                    
-                    Spacer()
-                    HStack(spacing: 4) {
-                        Text(Date().fullWeekday)
-                            .font(.sfProDisplay(.medium, size: 16))
-                            .foregroundStyle(.white)
-                            .minimumScaleFactor(0.8)
-                        Text(Date().monthDayYear)
-                            .font(.sfProDisplay(.medium, size: 16))
-                            .foregroundStyle(.white.opacity(0.40))
-                            .minimumScaleFactor(0.8)
-                    }
-                    
-                }.padding(.vertical, 12)
-                    .padding(.horizontal,20)
+                    .padding(.vertical, 4)
+//                HStack {
+//                    Text(StringConstants.Home.todaysHabits)
+//                        .font(.sfProDisplay(.medium, size: 16))
+//                        .foregroundStyle(.white)
+//                        .minimumScaleFactor(0.8)
+//                    
+//                    Spacer()
+//                    HStack(spacing: 4) {
+//                        Text(Date().fullWeekday)
+//                            .font(.sfProDisplay(.medium, size: 16))
+//                            .foregroundStyle(.white)
+//                            .minimumScaleFactor(0.8)
+//                        Text(Date().monthDayYear)
+//                            .font(.sfProDisplay(.medium, size: 16))
+//                            .foregroundStyle(.white.opacity(0.40))
+//                            .minimumScaleFactor(0.8)
+//                    }
+//                    
+//                }.padding(.vertical, 12)
+//                    .padding(.horizontal,20)
                 
                 if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {
                     VStack {
@@ -68,7 +68,7 @@ struct HomeView: View {
                                     print("Add Arc tapped")
                                     showCreateArcSheet = true
                                 }
-                                .padding(.vertical,10)
+                                .padding(.bottom,10)
                                 
                                 
                                 ForEach(appData.allSubscribedArcs) { arc in
@@ -126,6 +126,9 @@ struct HomeView: View {
         
         .sheet(isPresented: $showHabitEditSheet) {
             HabitEditSheet()
+                .presentationBackground {
+                    Color.color_151518
+                }
                 .preferredColorScheme(.dark)
                 .presentationDetents([.height(500)])
                 .presentationCornerRadius(24)
@@ -137,7 +140,7 @@ struct HomeView: View {
                 .presentationDetents([.height(400)])
                 .presentationCornerRadius(24)
                 .presentationBackground {
-                    Color(UIColor.systemBackground)
+                    Color.color_151518
                 }
                 .preferredColorScheme(.dark)
         }
@@ -147,17 +150,17 @@ struct HomeView: View {
                 .presentationDetents([.large])
                 .presentationCornerRadius(24)
                 .presentationBackground {
-                    Color(UIColor.systemBackground)
+                    Color.color_151518
                 }
                 .preferredColorScheme(.dark)
         }
         
         .sheet(isPresented: $showCreateHabitSheet) {
             CreateHabitView(isFromCreateArc: false, habit: $createdHabit, onSave: {_ in })
-                .presentationDetents([.height(450)])
+                .presentationDetents([.height(400)])
                 .presentationCornerRadius(24)
                 .presentationBackground {
-                    Color(UIColor.systemBackground)
+                    Color.color_151518
                 }
                 .preferredColorScheme(.dark)
         }

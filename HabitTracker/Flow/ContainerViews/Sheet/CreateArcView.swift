@@ -45,7 +45,7 @@ struct CreateArcView: View {
     var body: some View {
         VStack {
             topSheetIndicator
-                .padding(.top,20)
+            //    .padding(.top,20)
             
             ScrollView(showsIndicators: false) {
                 colourPannel
@@ -74,6 +74,7 @@ struct CreateArcView: View {
         .padding()
         .disabled(showToast)
         .background(Color.color_151518.ignoresSafeArea())
+        .hideKeyboardOnTap()
         .toast(isShown: $showToast, title: "", message: toastMessage, type: .alert, alignment: .bottom)
         
         .sheet(isPresented: $showHabitSheet) {
@@ -90,10 +91,10 @@ struct CreateArcView: View {
                 }
             }
             )
-            .presentationDetents([.height(450)])
+            .presentationDetents([.height(400)])
             .presentationCornerRadius(24)
             .presentationBackground {
-                Color(UIColor.systemBackground)
+                Color.color_151518
             }
             .preferredColorScheme(.dark)
             

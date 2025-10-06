@@ -136,12 +136,12 @@ struct ArcDetailView: View {
                 .background(.black)
             }
         }
-        .onChange(of: appData.allSubscribedArcs) { _ in
+        .onChange(of: appData.allSubscribedArcs) {
             if appData.allSubscribedArcs.first(where: { $0.wrappedId == arcID }) == nil {
                 dismiss()
             }
         }
-        .onChange(of: navigation.dismissAllSheets) { _ in
+        .onChange(of: navigation.dismissAllSheets) {
             dismiss()
         }
         
@@ -179,7 +179,7 @@ extension ArcDetailView {
             ShareArcSheet(arc: avaliableArc)
                 .presentationDetents([.large])
                 .presentationCornerRadius(24)
-                .presentationBackground { Color(UIColor.systemBackground) }
+                .presentationBackground { Color.color_151518 }
                 .preferredColorScheme(.dark)
         }
     }
@@ -189,7 +189,7 @@ extension ArcDetailView {
         UpdateThemeSheet(isPresented: $showUpdateThemeSheet)
             .presentationDetents([.height(300)])
             .presentationCornerRadius(24)
-            .presentationBackground { Color(UIColor.systemBackground) }
+            .presentationBackground { Color.color_151518 }
             .preferredColorScheme(.dark)
     }
 }

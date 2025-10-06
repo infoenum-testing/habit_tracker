@@ -90,6 +90,7 @@ struct CreateHabitView: View {
                 }
                 .frame(height: 50)
                 .padding(.vertical, 30)
+                .hideKeyboardOnTap()
                 HStack {
                     Spacer()
                     ZStack(alignment: .bottom) {
@@ -99,6 +100,7 @@ struct CreateHabitView: View {
                             .multilineTextAlignment(.center)
                             .foregroundColor(.white)
                             .tint(.white)
+                            .focused($isTextFieldActive)
                             .background(
                                 // Hidden text to measure width
                                 Text(inputText.isEmpty ? " " : inputText)
@@ -126,6 +128,7 @@ struct CreateHabitView: View {
                 
                 HStack(alignment: .top) {
                     TextField("Enter habit’s description", text: $tempHabit.description,  axis: .vertical)
+                        .focused($isTextFieldActive)
                         .lineLimit(.none)
                         .padding(10)
                         .tint(.white)
@@ -135,6 +138,9 @@ struct CreateHabitView: View {
                 .cornerRadius(11)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 15)
+                .onTapGesture {
+                    isTextFieldActive = true
+                }
                 
                 Spacer()
                 
@@ -174,8 +180,14 @@ struct CreateHabitView: View {
             }
         }
         .frame(height: 400)
+        .background(Color.color_151518)
+        .hideKeyboardOnTap()
         .disabled(showToast)
         .toast(isShown: $showToast, title: "", message: toastMessage, type: .alert, alignment: .bottom)
+        
+       
+        
+        
     }
     
     // MARK: - Save Arc

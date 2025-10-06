@@ -13,3 +13,19 @@ extension View {
     }
 }
 
+
+extension View {
+    /// Hides keyboard when tapping anywhere outside text fields
+    func hideKeyboardOnTap() -> some View {
+        self.onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                            to: nil, from: nil, for: nil)
+        }
+    }
+
+    /// Dismisses keyboard programmatically
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                        to: nil, from: nil, for: nil)
+    }
+}
