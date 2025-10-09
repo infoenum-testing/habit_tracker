@@ -39,6 +39,7 @@ struct EditArcSheet: View {
                 Color.clear.frame(width: 30)
             }.frame(height: 50)
                 .padding(.vertical,10)
+                .padding(.horizontal,20)
 //            ColorPickerSection(
 //                colors: colorsArray,
 //                selectedColor: $selectedColor,
@@ -97,6 +98,7 @@ struct EditArcSheet: View {
                 }
             }
             .padding(.vertical, 25)
+            .padding(.horizontal,20)
             
             Button {
                 showConfirmation = true
@@ -117,8 +119,9 @@ struct EditArcSheet: View {
                 .cornerRadius(22)
             }
             .padding(.bottom, 25)
-        }.ignoresSafeArea()
             .padding(.horizontal,20)
+        }.ignoresSafeArea()
+            
 //            .task {
 //                if let arc = appData.selectedArctoDelete {
 //                    selectedColor = arc.wrappedThemeColor

@@ -48,7 +48,7 @@ struct StatisticsView: View {
         // 1️⃣ Filter completed histories
         let filtered = appData.allHistories.filter { history in
             guard let status = history.status else { return false }
-            return status == ArcStatus.endByUser.rawValue || status == ArcStatus.lateCompleted.rawValue
+            return status == ArcStatus.completed.rawValue || status == ArcStatus.lateCompleted.rawValue
         }
 
         // 2️⃣ Group by arcId

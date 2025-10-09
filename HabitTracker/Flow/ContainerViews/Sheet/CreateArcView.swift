@@ -45,12 +45,13 @@ struct CreateArcView: View {
     var body: some View {
         VStack {
             topSheetIndicator
-            //    .padding(.top,20)
+                .padding(.top,19)
             
             ScrollView(showsIndicators: false) {
                 colourPannel
                     .padding(.top,40)
                 arcTextField
+                    .padding(.horizontal,20)
                     .padding(.vertical,40)
                 VStack(spacing: 12) {
                     ForEach(habits.indices, id: \.self) { index in
@@ -61,17 +62,19 @@ struct CreateArcView: View {
                             }
                     }
                     addNewHabitButton
+                        .padding(.horizontal,20)
                 }
                 selectArcDuration
                     .padding(.bottom,10)
+                    .padding(.horizontal,20)
             }
             ShareProgressButton(
                 title: StringConstants.Sheet.createArc,
                 buttonAction: saveArc,
                 shouldShowArrow: true
             )
+            .padding(.horizontal,20)
         }
-        .padding()
         .disabled(showToast)
         .background(Color.color_151518.ignoresSafeArea())
         .hideKeyboardOnTap()

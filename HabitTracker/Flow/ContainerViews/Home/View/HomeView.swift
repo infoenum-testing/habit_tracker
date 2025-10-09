@@ -48,17 +48,17 @@ struct HomeView: View {
 //                }.padding(.vertical, 12)
 //                    .padding(.horizontal,20)
                 
-                if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {
-                    VStack {
-                        Spacer()
-                        Text(StringConstants.Home.noTaskForToday)
-                            .font(.sfProDisplay(.medium, size: 16))
-                            .foregroundColor(.white.opacity(0.6))
-                            .multilineTextAlignment(.center)
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                } else {
+//                if appData.allSubscribedArcs.isEmpty && appData.allSubscribedHabits.isEmpty {
+//                    VStack {
+//                        Spacer()
+//                        Text(StringConstants.Home.noTaskForToday)
+//                            .font(.sfProDisplay(.medium, size: 16))
+//                            .foregroundColor(.white.opacity(0.6))
+//                            .multilineTextAlignment(.center)
+//                        Spacer()
+//                    }
+//                    .frame(maxWidth: .infinity)
+//                } else {
                     
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 12) {
@@ -116,7 +116,7 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                     }
                     .environmentObject(swipeManager)
-                }
+               // }
             }
         }
         .toolbar(.hidden)
