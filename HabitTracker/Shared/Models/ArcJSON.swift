@@ -25,4 +25,5 @@ struct ArcJSON: Codable {
     let metaCreatedAt: String?
     let metaUpdatedAt: String?
     let icons: [String: String]?
+    var createdBy: String? = "Arcetype Staff"
 }

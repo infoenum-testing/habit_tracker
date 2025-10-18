@@ -34,6 +34,7 @@ extension ArcTemplate {
     @NSManaged public var title: String?
     @NSManaged public var habitsData: [[String: Any]]?
     @NSManaged public var subscribedArcs: NSSet?
+    @NSManaged public var createdBy: String?
     
 }
 

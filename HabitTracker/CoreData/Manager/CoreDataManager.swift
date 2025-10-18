@@ -386,7 +386,8 @@ extension CoreDataManager {
         arc.descriptionText = createdArc.description
         arc.colorToken = createdArc.color
         arc.durationDays = Int16(createdArc.duration)
-        arc.coverImage = createdArc.icon    
+        arc.coverImage = createdArc.icon
+        arc.createdBy = createdArc.createdBy
         
         // Convert habits into JSON-storable format
         let habitObjects: [[String: Any]] = createdArc.habits.map { habit in

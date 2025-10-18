@@ -15,6 +15,7 @@ struct CreatedArc: Identifiable, Hashable {
     var color: String
     var duration: Int
     var habits: [CreatedHabit]
+    var createdBy: String = "you"
 }
 
 
@@ -325,12 +326,13 @@ struct CreateArcView: View {
         let arcID = UUID()
         let newArc = CreatedArc(
             id: arcID,
-            title: arcTitle.isEmpty ? "Untitled Arc" : arcTitle,
+            title: arcTitle.isEmpty ? "Untitled Arc" : arcTitle.formattedArcTitle(),
             description: "User created arc",
             icon: "circle",
             color: selectedColor.isEmpty ? "color.green" : selectedColor,
             duration: arcDuration,
-            habits: habits
+            habits: habits,
+            createdBy: "you"
         )
         dataStore.saveUserCreatedArc(newArc)
         if let savedArcTemplate = dataStore.allArcs.last {

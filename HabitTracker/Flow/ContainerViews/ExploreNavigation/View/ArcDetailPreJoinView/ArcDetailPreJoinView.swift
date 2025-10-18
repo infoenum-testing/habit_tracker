@@ -82,7 +82,7 @@ struct ArcDetailPreJoinView: View {
                                         .background(.ultraThinMaterial.opacity(0.5))
                                         .cornerRadius(20)
                                         TextBadgeView(
-                                            title: "Created by Arcetype Staff",
+                                            title: "Created by \(arc.createdBy ?? "Arcetype Staff")",
                                             icon: StringConstants.Image.arc
                                         )
                                         .background(.ultraThinMaterial.opacity(0.5))

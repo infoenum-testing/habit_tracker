@@ -133,6 +133,7 @@
 		EBAF59C32E6F15CA0037FA36 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */; };
 		EBAF59C52E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBAF59C42E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf */; };
 		EBAF5A012E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBAF59EA2E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf */; };
+		EBB372322E99144500BB556D /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB372312E99143800BB556D /* PropertyWrapper.swift */; };
 		EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */; };
 		EBB66A052E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */; };
 		EBB66A082E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */; };
@@ -301,6 +302,7 @@
 		EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		EBAF59C42E6F167C0037FA36 /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
 		EBAF59EA2E6F1B260037FA36 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		EBB372312E99143800BB556D /* PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
 		EBB669F62E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EBB669F72E5D93EE00638C9B /* ArcTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArcTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EBB669FA2E5D93EE00638C9B /* HabitTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 		B7A3CBF82E50FDCC00674792 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EBB372312E99143800BB556D /* PropertyWrapper.swift */,
 				EBAF59C22E6F15C10037FA36 /* Text+Extension.swift */,
 				EBAF59BE2E6F11C10037FA36 /* String+Extension.swift */,
 				EB9E256C2E6EAB9F003FC30D /* View+Extension.swift */,
@@ -1296,6 +1299,7 @@
 				B7A3CC1A2E50FDCC00674792 /* CircleButton.swift in Sources */,
 				B7A3CC1B2E50FDCC00674792 /* CounterPill.swift in Sources */,
 				EB96E8722E658720005399A8 /* AppColors.swift in Sources */,
+				EBB372322E99144500BB556D /* PropertyWrapper.swift in Sources */,
 				B7A3CC1C2E50FDCC00674792 /* DatePill.swift in Sources */,
 				EBAAE8902E54B9AA000F47B9 /* EndArcConfirmationSheet.swift in Sources */,
 				EBB66A042E5D93EE00638C9B /* ArcTemplate+CoreDataClass.swift in Sources */,
